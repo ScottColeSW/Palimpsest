@@ -28,6 +28,7 @@ from palimpsest.demo_scenario import Scenario
 from palimpsest.ingest import Intake
 from palimpsest.memory_store import InMemoryStore
 from palimpsest.pipeline import digest_and_consult
+from palimpsest.real_collision_demo import RealCollisionDemo
 
 app = FastAPI(title="Palimpsest demo")
 scenario = Scenario()
@@ -67,6 +68,11 @@ def index() -> FileResponse:
 @app.get("/ingest.html")
 def ingest_page() -> FileResponse:
     return FileResponse(STATIC_DIR / "ingest.html")
+
+
+@app.get("/real-collision.html")
+def real_collision_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "real-collision.html")
 
 
 @app.get("/state")
@@ -150,3 +156,38 @@ def ingest_reset() -> dict:
     ingest_store = InMemoryStore()
     intake = Intake(id="book", raw_text=_load_chapter_one(BOOK_FILE), chunk_size=CHUNK_SIZE, domain="story")
     return _ingest_state()
+
+
+real_collision_demo = RealCollisionDemo()
+
+
+@app.get("/real-collision/state")
+def real_collision_state() -> dict:
+    return real_collision_demo.state()
+
+
+@app.post("/real-collision/tick")
+def real_collision_tick() -> dict:
+    result = real_collision_demo.advance()
+    if result is None:
+        return {"done": True, "result": None, "state": real_collision_demo.state()}
+    return {
+        "done": result.done,
+        "result": {
+            "step": result.step,
+            "source": result.source,
+            "domain": result.domain,
+            "first_text": result.first_text,
+            "second_text": result.second_text,
+            "relation": result.relation,
+            "overlap": result.overlap,
+        },
+        "state": real_collision_demo.state(),
+    }
+
+
+@app.post("/real-collision/reset")
+def real_collision_reset() -> dict:
+    global real_collision_demo
+    real_collision_demo = RealCollisionDemo()
+    return real_collision_demo.state()

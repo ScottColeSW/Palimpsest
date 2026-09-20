@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Palimpsest — real collision</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --panel: #14171f;
+    --text: #d8dde8;
+    --muted: #7d8496;
+    --collide: #e2504a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.6 -apple-system, Segoe UI, Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 16px 80px;
+  }
+  header { max-width: 680px; text-align: center; margin-bottom: 24px; }
+  h1 { font-size: 18px; margin: 0 0 8px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  a { color: #5c8ce2; }
+  #controls { display: flex; gap: 8px; margin: 20px 0; }
+  button {
+    background: #232838;
+    color: var(--text);
+    border: 1px solid #333c52;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  button:hover { background: #2c3348; }
+  button:disabled { opacity: 0.4; cursor: default; }
+  .pair {
+    max-width: 680px;
+    width: 100%;
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .pair .source { color: var(--muted); font-size: 11px; margin-bottom: 12px; }
+  .quotes { display: flex; flex-direction: column; gap: 10px; position: relative; }
+  .quote {
+    background: #1a1f2b;
+    border-left: 3px solid #333c52;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-style: italic;
+  }
+  .connector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 14px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .relation-badge {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+  .relation-collides {
+    color: var(--collide);
+    background: rgba(226, 80, 74, 0.15);
+    animation: pulse-text 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse-text {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Palimpsest — a real collision, not an invented one</h1>
+    <div class="sub">
+      Two real quoted pairs from Winnie-the-Pooh (gutenberg.org), run through the actual consult() logic --
+      not scripted, verified before this page existed. What's manual: picking which two real sentences to
+      compare and what domain to tag them under (the classifier still can't infer that). What's real: the
+      sentences and the judgment. <a href="/">← scripted demo</a> · <a href="/ingest.html">real ingestion →</a>
+    </div>
+  </header>
+  <div id="controls">
+    <button id="tick-btn">Reveal next →</button>
+    <button id="reset-btn">Reset</button>
+  </div>
+  <div id="pairs"></div>
+  <script src="/static/real_collision_app.js"></script>
+</body>
+</html>
