@@ -58,6 +58,31 @@ class EdgeType(str, Enum):
     SUPERSEDES = "supersedes"
     SCOPE_PARENT = "scope_parent"
     RECONCILED_WITH = "reconciled_with"
+    COEXISTS = "coexists"  # same referent+domain+scope, no claimed tension -- see DomainKind.EVENT
+
+
+class DomainKind(str, Enum):
+    """What kind of thing a domain's claims compete over -- decides
+    what "low text overlap between two same-referent claims" means.
+
+    ATTRIBUTE: the domain has one true value at a time (a character's
+    hair color, a person's general temperament). Two different-content
+    claims at the same scope really are in tension -- low overlap is
+    real signal, COLLIDES is the right call.
+
+    EVENT: the domain is a stream of things that happened, where many
+    different, unrelated claims can all be true at once (a character's
+    narrative -- "came downstairs", "ate honey", "climbed a tree").
+    Low overlap here just means "a different event", not disagreement
+    -- flagging it as COLLIDES is confidently wrong, not cautious.
+
+    Found the hard way: consult() originally treated every domain as
+    ATTRIBUTE, and real Winnie-the-Pooh ingestion produced 44 false
+    "collisions" between ordinary, compatible sentences about Pooh
+    that simply didn't share vocabulary -- see CLAUDE.md."""
+
+    ATTRIBUTE = "attribute"
+    EVENT = "event"
 
 
 class EdgeStatus(str, Enum):
