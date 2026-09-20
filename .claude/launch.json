@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "palimpsest-demo",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": ["server:app", "--port", "8420"],
+      "port": 8420
+    }
+  ]
+}

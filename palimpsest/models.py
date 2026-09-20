@@ -35,11 +35,21 @@ class Origin(str, Enum):
     """Where a node came from. Permanent -- never overwritten, even as
     weight and evidence_count evolve with real interactions. Losing
     this fact would be exactly the silent-erasure failure mode this
-    project exists to avoid."""
+    project exists to avoid.
+
+    DORMANT (added for ingestion): a chunk of real raw material that
+    digestion looked at and didn't judge significant *yet* -- kept,
+    not discarded, so "wasn't interesting on first pass" never quietly
+    becomes "gone." Distinct from SEED (authored, never observed) and
+    EPISODE (an evaluated conclusion) -- dormant material is real and
+    unevaluated, sitting below the weight threshold that would make it
+    an active node, eligible for promotion if a later chunk makes its
+    relevance clear."""
 
     EPISODE = "episode"
     REFLECTION = "reflection"
     SEED = "seed"
+    DORMANT = "dormant"
 
 
 class EdgeType(str, Enum):
