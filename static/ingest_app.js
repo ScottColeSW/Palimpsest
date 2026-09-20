@@ -44,12 +44,17 @@ function layout(nodes) {
   const byReferent = {};
   episodes.forEach((n) => (byReferent[n.referent] = byReferent[n.referent] || []).push(n));
 
+  // Spiral outward per referent instead of a tight ring -- a ring packs
+  // nodes close enough that the edges between them are a few pixels
+  // long and vanish under the overlapping circles. Spiraling out means
+  // each new mention sits visibly farther from the last, so the edge
+  // connecting them reads as an actual line, not a rumor of one.
   const positions = {};
   Object.entries(byReferent).forEach(([referent, group]) => {
     const center = clusterCenters[referent];
     group.forEach((n, i) => {
-      const angle = (i / Math.max(group.length, 1)) * Math.PI * 2;
-      const r = 18 + Math.floor(i / 8) * 30;
+      const angle = i * 0.85;
+      const r = 22 + i * 17;
       positions[n.id] = { x: center.x + Math.cos(angle) * r, y: center.y + Math.sin(angle) * r };
     });
   });
@@ -85,9 +90,9 @@ function render(state) {
     const b = positions[edge.target];
     if (!a || !b) continue;
     const isOpenCollision = edge.type === "collides" && edge.status === "open";
-    const opacity = edge.type === "coexists" ? 0.35 : 0.7;
+    const opacity = edge.type === "coexists" ? 0.6 : 0.85;
     parts.push(
-      `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${edgeColor(edge)}" stroke-width="1.5" stroke-opacity="${opacity}" class="${isOpenCollision ? "pulse" : ""}" />`
+      `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${edgeColor(edge)}" stroke-width="2.5" stroke-opacity="${opacity}" class="${isOpenCollision ? "pulse" : ""}" />`
     );
   }
 
