@@ -37,7 +37,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from .memory_store import InMemoryStore
-from .models import DomainKind, Edge, EdgeStatus, EdgeType, Node
+from .models import DomainKind, Edge, EdgeStatus, EdgeType, Node, Origin
 
 # A domain has to be explicitly declared attribute-like (one true value
 # competes at a time) to get collision detection at all. Unregistered
@@ -182,3 +182,48 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
 
     store.add_edge(edge)
     return edge
+
+
+def referent_prominence(store: InMemoryStore, domain: str) -> list[tuple[str, float]]:
+    """Ranks referents within a domain by whichever signal is actually
+    meaningful for that domain's kind -- not one number pretending to
+    mean the same thing everywhere.
+
+    ATTRIBUTE domains: ranked by the highest weight any single claim
+    about that referent has reached. Weight legitimately means
+    confidence there, since low overlap really does mean competing
+    claims -- see consult().
+
+    EVENT domains: ranked by how many distinct episodes mention that
+    referent. Weight barely moves in an EVENT domain by design
+    (COEXISTS never touches it, REINFORCES only fires on near-literal
+    repeats, which narrative text rarely produces) -- using it to rank
+    "how central is this referent" was the actual bug. Raw mention
+    count is what really reflects how much the mesh has accumulated
+    about something, and it's what caught the difference between Pooh
+    (14 mentions in three real chapters) and a one-off name.
+
+    Dormant nodes are excluded from both -- they were never judged
+    significant, so they shouldn't count toward prominence any more
+    than they get individually rendered.
+
+    Returns (referent, score) pairs, highest first. Scores from an
+    ATTRIBUTE domain and an EVENT domain are not the same currency --
+    a weight and a count -- and should never be compared to each
+    other, which is the same "domains don't share a currency" rule
+    tolerance already follows.
+    """
+    episodes = [n for n in store.all_nodes() if n.domain == domain and n.origin == Origin.EPISODE]
+    if not episodes:
+        return []
+
+    if domain_kind_for(domain) == DomainKind.ATTRIBUTE:
+        best_weight: dict[str, float] = {}
+        for n in episodes:
+            best_weight[n.referent] = max(best_weight.get(n.referent, 0.0), n.weight)
+        return sorted(best_weight.items(), key=lambda kv: kv[1], reverse=True)
+
+    counts: dict[str, int] = {}
+    for n in episodes:
+        counts[n.referent] = counts.get(n.referent, 0) + 1
+    return sorted(counts.items(), key=lambda kv: kv[1], reverse=True)

@@ -7,7 +7,7 @@ different mesh state, different (correct) relation returned.
 
 from __future__ import annotations
 
-from palimpsest.consult import Relation, apply_consult, consult, domain_kind_for
+from palimpsest.consult import Relation, apply_consult, consult, domain_kind_for, referent_prominence
 from palimpsest.memory_store import InMemoryStore
 from palimpsest.models import DomainKind, EdgeStatus, EdgeType, Node, Origin, Scope
 
@@ -196,3 +196,51 @@ def test_apply_consult_coexists_links_but_does_not_touch_weight():
     assert edge.status is None
     assert seed.weight == 0.5  # untouched -- a new event isn't confirmation
     assert seed.evidence_count == 0
+
+
+# -- referent_prominence: the correct ranking signal per domain kind --
+
+def test_referent_prominence_empty_domain_returns_empty_list():
+    store = InMemoryStore()
+    assert referent_prominence(store, "story") == []
+
+
+def test_referent_prominence_event_domain_ranks_by_mention_count_not_weight():
+    """The actual bug being fixed: three real, compatible episodes
+    about Pooh (an EVENT domain) should outrank one about Robin, even
+    though every node's weight sits flat at 0.5 -- weight was never
+    the right signal here."""
+    store = InMemoryStore()
+    for i, text in enumerate([
+        "Pooh came downstairs bump bump bump",
+        "Pooh sat by the fire and listened",
+        "Pooh climbed a tree looking for honey",
+    ]):
+        candidate = _n(f"pooh-{i}", text, "story", "pooh", Scope.GENERAL)
+        apply_consult(store, candidate, consult(store, candidate))
+    robin = _n("robin-0", "Christopher Robin watched from the doorway", "story", "robin", Scope.GENERAL)
+    apply_consult(store, robin, consult(store, robin))
+
+    ranked = referent_prominence(store, "story")
+    assert ranked[0] == ("pooh", 3)
+    assert ("robin", 1) in ranked
+    assert ranked[0][1] > dict(ranked)["robin"]
+
+
+def test_referent_prominence_attribute_domain_ranks_by_weight():
+    store = InMemoryStore()
+    store.add_node(_n("e1", "raven black hair", "appearance", "elena", Scope.GENERAL, weight=0.8))
+    store.add_node(_n("m1", "pale blue eyes", "appearance", "marcus", Scope.GENERAL, weight=0.3))
+
+    ranked = referent_prominence(store, "appearance")
+    assert ranked[0] == ("elena", 0.8)
+    assert ranked[1] == ("marcus", 0.3)
+
+
+def test_referent_prominence_excludes_dormant_nodes():
+    store = InMemoryStore()
+    store.add_node(Node(
+        id="d1", text="a passing detail", domain="story", referent="pooh",
+        scope=Scope.GENERAL, origin=Origin.DORMANT, weight=0.05,
+    ))
+    assert referent_prominence(store, "story") == []
