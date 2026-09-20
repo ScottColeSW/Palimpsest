@@ -67,9 +67,29 @@ function layout(nodes) {
   return { positions, episodeCount: episodes.length, dormantCount: dormant.length };
 }
 
+function edgeColor(edge) {
+  if (edge.type === "reinforces") return "#3f7d5c";
+  if (edge.type === "coexists") return "#5c8ce2";
+  if (edge.type === "collides") return edge.status === "open" ? "#e2504a" : "#7d8496";
+  if (edge.type === "scope_parent") return "#c25ce2";
+  return "#7d8496";
+}
+
 function render(state) {
   const { positions, episodeCount, dormantCount } = layout(state.nodes);
   const parts = [];
+
+  // Edges drawn first so nodes sit visually on top of them.
+  for (const edge of state.edges || []) {
+    const a = positions[edge.source];
+    const b = positions[edge.target];
+    if (!a || !b) continue;
+    const isOpenCollision = edge.type === "collides" && edge.status === "open";
+    const opacity = edge.type === "coexists" ? 0.35 : 0.7;
+    parts.push(
+      `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${edgeColor(edge)}" stroke-width="1.5" stroke-opacity="${opacity}" class="${isOpenCollision ? "pulse" : ""}" />`
+    );
+  }
 
   for (const node of state.nodes) {
     const p = positions[node.id];
@@ -94,10 +114,19 @@ function render(state) {
   dormantCountEl.textContent = dormantCount;
 }
 
-function logNode(node) {
+function renderProminence(prominence) {
+  const list = document.getElementById("prominence-list");
+  list.innerHTML = (prominence || [])
+    .map(([referent, score]) => `<div class="prom-row"><span>${referent}</span><span class="score">${score}</span></div>`)
+    .join("");
+}
+
+function logNode(node, relation) {
   const entry = document.createElement("div");
-  entry.className = "log-entry" + (node.origin === "episode" ? " episode" : "");
-  entry.innerHTML = `<strong>${node.origin}</strong> ${node.referent !== "unknown" ? `(${node.referent}) ` : ""}— ${node.text.replace(/</g, "&lt;").slice(0, 90)}`;
+  const relationClass = relation ? ` relation-${relation}` : "";
+  entry.className = "log-entry" + (node.origin === "episode" ? " episode" : "") + relationClass;
+  const relationLabel = relation ? ` [${relation}]` : "";
+  entry.innerHTML = `<strong>${node.origin}${relationLabel}</strong> ${node.referent !== "unknown" ? `(${node.referent}) ` : ""}— ${node.text.replace(/</g, "&lt;").slice(0, 90)}`;
   logEl.appendChild(entry);
 }
 
@@ -112,14 +141,16 @@ async function fetchState() {
   const state = await res.json();
   render(state);
   updateProgress(state);
+  renderProminence(state.prominence);
 }
 
 async function doTick() {
   const res = await fetch("/ingest/tick", { method: "POST" });
   const data = await res.json();
-  if (data.node) logNode(data.node);
+  if (data.node) logNode(data.node, data.relation);
   render(data.state);
   updateProgress(data.state);
+  renderProminence(data.state.prominence);
   tickBtn.disabled = data.done;
   tick5Btn.disabled = data.done;
 }
@@ -128,10 +159,11 @@ async function doTick5() {
   for (let i = 0; i < 5; i++) {
     const res = await fetch("/ingest/tick", { method: "POST" });
     const data = await res.json();
-    if (data.node) logNode(data.node);
+    if (data.node) logNode(data.node, data.relation);
     if (data.done) {
       render(data.state);
       updateProgress(data.state);
+      renderProminence(data.state.prominence);
       tickBtn.disabled = true;
       tick5Btn.disabled = true;
       return;
@@ -143,6 +175,7 @@ async function doTick5() {
 async function doReset() {
   await fetch("/ingest/reset", { method: "POST" });
   logEl.innerHTML = "";
+  Object.keys(REFERENT_COLORS).forEach((k) => delete REFERENT_COLORS[k]);
   tickBtn.disabled = false;
   tick5Btn.disabled = false;
   fetchState();

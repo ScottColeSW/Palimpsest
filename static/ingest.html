@@ -80,7 +80,20 @@
     font-size: 12px;
   }
   .log-entry.episode { border-left-color: var(--episode); }
+  .log-entry.relation-reinforces { border-left-color: #3f7d5c; }
+  .log-entry.relation-collides { border-left-color: #e2504a; }
+  .log-entry.relation-coexists { border-left-color: #5c8ce2; }
+  .log-entry.relation-scope_link { border-left-color: #c25ce2; }
   .node-label { fill: var(--text); font-size: 9px; pointer-events: none; }
+  #prominence { font-size: 12px; }
+  #prominence-list { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
+  .prom-row { display: flex; justify-content: space-between; color: var(--muted); }
+  .prom-row .score { color: var(--episode); font-weight: 600; }
+  @keyframes pulse {
+    0%, 100% { stroke-opacity: 0.5; stroke-width: 1.5; }
+    50% { stroke-opacity: 1; stroke-width: 3; }
+  }
+  .pulse { animation: pulse 1.4s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -102,6 +115,10 @@
       <button id="tick-btn">Tick →</button>
       <button id="tick5-btn">Tick ×5</button>
       <button id="reset-btn">Reset</button>
+    </div>
+    <div id="prominence">
+      <strong>Referent prominence</strong> (mention count, this domain's an EVENT domain -- weight isn't the signal)
+      <div id="prominence-list"></div>
     </div>
     <div id="log"></div>
   </div>

@@ -23,9 +23,11 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from palimpsest.consult import referent_prominence
 from palimpsest.demo_scenario import Scenario
-from palimpsest.ingest import Intake, digest_next_chunk
+from palimpsest.ingest import Intake
 from palimpsest.memory_store import InMemoryStore
+from palimpsest.pipeline import digest_and_consult
 
 app = FastAPI(title="Palimpsest demo")
 scenario = Scenario()
@@ -102,6 +104,16 @@ def _ingest_node_json(n) -> dict:
     }
 
 
+def _ingest_edge_json(e) -> dict:
+    return {
+        "id": e.id,
+        "source": e.source_id,
+        "target": e.target_id,
+        "type": e.type.value,
+        "status": e.status.value if e.status else None,
+    }
+
+
 def _ingest_state() -> dict:
     return {
         "book": BOOK_FILE,
@@ -109,6 +121,8 @@ def _ingest_state() -> dict:
         "percent_digested": round(intake.percent_digested, 3),
         "fully_digested": intake.fully_digested,
         "nodes": [_ingest_node_json(n) for n in ingest_store.all_nodes()],
+        "edges": [_ingest_edge_json(e) for e in ingest_store.all_edges()],
+        "prominence": referent_prominence(ingest_store, intake.domain)[:8],
     }
 
 
@@ -119,12 +133,13 @@ def get_ingest_state() -> dict:
 
 @app.post("/ingest/tick")
 def ingest_tick() -> dict:
-    result = digest_next_chunk(intake, ingest_store)
+    result = digest_and_consult(intake, ingest_store)
     if result is None:
-        return {"done": True, "node": None, "state": _ingest_state()}
+        return {"done": True, "node": None, "relation": None, "state": _ingest_state()}
     return {
         "done": result.done,
         "node": _ingest_node_json(result.node),
+        "relation": result.relation.value if result.relation else None,
         "state": _ingest_state(),
     }
 
