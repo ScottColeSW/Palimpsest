@@ -1,5 +1,8 @@
 # Palimpsest
 
+[![License](https://img.shields.io/github/license/ScottColeSW/Palimpsest)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/ScottColeSW/Palimpsest)](https://github.com/ScottColeSW/Palimpsest/releases/latest)
+
 Curated, visibly-weighted, relationship-scoped memory for AI agents — built to be read back and let a new claim change, not just retrieved as more tokens to skim before answering.
 
 A palimpsest is a surface written on repeatedly, where earlier layers stay faintly present beneath the new rather than being fully erased. That's the shape this aims for: curated, not total recall; weight that stays legible instead of vanishing; a record that gets written into over time rather than replayed whole every time.
