@@ -34,10 +34,15 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from enum import Enum
 
 from .memory_store import InMemoryStore
 from .models import DomainKind, Edge, EdgeStatus, EdgeType, Node, Origin
+
+
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc)
 
 # A domain has to be explicitly declared attribute-like (one true value
 # competes at a time) to get collision detection at all. Unregistered
@@ -155,6 +160,9 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
         )
         result.related_node.weight = min(1.0, result.related_node.weight + 0.15)
         result.related_node.evidence_count += 1
+        # Fresh evidence resets the decay clock (see decay.py) -- a
+        # claim that was just reinforced hasn't gone stale.
+        result.related_node.last_touched = _utcnow()
     elif result.relation == Relation.COEXISTS:
         # Linked for traversal (e.g. "everything that's happened
         # involving Pooh"), but deliberately doesn't touch weight or
