@@ -50,9 +50,12 @@ def test_exception_with_a_different_figure_is_marked_for_review_not_collided(lim
     assert rule.weight == 0.5 and rule.evidence_count == 0  # nothing decided
 
 
-def test_exception_without_competing_figures_is_not_marked(limit_domain):
-    """A/B against the case above: same shape of exception, no number
-    changed, so there is nothing to review -- the original behavior."""
+def test_exception_that_drops_the_rules_figure_is_marked_for_review(limit_domain):
+    """Decision (2026-09-24): an exception that states no figure against a
+    rule that has one can't be told apart from "for this project, any
+    amount" without reading meaning, so it's marked for review too. A
+    known trade-off: a harmless exception like this one gets looked at
+    by a person. Still a SCOPE_LINK, never a collision."""
     store = InMemoryStore()
     store.add_node(_n("rule", GENERAL_RULE, limit_domain, Scope.GENERAL))
     candidate = _n("exc", "For the Q3 IT refresh project, the CFO also signs off on every order.",
@@ -62,8 +65,21 @@ def test_exception_without_competing_figures_is_not_marked(limit_domain):
     edge = apply_consult(store, candidate, result)
 
     assert result.relation == Relation.SCOPE_LINK
+    assert result.review_needed and result.omitted_values == {10_000.0}
+    assert edge.status == EdgeStatus.REVIEW_NEEDED
+    assert "states no figure" in edge.tolerance_context
+
+
+def test_exception_against_a_rule_with_no_figure_is_not_marked(limit_domain):
+    """A/B: the rule itself carries no number, so nothing can be dropped."""
+    store = InMemoryStore()
+    store.add_node(_n("rule", "Department heads may approve routine purchase orders.", limit_domain, Scope.GENERAL))
+    candidate = _n("exc", "For the Q3 IT refresh project, the CFO also signs off on every order.",
+                   limit_domain, Scope.INSTANCE)
+
+    result = consult(store, candidate)
+    assert result.relation == Relation.SCOPE_LINK
     assert not result.review_needed
-    assert edge.status is None
 
 
 def test_marcus_scope_case_is_unchanged():

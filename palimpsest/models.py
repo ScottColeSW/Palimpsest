@@ -93,14 +93,20 @@ class EdgeStatus(str, Enum):
     On COLLIDES edges: OPEN until something real resolves it
     (VINDICATED / MOOTED / WRONG / RECONCILED_TOGETHER).
 
-    On SCOPE_PARENT edges, only REVIEW_NEEDED: the instance claim states
-    a different figure than its general rule ("department heads may
-    approve up to $10,000" vs "for this one project, up to $5,000,000").
-    That is still an exception, not a collision -- the dog/Rex rule
-    holds -- but an exception that changes a number is exactly the shape
-    a forged claim takes to slip under collision detection, so it is
-    kept visible until someone looks, never silently accepted or
-    rejected. A SCOPE_PARENT edge without competing figures has no status.
+    REVIEW_NEEDED: kept visible until someone looks, never silently
+    accepted or rejected. Two places it appears:
+
+    - SCOPE_PARENT edges whose instance claim changes or drops its general
+      rule's figure ("department heads may approve up to $10,000" vs "for
+      this one project, up to $5,000,000", or "...this one project needs
+      no limit"). Still an exception, not a collision -- the dog/Rex rule
+      holds -- but it's exactly the shape a forged claim takes to slip under
+      collision detection. A SCOPE_PARENT edge whose rule states no figure,
+      or whose exception keeps it, has no status.
+    - COEXISTS edges from an UNCONFIRMED consult: a same-scope claim that
+      shares the rule's wording but omits the value it would have to
+      carry to confirm it ("the limit has been removed" vs "the limit is
+      $10,000"). Not evidence, not a collision.
     """
 
     OPEN = "open"

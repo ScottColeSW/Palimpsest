@@ -36,6 +36,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from enum import Enum
+from typing import Callable
 
 from .memory_store import InMemoryStore
 from .models import DomainKind, Edge, EdgeStatus, EdgeType, Node, Origin
@@ -105,6 +106,16 @@ def _quantities(text: str) -> set[float]:
     return values
 
 
+def _omits_value(candidate: str, existing: str) -> set[float] | None:
+    """The existing claim states a quantity and the candidate states none.
+    In an ATTRIBUTE domain the value IS the claim, so a candidate that
+    drops it can't confirm it, however much wording they share ("the
+    limit has been removed" vs "the limit is $10,000"). Returns the
+    existing claim's values when that's the case."""
+    theirs = _quantities(existing)
+    return theirs if theirs and not _quantities(candidate) else None
+
+
 def _competing_values(a: str, b: str) -> tuple[set[float], set[float]] | None:
     """Two claims compete on value when EACH states a quantity the other
     doesn't -- "$10,000" vs "$5,000,000". One side merely adding a figure
@@ -124,6 +135,9 @@ class Relation(str, Enum):
     REINFORCES = "reinforces"  # same scope+referent+domain, high overlap
     COLLIDES = "collides"  # ATTRIBUTE domain, low overlap -- real, structural divergence
     COEXISTS = "coexists"  # EVENT domain, low overlap -- a different event, not a conflict
+    # ATTRIBUTE domain, same scope, shares the claim's wording but omits the value it would
+    # need to confirm it -- not evidence, not a collision; marked for review
+    UNCONFIRMED = "unconfirmed"
 
 
 @dataclass
@@ -134,19 +148,60 @@ class ConsultResult:
     # Set when the judgment turned on differing quantities rather than
     # overlap: (candidate's unshared values, related node's unshared values).
     competing_values: tuple[set[float], set[float]] | None = None
-    # SCOPE_LINK only: the exception states a different figure than its
-    # general rule. Not a collision; marked so it can't pass unseen.
+    # Not a collision, but marked so it can't pass unseen: a SCOPE_LINK whose
+    # exception changes or drops its rule's figure, or an UNCONFIRMED claim.
     review_needed: bool = False
+    # Set when the candidate drops a value the related claim states.
+    omitted_values: set[float] | None = None
+    # An adjudicator's recorded opinion, if one was consulted (see consult()).
+    adjudication: dict | None = None
 
 
-def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
+# (existing claim text, candidate text) -> {"verdict": "agrees" | "contradicts" | "unrelated", "reason": str}
+Adjudicator = Callable[[str, str], dict]
+VERDICTS = ("agrees", "contradicts", "unrelated")
+
+
+def consult(store: InMemoryStore, candidate: Node, adjudicator: Adjudicator | None = None) -> ConsultResult:
     """Judges `candidate` (not yet stored) against what already exists
     for its referent+domain. Doesn't mutate the store or decide
     anything by itself -- see apply_consult for the version that acts
     on the judgment. Kept pure and side-effect-free specifically so
     the judgment can be inspected and tested before anything is
     written, the same discipline as everywhere else in this project:
-    nothing gets silently acted on."""
+    nothing gets silently acted on.
+
+    `adjudicator` is optional: a callable (most plausibly a model call,
+    see adjudicate.py) consulted only where token overlap and quantities
+    can't settle meaning -- reinforcements and items marked for review.
+    It may raise a flag, never lower one: "contradicts" turns a
+    reinforcement or an UNCONFIRMED claim into an open collision (and is
+    recorded on an exception, which never collides); "agrees" leaves any
+    flag in place with the opinion recorded. A model can be talked into
+    agreeing with a well-written forgery, so it never gets to clear one."""
+    result = _judge(store, candidate)
+    if adjudicator is not None and (result.relation == Relation.REINFORCES or result.review_needed):
+        result = _adjudicate(result, candidate, adjudicator)
+    return result
+
+
+def _adjudicate(result: ConsultResult, candidate: Node, adjudicator: Adjudicator) -> ConsultResult:
+    try:
+        opinion = adjudicator(result.related_node.text, candidate.text)
+        verdict = str(opinion.get("verdict", "")).lower()
+    except Exception:  # noqa: BLE001 -- an adjudicator failure must never change the judgment
+        return result
+    if verdict not in VERDICTS:
+        return result
+    result.adjudication = {"verdict": verdict, "reason": str(opinion.get("reason", ""))[:300],
+                           "by": getattr(adjudicator, "name", getattr(adjudicator, "__name__", "adjudicator"))}
+    if verdict == "contradicts" and result.relation in (Relation.REINFORCES, Relation.UNCONFIRMED):
+        result.relation = Relation.COLLIDES
+        result.review_needed = False
+    return result
+
+
+def _judge(store: InMemoryStore, candidate: Node) -> ConsultResult:
     same_referent = [
         n for n in store.all_nodes() if n.referent == candidate.referent and n.domain == candidate.domain
     ]
@@ -166,11 +221,25 @@ def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
             if competing is not None:
                 return ConsultResult(relation=Relation.SCOPE_LINK, related_node=node,
                                      competing_values=competing, review_needed=True)
+        # An exception that drops the rule's figure ("for this project, any amount")
+        # is the same shape with the number removed
+        if domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE:
+            for node in same_referent:
+                omitted = _omits_value(candidate.text, node.text)
+                if omitted is not None:
+                    return ConsultResult(relation=Relation.SCOPE_LINK, related_node=node,
+                                         omitted_values=omitted, review_needed=True)
         return ConsultResult(relation=Relation.SCOPE_LINK, related_node=same_referent[0])
 
     best = max(same_scope, key=lambda n: _overlap(candidate.text, n.text))
     score = _overlap(candidate.text, best.text)
     competing = _competing_values(candidate.text, best.text)
+    omitted = _omits_value(candidate.text, best.text)
+    attribute = domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE
+    if score >= REINFORCEMENT_OVERLAP_THRESHOLD and competing is None and attribute and omitted is not None:
+        # Shares the claim's wording but drops the value that IS the claim: can't confirm it
+        return ConsultResult(relation=Relation.UNCONFIRMED, related_node=best, overlap=score,
+                             omitted_values=omitted, review_needed=True)
     if score >= REINFORCEMENT_OVERLAP_THRESHOLD and competing is None:
         return ConsultResult(relation=Relation.REINFORCES, related_node=best, overlap=score)
 
@@ -211,12 +280,27 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
         )
         if result.review_needed:
             # Weights untouched and nothing decided -- just made visible
-            mine, theirs = (", ".join(f"{v:g}" for v in sorted(s)) for s in result.competing_values)
             edge.status = EdgeStatus.REVIEW_NEEDED
-            edge.tolerance_context = (
-                f"exception states {mine} where its general rule states {theirs} -- "
-                f"not a collision (different scope), marked for review"
-            )
+            if result.competing_values is not None:
+                mine, theirs = (_fmt(s) for s in result.competing_values)
+                edge.tolerance_context = (f"exception states {mine} where its general rule states {theirs} -- "
+                                          f"not a collision (different scope), marked for review")
+            else:
+                edge.tolerance_context = (f"exception states no figure where its general rule states "
+                                          f"{_fmt(result.omitted_values)} -- not a collision (different scope), "
+                                          f"marked for review")
+    elif result.relation == Relation.UNCONFIRMED:
+        # Linked so the review is traversable, but no weight or evidence: it can't confirm the claim
+        edge = Edge(
+            id=f"{candidate.id}-unconfirmed-{result.related_node.id}",
+            source_id=candidate.id,
+            target_id=result.related_node.id,
+            type=EdgeType.COEXISTS,
+            status=EdgeStatus.REVIEW_NEEDED,
+            tolerance_context=(f"shares the claim's wording (overlap={result.overlap:.2f}) but states no figure "
+                               f"where the claim states {_fmt(result.omitted_values)} -- can't confirm it, "
+                               f"marked for review"),
+        )
     elif result.relation == Relation.REINFORCES:
         edge = Edge(
             id=f"{candidate.id}-reinforce-{result.related_node.id}",
@@ -251,12 +335,20 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
             tolerance_context=_collision_context(result),
         )
 
+    if result.adjudication:
+        a = result.adjudication
+        note = f"adjudicator ({a['by']}): {a['verdict']}" + (f" -- {a['reason']}" if a["reason"] else "")
+        edge.tolerance_context = f"{edge.tolerance_context} | {note}" if edge.tolerance_context else note
     store.add_edge(edge)
     return edge
 
 
+def _fmt(values: set[float]) -> str:
+    return ", ".join(f"{v:g}" for v in sorted(values))
+
+
 def pending_reviews(store: InMemoryStore) -> list[Edge]:
-    """Everything waiting on a person: open collisions and exceptions
+    """Everything waiting on a person: open collisions and anything
     marked REVIEW_NEEDED, oldest first. Reading this list is how
     "never silent" is kept -- nothing in it resolves itself."""
     waiting = [e for e in store.all_edges() if e.status in (EdgeStatus.OPEN, EdgeStatus.REVIEW_NEEDED)]
