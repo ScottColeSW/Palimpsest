@@ -83,6 +83,40 @@ def _overlap(a: str, b: str) -> float:
     return len(ta & tb) / len(ta | tb)
 
 
+# Quantities: "$10,000", "$5M", "5 million", "3.5", "40%". Found the hard way
+# by the Aegis Vector poisoning battery: token overlap measures shared
+# vocabulary, not agreement, so a forged claim that copies the real one's
+# wording and changes only the figure scored 0.83 overlap against it --
+# far over the reinforcement threshold -- and would have been filed as
+# confirming evidence, bumping the real claim's weight.
+_QUANTITY = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(million|thousand|billion|[mkb]\b|%)?", re.IGNORECASE)
+_SCALE = {"thousand": 1e3, "k": 1e3, "million": 1e6, "m": 1e6, "billion": 1e9, "b": 1e9}
+
+
+def _quantities(text: str) -> set[float]:
+    values = set()
+    for number, unit in _QUANTITY.findall(text):
+        try:
+            value = float(number.replace(",", ""))
+        except ValueError:
+            continue
+        values.add(round(value * _SCALE.get(unit.lower(), 1), 6))
+    return values
+
+
+def _competing_values(a: str, b: str) -> tuple[set[float], set[float]] | None:
+    """Two claims compete on value when EACH states a quantity the other
+    doesn't -- "$10,000" vs "$5,000,000". One side merely adding a figure
+    ("$10,000 per order, CFO approval above that") is elaboration, not
+    competition, so a superset still reinforces. Returns the two unshared
+    sets when they compete, None otherwise."""
+    qa, qb = _quantities(a), _quantities(b)
+    only_a, only_b = qa - qb, qb - qa
+    if only_a and only_b:
+        return only_a, only_b
+    return None
+
+
 class Relation(str, Enum):
     NEW = "new"  # nothing related exists yet
     SCOPE_LINK = "scope_link"  # different scope, same referent+domain -- never a collision
@@ -96,6 +130,9 @@ class ConsultResult:
     relation: Relation
     related_node: Node | None
     overlap: float | None = None
+    # Set when the judgment turned on differing quantities rather than
+    # overlap: (candidate's unshared values, related node's unshared values).
+    competing_values: tuple[set[float], set[float]] | None = None
 
 
 def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
@@ -122,8 +159,18 @@ def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
 
     best = max(same_scope, key=lambda n: _overlap(candidate.text, n.text))
     score = _overlap(candidate.text, best.text)
-    if score >= REINFORCEMENT_OVERLAP_THRESHOLD:
+    competing = _competing_values(candidate.text, best.text)
+    if score >= REINFORCEMENT_OVERLAP_THRESHOLD and competing is None:
         return ConsultResult(relation=Relation.REINFORCES, related_node=best, overlap=score)
+
+    # High overlap with a different figure is never confirmation. In an
+    # ATTRIBUTE domain it's the sharpest kind of collision (same claim,
+    # different value); in an EVENT domain it's a different event
+    # ("ate 3 pots" vs "ate 5 pots"), linked but not counted as evidence.
+    if competing is not None and score >= REINFORCEMENT_OVERLAP_THRESHOLD:
+        relation = (Relation.COLLIDES if domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE
+                    else Relation.COEXISTS)
+        return ConsultResult(relation=relation, related_node=best, overlap=score, competing_values=competing)
 
     # Below the threshold means "doesn't obviously restate the same
     # claim" -- what that implies depends entirely on what kind of
@@ -131,8 +178,8 @@ def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
     # really is tension. An EVENT domain doesn't -- a different,
     # unrelated thing happening is the normal case, not a conflict.
     if domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE:
-        return ConsultResult(relation=Relation.COLLIDES, related_node=best, overlap=score)
-    return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score)
+        return ConsultResult(relation=Relation.COLLIDES, related_node=best, overlap=score, competing_values=competing)
+    return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score, competing_values=competing)
 
 
 def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) -> Edge | None:
@@ -182,14 +229,20 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
             target_id=result.related_node.id,
             type=EdgeType.COLLIDES,
             status=EdgeStatus.OPEN,
-            tolerance_context=(
-                f"overlap={result.overlap:.2f}, below reinforcement threshold "
-                f"{REINFORCEMENT_OVERLAP_THRESHOLD} -- not a claim either side is wrong"
-            ),
+            tolerance_context=_collision_context(result),
         )
 
     store.add_edge(edge)
     return edge
+
+
+def _collision_context(result: ConsultResult) -> str:
+    if result.competing_values is not None:
+        mine, theirs = (", ".join(f"{v:g}" for v in sorted(s)) for s in result.competing_values)
+        return (f"values differ ({mine} vs {theirs}) despite overlap={result.overlap:.2f} -- "
+                f"same wording, different figure; not a claim either side is wrong")
+    return (f"overlap={result.overlap:.2f}, below reinforcement threshold "
+            f"{REINFORCEMENT_OVERLAP_THRESHOLD} -- not a claim either side is wrong")
 
 
 def referent_prominence(store: InMemoryStore, domain: str) -> list[tuple[str, float]]:

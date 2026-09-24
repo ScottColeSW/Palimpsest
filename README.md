@@ -20,7 +20,7 @@ This is early and honest about it. Current state:
 - **`palimpsest/store.py`** — an Elasticsearch-backed store implementing that protocol, plus domain-scoped kNN similarity search. **Unverified** — written against the documented client API, never run against a live cluster.
 - **`palimpsest/memory_store.py`** — an in-memory store implementing the same protocol. What every demo below actually runs on.
 - **`palimpsest/ingest.py`** — fixed-size chunking and a placeholder significance classifier. Every chunk becomes something (`EPISODE` or `DORMANT`), never nothing — a curated store that silently drops "not interesting yet" material is just a smaller blackhole.
-- **`palimpsest/consult.py`** — the actual memory boundary. Given a new candidate claim, checks it against what's already in the mesh and returns a real judgment: `NEW`, `REINFORCES`, `COLLIDES`, `COEXISTS`, or `SCOPE_LINK` (a general claim and a specific instance of it are never treated as competing, regardless of content — see `demo_scenario.py`'s Marcus example). Also `referent_prominence()`, which ranks by the signal that's actually meaningful per domain kind — weight for attribute domains, mention count for event domains, never the same currency across both.
+- **`palimpsest/consult.py`** — the actual memory boundary. Given a new candidate claim, checks it against what's already in the mesh and returns a real judgment: `NEW`, `REINFORCES`, `COLLIDES`, `COEXISTS`, or `SCOPE_LINK` (a general claim and a specific instance of it are never treated as competing, regardless of content — see `demo_scenario.py`'s Marcus example). Collisions are value-aware: two claims that each state a quantity the other doesn't (`$10,000` vs `$5,000,000`) are never counted as reinforcement, however much wording they share, because token overlap measures vocabulary, not agreement. Found by [Aegis Vector](https://github.com/ScottColeSW/Project-Aegis-Vector)'s poisoning battery, where a forged policy that copied the real one's wording scored 0.83 overlap and would otherwise have been filed as confirming evidence. Also `referent_prominence()`, which ranks by the signal that's actually meaningful per domain kind — weight for attribute domains, mention count for event domains, never the same currency across both.
 - **`palimpsest/pipeline.py`** — wires ingestion into consultation, so real digested text actually gets judged against the mesh instead of dropped in as isolated nodes.
 
 ## Three demos, each honest about what's real
@@ -51,7 +51,7 @@ Then open:
 pytest
 ```
 
-49 passing as of this writing, several of them written specifically to prove "memory present changes the outcome vs. memory absent" rather than just "storage works."
+66 passing as of this writing, several of them written specifically to prove "memory present changes the outcome vs. memory absent" rather than just "storage works."
 
 ## License
 
