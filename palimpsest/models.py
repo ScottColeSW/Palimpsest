@@ -86,16 +86,29 @@ class DomainKind(str, Enum):
 
 
 class EdgeStatus(str, Enum):
-    """Only meaningful on COLLIDES edges. Resolution status lives on
-    the edge, not on either node -- it's a property of a specific
-    disagreement between two claims, not a property either claim owns
-    alone."""
+    """Resolution status lives on the edge, not on either node -- it's a
+    property of a specific relationship between two claims, not a
+    property either claim owns alone.
+
+    On COLLIDES edges: OPEN until something real resolves it
+    (VINDICATED / MOOTED / WRONG / RECONCILED_TOGETHER).
+
+    On SCOPE_PARENT edges, only REVIEW_NEEDED: the instance claim states
+    a different figure than its general rule ("department heads may
+    approve up to $10,000" vs "for this one project, up to $5,000,000").
+    That is still an exception, not a collision -- the dog/Rex rule
+    holds -- but an exception that changes a number is exactly the shape
+    a forged claim takes to slip under collision detection, so it is
+    kept visible until someone looks, never silently accepted or
+    rejected. A SCOPE_PARENT edge without competing figures has no status.
+    """
 
     OPEN = "open"
     VINDICATED = "vindicated"
     MOOTED = "mooted"
     WRONG = "wrong"
     RECONCILED_TOGETHER = "reconciled_together"
+    REVIEW_NEEDED = "review_needed"
 
 
 @dataclass

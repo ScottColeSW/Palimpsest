@@ -118,6 +118,7 @@ def test_event_domain_value_change_is_a_different_event_not_confirmation():
     ("limit $10,000", "limit $10,000 and $2,500", None),
     ("no figures here", "$5,000,000", None),
     ("40% of budget", "25% of budget", ({40.0}, {25.0})),
+    ("Q3 limit $10,000", "Q4 limit $10,000", None),  # quarter labels are not quantities
 ])
 def test_competing_values(a, b, expected):
     assert _competing_values(a, b) == expected

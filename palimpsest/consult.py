@@ -89,7 +89,8 @@ def _overlap(a: str, b: str) -> float:
 # wording and changes only the figure scored 0.83 overlap against it --
 # far over the reinforcement threshold -- and would have been filed as
 # confirming evidence, bumping the real claim's weight.
-_QUANTITY = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(million|thousand|billion|[mkb]\b|%)?", re.IGNORECASE)
+# A number glued to a letter in front ("Q3", "IPv6") is a label, not a quantity
+_QUANTITY = re.compile(r"(?<![A-Za-z\d.])(\d[\d,]*(?:\.\d+)?)\s*(million|thousand|billion|[mkb]\b|%)?", re.IGNORECASE)
 _SCALE = {"thousand": 1e3, "k": 1e3, "million": 1e6, "m": 1e6, "billion": 1e9, "b": 1e9}
 
 
@@ -133,6 +134,9 @@ class ConsultResult:
     # Set when the judgment turned on differing quantities rather than
     # overlap: (candidate's unshared values, related node's unshared values).
     competing_values: tuple[set[float], set[float]] | None = None
+    # SCOPE_LINK only: the exception states a different figure than its
+    # general rule. Not a collision; marked so it can't pass unseen.
+    review_needed: bool = False
 
 
 def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
@@ -155,6 +159,13 @@ def consult(store: InMemoryStore, candidate: Node) -> ConsultResult:
         # regardless of content. This is the actual, checkable claim: a
         # naive same-referent+domain check alone would see conflicting
         # text here; scope-awareness is what changes the outcome.
+        # Still not a collision when the figures differ, but an exception
+        # that changes a number gets marked for review (see EdgeStatus).
+        for node in same_referent:
+            competing = _competing_values(candidate.text, node.text)
+            if competing is not None:
+                return ConsultResult(relation=Relation.SCOPE_LINK, related_node=node,
+                                     competing_values=competing, review_needed=True)
         return ConsultResult(relation=Relation.SCOPE_LINK, related_node=same_referent[0])
 
     best = max(same_scope, key=lambda n: _overlap(candidate.text, n.text))
@@ -198,6 +209,14 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
             target_id=result.related_node.id,
             type=EdgeType.SCOPE_PARENT,
         )
+        if result.review_needed:
+            # Weights untouched and nothing decided -- just made visible
+            mine, theirs = (", ".join(f"{v:g}" for v in sorted(s)) for s in result.competing_values)
+            edge.status = EdgeStatus.REVIEW_NEEDED
+            edge.tolerance_context = (
+                f"exception states {mine} where its general rule states {theirs} -- "
+                f"not a collision (different scope), marked for review"
+            )
     elif result.relation == Relation.REINFORCES:
         edge = Edge(
             id=f"{candidate.id}-reinforce-{result.related_node.id}",
@@ -234,6 +253,14 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
 
     store.add_edge(edge)
     return edge
+
+
+def pending_reviews(store: InMemoryStore) -> list[Edge]:
+    """Everything waiting on a person: open collisions and exceptions
+    marked REVIEW_NEEDED, oldest first. Reading this list is how
+    "never silent" is kept -- nothing in it resolves itself."""
+    waiting = [e for e in store.all_edges() if e.status in (EdgeStatus.OPEN, EdgeStatus.REVIEW_NEEDED)]
+    return sorted(waiting, key=lambda e: e.date)
 
 
 def _collision_context(result: ConsultResult) -> str:
