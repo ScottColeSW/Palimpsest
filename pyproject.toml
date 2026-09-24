@@ -1,6 +1,6 @@
 [project]
 name = "palimpsest"
-version = "0.2.0"
+version = "0.3.0"
 description = "Curated, visibly-weighted, relationship-scoped AI memory -- see CLAUDE.md"
 requires-python = ">=3.11"
 dependencies = [
