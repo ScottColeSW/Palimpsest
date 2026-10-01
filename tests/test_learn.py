@@ -182,3 +182,43 @@ def test_a_good_verdict_passes_through_and_weight_is_clamped():
 def test_the_relation_is_derived_from_the_checks(checks, named, expected):
     from palimpsest.judge import derive_relation
     assert derive_relation(checks, named) == expected
+
+
+# -- a slow model must not block the store -----------------------------------------------------------
+
+def test_a_slow_judge_does_not_block_recall_or_other_writers(mem, dom):
+    import threading
+    mem.learn(RULE, framer=framer(dom), judge=judge("new"))
+    in_judge, release_judge = threading.Event(), threading.Event()
+
+    def slow(claim, neighbors, kind):
+        in_judge.set()
+        assert release_judge.wait(10)
+        return {"relation": "new", "related_id": None, "weight": 0.5, "reason": "finally"}
+
+    result = {}
+    worker = threading.Thread(target=lambda: result.update(mem.learn("Visitors must sign in at reception.", framer=framer(dom, referent="visitors"), judge=slow)))
+    worker.start()
+    assert in_judge.wait(10)
+    done = threading.Event()
+    reader = threading.Thread(target=lambda: (mem.recall(), mem.review(), done.set()))
+    reader.start()
+    assert done.wait(2), "recall() was blocked behind a model call"
+    release_judge.set()
+    worker.join(10)
+    reader.join(10)
+    assert result["status"] == "remembered"
+
+
+def test_if_the_claim_it_judged_against_is_released_meanwhile_the_commit_is_refused(mem, dom):
+    mem.learn(RULE, framer=framer(dom), judge=judge("new"))
+    held_id = mem.recall()["beliefs"][0]["id"]
+
+    def judge_then_the_world_moves(claim, neighbors, kind):
+        mem.release(held_id, "the department was dissolved")      # another writer, while the model was thinking
+        return {"relation": "reinforces", "related_id": held_id, "weight": 0.5, "reason": "same limit"}
+
+    out = mem.learn("Department heads may approve up to $10,000.", framer=framer(dom), judge=judge_then_the_world_moves)
+    assert out["status"] == "unjudged" and "could not record" in out["why"]
+    assert mem.store.nodes[out["dormant"]].origin.value == "dormant"
+    assert mem.recall()["beliefs"] == []

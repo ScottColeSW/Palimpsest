@@ -115,10 +115,12 @@ class Memory:
             out["next"] = "A flag on external content can only be cleared by the user (resolve with by='user')."
         return out
 
+    @_locked
     def _known(self) -> list[dict]:
         seen = {(n.domain, n.referent) for n in self.store.all_nodes() if n.origin != Origin.DORMANT}
         return [{"domain": d, "referent": r, "kind": DOMAIN_KINDS[d].value} for d, r in sorted(seen) if d in DOMAIN_KINDS]
 
+    @_locked
     def _dormant(self, text: str, why: str, domain: str = "unfiled", referent: str = "unfiled") -> Node:
         node = Node(id=f"c{uuid.uuid4().hex[:8]}", text=text.strip()[:400], domain=domain, referent=referent,
                     scope=Scope.GENERAL, origin=Origin.DORMANT, weight=0.05, why=why, author=self.author)
@@ -126,13 +128,16 @@ class Memory:
         self.store.save()
         return node
 
-    @_locked
     def learn(self, text: str, *, framer=None, judge=None, source: str = "agent", domain: str | None = None,
               referent: str | None = None, scope: str | None = None, domain_kind: str | None = None) -> dict:
         """The whole loop with a model in the agent's seat and no protocol in the way: frame the text (is it worth
         keeping, and under what domain, referent and scope), see what is held nearby, have the judge decide how it
         relates, and record that. `framer` and `judge` are callables (see judge.py); the defaults use a local Ollama
         model. Anything given explicitly (domain, referent, scope, domain_kind) overrides the framer.
+
+        The store lock is held only around reads and writes, never while a model is thinking, so a slow judge does
+        not stall recall() or another writer. If the store changed in the meantime (the claim it judged against was
+        released or superseded), the commit is refused and the text is kept as dormant, unjudged.
 
         A model that errors or answers outside the schema decides nothing: the text is kept as dormant material,
         unjudged, never dropped and never believed. External content keeps the injection boundary from agent.py:
@@ -165,7 +170,11 @@ class Memory:
         relation, related_id, reason, weight = verdict["relation"], verdict["related_id"], verdict["reason"], verdict["weight"]
         if source == "external" and relation == "supersedes":
             relation, reason = "collides", f"{reason} (judged a replacement, recorded as a collision: external content can't supersede)"
-        done = self.remember(claim, domain, referent, relation, reason, scope, related_id, weight, source, domain_kind=kind)
+        try:
+            done = self.remember(claim, domain, referent, relation, reason, scope, related_id, weight, source, domain_kind=kind)
+        except ValueError as exc:  # the store moved on while the model was judging (or the commit was refused)
+            return {"status": "unjudged", "why": f"could not record: {exc}", "frame": frame,
+                    "dormant": self._dormant(claim, "unjudged", domain, referent).id}
         return {"status": "held" if done["held"] else "remembered", "frame": frame, "judged": relation,
                 "related_id": related_id, "reason": reason, "coerced": verdict["coerced"], **done}
 

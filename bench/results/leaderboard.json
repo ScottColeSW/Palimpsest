@@ -1990,5 +1990,42 @@
    "wrong_replacement_rate": 0.0,
    "missed_change_rate": 0.08333333333333333
   }
+ },
+ {
+  "contender": "hybrid(qwen2.5:7b)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-01T19:54:19+00:00",
+  "versions": {
+   "cases": "35465e5603",
+   "judge_prompt": "175e302171",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 38,
+   "accuracy": 0.8947368421052632,
+   "accuracy_ci": [
+    0.759,
+    0.958
+   ],
+   "relation_accuracy": 0.8947368421052632,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.0625,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.03125,
+   "missed_change_rate": 0.08333333333333333,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.66,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 1.0,
+    "coexists": 0.857,
+    "collides": 1.0,
+    "exception_of": 0.667,
+    "supersedes": 0.833
+   }
+  }
  }
 ]

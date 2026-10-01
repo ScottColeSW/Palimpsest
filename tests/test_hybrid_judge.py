@@ -171,3 +171,31 @@ def test_an_external_forgery_judged_by_the_hybrid_is_still_held_and_cannot_super
                     judge=hybrid_judge(nli, lambda t: [1.0, 0.0], refiner("replacement", "effective today")))
     assert out["status"] == "held" and out["judged"] == "collides"      # the replacement was downgraded, then held
     assert mem.recall()["beliefs"][0]["text"] == HELD["text"]
+
+
+# -- batching: same answers, one pass -------------------------------------------------------------------
+
+def test_a_comparator_with_compare_many_is_called_once_for_all_pairs():
+    calls = []
+
+    class Batched(StubNLI):
+        def compare_many(self, pairs):
+            calls.append(list(pairs))
+            return [self.compare(a, b) for a, b in pairs]
+
+    nli = Batched(both={HELD["text"]: (0.97, 0.03, 0.0)})
+    v = judge(nli)("CLAIM", [OTHER, HELD], "attribute")
+    assert v["relation"] == "reinforces" and len(calls) == 1
+    assert calls[0] == [("CLAIM", OTHER["text"]), (OTHER["text"], "CLAIM"), ("CLAIM", HELD["text"]), (HELD["text"], "CLAIM")]
+
+
+@pytest.mark.skipif(not __import__("os").environ.get("PALIMPSEST_TEST_NLI"), reason="needs the NLI model (set PALIMPSEST_TEST_NLI=1)")
+def test_the_real_model_gives_the_same_answers_batched_and_one_by_one():
+    from palimpsest.nli import NLI
+    pairs = [("The limit is $10,000.", "Department heads may spend up to ten thousand dollars."),
+             ("The limit is $10,000.", "The limit is $5,000,000."), ("The sky is blue.", "Lunch is at noon.")]
+    one, many = NLI(), NLI()
+    singles = [one.compare(*p) for p in pairs]
+    batched = many.compare_many(pairs)
+    for a, b in zip(singles, batched):
+        assert max(abs(a[k] - b[k]) for k in a) < 1e-3

@@ -54,6 +54,23 @@ class NLI:
             self._cache[key] = {self._labels[i]: probs[i] for i in range(len(probs))}
         return self._cache[key]
 
+    def compare_many(self, pairs: list[tuple[str, str]]) -> list[dict[str, float]]:
+        """compare() for several (premise, hypothesis) pairs in one forward pass. Pairs already seen come from the
+        cache; the rest are batched. Same answers as compare(), fewer trips through the model."""
+        todo = [p for p in dict.fromkeys(pairs) if p not in self._cache]
+        if todo:
+            if self._model is None:
+                self._load()
+            enc = self._tok([p[0] for p in todo], [p[1] for p in todo], return_tensors="pt", truncation=True,
+                            max_length=512, padding=True)
+            if self.device:
+                enc = {k: v.to(self.device) for k, v in enc.items()}
+            with self._torch.no_grad():
+                probs = self._torch.softmax(self._model(**enc).logits, -1).tolist()
+            for pair, row in zip(todo, probs):
+                self._cache[pair] = {self._labels[i]: row[i] for i in range(len(row))}
+        return [self._cache[p] for p in pairs]
+
     @property
     def name(self) -> str:
         return f"nli:{self.model_name.split('/')[-1]}"

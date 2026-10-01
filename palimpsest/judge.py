@@ -233,7 +233,8 @@ def _quoted(evidence, claim: str) -> bool:
     return " ".join(evidence.lower().split()) in " ".join(claim.lower().split())
 
 
-def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.48):
+def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.48,
+                 timings: dict | None = None):
     """A judge with no chat model deciding the relation, and nothing scripted about wording.
 
     - A pretrained NLI model compares the new claim with each held claim in both directions. Entailment both
@@ -248,19 +249,35 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
     Thresholds: `entail` and `contradict` are the NLI probabilities needed; `related` is the cosine similarity
     at which a neutral pair counts as the same subject, set from the gap between the dev split's new and
     coexists cases (0.46 and 0.50), so it is a calibration to be checked on held-out cases, not a constant of
-    nature. Returns the standard judge callable."""
+    nature. `timings`, if given, accumulates seconds spent per stage (embed, nli, refine). Returns the standard
+    judge callable."""
+    import time
     from .embed import cosine
+
+    def timed(stage, fn, *args):
+        start = time.perf_counter()
+        try:
+            return fn(*args)
+        finally:
+            if timings is not None:
+                timings[stage] = timings.get(stage, 0.0) + time.perf_counter() - start
 
     def judge(claim: str, neighbors: list[dict], kind: str) -> dict:
         if not neighbors:
             return {"relation": "new", "related_id": None, "weight": 0.5, "reason": "nothing held yet"}
-        qv = embedder(claim) if embedder else None
+        qv = timed("embed", embedder, claim) if embedder else None
         scored = []
-        for n in neighbors:
-            fwd, back = nli.compare(claim, n["text"]), nli.compare(n["text"], claim)
+        # Every comparison in one batch when the comparator can (compare_many); otherwise one at a time
+        pairs = [pair for n in neighbors for pair in ((claim, n["text"]), (n["text"], claim))]
+        if hasattr(nli, "compare_many"):
+            results = timed("nli", nli.compare_many, pairs)
+        else:
+            results = [timed("nli", nli.compare, *pair) for pair in pairs]
+        for i, n in enumerate(neighbors):
+            fwd, back = results[2 * i], results[2 * i + 1]
             sim = n.get("similarity")
             if sim is None and qv is not None:
-                sim = cosine(qv, embedder(n["text"]))
+                sim = cosine(qv, timed("embed", embedder, n["text"]))
             scored.append({"n": n, "same": min(fwd["entailment"], back["entailment"]),
                            "conflict": max(fwd["contradiction"], back["contradiction"]), "sim": sim or 0.0})
         same = max(scored, key=lambda s: s["same"])
@@ -275,7 +292,7 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
                         "reason": "NLI: they differ, but in an event domain different events coexist"}
             base = f"NLI: contradiction {conflict['conflict']:.2f}"
             try:
-                verdict = refiner(held["text"], claim)
+                verdict = timed("refine", refiner, held["text"], claim)
             except Exception:  # noqa: BLE001 -- a refiner failure leaves the safe default
                 verdict = {"kind": "conflict", "evidence": None}
             if verdict.get("kind") in ("exception", "replacement") and _quoted(verdict.get("evidence"), claim):
