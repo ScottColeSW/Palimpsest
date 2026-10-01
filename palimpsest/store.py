@@ -18,6 +18,7 @@ overhead for nothing.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Iterable
 
 from elasticsearch import Elasticsearch
@@ -41,6 +42,10 @@ NODES_MAPPING = {
             "embedding": {"type": "dense_vector", "dims": 768, "index": True, "similarity": "cosine"},
             "origin_date": {"type": "date"},
             "last_touched": {"type": "date"},
+            "author": {"type": "keyword"},
+            "source": {"type": "keyword"},
+            "released_at": {"type": "date"},
+            "release_why": {"type": "text"},
         }
     }
 }
@@ -56,6 +61,8 @@ EDGES_MAPPING = {
             "resolution_why": {"type": "text"},
             "date": {"type": "date"},
             "resolved_at": {"type": "date"},
+            "decided_by": {"type": "keyword"},
+            "floor": {"type": "boolean"},
         }
     }
 }
@@ -73,6 +80,10 @@ def _node_to_doc(node: Node) -> dict:
         "evidence_count": node.evidence_count,
         "origin_date": node.origin_date.isoformat(),
         "last_touched": node.last_touched.isoformat(),
+        "author": node.author,
+        "source": node.source,
+        "released_at": node.released_at.isoformat() if node.released_at else None,
+        "release_why": node.release_why,
     }
     if node.embedding is not None:
         doc["embedding"] = node.embedding
@@ -91,6 +102,10 @@ def _doc_to_node(node_id: str, doc: dict) -> Node:
         weight=doc.get("weight", 0.5),
         evidence_count=doc.get("evidence_count", 0),
         embedding=doc.get("embedding"),
+        author=doc.get("author", ""),
+        source=doc.get("source", "agent"),
+        released_at=datetime.fromisoformat(doc["released_at"]) if doc.get("released_at") else None,
+        release_why=doc.get("release_why", ""),
     )
 
 
@@ -104,6 +119,8 @@ def _edge_to_doc(edge: Edge) -> dict:
         "resolution_why": edge.resolution_why,
         "date": edge.date.isoformat(),
         "resolved_at": edge.resolved_at.isoformat() if edge.resolved_at else None,
+        "decided_by": edge.decided_by,
+        "floor": edge.floor,
     }
 
 
@@ -116,6 +133,8 @@ def _doc_to_edge(edge_id: str, doc: dict) -> Edge:
         status=EdgeStatus(doc["status"]) if doc.get("status") else None,
         tolerance_context=doc.get("tolerance_context", ""),
         resolution_why=doc.get("resolution_why", ""),
+        decided_by=doc.get("decided_by", ""),
+        floor=doc.get("floor", False),
     )
 
 

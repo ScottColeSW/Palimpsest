@@ -180,6 +180,14 @@ Adjudicator = Callable[[str, str], dict]
 VERDICTS = ("agrees", "contradicts", "unrelated")
 
 
+def live_nodes(store: InMemoryStore) -> list[Node]:
+    """Nodes that still count as beliefs: not deliberately released, and not
+    superseded by a later claim. Both stay in the store (provenance is never
+    erased); they just stop being compared against, reinforced, or recalled."""
+    superseded = {e.target_id for e in store.all_edges() if e.type == EdgeType.SUPERSEDES}
+    return [n for n in store.all_nodes() if n.released_at is None and n.id not in superseded]
+
+
 def consult(store: InMemoryStore, candidate: Node, adjudicator: Adjudicator | None = None) -> ConsultResult:
     """Judges `candidate` (not yet stored) against what already exists
     for its referent+domain. Doesn't mutate the store or decide
@@ -221,7 +229,7 @@ def _adjudicate(result: ConsultResult, candidate: Node, adjudicator: Adjudicator
 
 def _judge(store: InMemoryStore, candidate: Node) -> ConsultResult:
     same_referent = [
-        n for n in store.all_nodes() if n.referent == candidate.referent and n.domain == candidate.domain
+        n for n in live_nodes(store) if n.referent == candidate.referent and n.domain == candidate.domain
     ]
     if not same_referent:
         return ConsultResult(relation=Relation.NEW, related_node=None)
@@ -393,9 +401,9 @@ def pending_reviews(store: InMemoryStore) -> list[Edge]:
 RESOLUTIONS = (EdgeStatus.VINDICATED, EdgeStatus.MOOTED, EdgeStatus.WRONG, EdgeStatus.RECONCILED_TOGETHER)
 
 
-def resolve(store: InMemoryStore, edge_id: str, status: EdgeStatus, why: str) -> Edge:
+def resolve(store: InMemoryStore, edge_id: str, status: EdgeStatus, why: str, by: str = "") -> Edge:
     """Records a person's decision on an open collision or a review item.
-    Never silent: a reason is required, the decision is dated, and an edge
+    Never silent: a reason is required, the decision is dated and attributed, and an edge
     that has already been resolved can't be quietly resolved again.
     Deliberately changes nothing else -- no weights, no nodes -- so a
     resolution can be read back and disagreed with, not just obeyed."""
@@ -408,7 +416,11 @@ def resolve(store: InMemoryStore, edge_id: str, status: EdgeStatus, why: str) ->
         raise ValueError(f"edge {edge_id} is not waiting on anyone (status: {edge.status})")
     if not why.strip():
         raise ValueError("a resolution needs a reason")
+    if edge.floor and by != "user":
+        raise ValueError(f"edge {edge_id} was held because its claim came from external content: "
+                         f"only the user can clear it (by='user')")
     edge.status, edge.resolution_why, edge.resolved_at = status, why.strip(), _utcnow()
+    edge.decided_by = by
     store.add_edge(edge)
     return edge
 
@@ -425,7 +437,7 @@ def scan_other_domains(store: InMemoryStore, candidate: Node,
     alone is not evidence across topics. A candidate that is a different
     scope is returned as a review item, never a collision."""
     best: ConsultResult | None = None
-    for node in store.all_nodes():
+    for node in live_nodes(store):
         if (node.referent == candidate.referent and node.domain == candidate.domain) or node.id == candidate.id:
             continue
         if node.origin == Origin.DORMANT or domain_kind_for(node.domain) != DomainKind.ATTRIBUTE:

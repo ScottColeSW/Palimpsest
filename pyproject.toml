@@ -9,6 +9,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+mcp = ["mcp>=1.2"]
+
+[project.scripts]
+palimpsest-mcp = "palimpsest.mcp_server:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

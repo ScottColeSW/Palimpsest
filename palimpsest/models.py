@@ -131,6 +131,13 @@ class Node:
     embedding: list[float] | None = None
     origin_date: datetime = field(default_factory=_utcnow)
     last_touched: datetime = field(default_factory=_utcnow)
+    # Who recorded it, and where the claim came from: "agent" (the agent's own experience or the user)
+    # or "external" (content the agent read and doesn't vouch for). See agent.commit.
+    author: str = ""
+    source: str = "agent"
+    # Deliberate release: kept (provenance is never erased) but no longer a live belief.
+    released_at: datetime | None = None
+    release_why: str = ""
 
 
 @dataclass
@@ -144,3 +151,6 @@ class Edge:
     tolerance_context: str = ""
     resolution_why: str = ""
     resolved_at: datetime | None = None
+    decided_by: str = ""  # who judged or resolved it
+    # Held by the rules floor because the claim came from external content: only a user can clear it
+    floor: bool = False
