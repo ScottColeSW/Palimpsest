@@ -3,7 +3,7 @@ labeled pile of context. Everything built before this (ingest.py,
 memory_store.py, traversal.py) only put material somewhere and let it
 sit. consult() is what actually reads the mesh back and lets a new
 claim be judged against what's already there -- the one behavior
-CLAUDE.md's opening paragraph says separates memory from "more tokens
+DESIGN.md's thesis says separates memory from "more tokens
 to read before answering."
 
 Deliberately narrow about what it's honest to claim. No real
@@ -12,12 +12,12 @@ policy as ingest.py's placeholder classifier: don't fake
 sophistication that isn't there. What IS real and not a placeholder:
 scope matching. A general claim and an instance claim about the same
 referent are never treated as colliding, full stop, regardless of
-content -- that's structural logic, not a guess (see CLAUDE.md's
-dog/Rex discussion, and demo_scenario.py's Marcus example, which this
+content -- that's structural logic, not a guess (see DESIGN.md's
+scope section, and demo_scenario.py's Marcus example, which this
 module's tests deliberately reuse rather than inventing new data).
 For same-scope claims about the same referent+domain, token overlap
 (Jaccard -- the same pattern Evolution2Civ's TribeMemory uses, cited
-in CLAUDE.md's grounding section) decides reinforcement vs. everything
+in DESIGN.md's related ideas) decides reinforcement vs. everything
 else -- and what "everything else" means depends on DomainKind
 (models.py): an ATTRIBUTE domain has one true value at a time, so low
 overlap really is tension and becomes an OPEN collision needing real
@@ -68,7 +68,7 @@ _STOPWORDS = frozenset({
 })
 
 # Same first-cut number TribeMemory's reflection-reinforcement check uses
-# (see CLAUDE.md's grounding section) -- no real data behind this one
+# (see DESIGN.md's related ideas) -- no real data behind this one
 # either yet, worth revisiting once some exists.
 REINFORCEMENT_OVERLAP_THRESHOLD = 0.3
 

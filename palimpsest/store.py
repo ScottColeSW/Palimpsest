@@ -142,7 +142,7 @@ class ElasticStore:
     """Implements traversal.EdgeLookup, plus node/edge writes and
     domain-scoped kNN similarity search for collision-detection
     candidates. Domain-scoped deliberately -- domains don't share a
-    tolerance currency (see CLAUDE.md), so a global similarity search
+    tolerance currency (see DESIGN.md), so a global similarity search
     across every domain at once would surface false collision
     candidates between things that were never comparable to begin
     with."""

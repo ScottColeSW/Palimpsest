@@ -9,6 +9,8 @@ A palimpsest is a surface written on repeatedly, where earlier layers stay faint
 
 Palimpsest at work as an ingestion gate, holding a forged policy out of a RAG pipeline: [demo video](https://youtu.be/dSOA-ScmUwY) (from [Aegis Vector](https://github.com/ScottColeSW/Project-Aegis-Vector)).
 
+The reasoning behind the design, what is measured and what is only argued, and where the lines are: [DESIGN.md](DESIGN.md).
+
 ## Why this isn't RAG with extra steps
 
 RAG retrieves relevant text at query time. CAG preloads a corpus ahead of time. Both are still "hand the model more tokens to read before it answers" — memory as something *consulted*, not something that *shapes* an outcome. Palimpsest's actual claim is narrower and more falsifiable: a system only counts as having memory if the presence of stored material changes a judgment, compared to its absence, for the better. Everything here is built and tested against that bar specifically — not "does storage work," but "does having this actually change what comes out."
