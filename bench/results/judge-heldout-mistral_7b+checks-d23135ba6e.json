@@ -1,0 +1,578 @@
+{
+ "entry": {
+  "contender": "mistral:7b+checks",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-01T19:41:03+00:00",
+  "versions": {
+   "cases": "35465e5603",
+   "judge_prompt": "d23135ba6e",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 38,
+   "accuracy": 0.5,
+   "accuracy_ci": [
+    0.348,
+    0.652
+   ],
+   "relation_accuracy": 0.5,
+   "unsafe_miss_rate": 0.6666666666666666,
+   "false_alarm_rate": 0.0625,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 2.22,
+   "per_relation": {
+    "new": 0.333,
+    "reinforces": 0.714,
+    "coexists": 0.714,
+    "collides": 0.333,
+    "exception_of": 0.833,
+    "supersedes": 0.0
+   }
+  }
+ },
+ "cases": [
+  {
+   "id": "j002",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 30.14,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j004",
+   "expected": "new",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.32,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j006",
+   "expected": "new",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j008",
+   "expected": "new",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.47,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j010",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.22,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j012",
+   "expected": "new",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.36,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j014",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 1.41,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j016",
+   "expected": "reinforces",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.73,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j018",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.38,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j020",
+   "expected": "reinforces",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j022",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 1.35,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j024",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.31,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j026",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.36,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j028",
+   "expected": "coexists",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j030",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.38,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j032",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.66,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j034",
+   "expected": "coexists",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "added_detail"
+   ],
+   "seconds": 1.23,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j036",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.44,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j038",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.64,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j040",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "different_event"
+   ],
+   "seconds": 1.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j043",
+   "expected": "collides",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "opposite"
+   ],
+   "seconds": 1.62,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j045",
+   "expected": "collides",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "figure_change"
+   ],
+   "seconds": 1.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j047",
+   "expected": "collides",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "opposite"
+   ],
+   "seconds": 1.63,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j049",
+   "expected": "collides",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "figure_change"
+   ],
+   "seconds": 1.76,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j051",
+   "expected": "collides",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "forgery",
+    "opposite"
+   ],
+   "seconds": 1.63,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j053",
+   "expected": "collides",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "value_change"
+   ],
+   "seconds": 1.42,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j055",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_system"
+   ],
+   "seconds": 1.39,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j057",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_period"
+   ],
+   "seconds": 1.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j059",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_group",
+    "figure"
+   ],
+   "seconds": 1.49,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j061",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_project"
+   ],
+   "seconds": 1.59,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j063",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_instance"
+   ],
+   "seconds": 1.43,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j065",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_instance"
+   ],
+   "seconds": 1.4,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j067",
+   "expected": "supersedes",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.35,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j069",
+   "expected": "supersedes",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.36,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j071",
+   "expected": "supersedes",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.49,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j073",
+   "expected": "supersedes",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j075",
+   "expected": "supersedes",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j077",
+   "expected": "supersedes",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.55,
+   "why": null,
+   "coerced": false
+  }
+ ]
+}

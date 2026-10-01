@@ -1,0 +1,578 @@
+{
+ "entry": {
+  "contender": "qwen2.5:7b+checks",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-01T19:41:03+00:00",
+  "versions": {
+   "cases": "35465e5603",
+   "judge_prompt": "d23135ba6e",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 38,
+   "accuracy": 0.3684210526315789,
+   "accuracy_ci": [
+    0.234,
+    0.527
+   ],
+   "relation_accuracy": 0.3684210526315789,
+   "unsafe_miss_rate": 0.5,
+   "false_alarm_rate": 0.0,
+   "unusable_rate": 0.2631578947368421,
+   "coerced_rate": 0.0,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 1.92,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 0.571,
+    "coexists": 0.143,
+    "collides": 0.0,
+    "exception_of": 0.0,
+    "supersedes": 0.5
+   }
+  }
+ },
+ "cases": [
+  {
+   "id": "j002",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 30.8,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j004",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.13,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j006",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.24,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j008",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.11,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j010",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.08,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j012",
+   "expected": "new",
+   "predicted": "new",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 1.26,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j014",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 1.08,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j016",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.04,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j018",
+   "expected": "reinforces",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.0,
+   "why": "'963f11cf' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j020",
+   "expected": "reinforces",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.08,
+   "why": "'649f8eb' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j022",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 1.04,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j024",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.14,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j026",
+   "expected": "reinforces",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 1.13,
+   "why": "'1e2897d8' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j028",
+   "expected": "coexists",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.15,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j030",
+   "expected": "coexists",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.07,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j032",
+   "expected": "coexists",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.14,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j034",
+   "expected": "coexists",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "added_detail"
+   ],
+   "seconds": 1.03,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j036",
+   "expected": "coexists",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 1.18,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j038",
+   "expected": "coexists",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 0.93,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j040",
+   "expected": "coexists",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "different_event"
+   ],
+   "seconds": 1.05,
+   "why": "'44e7b5a9' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j043",
+   "expected": "collides",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "opposite"
+   ],
+   "seconds": 1.19,
+   "why": "'c064748d' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j045",
+   "expected": "collides",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "figure_change"
+   ],
+   "seconds": 1.18,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j047",
+   "expected": "collides",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "opposite"
+   ],
+   "seconds": 1.23,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j049",
+   "expected": "collides",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "figure_change"
+   ],
+   "seconds": 1.11,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j051",
+   "expected": "collides",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "forgery",
+    "opposite"
+   ],
+   "seconds": 1.32,
+   "why": "'01e02236' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j053",
+   "expected": "collides",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "value_change"
+   ],
+   "seconds": 1.25,
+   "why": "'276509f7' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j055",
+   "expected": "exception_of",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_system"
+   ],
+   "seconds": 1.21,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j057",
+   "expected": "exception_of",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_period"
+   ],
+   "seconds": 1.16,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j059",
+   "expected": "exception_of",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_group",
+    "figure"
+   ],
+   "seconds": 1.18,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j061",
+   "expected": "exception_of",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "bounded_project"
+   ],
+   "seconds": 1.1,
+   "why": "'9664cc12' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j063",
+   "expected": "exception_of",
+   "predicted": "new",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_instance"
+   ],
+   "seconds": 1.22,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j065",
+   "expected": "exception_of",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "bounded_instance"
+   ],
+   "seconds": 1.17,
+   "why": "'71599080' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j067",
+   "expected": "supersedes",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.18,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j069",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.08,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j071",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.32,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j073",
+   "expected": "supersedes",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 1.08,
+   "why": "'7bf53a69' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j075",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.12,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j077",
+   "expected": "supersedes",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 1.17,
+   "why": null,
+   "coerced": false
+  }
+ ]
+}

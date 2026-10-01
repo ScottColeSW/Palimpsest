@@ -9,6 +9,7 @@ dependencies = []
 dev = ["pytest>=8"]
 mcp = ["mcp>=1.2"]
 elastic = ["elasticsearch>=8.11,<9"]
+nli = ["transformers>=4.40", "torch"]
 
 [project.scripts]
 palimpsest-mcp = "palimpsest.mcp_server:main"

@@ -1,0 +1,158 @@
+{
+ "entry": {
+  "contender": "gemma2:2b",
+  "suite": "frame",
+  "split": "heldout",
+  "date": "2026-10-01T19:33:24+00:00",
+  "versions": {
+   "cases": "35465e5603",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "frame_prompt",
+  "metrics": {
+   "n": 18,
+   "worth_accuracy": 0.7222222222222222,
+   "scope_accuracy": 0.667,
+   "kind_accuracy": 0.75,
+   "domain_reuse_accuracy": 1.0,
+   "unusable_rate": 0.0,
+   "mean_seconds": 0.8
+  }
+ },
+ "cases": [
+  {
+   "id": "f002",
+   "usable": true,
+   "seconds": 0.86,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f004",
+   "usable": true,
+   "seconds": 0.95,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true,
+   "domain_ok": true
+  },
+  {
+   "id": "f006",
+   "usable": true,
+   "seconds": 0.84,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f008",
+   "usable": true,
+   "seconds": 0.87,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": false
+  },
+  {
+   "id": "f010",
+   "usable": true,
+   "seconds": 0.81,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": false
+  },
+  {
+   "id": "f012",
+   "usable": true,
+   "seconds": 0.76,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f014",
+   "usable": true,
+   "seconds": 0.74,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f016",
+   "usable": true,
+   "seconds": 0.85,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": false
+  },
+  {
+   "id": "f018",
+   "usable": true,
+   "seconds": 0.76,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f020",
+   "usable": true,
+   "seconds": 0.8,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f022",
+   "usable": true,
+   "seconds": 0.82,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f024",
+   "usable": true,
+   "seconds": 0.86,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f026",
+   "usable": true,
+   "seconds": 0.7,
+   "worth_ok": false
+  },
+  {
+   "id": "f028",
+   "usable": true,
+   "seconds": 0.8,
+   "worth_ok": false
+  },
+  {
+   "id": "f030",
+   "usable": true,
+   "seconds": 0.71,
+   "worth_ok": false
+  },
+  {
+   "id": "f032",
+   "usable": true,
+   "seconds": 0.72,
+   "worth_ok": false
+  },
+  {
+   "id": "f034",
+   "usable": true,
+   "seconds": 0.72,
+   "worth_ok": false
+  },
+  {
+   "id": "f036",
+   "usable": true,
+   "seconds": 0.76,
+   "worth_ok": true
+  }
+ ]
+}

@@ -93,6 +93,51 @@ JUDGE_SCHEMA = {
     "required": ["relation", "related_id", "weight", "reason"],
 }
 
+CHECKS_PROMPT = """You are the memory of an AI agent. A new claim has arrived. Compare it with the held claims.
+
+New claim: {claim}
+
+Held claims (each starts with its id in square brackets):
+{neighbors}
+
+Answer these checks about the held claim that is most closely about the same thing as the new claim:
+- related_id: the id of that held claim, written without brackets, or null if none of the held claims is about the same subject. A claim about a different subject is not related, even if both are loosely about the same company or team.
+- restates: true if the new claim says the same thing as that held claim in other words, with the same figures and no new condition. Adding a requirement or a detail is not restating.
+- bounded: true if the new claim applies only to one specific project, person, system, group, period or occasion, and differs from what the held claim says in general.
+- replaces: true if the new claim says the held claim has stopped being true, using a signal of change such as now, effective, no longer, as of, moved, changed, raised, or instead.
+- compatible: true if the new claim and the held claim could both be true at the same time.
+- reason: one sentence saying why.
+{kind_note}"""
+
+CHECKS_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "related_id": {"type": ["string", "null"]},
+        "restates": {"type": "boolean"},
+        "bounded": {"type": "boolean"},
+        "replaces": {"type": "boolean"},
+        "compatible": {"type": "boolean"},
+        "reason": {"type": "string"},
+    },
+    "required": ["related_id", "restates", "bounded", "replaces", "compatible", "reason"],
+}
+
+
+def derive_relation(checks: dict, related_named: bool) -> str:
+    """The relation, decided in code from a model's simple yes/no answers. The order matters: a restatement
+    confirms; a bounded difference is an exception; a stated change replaces; otherwise compatible claims
+    coexist and incompatible ones collide. No related claim means new."""
+    if not related_named:
+        return "new"
+    if checks.get("restates"):
+        return "reinforces"
+    if checks.get("bounded"):
+        return "exception_of"
+    if checks.get("replaces"):
+        return "supersedes"
+    return "coexists" if checks.get("compatible") else "collides"
+
+
 _SNAKE = re.compile(r"[^a-z0-9]+")
 
 
@@ -124,12 +169,127 @@ def ollama_framer(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434
     return frame
 
 
-def ollama_judge(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434", timeout: float = 120):
+def ollama_judge(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434", timeout: float = 120,
+                 style: str = "direct"):
+    """style="direct" (default): the model picks one of the six relations itself.
+    style="checks": the model answers simple yes/no checks and the relation is derived in code. It was tried
+    because small models confuse the relations when asked to choose among six, and it scored worse on the dev
+    split (the models read "restates" literally, and call any difference a "replacement"), so it is not the
+    default. It stays as an option so the comparison can be re-run; see bench/LEADERBOARD.md."""
+    if style not in ("checks", "direct"):
+        raise ValueError("style must be 'checks' or 'direct'")
+
     def judge(claim: str, neighbors: list[dict], kind: str) -> dict:
-        listing = "\n".join(f"[{n['id']}] {n['text']}" for n in neighbors) or "(nothing held yet)"
-        prompt = JUDGE_PROMPT.format(claim=claim, neighbors=listing, kind_note=KIND_NOTES.get(kind, ""))
-        return _ask(model, url, timeout, prompt, JUDGE_SCHEMA, 200)
-    judge.name = f"ollama:{model}"
+        listing = chr(10).join(f"[{n['id']}] {n['text']}" for n in neighbors) or "(nothing held yet)"
+        if style == "direct":
+            prompt = JUDGE_PROMPT.format(claim=claim, neighbors=listing, kind_note=KIND_NOTES.get(kind, ""))
+            return _ask(model, url, timeout, prompt, JUDGE_SCHEMA, 200)
+        prompt = CHECKS_PROMPT.format(claim=claim, neighbors=listing, kind_note=KIND_NOTES.get(kind, ""))
+        checks = _ask(model, url, timeout, prompt, CHECKS_SCHEMA, 200)
+        known = {n["id"] for n in neighbors}
+        raw = checks.get("related_id")
+        named = raw is not None and not (isinstance(raw, str) and raw.strip().lower() in ("", "null", "none", "n/a"))
+        # An id that isn't a held claim is passed through as given, so normalize_verdict rejects it as invented
+        relation = derive_relation(checks, named)
+        return {"relation": relation, "related_id": raw if named else None, "reason": checks.get("reason", ""),
+                "checks": {k: checks.get(k) for k in ("restates", "bounded", "replaces", "compatible")}}
+    judge.name = f"ollama:{model}:{style}"
+    return judge
+
+
+REFINE_PROMPT = """A new claim conflicts with a held claim. Decide what kind of conflict it is.
+
+Held claim: {held}
+New claim: {claim}
+
+Choose one kind:
+- "exception": the new claim applies only to one specific project, person, system, group, period or occasion, so the held claim still holds in general.
+- "replacement": the new claim says the held claim stopped being true, using words such as now, effective, no longer, as of, moved, changed, raised, instead.
+- "conflict": neither of those. The two claims simply disagree.
+
+For "exception" or "replacement", quote the exact words from the new claim that show it. For "conflict", the quote is null."""
+
+REFINE_SCHEMA = {
+    "type": "object",
+    "properties": {"kind": {"type": "string", "enum": ["exception", "replacement", "conflict"]},
+                   "evidence": {"type": ["string", "null"]}},
+    "required": ["kind", "evidence"],
+}
+
+
+def ollama_refiner(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434", timeout: float = 120):
+    """Given a held claim and a new claim that conflicts with it, a local model says what kind of conflict:
+    returns {"kind": "exception" | "replacement" | "conflict", "evidence": str | None}."""
+    def refine(held: str, claim: str) -> dict:
+        return _ask(model, url, timeout, REFINE_PROMPT.format(held=held, claim=claim), REFINE_SCHEMA, 120)
+    refine.name = f"ollama:{model}"
+    return refine
+
+
+def _quoted(evidence, claim: str) -> bool:
+    """The refiner must cite words that are really in the claim. Anything it can't show is a guess."""
+    if not isinstance(evidence, str) or not evidence.strip():
+        return False
+    return " ".join(evidence.lower().split()) in " ".join(claim.lower().split())
+
+
+def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.48):
+    """A judge with no chat model deciding the relation, and nothing scripted about wording.
+
+    - A pretrained NLI model compares the new claim with each held claim in both directions. Entailment both
+      ways is `reinforces`; contradiction either way is a conflict.
+    - A conflict is `collides` unless the refiner (a model, asked a narrow question) cites words in the claim
+      that show it is bounded to one case (`exception_of`) or says the held claim stopped being true
+      (`supersedes`). The citation is checked against the claim; one that isn't there downgrades to `collides`.
+      So the refiner can only add precision, never hide a conflict: the safe answer is the default.
+    - Neither: embedding similarity decides between `coexists` (same subject, compatible) and `new`. In an
+      event domain a conflict is just another event, so it coexists.
+
+    Thresholds: `entail` and `contradict` are the NLI probabilities needed; `related` is the cosine similarity
+    at which a neutral pair counts as the same subject, set from the gap between the dev split's new and
+    coexists cases (0.46 and 0.50), so it is a calibration to be checked on held-out cases, not a constant of
+    nature. Returns the standard judge callable."""
+    from .embed import cosine
+
+    def judge(claim: str, neighbors: list[dict], kind: str) -> dict:
+        if not neighbors:
+            return {"relation": "new", "related_id": None, "weight": 0.5, "reason": "nothing held yet"}
+        qv = embedder(claim) if embedder else None
+        scored = []
+        for n in neighbors:
+            fwd, back = nli.compare(claim, n["text"]), nli.compare(n["text"], claim)
+            sim = n.get("similarity")
+            if sim is None and qv is not None:
+                sim = cosine(qv, embedder(n["text"]))
+            scored.append({"n": n, "same": min(fwd["entailment"], back["entailment"]),
+                           "conflict": max(fwd["contradiction"], back["contradiction"]), "sim": sim or 0.0})
+        same = max(scored, key=lambda s: s["same"])
+        if same["same"] >= entail:
+            return {"relation": "reinforces", "related_id": same["n"]["id"], "weight": 0.5,
+                    "reason": f"NLI: each claim entails the other ({same['same']:.2f})"}
+        conflict = max(scored, key=lambda s: (s["conflict"], s["sim"]))
+        if conflict["conflict"] >= contradict:
+            held = conflict["n"]
+            if kind == "event":
+                return {"relation": "coexists", "related_id": held["id"], "weight": 0.5,
+                        "reason": "NLI: they differ, but in an event domain different events coexist"}
+            base = f"NLI: contradiction {conflict['conflict']:.2f}"
+            try:
+                verdict = refiner(held["text"], claim)
+            except Exception:  # noqa: BLE001 -- a refiner failure leaves the safe default
+                verdict = {"kind": "conflict", "evidence": None}
+            if verdict.get("kind") in ("exception", "replacement") and _quoted(verdict.get("evidence"), claim):
+                relation = "exception_of" if verdict["kind"] == "exception" else "supersedes"
+                return {"relation": relation, "related_id": held["id"], "weight": 0.5,
+                        "reason": f"{base}; {verdict['kind']} shown by \"{verdict['evidence'].strip()}\""}
+            return {"relation": "collides", "related_id": held["id"], "weight": 0.5, "reason": f"{base}; no scope or change shown"}
+        nearest = max(scored, key=lambda s: s["sim"])
+        if nearest["sim"] >= related:
+            return {"relation": "coexists", "related_id": nearest["n"]["id"], "weight": 0.5,
+                    "reason": f"NLI: neither entails nor contradicts; similar subject ({nearest['sim']:.2f})"}
+        return {"relation": "new", "related_id": None, "weight": 0.5,
+                "reason": f"NLI: neutral, and the nearest held claim is a different subject ({nearest['sim']:.2f})"}
+    judge.name = f"hybrid:{getattr(nli, 'name', 'nli')}"
     return judge
 
 

@@ -39,6 +39,8 @@ A piece of text arrives. The model decides whether it is worth keeping and how t
 - **Judge accuracy:** relation and `related` both correct.
 - **Unsafe miss:** the case is `collides` or `supersedes`-without-cue territory and the model answered `reinforces`, `coexists` or `new`, so a conflict went unflagged. Also counted: a `collides` case answered `supersedes`, which would replace a claim with no dispute. These are the errors that matter most.
 - **False alarm:** a `reinforces`, `coexists`, `new` or `exception_of` case answered `collides`. Annoying and costly, but safe.
+- **Wrong replacement:** a case that should not be a `supersedes` answered `supersedes`. A held belief is overwritten that should have stayed.
+- **Missed change:** a `supersedes` or `exception_of` case answered `coexists`, `new` or `reinforces`. The replacement or exception goes unrecognized and a stale belief stands. (Answering `collides` is not a miss: both claims stay live and the dispute stays open.)
 - **Unusable:** the model errored or answered outside the schema. Palimpsest keeps those as dormant material, so they cost nothing but also learn nothing.
 - **Frame:** worth-keeping accuracy, scope accuracy, kind accuracy, and domain reuse accuracy where it applies.
 

@@ -164,3 +164,21 @@ def test_a_good_verdict_passes_through_and_weight_is_clamped():
     from palimpsest.judge import normalize_verdict
     v = normalize_verdict({"relation": "collides", "related_id": "[c1]", "weight": 7, "reason": "r"}, {"c1"})
     assert v == {"relation": "collides", "related_id": "c1", "reason": "r", "weight": 1.0, "coerced": False}
+
+
+# -- the checks style: relation derived in code from simple answers --------------------------------
+
+@pytest.mark.parametrize("checks, named, expected", [
+    ({"restates": True, "compatible": True}, True, "reinforces"),
+    ({"restates": True, "bounded": True}, True, "reinforces"),            # a restatement confirms first
+    ({"bounded": True, "compatible": False}, True, "exception_of"),
+    ({"bounded": True, "replaces": True}, True, "exception_of"),          # bounded wins over a change cue
+    ({"replaces": True, "compatible": False}, True, "supersedes"),
+    ({"compatible": True}, True, "coexists"),
+    ({"compatible": False}, True, "collides"),
+    ({}, True, "collides"),                                               # no affirmative check: not compatible
+    ({"restates": True}, False, "new"),                                   # nothing related, whatever else it said
+])
+def test_the_relation_is_derived_from_the_checks(checks, named, expected):
+    from palimpsest.judge import derive_relation
+    assert derive_relation(checks, named) == expected
