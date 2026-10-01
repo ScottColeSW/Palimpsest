@@ -1,7 +1,7 @@
 [project]
 name = "palimpsest"
 version = "0.4.0"
-description = "Curated, visibly-weighted, relationship-scoped AI memory -- see CLAUDE.md"
+description = "Curated, visibly-weighted, relationship-scoped memory for AI agents"
 requires-python = ">=3.11"
 dependencies = [
     "elasticsearch>=8.11,<9",

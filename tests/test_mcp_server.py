@@ -34,7 +34,7 @@ def _is_error(result):
 def _run(db, steps):
     params = StdioServerParameters(
         command=sys.executable, args=["-m", "palimpsest.mcp_server"], cwd=str(ROOT),
-        env={"PALIMPSEST_DB": str(db), "PALIMPSEST_AUTHOR": "claude", "PYTHONPATH": str(ROOT)})
+        env={"PALIMPSEST_DB": str(db), "PALIMPSEST_AUTHOR": "agent", "PYTHONPATH": str(ROOT)})
 
     async def go():
         async with stdio_client(params) as (read, write):

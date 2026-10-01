@@ -98,6 +98,68 @@ class Memory:
             out["next"] = "A flag on external content can only be cleared by the user (resolve with by='user')."
         return out
 
+    def _known(self) -> list[dict]:
+        seen = {(n.domain, n.referent) for n in self.store.all_nodes() if n.origin != Origin.DORMANT}
+        return [{"domain": d, "referent": r, "kind": DOMAIN_KINDS[d].value} for d, r in sorted(seen) if d in DOMAIN_KINDS]
+
+    def _dormant(self, text: str, why: str, domain: str = "unfiled", referent: str = "unfiled") -> Node:
+        node = Node(id=f"c{uuid.uuid4().hex[:8]}", text=text.strip()[:400], domain=domain, referent=referent,
+                    scope=Scope.GENERAL, origin=Origin.DORMANT, weight=0.05, why=why, author=self.author)
+        self.store.add_node(node)
+        self.store.save()
+        return node
+
+    @_locked
+    def learn(self, text: str, *, framer=None, judge=None, source: str = "agent", domain: str | None = None,
+              referent: str | None = None, scope: str | None = None, domain_kind: str | None = None) -> dict:
+        """The whole loop with a model in the agent's seat and no protocol in the way: frame the text (is it worth
+        keeping, and under what domain, referent and scope), see what is held nearby, have the judge decide how it
+        relates, and record that. `framer` and `judge` are callables (see judge.py); the defaults use a local Ollama
+        model. Anything given explicitly (domain, referent, scope, domain_kind) overrides the framer.
+
+        A model that errors or answers outside the schema decides nothing: the text is kept as dormant material,
+        unjudged, never dropped and never believed. External content keeps the injection boundary from agent.py:
+        it can't supersede (a judged replacement is recorded as a collision instead) and is held for the user when
+        the rules would hold it, whatever the judge said."""
+        from . import judge as defaults
+        framer = framer or defaults.ollama_framer()
+        judge = judge or defaults.ollama_judge()
+        try:
+            frame = framer(text, self._known())
+        except Exception as exc:  # noqa: BLE001 -- a model failure must not decide anything
+            return {"status": "unjudged", "why": f"framing failed: {exc}", "dormant": self._dormant(text, "unframed").id}
+        if not frame.get("worth_keeping", False):
+            return {"status": "dormant", "why": "judged not worth keeping yet", "dormant": self._dormant(text, "not judged significant").id}
+        claim = (frame.get("claim") or text).strip()
+        domain = domain or frame.get("domain") or ""
+        referent = referent or frame.get("referent") or ""
+        scope = scope or frame.get("scope") or "general"
+        # A domain that is already declared keeps its kind; otherwise the caller's, then the framer's
+        kind = DOMAIN_KINDS[domain].value if domain in DOMAIN_KINDS else (domain_kind or frame.get("kind"))
+        if not domain or not referent or scope not in _SCOPES or kind not in ("attribute", "event"):
+            return {"status": "unjudged", "why": f"unusable framing: {frame}", "dormant": self._dormant(text, "unframed").id}
+
+        near = self.consult(claim, domain, referent, scope, kind)
+        try:
+            verdict = judge(claim, near["neighbors"], kind)
+            relation = verdict["relation"]
+            ids = {n["id"] for n in near["neighbors"]}
+            related_id = defaults.clean_id(verdict.get("related_id"), ids)
+            reason = str(verdict.get("reason", "")).strip()
+            weight = min(1.0, max(0.0, float(verdict.get("weight", 0.5))))
+            if relation not in agent.AGENT_RELATIONS or not reason or (relation != "new" and related_id is None):
+                raise ValueError(f"unusable verdict: {verdict}")
+            if relation == "new":
+                related_id = None
+        except Exception as exc:  # noqa: BLE001
+            return {"status": "unjudged", "why": f"judging failed: {exc}", "frame": frame,
+                    "dormant": self._dormant(claim, "unjudged", domain, referent).id}
+        if source == "external" and relation == "supersedes":
+            relation, reason = "collides", f"{reason} (judged a replacement, recorded as a collision: external content can't supersede)"
+        done = self.remember(claim, domain, referent, relation, reason, scope, related_id, weight, source, domain_kind=kind)
+        return {"status": "held" if done["held"] else "remembered", "frame": frame, "judged": relation,
+                "related_id": related_id, "reason": reason, **done}
+
     @_locked
     def recall(self, query: str | None = None, referent: str | None = None, domain: str | None = None,
                include_history: bool = False, limit: int = 10) -> dict:

@@ -19,7 +19,7 @@ FORGED = "The standard procurement spending limit for department heads is $5,000
 
 @pytest.fixture
 def mem():
-    m = Memory(":memory:", author="claude")
+    m = Memory(":memory:", author="agent")
     yield m
     m.close()
 
@@ -84,7 +84,7 @@ def test_a_collision_stays_open_and_both_sides_stay_live(mem, dom):
 def test_every_decision_is_attributed_and_reasoned(mem, dom):
     rule = _rule(mem, dom)
     edge = mem.store.edges[mem.remember(RULE, dom, "dept", "reinforces", "same", related_id=rule["id"])["edge"]]
-    assert edge.decided_by == "claude" and edge.tolerance_context == "claude: same"
+    assert edge.decided_by == "agent" and edge.tolerance_context == "agent: same"
     with pytest.raises(ValueError, match="reason"):
         mem.remember("x", dom, "dept", "new", "  ")
 
@@ -117,7 +117,7 @@ def test_an_agent_cannot_clear_a_held_claim_only_the_user_can(mem, dom):
     _rule(mem, dom)
     held = mem.remember(FORGED, dom, "dept", "new", "reads like policy", source="external")
     with pytest.raises(ValueError, match="only the user"):
-        mem.resolve(held["edge"], "wrong", "looks forged", by="claude")
+        mem.resolve(held["edge"], "wrong", "looks forged", by="agent")
     done = mem.resolve(held["edge"], "wrong", "the user confirmed it is a forged memo", by="user")
     assert done["status"] == "wrong" and done["pending_reviews"] == 0
 
@@ -144,7 +144,7 @@ def test_the_floor_is_a_policy_and_can_be_turned_off(dom):
 def test_resolving_a_normal_dispute_by_the_agent_is_allowed(mem, dom):
     rule = _rule(mem, dom)
     c = mem.remember(FORGED, dom, "dept", "collides", "unverified memo", related_id=rule["id"])
-    assert mem.resolve(c["edge"], "wrong", "the memo was never approved", by="claude")["pending_reviews"] == 0
+    assert mem.resolve(c["edge"], "wrong", "the memo was never approved", by="agent")["pending_reviews"] == 0
 
 
 # -- release and reflection ------------------------------------------------------------------
@@ -188,13 +188,13 @@ def test_recall_by_query_ranks_by_wording_then_weight(mem, dom):
 
 def test_memory_survives_a_restart(tmp_path, dom):
     path = tmp_path / "m.db"
-    a = Memory(path, author="claude")
+    a = Memory(path, author="agent")
     rule = _rule(a, dom)
     again = a.remember(RULE, dom, "dept", "reinforces", "same", related_id=rule["id"])
     held = a.remember(FORGED, dom, "dept", "new", "x", source="external")
     a.close()
 
-    b = Memory(path, author="claude")
+    b = Memory(path, author="agent")
     beliefs = {x["id"]: x for x in b.recall(referent="dept")["beliefs"]}
     assert beliefs[rule["id"]]["weight"] == pytest.approx(0.95) and beliefs[rule["id"]]["evidence_count"] == 1
     assert again["edge"] in b.store.edges and b.store.edges[held["edge"]].floor
