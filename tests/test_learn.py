@@ -136,3 +136,31 @@ def test_the_same_judgment_from_the_agents_own_source_does_supersede(mem, dom):
 def test_clean_id_matches_a_held_claim_or_nothing(raw, expected):
     from palimpsest.judge import clean_id
     assert clean_id(raw, {"c1f2", "c3a4"}) == expected
+
+
+# -- verdict normalization, shared by learn() and the benchmark -----------------------------------
+
+def test_a_non_conflict_relation_naming_no_claim_means_new_and_is_flagged():
+    from palimpsest.judge import normalize_verdict
+    for raw in (None, "", "null", "None"):
+        v = normalize_verdict({"relation": "coexists", "related_id": raw, "weight": 0.4, "reason": "unrelated topics"}, {"c1"})
+        assert v["relation"] == "new" and v["related_id"] is None and v["coerced"] is True
+
+
+@pytest.mark.parametrize("relation", ["collides", "supersedes"])
+def test_a_conflict_or_replacement_naming_no_claim_is_rejected(relation):
+    from palimpsest.judge import normalize_verdict
+    with pytest.raises(ValueError, match="names no held claim"):
+        normalize_verdict({"relation": relation, "related_id": None, "weight": 0.5, "reason": "r"}, {"c1"})
+
+
+def test_an_invented_claim_is_rejected_not_coerced():
+    from palimpsest.judge import normalize_verdict
+    with pytest.raises(ValueError, match="not a held claim"):
+        normalize_verdict({"relation": "reinforces", "related_id": "c999", "weight": 0.5, "reason": "r"}, {"c1"})
+
+
+def test_a_good_verdict_passes_through_and_weight_is_clamped():
+    from palimpsest.judge import normalize_verdict
+    v = normalize_verdict({"relation": "collides", "related_id": "[c1]", "weight": 7, "reason": "r"}, {"c1"})
+    assert v == {"relation": "collides", "related_id": "c1", "reason": "r", "weight": 1.0, "coerced": False}

@@ -19,9 +19,8 @@ from .models import Edge, EdgeType, Node
 
 
 class EdgeLookup(Protocol):
-    """The only two operations traversal actually needs. ElasticStore
-    implements this against a live cluster; tests implement it against
-    a dict."""
+    """The only two operations traversal actually needs. Every store here
+    implements them; tests implement them against a dict."""
 
     def get_node(self, node_id: str) -> Node | None: ...
 

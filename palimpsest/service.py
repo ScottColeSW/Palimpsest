@@ -33,10 +33,15 @@ def _locked(method):
 
 
 class Memory:
-    def __init__(self, path: str | Path = DEFAULT_PATH, author: str = "agent", floor: bool = True) -> None:
+    def __init__(self, path: str | Path = DEFAULT_PATH, author: str = "agent", floor: bool = True,
+                 embedder=None) -> None:
+        """embedder: optional callable text -> list[float] (see embed.py). With one, claims are found by meaning
+        as well as wording; without, retrieval is wording only."""
         self.store = SQLiteStore(path)
         self.author = author
         self.floor = floor
+        self.embedder = embedder
+        self._embedded: dict[str, list[float] | None] = {}
         self._lock = threading.RLock()
 
     # -- helpers --------------------------------------------------------------------
@@ -56,6 +61,17 @@ class Memory:
         else:
             self.store.set_domain_kind(domain, wanted)
 
+    def _embed(self, text: str) -> list[float] | None:
+        """A failed embedding is not an error: that claim is just found by wording."""
+        if self.embedder is None:
+            return None
+        if text not in self._embedded:
+            try:
+                self._embedded[text] = self.embedder(text)
+            except Exception:  # noqa: BLE001
+                self._embedded[text] = None
+        return self._embedded[text]
+
     def _candidate(self, text, domain, referent, scope, weight, source, why) -> Node:
         if scope not in _SCOPES:
             raise ValueError(f"scope must be 'general' or 'instance', got {scope!r}")
@@ -63,7 +79,7 @@ class Memory:
             raise ValueError("a claim needs text")
         return Node(id=f"c{uuid.uuid4().hex[:8]}", text=text.strip(), domain=domain, referent=referent,
                     scope=_SCOPES[scope], origin=Origin.EPISODE, weight=weight, why=why, source=source,
-                    author=self.author)
+                    author=self.author, embedding=self._embed(text.strip()))
 
     # -- the tools ------------------------------------------------------------------
     @_locked
@@ -75,6 +91,7 @@ class Memory:
         self.store.save()
         return {
             "neighbors": [{**agent.node_view(self.store, n.node), "overlap": round(n.overlap, 2),
+                           "similarity": None if n.similarity is None else round(n.similarity, 2),
                            "same_fact": n.same_fact} for n in proposal.neighbors],
             "rules_opinion": proposal.rules_opinion,
             "domain_kind": DOMAIN_KINDS[domain].value,
@@ -141,24 +158,16 @@ class Memory:
 
         near = self.consult(claim, domain, referent, scope, kind)
         try:
-            verdict = judge(claim, near["neighbors"], kind)
-            relation = verdict["relation"]
-            ids = {n["id"] for n in near["neighbors"]}
-            related_id = defaults.clean_id(verdict.get("related_id"), ids)
-            reason = str(verdict.get("reason", "")).strip()
-            weight = min(1.0, max(0.0, float(verdict.get("weight", 0.5))))
-            if relation not in agent.AGENT_RELATIONS or not reason or (relation != "new" and related_id is None):
-                raise ValueError(f"unusable verdict: {verdict}")
-            if relation == "new":
-                related_id = None
+            verdict = defaults.normalize_verdict(judge(claim, near["neighbors"], kind), {n["id"] for n in near["neighbors"]})
         except Exception as exc:  # noqa: BLE001
             return {"status": "unjudged", "why": f"judging failed: {exc}", "frame": frame,
                     "dormant": self._dormant(claim, "unjudged", domain, referent).id}
+        relation, related_id, reason, weight = verdict["relation"], verdict["related_id"], verdict["reason"], verdict["weight"]
         if source == "external" and relation == "supersedes":
             relation, reason = "collides", f"{reason} (judged a replacement, recorded as a collision: external content can't supersede)"
         done = self.remember(claim, domain, referent, relation, reason, scope, related_id, weight, source, domain_kind=kind)
         return {"status": "held" if done["held"] else "remembered", "frame": frame, "judged": relation,
-                "related_id": related_id, "reason": reason, **done}
+                "related_id": related_id, "reason": reason, "coerced": verdict["coerced"], **done}
 
     @_locked
     def recall(self, query: str | None = None, referent: str | None = None, domain: str | None = None,
@@ -188,6 +197,17 @@ class Memory:
     @_locked
     def reflect(self, stale_days: float = 30, low_weight: float = 0.15) -> dict:
         return agent.reflect(self.store, stale_days=stale_days, low_weight=low_weight)
+
+    @_locked
+    def reindex(self) -> int:
+        """Embed every claim that has no vector yet (after adding an embedder to an existing store)."""
+        done = 0
+        for node in self.store.all_nodes():
+            if node.embedding is None and node.origin != Origin.DORMANT:
+                node.embedding = self._embed(node.text)
+                done += node.embedding is not None
+        self.store.save()
+        return done
 
     @_locked
     def close(self) -> None:

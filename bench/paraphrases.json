@@ -1,0 +1,50 @@
+[
+ {
+  "held": "Passwords must be at least 14 characters.",
+  "restated": "A secret needs a minimum of fourteen symbols."
+ },
+ {
+  "held": "Contractors must use a hardware token for VPN access.",
+  "restated": "Outside vendors need a physical security key to connect remotely."
+ },
+ {
+  "held": "The staging environment is reset every Sunday night.",
+  "restated": "Each weekend evening the test sandbox gets wiped clean."
+ },
+ {
+  "held": "Support tickets must get a first response within 4 business hours.",
+  "restated": "Customers should hear back from us inside half a working day."
+ },
+ {
+  "held": "Maya prefers email over chat for anything that needs a decision.",
+  "restated": "When something has to be decided, she would rather write a letter than send an instant message."
+ },
+ {
+  "held": "The primary database is PostgreSQL 16.",
+  "restated": "Our main data store runs Postgres sixteen."
+ },
+ {
+  "held": "Remote employees may expense up to $500 per year for home office equipment.",
+  "restated": "Telecommuters are reimbursed five hundred dollars annually for desk gear."
+ },
+ {
+  "held": "Customer data may not be copied to personal devices.",
+  "restated": "Clients' records must never get moved onto private laptops or phones."
+ },
+ {
+  "held": "The release train leaves every second Tuesday.",
+  "restated": "New versions ship biweekly, midweek."
+ },
+ {
+  "held": "Sam wants all design reviews recorded.",
+  "restated": "Every critique session of mockups has to be captured on video."
+ },
+ {
+  "held": "Visitors must sign in at reception and be escorted at all times.",
+  "restated": "Guests have to register at the front desk and never wander unaccompanied."
+ },
+ {
+  "held": "The default log level in production is WARN.",
+  "restated": "Running systems emit only cautionary messages and above unless told otherwise."
+ }
+]

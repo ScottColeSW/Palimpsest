@@ -6,3 +6,6 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
+
+# Dev-split benchmark outputs are tuning artifacts; only held-out results are published
+bench/results/*-dev-*.json

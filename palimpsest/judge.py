@@ -67,14 +67,14 @@ Held claims about the same or nearby things:
 Each held claim starts with its id in square brackets; give the id alone, without the brackets.
 
 Choose exactly one relation:
-- "new": none of the held claims relate to it
+- "new": none of the held claims is about the same subject. A claim about a different subject is "new", even if both are loosely about the same company or team.
 - "reinforces": it says the same thing as a held claim (give that claim's id). Restating with the same figure counts. Dropping a figure the held claim states does not.
 - "coexists": same topic but both can be true together (a different aspect, an added detail)
 - "collides": it conflicts with a held claim, so both cannot be true (a different figure, an opposite). Give that claim's id.
 - "exception_of": a specific case, person or project under a held general rule, even if it changes the rule's figure for that case. Give the rule's id.
 - "supersedes": the new claim says the held one is no longer true and replaces it (a newer decision, a change). Give that claim's id.
 
-Also give weight from 0 to 1 for how much this claim should matter later, and a one-sentence reason. For "new", related_id is null.
+Every relation except "new" must name the held claim it is about. Also give weight from 0 to 1 for how much this claim should matter later, and a one-sentence reason. For "new", related_id is null.
 {kind_note}"""
 
 KIND_NOTES = {
@@ -143,3 +143,37 @@ def clean_id(value, known: set[str]) -> str | None:
         return text
     found = [k for k in known if re.search(rf"(?<![A-Za-z0-9]){re.escape(k)}(?![A-Za-z0-9])", value)]
     return found[0] if len(found) == 1 else None
+
+
+# A relation that is about a held claim but names none can't be acted on as given. For the relations that
+# only add or confirm, the only consistent reading is "nothing held is related": new. For the ones that flag
+# or replace, guessing is the unsafe direction, so the verdict is rejected instead.
+_ADDS = ("reinforces", "coexists", "exception_of")
+
+
+def normalize_verdict(verdict, known: set[str]) -> dict:
+    """A model's verdict as {"relation", "related_id", "reason", "weight", "coerced"}, or ValueError if it can't be used.
+    related_id must name a held claim (see clean_id)."""
+    relation = verdict["relation"]
+    if relation not in AGENT_RELATIONS:
+        raise ValueError(f"not a relation: {relation!r}")
+    reason = str(verdict.get("reason", "")).strip()
+    if not reason:
+        raise ValueError("no reason")
+    raw = verdict.get("related_id")
+    related = clean_id(raw, known)
+    named_none = raw is None or (isinstance(raw, str) and raw.strip().lower() in ("", "null", "none", "n/a"))
+    coerced = False
+    if relation != "new" and related is None:
+        if not named_none:
+            raise ValueError(f"{raw!r} is not a held claim")  # a reference to something that doesn't exist
+        if relation in _ADDS:
+            relation, coerced = "new", True
+        else:
+            raise ValueError(f"{relation} names no held claim")
+    try:
+        weight = min(1.0, max(0.0, float(verdict.get("weight", 0.5))))
+    except (TypeError, ValueError):
+        weight = 0.5
+    return {"relation": relation, "related_id": None if relation == "new" else related, "reason": reason,
+            "weight": weight, "coerced": coerced}

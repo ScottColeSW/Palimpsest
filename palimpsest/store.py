@@ -1,13 +1,21 @@
-"""Elasticsearch-backed storage for nodes and edges.
+"""Elasticsearch-backed storage for nodes and edges. Experimental, optional.
 
-Not exercised against a live cluster in this session -- there isn't
-one running here to test against. The query DSL below is written
-against the elasticsearch-py 8.x client and is correct as far as the
-API goes, but "correct against the docs" and "verified against a real
-cluster" are different claims; treat this file as unverified until
-it's actually run against one. traversal.py, by contrast, is tested
-for real in tests/test_traversal.py against a plain in-memory fake --
-that's the part of this layer that's actually proven right now.
+    pip install "palimpsest[elastic]"
+
+Not the store anything runs on. SQLiteStore (sqlite_store.py) is, and it is
+what the memory, the demos and the MCP server use. This one is incomplete in
+two ways you should know about before choosing it:
+
+- It implements the traversal protocol (add_node, get_node, add_edge,
+  get_edges_for_node) plus find_similar_nodes, but not all_nodes() or
+  all_edges(), which consult(), recall(), pending_reviews() and decay_store()
+  all call. It can back graph walking, not the memory itself.
+- It has never been run against a live cluster. The query DSL is written
+  against the elasticsearch-py 8.x documentation, which is not the same claim
+  as verified.
+
+A curated memory holds hundreds to thousands of claims, which SQLite handles
+without a server. This store is worth finishing only if scale ever demands it.
 
 Two indices: "palimpsest-nodes" and "palimpsest-edges". Kept separate
 rather than one index with a type discriminator -- nodes carry a
@@ -21,7 +29,10 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Iterable
 
-from elasticsearch import Elasticsearch
+try:
+    from elasticsearch import Elasticsearch
+except ImportError as exc:  # pragma: no cover
+    raise ImportError('ElasticStore needs the optional dependency: pip install "palimpsest[elastic]"') from exc
 
 from .models import Edge, EdgeStatus, EdgeType, Node, Origin, Scope
 

@@ -27,6 +27,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
+from .embed import cosine
 from .consult import Relation, _overlap, _utcnow, consult, live_nodes, pending_reviews, scan_other_domains
 from .memory_store import InMemoryStore
 from .models import Edge, EdgeStatus, EdgeType, Node, Origin
@@ -39,8 +40,9 @@ REINFORCE_BUMP = 0.15  # default; commit(bump=...) lets the agent choose
 @dataclass
 class Neighbor:
     node: Node
-    overlap: float
+    overlap: float  # wording overlap
     same_fact: bool  # same referent+domain as the candidate
+    similarity: float | None = None  # cosine, when both claims have an embedding
 
 
 @dataclass
@@ -68,9 +70,12 @@ def propose(store: InMemoryStore, candidate: Node, limit: int = 6) -> Proposal:
             continue
         same = node.referent == candidate.referent and node.domain == candidate.domain
         score = _overlap(candidate.text, node.text)
-        if same or score > 0:
-            scored.append(Neighbor(node=node, overlap=score, same_fact=same))
-    scored.sort(key=lambda n: (n.same_fact, n.overlap), reverse=True)
+        sim = cosine(candidate.embedding, node.embedding) if candidate.embedding and node.embedding else None
+        if same or score > 0 or sim is not None:
+            scored.append(Neighbor(node=node, overlap=score, same_fact=same, similarity=sim))
+    # Meaning when there is an embedding on both sides, so a claim in other words is still found (and a
+    # misfiled one is too); otherwise wording, with same-fact claims first as before.
+    scored.sort(key=lambda n: (n.similarity is not None, n.similarity or 0.0, n.same_fact, n.overlap), reverse=True)
     result = consult(store, candidate)
     opinion = {"relation": result.relation.value, "review_needed": result.review_needed,
                "related_id": result.related_node.id if result.related_node else None,

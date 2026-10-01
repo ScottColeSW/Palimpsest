@@ -3,13 +3,12 @@ name = "palimpsest"
 version = "0.4.0"
 description = "Curated, visibly-weighted, relationship-scoped memory for AI agents"
 requires-python = ">=3.11"
-dependencies = [
-    "elasticsearch>=8.11,<9",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 mcp = ["mcp>=1.2"]
+elastic = ["elasticsearch>=8.11,<9"]
 
 [project.scripts]
 palimpsest-mcp = "palimpsest.mcp_server:main"

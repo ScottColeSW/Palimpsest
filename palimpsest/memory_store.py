@@ -1,7 +1,7 @@
-"""In-memory stand-in for ElasticStore -- same EdgeLookup interface,
-no cluster required. For local demos and anywhere a live ES isn't
-available; swap for store.ElasticStore without touching traversal.py
-or anything built on top of it, since both implement the same shape.
+"""In-memory store: the base the other stores build on, and what tests and
+short-lived scripts use. Implements the traversal protocol plus the
+all_nodes()/all_edges() that consult() and everything above it need.
+SQLiteStore (sqlite_store.py) adds persistence on top of this.
 """
 
 from __future__ import annotations

@@ -1,0 +1,2244 @@
+{
+ "version": 1,
+ "judge": [
+  {
+   "id": "j001",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Release builds are signed with the hardware key stored in the ops safe.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j002",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The team retrospective takes place on the last Friday of each month.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j003",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Visitors must sign in at reception and be escorted at all times.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The expense limit for home office equipment is $500 per year."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "The held claim is about expenses, a different fact."
+  },
+  {
+   "id": "j004",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The primary database is PostgreSQL 16.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Infrastructure versus a person's communication preference."
+  },
+  {
+   "id": "j005",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Customer data may not be copied to personal devices.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The on-call rotation changes every Monday at 09:00 UTC."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Data handling versus on-call scheduling."
+  },
+  {
+   "id": "j006",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The build server runs Ubuntu 22.04.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Dana owns the billing service."
+    },
+    {
+     "key": "n2",
+     "text": "Dana prefers async standups."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Held claims are about Dana; this is about a server."
+  },
+  {
+   "id": "j007",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Kai is allergic to shellfish.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j008",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The company's fiscal year starts on July 1.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The default log level in production is WARN."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Finance calendar versus logging."
+  },
+  {
+   "id": "j009",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The marketing site is deployed through Netlify.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Alex leads the platform team."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Deployment target versus team leadership."
+  },
+  {
+   "id": "j010",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Sam wants all design reviews recorded and shared in the #design channel.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j011",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The cafeteria closes at 3 pm on Fridays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Orders above $10,000 need CFO approval."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Facilities versus procurement."
+  },
+  {
+   "id": "j012",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The VPN requires a hardware token for contractors.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Elena's favorite editor is Neovim."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Access policy versus a tooling preference."
+  },
+  {
+   "id": "j013",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "In production the log level defaults to WARN.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The company's fiscal year starts on July 1."
+    },
+    {
+     "key": "n2",
+     "text": "The default log level in production is WARN."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same fact, same value, reworded."
+  },
+  {
+   "id": "j014",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "A department head's approval limit is $10,000 per purchase.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Department heads may approve purchases up to $10,000."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same limit, same figure."
+  },
+  {
+   "id": "j015",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "For anything that needs a decision, Maya would rather get an email than a chat message.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Lena prefers pull requests under 300 lines."
+    },
+    {
+     "key": "n2",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same preference, reworded."
+  },
+  {
+   "id": "j016",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Releases ship every second Tuesday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The release train leaves every second Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same schedule."
+  },
+  {
+   "id": "j017",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "VPN access for contractors requires a hardware token.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Elena's favorite editor is Neovim."
+    },
+    {
+     "key": "n2",
+     "text": "Contractors must use a hardware token for VPN access."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same requirement."
+  },
+  {
+   "id": "j018",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Our primary database engine is Postgres 16.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The primary database is PostgreSQL 16."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same engine and version (Postgres is PostgreSQL)."
+  },
+  {
+   "id": "j019",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Home office equipment for remote staff is reimbursable up to $500 a year.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Visitors must sign in at reception."
+    },
+    {
+     "key": "n2",
+     "text": "Remote employees may expense up to $500 per year for home office equipment."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same allowance and figure; the other held claim is unrelated."
+  },
+  {
+   "id": "j020",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Sam asked that every design review be recorded.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Sam wants all design reviews recorded."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same request."
+  },
+  {
+   "id": "j021",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "First response on a support ticket is due within four business hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The company's fiscal year starts on July 1."
+    },
+    {
+     "key": "n2",
+     "text": "Support tickets must get a first response within 4 business hours."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same target; 'four' and '4' are the same figure."
+  },
+  {
+   "id": "j022",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The minimum password length is 14 characters.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Passwords must be at least 14 characters."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same minimum."
+  },
+  {
+   "id": "j023",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Kai can't eat shellfish because of an allergy.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Kai prefers window seats."
+    },
+    {
+     "key": "n2",
+     "text": "Kai is allergic to shellfish."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same allergy; the other held claim is a different fact about Kai."
+  },
+  {
+   "id": "j024",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Every Sunday night the staging environment gets reset.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The staging environment is reset every Sunday night."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same schedule."
+  },
+  {
+   "id": "j025",
+   "split": "dev",
+   "kind": "event",
+   "source": "agent",
+   "claim": "Kai took part in the security review in May.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cafeteria closes at 3 pm on Fridays."
+    },
+    {
+     "key": "n2",
+     "text": "Kai joined the security review in May."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "The same event, restated."
+  },
+  {
+   "id": "j026",
+   "split": "heldout",
+   "kind": "event",
+   "source": "agent",
+   "claim": "The vendor demo overran by about an hour.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The vendor demo ran an hour over."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "The same event, restated."
+  },
+  {
+   "id": "j027",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Purchases above a department head's limit must also be logged in the procurement system.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Department heads may approve purchases up to $10,000."
+    },
+    {
+     "key": "n2",
+     "text": "Elena's favorite editor is Neovim."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "rationale": "A separate requirement on the same process; both hold."
+  },
+  {
+   "id": "j028",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Maya is usually offline after 5 pm Pacific.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "A different fact about Maya; no conflict."
+  },
+  {
+   "id": "j029",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The database backups run nightly at 02:00 UTC.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Lena prefers pull requests under 300 lines."
+    },
+    {
+     "key": "n2",
+     "text": "The primary database is PostgreSQL 16."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "A different aspect of the database setup."
+  },
+  {
+   "id": "j030",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The VPN client is updated automatically on the first of each month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Contractors must use a hardware token for VPN access."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "Update policy versus authentication policy."
+  },
+  {
+   "id": "j031",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Tickets tagged urgent are routed to the on-call engineer.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cafeteria closes at 3 pm on Fridays."
+    },
+    {
+     "key": "n2",
+     "text": "Support tickets must get a first response within 4 business hours."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "rationale": "Routing detail; the response target still holds."
+  },
+  {
+   "id": "j032",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Dana is also the escalation contact for payment outages.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Dana owns the billing service."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "A second role; both hold."
+  },
+  {
+   "id": "j033",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Release notes are published to the wiki the same day.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Lena prefers pull requests under 300 lines."
+    },
+    {
+     "key": "n2",
+     "text": "Release builds are signed with the hardware key stored in the ops safe."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "Different release steps."
+  },
+  {
+   "id": "j034",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Design reviews should be limited to 45 minutes.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Sam wants all design reviews recorded."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail"
+   ],
+   "rationale": "A length limit alongside a recording request."
+  },
+  {
+   "id": "j035",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Receipts for home office purchases must be submitted within 30 days.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Elena's favorite editor is Neovim."
+    },
+    {
+     "key": "n2",
+     "text": "Remote employees may expense up to $500 per year for home office equipment."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "other_aspect"
+   ],
+   "rationale": "Different figures with different meanings (days versus dollars); no conflict."
+  },
+  {
+   "id": "j036",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Passwords are rotated only when a compromise is suspected.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Passwords must be at least 14 characters."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "Rotation versus length."
+  },
+  {
+   "id": "j037",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Hotfixes can ship on any day with the on-call lead's approval.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The release train leaves every second Tuesday."
+    },
+    {
+     "key": "n2",
+     "text": "The expense limit for contractors' travel is $2,000 per trip."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "rationale": "An additional path; the regular schedule still holds."
+  },
+  {
+   "id": "j038",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Kai also avoids peanuts.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Kai is allergic to shellfish."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "A second dietary fact; both hold."
+  },
+  {
+   "id": "j039",
+   "split": "dev",
+   "kind": "event",
+   "source": "agent",
+   "claim": "The Q3 planning offsite was held in Austin.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The expense limit for contractors' travel is $2,000 per trip."
+    },
+    {
+     "key": "n2",
+     "text": "The Q2 planning offsite was held in Denver."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "different_event",
+    "distractor"
+   ],
+   "rationale": "Different events; both happened."
+  },
+  {
+   "id": "j040",
+   "split": "heldout",
+   "kind": "event",
+   "source": "agent",
+   "claim": "Priya answered questions about the plan on Tuesday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Priya presented the migration plan on Monday."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "different_event"
+   ],
+   "rationale": "Two events on different days."
+  },
+  {
+   "id": "j041",
+   "split": "dev",
+   "kind": "event",
+   "source": "agent",
+   "claim": "A second payments outage, on March 19, lasted 12 minutes.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The expense limit for contractors' travel is $2,000 per trip."
+    },
+    {
+     "key": "n2",
+     "text": "The payments outage lasted 40 minutes on March 3."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "different_event",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "Two separate outages; the figures belong to different events."
+  },
+  {
+   "id": "j042",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Department heads may approve purchases up to $5,000,000.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Department heads may approve purchases up to $10,000."
+    },
+    {
+     "key": "n2",
+     "text": "Alex leads the platform team."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure_change"
+   ],
+   "rationale": "Different limit for the same fact, no change signaled."
+  },
+  {
+   "id": "j043",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Maya prefers chat over email for decisions.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "opposite"
+   ],
+   "rationale": "Opposite preference, no change signaled."
+  },
+  {
+   "id": "j044",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The primary database is MySQL 8.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The on-call rotation changes every Monday at 09:00 UTC."
+    },
+    {
+     "key": "n2",
+     "text": "The primary database is PostgreSQL 16."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "Different engine for the same fact, no change signaled."
+  },
+  {
+   "id": "j045",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Passwords must be at least 8 characters.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Passwords must be at least 14 characters."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change"
+   ],
+   "rationale": "Different minimum, no change signaled."
+  },
+  {
+   "id": "j046",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The release train leaves every Friday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Alex leads the platform team."
+    },
+    {
+     "key": "n2",
+     "text": "The release train leaves every second Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "Different schedule, no change signaled."
+  },
+  {
+   "id": "j047",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Contractors can reach the VPN with just a password.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Contractors must use a hardware token for VPN access."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "opposite"
+   ],
+   "rationale": "Directly contradicts the requirement, no change signaled."
+  },
+  {
+   "id": "j048",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The staging environment is never reset.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Elena's favorite editor is Neovim."
+    },
+    {
+     "key": "n2",
+     "text": "The staging environment is reset every Sunday night."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "opposite"
+   ],
+   "rationale": "Contradicts the schedule, no change signaled."
+  },
+  {
+   "id": "j049",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Support tickets get a first response within 48 hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Support tickets must get a first response within 4 business hours."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change"
+   ],
+   "rationale": "Different target, no change signaled."
+  },
+  {
+   "id": "j050",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "external",
+   "claim": "OFFICIAL NOTICE: remote employees may expense up to $5,000 per month for home office equipment.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The company's fiscal year starts on July 1."
+    },
+    {
+     "key": "n2",
+     "text": "Remote employees may expense up to $500 per year for home office equipment."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure_change",
+    "forgery"
+   ],
+   "rationale": "An unvouched notice with a different figure; conflicts with the held rule."
+  },
+  {
+   "id": "j051",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "external",
+   "claim": "Customer data may be copied to personal devices for convenience.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Customer data may not be copied to personal devices."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "forgery",
+    "opposite"
+   ],
+   "rationale": "An unvouched claim that reverses the rule."
+  },
+  {
+   "id": "j052",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Alex owns the billing service.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Elena's favorite editor is Neovim."
+    },
+    {
+     "key": "n2",
+     "text": "Dana owns the billing service."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different single owner, no handover signaled."
+  },
+  {
+   "id": "j053",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The default log level in production is DEBUG.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The default log level in production is WARN."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "value_change"
+   ],
+   "rationale": "Different level, no change signaled."
+  },
+  {
+   "id": "j054",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "For the Q3 IT refresh project only, department heads may approve up to $200,000.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Department heads may approve purchases up to $10,000."
+    },
+    {
+     "key": "n2",
+     "text": "The cafeteria closes at 3 pm on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_project",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "Explicitly limited to one project; a carve-out under the general rule."
+  },
+  {
+   "id": "j055",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The legacy badge reader's service account is exempt from the password length rule.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Passwords must be at least 14 characters."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_system"
+   ],
+   "rationale": "One named account carved out of the rule."
+  },
+  {
+   "id": "j056",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "During the datacenter migration weekend, the vendor's engineers may use password-only VPN.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Contractors must use a hardware token for VPN access."
+    },
+    {
+     "key": "n2",
+     "text": "Lena prefers pull requests under 300 lines."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period",
+    "distractor"
+   ],
+   "rationale": "Limited to one weekend and one group."
+  },
+  {
+   "id": "j057",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The week of the audit, the release is held until Thursday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The release train leaves every second Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period"
+   ],
+   "rationale": "Limited to one week."
+  },
+  {
+   "id": "j058",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "During incidents, Maya wants decisions made in the incident channel.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    },
+    {
+     "key": "n2",
+     "text": "The marketing site is deployed through Netlify."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_condition",
+    "distractor"
+   ],
+   "rationale": "Limited to incidents."
+  },
+  {
+   "id": "j059",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Tickets from the enterprise tier need a first response within 1 hour.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Support tickets must get a first response within 4 business hours."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_group",
+    "figure"
+   ],
+   "rationale": "Limited to one customer tier."
+  },
+  {
+   "id": "j060",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The forensics team may copy data to an encrypted laptop for the Lakeview investigation.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Customer data may not be copied to personal devices."
+    },
+    {
+     "key": "n2",
+     "text": "The company's fiscal year starts on July 1."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_project",
+    "distractor"
+   ],
+   "rationale": "One team, one investigation."
+  },
+  {
+   "id": "j061",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The staging environment for the Atlas demo is frozen until the 20th.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The staging environment is reset every Sunday night."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_project"
+   ],
+   "rationale": "One environment, until a date."
+  },
+  {
+   "id": "j062",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Kai, who has a documented ergonomic need, may expense up to $1,200 this year.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cafeteria closes at 3 pm on Fridays."
+    },
+    {
+     "key": "n2",
+     "text": "Remote employees may expense up to $500 per year for home office equipment."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_person",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One person, one year."
+  },
+  {
+   "id": "j063",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The review for the checkout redesign is on a Monday this time.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Design reviews are held on Wednesdays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance"
+   ],
+   "rationale": "One review, this time only."
+  },
+  {
+   "id": "j064",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The payments service runs at INFO in production.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cafeteria closes at 3 pm on Fridays."
+    },
+    {
+     "key": "n2",
+     "text": "The default log level in production is WARN."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_system",
+    "distractor"
+   ],
+   "rationale": "One named service."
+  },
+  {
+   "id": "j065",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Sam asked that the security design review not be recorded.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Sam wants all design reviews recorded."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance"
+   ],
+   "rationale": "One review carved out."
+  },
+  {
+   "id": "j066",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Effective today the department head limit is raised to $15,000.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Department heads may approve purchases up to $10,000."
+    },
+    {
+     "key": "n2",
+     "text": "Alex leads the platform team."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'Effective today ... raised' signals a replacement."
+  },
+  {
+   "id": "j067",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Maya now prefers chat over email for decisions; she told me this week.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maya prefers email over chat for anything that needs a decision."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Now' and 'told me this week' signal a change."
+  },
+  {
+   "id": "j068",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "We migrated the primary database to PostgreSQL 17 last month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The primary database is PostgreSQL 16."
+    },
+    {
+     "key": "n2",
+     "text": "The company's fiscal year starts on July 1."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "A completed migration replaces the old fact."
+  },
+  {
+   "id": "j069",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "As of the new security policy, passwords must be at least 16 characters.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Passwords must be at least 14 characters."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'As of the new policy' signals a replacement."
+  },
+  {
+   "id": "j070",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The release train now leaves every Thursday; the old schedule is retired.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Alex leads the platform team."
+    },
+    {
+     "key": "n2",
+     "text": "The release train leaves every second Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'Now ... retired' signals a replacement."
+  },
+  {
+   "id": "j071",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Contractors no longer need a hardware token; they use the authenticator app instead.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Contractors must use a hardware token for VPN access."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'No longer ... instead' signals a replacement."
+  },
+  {
+   "id": "j072",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Ownership of the billing service moved from Dana to Alex in March.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Dana owns the billing service."
+    },
+    {
+     "key": "n2",
+     "text": "Elena's favorite editor is Neovim."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "A stated handover."
+  },
+  {
+   "id": "j073",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The staging environment is now reset every Saturday night instead.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The staging environment is reset every Sunday night."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Now ... instead' signals a replacement."
+  },
+  {
+   "id": "j074",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "We changed the production log level to ERROR after the noise incident.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The default log level in production is WARN."
+    },
+    {
+     "key": "n2",
+     "text": "The on-call rotation changes every Monday at 09:00 UTC."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'We changed' signals a replacement."
+  },
+  {
+   "id": "j075",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The first response target has been tightened to 2 business hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Support tickets must get a first response within 4 business hours."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'Has been tightened' signals a replacement."
+  },
+  {
+   "id": "j076",
+   "split": "dev",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Sam has dropped the recording requirement for design reviews.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Sam wants all design reviews recorded."
+    },
+    {
+     "key": "n2",
+     "text": "The on-call rotation changes every Monday at 09:00 UTC."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'Has dropped' signals a replacement."
+  },
+  {
+   "id": "j077",
+   "split": "heldout",
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The home office allowance was increased to $750 per year starting this quarter.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Remote employees may expense up to $500 per year for home office equipment."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'Was increased ... starting this quarter' signals a replacement."
+  }
+ ],
+ "frame": [
+  {
+   "id": "f001",
+   "split": "dev",
+   "text": "Department heads can approve purchases up to $10,000.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A durable rule with one value at a time."
+  },
+  {
+   "id": "f002",
+   "split": "heldout",
+   "text": "Maya hates being pinged in chat; email is better for decisions.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A lasting preference."
+  },
+  {
+   "id": "f003",
+   "split": "dev",
+   "text": "From now on the release train leaves on Thursdays.",
+   "known": [
+    {
+     "domain": "release_schedule",
+     "referent": "platform_team",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "release_schedule"
+   },
+   "rationale": "A schedule rule; it belongs under the existing release schedule."
+  },
+  {
+   "id": "f004",
+   "split": "heldout",
+   "text": "For the Q3 IT refresh only, department heads can approve up to $200,000.",
+   "known": [
+    {
+     "domain": "spending_limit",
+     "referent": "department_head",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": "spending_limit"
+   },
+   "rationale": "Bounded to one project, about the existing spending limit."
+  },
+  {
+   "id": "f005",
+   "split": "dev",
+   "text": "Contractors must use a hardware token for VPN access.",
+   "known": [
+    {
+     "domain": "vpn_access",
+     "referent": "contractors",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "vpn_access"
+   },
+   "rationale": "A rule that belongs under the existing VPN access domain."
+  },
+  {
+   "id": "f006",
+   "split": "heldout",
+   "text": "The payments outage on March 3 lasted 40 minutes.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f007",
+   "split": "dev",
+   "text": "Dana owns the billing service.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing fact with one owner at a time."
+  },
+  {
+   "id": "f008",
+   "split": "heldout",
+   "text": "We decided to adopt PostgreSQL 17 after the benchmark results.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A decision that sets a standing choice."
+  },
+  {
+   "id": "f009",
+   "split": "dev",
+   "text": "Never deploy on Fridays; Sam insists.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule."
+  },
+  {
+   "id": "f010",
+   "split": "heldout",
+   "text": "Kai is allergic to shellfish, so avoid it at team lunches.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A durable fact that changes how to act."
+  },
+  {
+   "id": "f011",
+   "split": "dev",
+   "text": "The vendor demo ran an hour over.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f012",
+   "split": "heldout",
+   "text": "Priya led the migration review on Monday.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f013",
+   "split": "dev",
+   "text": "The staging environment is reset every Sunday night.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing schedule."
+  },
+  {
+   "id": "f014",
+   "split": "heldout",
+   "text": "Passwords must be at least 14 characters.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule with one value."
+  },
+  {
+   "id": "f015",
+   "split": "dev",
+   "text": "Lena prefers pull requests under 300 lines.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A lasting preference."
+  },
+  {
+   "id": "f016",
+   "split": "heldout",
+   "text": "For the Atlas demo, the staging environment is frozen until the 20th.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "Bounded to one demo."
+  },
+  {
+   "id": "f017",
+   "split": "dev",
+   "text": "Support tickets need a first response within four business hours.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing target."
+  },
+  {
+   "id": "f018",
+   "split": "heldout",
+   "text": "The checkout redesign launched on June 4.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f019",
+   "split": "dev",
+   "text": "Maya just told me she's switching to chat for decisions because email is too slow.",
+   "known": [
+    {
+     "domain": "communication_style",
+     "referent": "maya",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "communication_style"
+   },
+   "rationale": "A preference about the same person; belongs under the existing domain."
+  },
+  {
+   "id": "f020",
+   "split": "heldout",
+   "text": "The Q2 offsite was in Denver.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f021",
+   "split": "dev",
+   "text": "Our primary database is PostgreSQL 16.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing fact with one value."
+  },
+  {
+   "id": "f022",
+   "split": "heldout",
+   "text": "Remote employees may expense up to $500 a year for home office equipment.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing allowance."
+  },
+  {
+   "id": "f023",
+   "split": "dev",
+   "text": "Sam asked that the security design review not be recorded.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "Bounded to one review."
+  },
+  {
+   "id": "f024",
+   "split": "heldout",
+   "text": "The incident on March 19 was caused by an expired certificate.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f025",
+   "split": "dev",
+   "text": "ok thanks!",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f026",
+   "split": "heldout",
+   "text": "can you resend that?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f027",
+   "split": "dev",
+   "text": "lol yes",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f028",
+   "split": "heldout",
+   "text": "Let me check and get back to you in a minute.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f029",
+   "split": "dev",
+   "text": "Good morning, hope your weekend was good.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f030",
+   "split": "heldout",
+   "text": "Sounds good.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f031",
+   "split": "dev",
+   "text": "brb",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f032",
+   "split": "heldout",
+   "text": "Thanks, that worked.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f033",
+   "split": "dev",
+   "text": "Which file was it in again?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f034",
+   "split": "heldout",
+   "text": "I'm just going to grab a coffee.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f035",
+   "split": "dev",
+   "text": "Haha, that's funny.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  },
+  {
+   "id": "f036",
+   "split": "heldout",
+   "text": "Hmm, not sure. Let's see.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim."
+  }
+ ]
+}
