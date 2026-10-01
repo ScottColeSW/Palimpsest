@@ -99,7 +99,7 @@ Then open:
 pytest
 ```
 
-144 passing as of this writing (142 without the optional MCP SDK), several of them written specifically to prove "memory present changes the outcome vs. memory absent" rather than just "storage works."
+154 passing as of this writing (152 without the optional MCP SDK), several of them written specifically to prove "memory present changes the outcome vs. memory absent" rather than just "storage works."
 
 ## License
 
