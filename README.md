@@ -7,6 +7,8 @@ Curated, visibly-weighted, relationship-scoped memory for AI agents — built to
 
 A palimpsest is a surface written on repeatedly, where earlier layers stay faintly present beneath the new rather than being fully erased. That's the shape this aims for: curated, not total recall; weight that stays legible instead of vanishing; a record that gets written into over time rather than replayed whole every time.
 
+Palimpsest at work as an ingestion gate, holding a forged policy out of a RAG pipeline: [demo video](https://youtu.be/dSOA-ScmUwY) (from [Aegis Vector](https://github.com/ScottColeSW/Project-Aegis-Vector)).
+
 ## Why this isn't RAG with extra steps
 
 RAG retrieves relevant text at query time. CAG preloads a corpus ahead of time. Both are still "hand the model more tokens to read before it answers" — memory as something *consulted*, not something that *shapes* an outcome. Palimpsest's actual claim is narrower and more falsifiable: a system only counts as having memory if the presence of stored material changes a judgment, compared to its absence, for the better. Everything here is built and tested against that bar specifically — not "does storage work," but "does having this actually change what comes out."
