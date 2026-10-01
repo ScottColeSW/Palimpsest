@@ -20,9 +20,10 @@ from palimpsest.consult import _quantities
 CASES = json.loads((Path(__file__).parent.parent / "bench" / "cases.json").read_text(encoding="utf-8"))
 JUDGE, FRAME = CASES["judge"], CASES["frame"]
 RELATIONS = {"new", "reinforces", "coexists", "collides", "exception_of", "supersedes"}
-WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "twelve": 12}
+WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "twelve": 12}
 # The guide's change cues: the only thing separating a replacement from a conflict
-CUE = re.compile(r"\b(effective|now|no longer|as of|moved|changed|raised|increased|tightened|dropped|migrated|retired|instead)\b", re.I)
+CUE = re.compile(r"\b(effective|now|no longer|as of|moved|changed|raised|increased|tightened|dropped|migrated|retired|instead|"
+                 r"switched|replaced|stepped down|extended|starting (?:next|this|today))\b", re.I)
 
 
 def _figures(text: str) -> set[float]:
@@ -109,3 +110,20 @@ def test_the_paraphrase_stress_set_really_shares_no_content_word():
     assert len(pairs) >= 10
     for p in pairs:
         assert _overlap(p["held"], p["restated"]) == 0.0, p
+
+
+def test_the_fresh_heldout_shares_no_text_with_dev():
+    """Batch 2 was written after batch 1's errors were read. None of its claims or held claims may be reused from dev."""
+    def texts(cases, key):
+        out = set()
+        for c in cases:
+            out.add(c[key].strip().lower())
+            out.update(n["text"].strip().lower() for n in c.get("neighbors", []))
+        return out
+    dev = [c for c in JUDGE if c["split"] == "dev"]
+    held = [c for c in JUDGE if c["split"] == "heldout"]
+    assert held and all(c["batch"] == 2 for c in held)
+    assert not texts(dev, "claim") & texts(held, "claim")
+    dev_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "dev"}
+    held_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "heldout"}
+    assert not dev_f & held_f

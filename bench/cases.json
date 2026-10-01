@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 2,
  "judge": [
   {
    "id": "j001",
@@ -15,11 +15,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Nothing is held yet."
+   "rationale": "Nothing is held yet.",
+   "batch": 1
   },
   {
    "id": "j002",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The team retrospective takes place on the last Friday of each month.",
@@ -31,7 +32,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Nothing is held yet."
+   "rationale": "Nothing is held yet.",
+   "batch": 1
   },
   {
    "id": "j003",
@@ -52,11 +54,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "The held claim is about expenses, a different fact."
+   "rationale": "The held claim is about expenses, a different fact.",
+   "batch": 1
   },
   {
    "id": "j004",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The primary database is PostgreSQL 16.",
@@ -73,7 +76,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Infrastructure versus a person's communication preference."
+   "rationale": "Infrastructure versus a person's communication preference.",
+   "batch": 1
   },
   {
    "id": "j005",
@@ -94,11 +98,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Data handling versus on-call scheduling."
+   "rationale": "Data handling versus on-call scheduling.",
+   "batch": 1
   },
   {
    "id": "j006",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The build server runs Ubuntu 22.04.",
@@ -119,7 +124,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Held claims are about Dana; this is about a server."
+   "rationale": "Held claims are about Dana; this is about a server.",
+   "batch": 1
   },
   {
    "id": "j007",
@@ -135,11 +141,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Nothing is held yet."
+   "rationale": "Nothing is held yet.",
+   "batch": 1
   },
   {
    "id": "j008",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The company's fiscal year starts on July 1.",
@@ -156,7 +163,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Finance calendar versus logging."
+   "rationale": "Finance calendar versus logging.",
+   "batch": 1
   },
   {
    "id": "j009",
@@ -177,11 +185,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Deployment target versus team leadership."
+   "rationale": "Deployment target versus team leadership.",
+   "batch": 1
   },
   {
    "id": "j010",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Sam wants all design reviews recorded and shared in the #design channel.",
@@ -193,7 +202,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Nothing is held yet."
+   "rationale": "Nothing is held yet.",
+   "batch": 1
   },
   {
    "id": "j011",
@@ -214,11 +224,12 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Facilities versus procurement."
+   "rationale": "Facilities versus procurement.",
+   "batch": 1
   },
   {
    "id": "j012",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The VPN requires a hardware token for contractors.",
@@ -235,7 +246,8 @@
    "tags": [
     "unrelated"
    ],
-   "rationale": "Access policy versus a tooling preference."
+   "rationale": "Access policy versus a tooling preference.",
+   "batch": 1
   },
   {
    "id": "j013",
@@ -261,11 +273,12 @@
     "distractor",
     "restatement"
    ],
-   "rationale": "Same fact, same value, reworded."
+   "rationale": "Same fact, same value, reworded.",
+   "batch": 1
   },
   {
    "id": "j014",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "A department head's approval limit is $10,000 per purchase.",
@@ -283,7 +296,8 @@
     "figure",
     "restatement"
    ],
-   "rationale": "Same limit, same figure."
+   "rationale": "Same limit, same figure.",
+   "batch": 1
   },
   {
    "id": "j015",
@@ -309,11 +323,12 @@
     "distractor",
     "restatement"
    ],
-   "rationale": "Same preference, reworded."
+   "rationale": "Same preference, reworded.",
+   "batch": 1
   },
   {
    "id": "j016",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Releases ship every second Tuesday.",
@@ -330,7 +345,8 @@
    "tags": [
     "restatement"
    ],
-   "rationale": "Same schedule."
+   "rationale": "Same schedule.",
+   "batch": 1
   },
   {
    "id": "j017",
@@ -356,11 +372,12 @@
     "distractor",
     "restatement"
    ],
-   "rationale": "Same requirement."
+   "rationale": "Same requirement.",
+   "batch": 1
   },
   {
    "id": "j018",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Our primary database engine is Postgres 16.",
@@ -377,7 +394,8 @@
    "tags": [
     "restatement"
    ],
-   "rationale": "Same engine and version (Postgres is PostgreSQL)."
+   "rationale": "Same engine and version (Postgres is PostgreSQL).",
+   "batch": 1
   },
   {
    "id": "j019",
@@ -404,11 +422,12 @@
     "figure",
     "restatement"
    ],
-   "rationale": "Same allowance and figure; the other held claim is unrelated."
+   "rationale": "Same allowance and figure; the other held claim is unrelated.",
+   "batch": 1
   },
   {
    "id": "j020",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Sam asked that every design review be recorded.",
@@ -425,7 +444,8 @@
    "tags": [
     "restatement"
    ],
-   "rationale": "Same request."
+   "rationale": "Same request.",
+   "batch": 1
   },
   {
    "id": "j021",
@@ -452,11 +472,12 @@
     "figure",
     "restatement"
    ],
-   "rationale": "Same target; 'four' and '4' are the same figure."
+   "rationale": "Same target; 'four' and '4' are the same figure.",
+   "batch": 1
   },
   {
    "id": "j022",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The minimum password length is 14 characters.",
@@ -474,7 +495,8 @@
     "figure",
     "restatement"
    ],
-   "rationale": "Same minimum."
+   "rationale": "Same minimum.",
+   "batch": 1
   },
   {
    "id": "j023",
@@ -500,11 +522,12 @@
     "distractor",
     "restatement"
    ],
-   "rationale": "Same allergy; the other held claim is a different fact about Kai."
+   "rationale": "Same allergy; the other held claim is a different fact about Kai.",
+   "batch": 1
   },
   {
    "id": "j024",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Every Sunday night the staging environment gets reset.",
@@ -521,7 +544,8 @@
    "tags": [
     "restatement"
    ],
-   "rationale": "Same schedule."
+   "rationale": "Same schedule.",
+   "batch": 1
   },
   {
    "id": "j025",
@@ -547,11 +571,12 @@
     "distractor",
     "restatement"
    ],
-   "rationale": "The same event, restated."
+   "rationale": "The same event, restated.",
+   "batch": 1
   },
   {
    "id": "j026",
-   "split": "heldout",
+   "split": "dev",
    "kind": "event",
    "source": "agent",
    "claim": "The vendor demo overran by about an hour.",
@@ -568,7 +593,8 @@
    "tags": [
     "restatement"
    ],
-   "rationale": "The same event, restated."
+   "rationale": "The same event, restated.",
+   "batch": 1
   },
   {
    "id": "j027",
@@ -594,11 +620,12 @@
     "added_detail",
     "distractor"
    ],
-   "rationale": "A separate requirement on the same process; both hold."
+   "rationale": "A separate requirement on the same process; both hold.",
+   "batch": 1
   },
   {
    "id": "j028",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Maya is usually offline after 5 pm Pacific.",
@@ -615,7 +642,8 @@
    "tags": [
     "other_aspect"
    ],
-   "rationale": "A different fact about Maya; no conflict."
+   "rationale": "A different fact about Maya; no conflict.",
+   "batch": 1
   },
   {
    "id": "j029",
@@ -641,11 +669,12 @@
     "distractor",
     "other_aspect"
    ],
-   "rationale": "A different aspect of the database setup."
+   "rationale": "A different aspect of the database setup.",
+   "batch": 1
   },
   {
    "id": "j030",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The VPN client is updated automatically on the first of each month.",
@@ -662,7 +691,8 @@
    "tags": [
     "other_aspect"
    ],
-   "rationale": "Update policy versus authentication policy."
+   "rationale": "Update policy versus authentication policy.",
+   "batch": 1
   },
   {
    "id": "j031",
@@ -688,11 +718,12 @@
     "added_detail",
     "distractor"
    ],
-   "rationale": "Routing detail; the response target still holds."
+   "rationale": "Routing detail; the response target still holds.",
+   "batch": 1
   },
   {
    "id": "j032",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Dana is also the escalation contact for payment outages.",
@@ -709,7 +740,8 @@
    "tags": [
     "other_aspect"
    ],
-   "rationale": "A second role; both hold."
+   "rationale": "A second role; both hold.",
+   "batch": 1
   },
   {
    "id": "j033",
@@ -735,11 +767,12 @@
     "distractor",
     "other_aspect"
    ],
-   "rationale": "Different release steps."
+   "rationale": "Different release steps.",
+   "batch": 1
   },
   {
    "id": "j034",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Design reviews should be limited to 45 minutes.",
@@ -756,7 +789,8 @@
    "tags": [
     "added_detail"
    ],
-   "rationale": "A length limit alongside a recording request."
+   "rationale": "A length limit alongside a recording request.",
+   "batch": 1
   },
   {
    "id": "j035",
@@ -783,11 +817,12 @@
     "figure",
     "other_aspect"
    ],
-   "rationale": "Different figures with different meanings (days versus dollars); no conflict."
+   "rationale": "Different figures with different meanings (days versus dollars); no conflict.",
+   "batch": 1
   },
   {
    "id": "j036",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Passwords are rotated only when a compromise is suspected.",
@@ -804,7 +839,8 @@
    "tags": [
     "other_aspect"
    ],
-   "rationale": "Rotation versus length."
+   "rationale": "Rotation versus length.",
+   "batch": 1
   },
   {
    "id": "j037",
@@ -830,11 +866,12 @@
     "added_detail",
     "distractor"
    ],
-   "rationale": "An additional path; the regular schedule still holds."
+   "rationale": "An additional path; the regular schedule still holds.",
+   "batch": 1
   },
   {
    "id": "j038",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Kai also avoids peanuts.",
@@ -851,7 +888,8 @@
    "tags": [
     "other_aspect"
    ],
-   "rationale": "A second dietary fact; both hold."
+   "rationale": "A second dietary fact; both hold.",
+   "batch": 1
   },
   {
    "id": "j039",
@@ -877,11 +915,12 @@
     "different_event",
     "distractor"
    ],
-   "rationale": "Different events; both happened."
+   "rationale": "Different events; both happened.",
+   "batch": 1
   },
   {
    "id": "j040",
-   "split": "heldout",
+   "split": "dev",
    "kind": "event",
    "source": "agent",
    "claim": "Priya answered questions about the plan on Tuesday.",
@@ -898,7 +937,8 @@
    "tags": [
     "different_event"
    ],
-   "rationale": "Two events on different days."
+   "rationale": "Two events on different days.",
+   "batch": 1
   },
   {
    "id": "j041",
@@ -925,7 +965,8 @@
     "distractor",
     "figure"
    ],
-   "rationale": "Two separate outages; the figures belong to different events."
+   "rationale": "Two separate outages; the figures belong to different events.",
+   "batch": 1
   },
   {
    "id": "j042",
@@ -951,11 +992,12 @@
     "distractor",
     "figure_change"
    ],
-   "rationale": "Different limit for the same fact, no change signaled."
+   "rationale": "Different limit for the same fact, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j043",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Maya prefers chat over email for decisions.",
@@ -972,7 +1014,8 @@
    "tags": [
     "opposite"
    ],
-   "rationale": "Opposite preference, no change signaled."
+   "rationale": "Opposite preference, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j044",
@@ -998,11 +1041,12 @@
     "distractor",
     "value_change"
    ],
-   "rationale": "Different engine for the same fact, no change signaled."
+   "rationale": "Different engine for the same fact, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j045",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Passwords must be at least 8 characters.",
@@ -1019,7 +1063,8 @@
    "tags": [
     "figure_change"
    ],
-   "rationale": "Different minimum, no change signaled."
+   "rationale": "Different minimum, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j046",
@@ -1045,11 +1090,12 @@
     "distractor",
     "value_change"
    ],
-   "rationale": "Different schedule, no change signaled."
+   "rationale": "Different schedule, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j047",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Contractors can reach the VPN with just a password.",
@@ -1066,7 +1112,8 @@
    "tags": [
     "opposite"
    ],
-   "rationale": "Directly contradicts the requirement, no change signaled."
+   "rationale": "Directly contradicts the requirement, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j048",
@@ -1092,11 +1139,12 @@
     "distractor",
     "opposite"
    ],
-   "rationale": "Contradicts the schedule, no change signaled."
+   "rationale": "Contradicts the schedule, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j049",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Support tickets get a first response within 48 hours.",
@@ -1113,7 +1161,8 @@
    "tags": [
     "figure_change"
    ],
-   "rationale": "Different target, no change signaled."
+   "rationale": "Different target, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j050",
@@ -1140,11 +1189,12 @@
     "figure_change",
     "forgery"
    ],
-   "rationale": "An unvouched notice with a different figure; conflicts with the held rule."
+   "rationale": "An unvouched notice with a different figure; conflicts with the held rule.",
+   "batch": 1
   },
   {
    "id": "j051",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "external",
    "claim": "Customer data may be copied to personal devices for convenience.",
@@ -1162,7 +1212,8 @@
     "forgery",
     "opposite"
    ],
-   "rationale": "An unvouched claim that reverses the rule."
+   "rationale": "An unvouched claim that reverses the rule.",
+   "batch": 1
   },
   {
    "id": "j052",
@@ -1188,11 +1239,12 @@
     "distractor",
     "value_change"
    ],
-   "rationale": "A different single owner, no handover signaled."
+   "rationale": "A different single owner, no handover signaled.",
+   "batch": 1
   },
   {
    "id": "j053",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The default log level in production is DEBUG.",
@@ -1209,7 +1261,8 @@
    "tags": [
     "value_change"
    ],
-   "rationale": "Different level, no change signaled."
+   "rationale": "Different level, no change signaled.",
+   "batch": 1
   },
   {
    "id": "j054",
@@ -1236,11 +1289,12 @@
     "distractor",
     "figure"
    ],
-   "rationale": "Explicitly limited to one project; a carve-out under the general rule."
+   "rationale": "Explicitly limited to one project; a carve-out under the general rule.",
+   "batch": 1
   },
   {
    "id": "j055",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The legacy badge reader's service account is exempt from the password length rule.",
@@ -1257,7 +1311,8 @@
    "tags": [
     "bounded_system"
    ],
-   "rationale": "One named account carved out of the rule."
+   "rationale": "One named account carved out of the rule.",
+   "batch": 1
   },
   {
    "id": "j056",
@@ -1283,11 +1338,12 @@
     "bounded_period",
     "distractor"
    ],
-   "rationale": "Limited to one weekend and one group."
+   "rationale": "Limited to one weekend and one group.",
+   "batch": 1
   },
   {
    "id": "j057",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The week of the audit, the release is held until Thursday.",
@@ -1304,7 +1360,8 @@
    "tags": [
     "bounded_period"
    ],
-   "rationale": "Limited to one week."
+   "rationale": "Limited to one week.",
+   "batch": 1
   },
   {
    "id": "j058",
@@ -1330,11 +1387,12 @@
     "bounded_condition",
     "distractor"
    ],
-   "rationale": "Limited to incidents."
+   "rationale": "Limited to incidents.",
+   "batch": 1
   },
   {
    "id": "j059",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Tickets from the enterprise tier need a first response within 1 hour.",
@@ -1352,7 +1410,8 @@
     "bounded_group",
     "figure"
    ],
-   "rationale": "Limited to one customer tier."
+   "rationale": "Limited to one customer tier.",
+   "batch": 1
   },
   {
    "id": "j060",
@@ -1378,11 +1437,12 @@
     "bounded_project",
     "distractor"
    ],
-   "rationale": "One team, one investigation."
+   "rationale": "One team, one investigation.",
+   "batch": 1
   },
   {
    "id": "j061",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The staging environment for the Atlas demo is frozen until the 20th.",
@@ -1399,7 +1459,8 @@
    "tags": [
     "bounded_project"
    ],
-   "rationale": "One environment, until a date."
+   "rationale": "One environment, until a date.",
+   "batch": 1
   },
   {
    "id": "j062",
@@ -1426,11 +1487,12 @@
     "distractor",
     "figure"
    ],
-   "rationale": "One person, one year."
+   "rationale": "One person, one year.",
+   "batch": 1
   },
   {
    "id": "j063",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The review for the checkout redesign is on a Monday this time.",
@@ -1447,7 +1509,8 @@
    "tags": [
     "bounded_instance"
    ],
-   "rationale": "One review, this time only."
+   "rationale": "One review, this time only.",
+   "batch": 1
   },
   {
    "id": "j064",
@@ -1473,11 +1536,12 @@
     "bounded_system",
     "distractor"
    ],
-   "rationale": "One named service."
+   "rationale": "One named service.",
+   "batch": 1
   },
   {
    "id": "j065",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Sam asked that the security design review not be recorded.",
@@ -1494,7 +1558,8 @@
    "tags": [
     "bounded_instance"
    ],
-   "rationale": "One review carved out."
+   "rationale": "One review carved out.",
+   "batch": 1
   },
   {
    "id": "j066",
@@ -1521,11 +1586,12 @@
     "distractor",
     "figure"
    ],
-   "rationale": "'Effective today ... raised' signals a replacement."
+   "rationale": "'Effective today ... raised' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j067",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Maya now prefers chat over email for decisions; she told me this week.",
@@ -1542,7 +1608,8 @@
    "tags": [
     "change_cue"
    ],
-   "rationale": "'Now' and 'told me this week' signal a change."
+   "rationale": "'Now' and 'told me this week' signal a change.",
+   "batch": 1
   },
   {
    "id": "j068",
@@ -1568,11 +1635,12 @@
     "change_cue",
     "distractor"
    ],
-   "rationale": "A completed migration replaces the old fact."
+   "rationale": "A completed migration replaces the old fact.",
+   "batch": 1
   },
   {
    "id": "j069",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "As of the new security policy, passwords must be at least 16 characters.",
@@ -1590,7 +1658,8 @@
     "change_cue",
     "figure"
    ],
-   "rationale": "'As of the new policy' signals a replacement."
+   "rationale": "'As of the new policy' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j070",
@@ -1616,11 +1685,12 @@
     "change_cue",
     "distractor"
    ],
-   "rationale": "'Now ... retired' signals a replacement."
+   "rationale": "'Now ... retired' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j071",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "Contractors no longer need a hardware token; they use the authenticator app instead.",
@@ -1637,7 +1707,8 @@
    "tags": [
     "change_cue"
    ],
-   "rationale": "'No longer ... instead' signals a replacement."
+   "rationale": "'No longer ... instead' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j072",
@@ -1663,11 +1734,12 @@
     "change_cue",
     "distractor"
    ],
-   "rationale": "A stated handover."
+   "rationale": "A stated handover.",
+   "batch": 1
   },
   {
    "id": "j073",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The staging environment is now reset every Saturday night instead.",
@@ -1684,7 +1756,8 @@
    "tags": [
     "change_cue"
    ],
-   "rationale": "'Now ... instead' signals a replacement."
+   "rationale": "'Now ... instead' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j074",
@@ -1710,11 +1783,12 @@
     "change_cue",
     "distractor"
    ],
-   "rationale": "'We changed' signals a replacement."
+   "rationale": "'We changed' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j075",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The first response target has been tightened to 2 business hours.",
@@ -1732,7 +1806,8 @@
     "change_cue",
     "figure"
    ],
-   "rationale": "'Has been tightened' signals a replacement."
+   "rationale": "'Has been tightened' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j076",
@@ -1758,11 +1833,12 @@
     "change_cue",
     "distractor"
    ],
-   "rationale": "'Has dropped' signals a replacement."
+   "rationale": "'Has dropped' signals a replacement.",
+   "batch": 1
   },
   {
    "id": "j077",
-   "split": "heldout",
+   "split": "dev",
    "kind": "attribute",
    "source": "agent",
    "claim": "The home office allowance was increased to $750 per year starting this quarter.",
@@ -1780,7 +1856,1771 @@
     "change_cue",
     "figure"
    ],
-   "rationale": "'Was increased ... starting this quarter' signals a replacement."
+   "rationale": "'Was increased ... starting this quarter' signals a replacement.",
+   "batch": 1
+  },
+  {
+   "id": "j078",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The community garden's water is shut off from November through March.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j079",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The garden committee meets on Thursday evenings.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The board meets on the first Monday of each month."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Same sentence shape, different body and subject."
+  },
+  {
+   "id": "j080",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The oven needs to be preheated to 425 degrees for the sourdough.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Grandma's recipe uses two cups of buttermilk."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Different recipes; neither states anything about the other."
+  },
+  {
+   "id": "j081",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The hotel in Porto does not allow pets.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Our flight to Lisbon leaves at 6:40 am on the 14th."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "A hotel policy versus a flight time."
+  },
+  {
+   "id": "j082",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The lab freezer alarm is set to trigger at minus 70 degrees.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j083",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The book club reads one novel per month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The hiking group walks 8 kilometers on Saturdays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Two different clubs and activities."
+  },
+  {
+   "id": "j084",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The laser cutter requires a trained operator to be present.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Different machines; a requirement about one says nothing about the other."
+  },
+  {
+   "id": "j085",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The school's front entrance is locked after 9 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Nora is the treasurer of the parent association."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Building security versus an association role."
+  },
+  {
+   "id": "j086",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Mina's insulin pump needs a new infusion set every three days.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j087",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The guild bank only accepts donations of crafting materials.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Same guild, different facts: banking rules versus raid timing."
+  },
+  {
+   "id": "j088",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The landlord repaints the hallway every five years.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Rent is due on the first of the month."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Maintenance versus payment."
+  },
+  {
+   "id": "j089",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The city's recycling pickup moves to Wednesdays in winter.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Our sourdough starter is fed twice a day."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Municipal service versus baking."
+  },
+  {
+   "id": "j090",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Payment for the apartment is expected by the first of each month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Rent is due on the first of every month."
+    },
+    {
+     "key": "n2",
+     "text": "The telescope club meets when the sky is clear."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "paraphrase"
+   ],
+   "rationale": "Same due date in other words."
+  },
+  {
+   "id": "j091",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "From November to March there is no water supply at the garden.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The community garden's water is shut off from November through March."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same shutoff period."
+  },
+  {
+   "id": "j092",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Departure is on the 14th at 06:40.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The telescope club meets when the sky is clear."
+    },
+    {
+     "key": "n2",
+     "text": "Our flight leaves at 6:40 am on the 14th."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same day and time."
+  },
+  {
+   "id": "j093",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "An alert sounds if the freezer warms past -70 degrees Celsius.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The lab freezer alarm triggers at minus 70 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "figure",
+    "restatement",
+    "units"
+   ],
+   "rationale": "Same threshold ('minus 70' and '-70')."
+  },
+  {
+   "id": "j094",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The infusion set on Mina's pump gets replaced every 3 days.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Mina's insulin pump needs a new infusion set every three days."
+    },
+    {
+     "key": "n2",
+     "text": "The bike shed is locked at dusk."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "paraphrase"
+   ],
+   "rationale": "Same interval ('three' and '3')."
+  },
+  {
+   "id": "j095",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Raids begin Fridays at 8 pm, server time.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same day and time."
+  },
+  {
+   "id": "j096",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Every Saturday the hikers cover eight kilometers.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bike shed is locked at dusk."
+    },
+    {
+     "key": "n2",
+     "text": "The hiking group walks 8 kilometers on Saturdays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement",
+    "units"
+   ],
+   "rationale": "Same distance and day."
+  },
+  {
+   "id": "j097",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Unopened insulin should be stored in the fridge.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Insulin must be kept refrigerated until opened."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "paraphrase"
+   ],
+   "rationale": "Same storage rule."
+  },
+  {
+   "id": "j098",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "A nozzle of 0.4 mm is what the 3D printer takes.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    },
+    {
+     "key": "n2",
+     "text": "The telescope club meets when the sky is clear."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement",
+    "units"
+   ],
+   "rationale": "Same nozzle size."
+  },
+  {
+   "id": "j099",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The parent association's treasurer is Nora.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Nora is the treasurer of the parent association."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same role holder."
+  },
+  {
+   "id": "j100",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "event",
+   "source": "agent",
+   "claim": "On March 3 the kitchen filled with water.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bike shed is locked at dusk."
+    },
+    {
+     "key": "n2",
+     "text": "The kitchen flooded on the night of March 3."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement"
+   ],
+   "rationale": "The same event restated."
+  },
+  {
+   "id": "j101",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The board heard Dev present the quarterly results.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Dev presented the quarterly results to the board."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "The same event restated."
+  },
+  {
+   "id": "j102",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "A late fee of $50 applies after the fifth.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Rent is due on the first of every month."
+    },
+    {
+     "key": "n2",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "A separate rule about lateness; the due date still holds."
+  },
+  {
+   "id": "j103",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Rain barrels are emptied before the first frost.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The community garden's water is shut off from November through March."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "A winter preparation step; compatible."
+  },
+  {
+   "id": "j104",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Check-in closes 45 minutes before departure.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The telescope club meets when the sky is clear."
+    },
+    {
+     "key": "n2",
+     "text": "Our flight leaves at 6:40 am on the 14th."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "added_detail",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "rationale": "A check-in rule alongside the flight time; the figures mean different things."
+  },
+  {
+   "id": "j105",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Freezer alarms page the on-call technician by text.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The lab freezer alarm triggers at minus 70 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "How the alarm notifies, not when it triggers."
+  },
+  {
+   "id": "j106",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Mina keeps spare infusion sets in her school bag.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    },
+    {
+     "key": "n2",
+     "text": "Mina's insulin pump needs a new infusion set every three days."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "Where spares are kept; compatible."
+  },
+  {
+   "id": "j107",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Raid signups close 24 hours before the start.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "figure",
+    "units"
+   ],
+   "rationale": "A signup deadline; the figures mean different things."
+  },
+  {
+   "id": "j108",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Hikers meet at the north trailhead at 7 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    },
+    {
+     "key": "n2",
+     "text": "The hiking group walks 8 kilometers on Saturdays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "other_aspect"
+   ],
+   "rationale": "Meeting point and time, not distance."
+  },
+  {
+   "id": "j109",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Prints are removed only after the bed cools below 30 degrees.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "figure",
+    "units"
+   ],
+   "rationale": "A separate operating rule."
+  },
+  {
+   "id": "j110",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Nora also coordinates the school's volunteer rota.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The choir rehearses on Wednesday evenings."
+    },
+    {
+     "key": "n2",
+     "text": "Nora is the treasurer of the parent association."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "A second role; both hold."
+  },
+  {
+   "id": "j111",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The starter lives in a glass jar on the top shelf.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Our sourdough starter is fed twice a day."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "Where it is kept; compatible."
+  },
+  {
+   "id": "j112",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The kitchen flooded a second time on April 19.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The kitchen flooded on the night of March 3."
+    },
+    {
+     "key": "n2",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "different_event",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "A second occurrence; both happened."
+  },
+  {
+   "id": "j113",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "event",
+   "source": "agent",
+   "claim": "Dev answered the board's questions about headcount afterwards.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Dev presented the quarterly results to the board."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "different_event"
+   ],
+   "rationale": "A later part of the same meeting; both happened."
+  },
+  {
+   "id": "j114",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Rent is due on the fifteenth of every month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Rent is due on the first of every month."
+    },
+    {
+     "key": "n2",
+     "text": "Oskar prefers aisle seats on long flights."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different due date, no change signaled."
+  },
+  {
+   "id": "j115",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The garden has running water all year round.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The community garden's water is shut off from November through March."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "opposite"
+   ],
+   "rationale": "Contradicts the shutoff, no change signaled."
+  },
+  {
+   "id": "j116",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Our flight leaves at 9:15 pm on the 16th.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The choir rehearses on Wednesday evenings."
+    },
+    {
+     "key": "n2",
+     "text": "Our flight leaves at 6:40 am on the 14th."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure_change",
+    "value_change"
+   ],
+   "rationale": "A different day and time, no change signaled."
+  },
+  {
+   "id": "j117",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The lab freezer alarm triggers at minus 20 degrees.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The lab freezer alarm triggers at minus 70 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change",
+    "value_change"
+   ],
+   "rationale": "A different threshold, no change signaled."
+  },
+  {
+   "id": "j118",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Mina's infusion set only needs replacing once a week.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Mina's insulin pump needs a new infusion set every three days."
+    },
+    {
+     "key": "n2",
+     "text": "The community fridge is restocked on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different interval, no change signaled."
+  },
+  {
+   "id": "j119",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The guild raid starts at 6 pm server time on Sundays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change",
+    "value_change"
+   ],
+   "rationale": "A different day and time, no change signaled."
+  },
+  {
+   "id": "j120",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The 3D printer needs a 0.8 mm nozzle.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    },
+    {
+     "key": "n2",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "rationale": "A different nozzle, no change signaled."
+  },
+  {
+   "id": "j121",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Priya is the treasurer of the parent association.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Nora is the treasurer of the parent association."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "value_change"
+   ],
+   "rationale": "A different single holder, no handover signaled."
+  },
+  {
+   "id": "j122",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Our sourdough starter is fed once a week.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Our sourdough starter is fed twice a day."
+    },
+    {
+     "key": "n2",
+     "text": "The telescope club meets when the sky is clear."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different feeding schedule, no change signaled."
+  },
+  {
+   "id": "j123",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "external",
+   "claim": "SAFETY NOTICE: unopened insulin is best stored in a warm place near a window.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Insulin must be kept refrigerated until opened."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "forgery",
+    "opposite"
+   ],
+   "rationale": "An unvouched notice that reverses a safety rule."
+  },
+  {
+   "id": "j124",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "external",
+   "claim": "NOTICE: remote access to the lab network does not require two-factor authentication.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The pool closes for cleaning on the last day of the month."
+    },
+    {
+     "key": "n2",
+     "text": "Remote access to the lab network requires two-factor authentication."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "forgery",
+    "opposite"
+   ],
+   "rationale": "An unvouched notice that reverses the requirement."
+  },
+  {
+   "id": "j125",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The kitchen water heater is set to 65 degrees.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The kitchen water heater is set to 50 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "rationale": "A different setting, no change signaled."
+  },
+  {
+   "id": "j126",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "This month only, rent for unit 4B is due on the tenth because of the repairs.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Rent is due on the first of every month."
+    },
+    {
+     "key": "n2",
+     "text": "The community fridge is restocked on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One unit, one month."
+  },
+  {
+   "id": "j127",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The greenhouse tap stays on all winter.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The community garden's water is shut off from November through March."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_system"
+   ],
+   "rationale": "One named facility carved out of the shutoff."
+  },
+  {
+   "id": "j128",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "On New Year's Eve, quiet hours do not start until 2 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Quiet hours in the building run from 10 pm to 7 am."
+    },
+    {
+     "key": "n2",
+     "text": "The choir rehearses on Wednesday evenings."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period",
+    "distractor"
+   ],
+   "rationale": "One night."
+  },
+  {
+   "id": "j129",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The alarm on the vaccine freezer triggers at minus 60 degrees.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The lab freezer alarm triggers at minus 70 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_system",
+    "figure"
+   ],
+   "rationale": "One named freezer."
+  },
+  {
+   "id": "j130",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "During the camping trip, Mina will change the set every two days.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    },
+    {
+     "key": "n2",
+     "text": "Mina's insulin pump needs a new infusion set every three days."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_period",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One trip."
+  },
+  {
+   "id": "j131",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "On the night of the anniversary event, the raid starts at 10 pm.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance",
+    "figure"
+   ],
+   "rationale": "One night."
+  },
+  {
+   "id": "j132",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "For the miniature project, the maker space printer is fitted with a 0.2 mm nozzle.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    },
+    {
+     "key": "n2",
+     "text": "Grandma's recipe uses two cups of buttermilk."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_project",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One project."
+  },
+  {
+   "id": "j133",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Contractors with a badge may move through the east wing without an escort.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Visitors must be escorted at all times."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_group"
+   ],
+   "rationale": "One group in one area."
+  },
+  {
+   "id": "j134",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Reference books may only be borrowed for one day.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Library books may be borrowed for three weeks."
+    },
+    {
+     "key": "n2",
+     "text": "Grandma's recipe uses two cups of buttermilk."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_category",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One category of book."
+  },
+  {
+   "id": "j135",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "While we are away for the holiday, the starter is fed once a day.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Our sourdough starter is fed twice a day."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period",
+    "figure"
+   ],
+   "rationale": "One absence."
+  },
+  {
+   "id": "j136",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Near the crosswalk by the east gate, the limit is 10 miles per hour.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The pool closes for cleaning on the last day of the month."
+    },
+    {
+     "key": "n2",
+     "text": "The speed limit in the school zone is 20 miles per hour."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_place",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One spot within the zone."
+  },
+  {
+   "id": "j137",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Purchases under $25 for the bake sale need only one signature.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "All expenses need two signatures."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_condition",
+    "figure"
+   ],
+   "rationale": "One event and a size limit."
+  },
+  {
+   "id": "j138",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Starting next month, rent will be due on the fifth.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    },
+    {
+     "key": "n2",
+     "text": "Rent is due on the first of every month."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'Starting next month' signals a replacement."
+  },
+  {
+   "id": "j139",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The council has extended the garden's water season; it now runs until December 15.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The community garden's water is shut off from November through March."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Has extended ... now' signals a replacement."
+  },
+  {
+   "id": "j140",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The airline moved our flight to 9:15 am on the 14th.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The choir rehearses on Wednesday evenings."
+    },
+    {
+     "key": "n2",
+     "text": "Our flight leaves at 6:40 am on the 14th."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'Moved' signals a replacement."
+  },
+  {
+   "id": "j141",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The freezer alarm threshold has been changed to minus 65 degrees after the recalibration.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The lab freezer alarm triggers at minus 70 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'Has been changed' signals a replacement."
+  },
+  {
+   "id": "j142",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Her endocrinologist changed the schedule: a new infusion set every two days.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Mina's insulin pump needs a new infusion set every three days."
+    },
+    {
+     "key": "n2",
+     "text": "The recycling bins are collected on alternate Tuesdays."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'Changed the schedule' signals a replacement."
+  },
+  {
+   "id": "j143",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "From now on the guild raid starts at 9 pm on Fridays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The guild raid starts at 8 pm server time on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'From now on' signals a replacement."
+  },
+  {
+   "id": "j144",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The maker space switched the printer to a 0.6 mm nozzle.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The 3D printer in the maker space needs a 0.4 mm nozzle."
+    },
+    {
+     "key": "n2",
+     "text": "The pool closes for cleaning on the last day of the month."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'Switched' signals a replacement."
+  },
+  {
+   "id": "j145",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Nora stepped down; Tomas is now the treasurer.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Nora is the treasurer of the parent association."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "A stated handover."
+  },
+  {
+   "id": "j146",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "We now feed the starter only once a day, since it has matured.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The pool closes for cleaning on the last day of the month."
+    },
+    {
+     "key": "n2",
+     "text": "Our sourdough starter is fed twice a day."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'Now ... only' signals a replacement."
+  },
+  {
+   "id": "j147",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The water heater setting was changed to 45 degrees.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The kitchen water heater is set to 50 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'Was changed' signals a replacement."
+  },
+  {
+   "id": "j148",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "As of September, the loan period is four weeks.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Library books may be borrowed for three weeks."
+    },
+    {
+     "key": "n2",
+     "text": "The choir rehearses on Wednesday evenings."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'As of September' signals a replacement."
+  },
+  {
+   "id": "j149",
+   "split": "heldout",
+   "batch": 2,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "We replaced Slack with Discord for the group chat.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The group chat is hosted on Slack."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Replaced' signals a replacement."
   }
  ],
  "frame": [
@@ -1795,11 +3635,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A durable rule with one value at a time."
+   "rationale": "A durable rule with one value at a time.",
+   "batch": 1
   },
   {
    "id": "f002",
-   "split": "heldout",
+   "split": "dev",
    "text": "Maya hates being pinged in chat; email is better for decisions.",
    "known": [],
    "expected": {
@@ -1808,7 +3649,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A lasting preference."
+   "rationale": "A lasting preference.",
+   "batch": 1
   },
   {
    "id": "f003",
@@ -1827,11 +3669,12 @@
     "kind": "attribute",
     "domain": "release_schedule"
    },
-   "rationale": "A schedule rule; it belongs under the existing release schedule."
+   "rationale": "A schedule rule; it belongs under the existing release schedule.",
+   "batch": 1
   },
   {
    "id": "f004",
-   "split": "heldout",
+   "split": "dev",
    "text": "For the Q3 IT refresh only, department heads can approve up to $200,000.",
    "known": [
     {
@@ -1846,7 +3689,8 @@
     "kind": "attribute",
     "domain": "spending_limit"
    },
-   "rationale": "Bounded to one project, about the existing spending limit."
+   "rationale": "Bounded to one project, about the existing spending limit.",
+   "batch": 1
   },
   {
    "id": "f005",
@@ -1865,11 +3709,12 @@
     "kind": "attribute",
     "domain": "vpn_access"
    },
-   "rationale": "A rule that belongs under the existing VPN access domain."
+   "rationale": "A rule that belongs under the existing VPN access domain.",
+   "batch": 1
   },
   {
    "id": "f006",
-   "split": "heldout",
+   "split": "dev",
    "text": "The payments outage on March 3 lasted 40 minutes.",
    "known": [],
    "expected": {
@@ -1878,7 +3723,8 @@
     "kind": "event",
     "domain": null
    },
-   "rationale": "One occasion; a thing that happened."
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
   },
   {
    "id": "f007",
@@ -1891,11 +3737,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing fact with one owner at a time."
+   "rationale": "A standing fact with one owner at a time.",
+   "batch": 1
   },
   {
    "id": "f008",
-   "split": "heldout",
+   "split": "dev",
    "text": "We decided to adopt PostgreSQL 17 after the benchmark results.",
    "known": [],
    "expected": {
@@ -1904,7 +3751,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A decision that sets a standing choice."
+   "rationale": "A decision that sets a standing choice.",
+   "batch": 1
   },
   {
    "id": "f009",
@@ -1917,11 +3765,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing rule."
+   "rationale": "A standing rule.",
+   "batch": 1
   },
   {
    "id": "f010",
-   "split": "heldout",
+   "split": "dev",
    "text": "Kai is allergic to shellfish, so avoid it at team lunches.",
    "known": [],
    "expected": {
@@ -1930,7 +3779,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A durable fact that changes how to act."
+   "rationale": "A durable fact that changes how to act.",
+   "batch": 1
   },
   {
    "id": "f011",
@@ -1943,11 +3793,12 @@
     "kind": "event",
     "domain": null
    },
-   "rationale": "One occasion; a thing that happened."
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
   },
   {
    "id": "f012",
-   "split": "heldout",
+   "split": "dev",
    "text": "Priya led the migration review on Monday.",
    "known": [],
    "expected": {
@@ -1956,7 +3807,8 @@
     "kind": "event",
     "domain": null
    },
-   "rationale": "One occasion; a thing that happened."
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
   },
   {
    "id": "f013",
@@ -1969,11 +3821,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing schedule."
+   "rationale": "A standing schedule.",
+   "batch": 1
   },
   {
    "id": "f014",
-   "split": "heldout",
+   "split": "dev",
    "text": "Passwords must be at least 14 characters.",
    "known": [],
    "expected": {
@@ -1982,7 +3835,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing rule with one value."
+   "rationale": "A standing rule with one value.",
+   "batch": 1
   },
   {
    "id": "f015",
@@ -1995,11 +3849,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A lasting preference."
+   "rationale": "A lasting preference.",
+   "batch": 1
   },
   {
    "id": "f016",
-   "split": "heldout",
+   "split": "dev",
    "text": "For the Atlas demo, the staging environment is frozen until the 20th.",
    "known": [],
    "expected": {
@@ -2008,7 +3863,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "Bounded to one demo."
+   "rationale": "Bounded to one demo.",
+   "batch": 1
   },
   {
    "id": "f017",
@@ -2021,11 +3877,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing target."
+   "rationale": "A standing target.",
+   "batch": 1
   },
   {
    "id": "f018",
-   "split": "heldout",
+   "split": "dev",
    "text": "The checkout redesign launched on June 4.",
    "known": [],
    "expected": {
@@ -2034,7 +3891,8 @@
     "kind": "event",
     "domain": null
    },
-   "rationale": "One occasion; a thing that happened."
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
   },
   {
    "id": "f019",
@@ -2053,11 +3911,12 @@
     "kind": "attribute",
     "domain": "communication_style"
    },
-   "rationale": "A preference about the same person; belongs under the existing domain."
+   "rationale": "A preference about the same person; belongs under the existing domain.",
+   "batch": 1
   },
   {
    "id": "f020",
-   "split": "heldout",
+   "split": "dev",
    "text": "The Q2 offsite was in Denver.",
    "known": [],
    "expected": {
@@ -2066,7 +3925,8 @@
     "kind": "event",
     "domain": null
    },
-   "rationale": "One occasion; a thing that happened."
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
   },
   {
    "id": "f021",
@@ -2079,11 +3939,12 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing fact with one value."
+   "rationale": "A standing fact with one value.",
+   "batch": 1
   },
   {
    "id": "f022",
-   "split": "heldout",
+   "split": "dev",
    "text": "Remote employees may expense up to $500 a year for home office equipment.",
    "known": [],
    "expected": {
@@ -2092,7 +3953,8 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "A standing allowance."
+   "rationale": "A standing allowance.",
+   "batch": 1
   },
   {
    "id": "f023",
@@ -2105,12 +3967,208 @@
     "kind": "attribute",
     "domain": null
    },
-   "rationale": "Bounded to one review."
+   "rationale": "Bounded to one review.",
+   "batch": 1
   },
   {
    "id": "f024",
-   "split": "heldout",
+   "split": "dev",
    "text": "The incident on March 19 was caused by an expired certificate.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened.",
+   "batch": 1
+  },
+  {
+   "id": "f025",
+   "split": "dev",
+   "text": "ok thanks!",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f026",
+   "split": "dev",
+   "text": "can you resend that?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f027",
+   "split": "dev",
+   "text": "lol yes",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f028",
+   "split": "dev",
+   "text": "Let me check and get back to you in a minute.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f029",
+   "split": "dev",
+   "text": "Good morning, hope your weekend was good.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f030",
+   "split": "dev",
+   "text": "Sounds good.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f031",
+   "split": "dev",
+   "text": "brb",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f032",
+   "split": "dev",
+   "text": "Thanks, that worked.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f033",
+   "split": "dev",
+   "text": "Which file was it in again?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f034",
+   "split": "dev",
+   "text": "I'm just going to grab a coffee.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f035",
+   "split": "dev",
+   "text": "Haha, that's funny.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f036",
+   "split": "dev",
+   "text": "Hmm, not sure. Let's see.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim.",
+   "batch": 1
+  },
+  {
+   "id": "f037",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Rent is due on the first of every month.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule with one value."
+  },
+  {
+   "id": "f038",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Starting next month rent moves to the fifth.",
+   "known": [
+    {
+     "domain": "rent_policy",
+     "referent": "building",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "rent_policy"
+   },
+   "rationale": "A rule about the same fact as the filed rent policy."
+  },
+  {
+   "id": "f039",
+   "split": "heldout",
+   "batch": 2,
+   "text": "The greenhouse hose stays on all winter.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "Bounded to one facility."
+  },
+  {
+   "id": "f040",
+   "split": "heldout",
+   "batch": 2,
+   "text": "The kitchen flooded on the night of March 3.",
    "known": [],
    "expected": {
     "worth_keeping": true,
@@ -2121,124 +4179,356 @@
    "rationale": "One occasion; a thing that happened."
   },
   {
-   "id": "f025",
-   "split": "dev",
-   "text": "ok thanks!",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f026",
+   "id": "f041",
    "split": "heldout",
-   "text": "can you resend that?",
+   "batch": 2,
+   "text": "Mina's pump needs a new infusion set every three days.",
    "known": [],
    "expected": {
-    "worth_keeping": false
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
    },
-   "rationale": "No lasting claim."
+   "rationale": "A standing medical routine."
   },
   {
-   "id": "f027",
-   "split": "dev",
-   "text": "lol yes",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f028",
+   "id": "f042",
    "split": "heldout",
-   "text": "Let me check and get back to you in a minute.",
+   "batch": 2,
+   "text": "On the camping trip Mina will change it every two days.",
    "known": [],
    "expected": {
-    "worth_keeping": false
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
    },
-   "rationale": "No lasting claim."
+   "rationale": "Bounded to one trip."
   },
   {
-   "id": "f029",
-   "split": "dev",
-   "text": "Good morning, hope your weekend was good.",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f030",
+   "id": "f043",
    "split": "heldout",
-   "text": "Sounds good.",
-   "known": [],
+   "batch": 2,
+   "text": "The raid starts at 9 pm now.",
+   "known": [
+    {
+     "domain": "raid_schedule",
+     "referent": "guild",
+     "kind": "attribute"
+    }
+   ],
    "expected": {
-    "worth_keeping": false
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "raid_schedule"
    },
-   "rationale": "No lasting claim."
+   "rationale": "A schedule rule under the filed raid schedule."
   },
   {
-   "id": "f031",
-   "split": "dev",
-   "text": "brb",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f032",
+   "id": "f044",
    "split": "heldout",
-   "text": "Thanks, that worked.",
-   "known": [],
+   "batch": 2,
+   "text": "For the anniversary night only, the raid is at 10 pm.",
+   "known": [
+    {
+     "domain": "raid_schedule",
+     "referent": "guild",
+     "kind": "attribute"
+    }
+   ],
    "expected": {
-    "worth_keeping": false
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": "raid_schedule"
    },
-   "rationale": "No lasting claim."
+   "rationale": "Bounded to one night, under the filed raid schedule."
   },
   {
-   "id": "f033",
-   "split": "dev",
-   "text": "Which file was it in again?",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f034",
+   "id": "f045",
    "split": "heldout",
-   "text": "I'm just going to grab a coffee.",
+   "batch": 2,
+   "text": "Dev presented the quarterly results to the board.",
    "known": [],
    "expected": {
-    "worth_keeping": false
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
    },
-   "rationale": "No lasting claim."
+   "rationale": "One occasion; a thing that happened."
   },
   {
-   "id": "f035",
-   "split": "dev",
-   "text": "Haha, that's funny.",
-   "known": [],
-   "expected": {
-    "worth_keeping": false
-   },
-   "rationale": "No lasting claim."
-  },
-  {
-   "id": "f036",
+   "id": "f046",
    "split": "heldout",
-   "text": "Hmm, not sure. Let's see.",
+   "batch": 2,
+   "text": "Never leave the oven unattended while the sourdough is proofing near it.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing safety rule."
+  },
+  {
+   "id": "f047",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Tomas is the new treasurer.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing fact with one holder at a time."
+  },
+  {
+   "id": "f048",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Please don't call before 9 am; Nora is not a morning person.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A lasting preference."
+  },
+  {
+   "id": "f049",
+   "split": "heldout",
+   "batch": 2,
+   "text": "I prefer window seats on long flights.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A lasting preference."
+  },
+  {
+   "id": "f050",
+   "split": "heldout",
+   "batch": 2,
+   "text": "The flight to Lisbon was delayed three hours.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f051",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Library books may be borrowed for three weeks.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule."
+  },
+  {
+   "id": "f052",
+   "split": "heldout",
+   "batch": 2,
+   "text": "The 0.4 mm nozzle is the only one the printer takes.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing technical fact."
+  },
+  {
+   "id": "f053",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Last Tuesday's fire drill took four minutes.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f054",
+   "split": "heldout",
+   "batch": 2,
+   "text": "The hallway thermostat is set to 19 degrees.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing setting with one value."
+  },
+  {
+   "id": "f055",
+   "split": "heldout",
+   "batch": 2,
+   "text": "For the Atlas launch only, the code freeze starts on the 20th.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "Bounded to one launch."
+  },
+  {
+   "id": "f056",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Mina can't have shellfish or peanuts at the party.",
+   "known": [
+    {
+     "domain": "meal_rules",
+     "referent": "mina",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "meal_rules"
+   },
+   "rationale": "A standing dietary rule under the filed domain."
+  },
+  {
+   "id": "f057",
+   "split": "heldout",
+   "batch": 2,
+   "text": "yeah that works",
    "known": [],
    "expected": {
     "worth_keeping": false
    },
-   "rationale": "No lasting claim."
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f058",
+   "split": "heldout",
+   "batch": 2,
+   "text": "thanks for sending that over",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f059",
+   "split": "heldout",
+   "batch": 2,
+   "text": "wait, which one?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f060",
+   "split": "heldout",
+   "batch": 2,
+   "text": "ha, nice",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f061",
+   "split": "heldout",
+   "batch": 2,
+   "text": "I'll look at it after lunch.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f062",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Can you hear me now?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f063",
+   "split": "heldout",
+   "batch": 2,
+   "text": "ok, one sec",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f064",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Great, see you there.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f065",
+   "split": "heldout",
+   "batch": 2,
+   "text": "What time does the raid start tonight?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f066",
+   "split": "heldout",
+   "batch": 2,
+   "text": "Sorry, wrong channel.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
   }
  ]
 }

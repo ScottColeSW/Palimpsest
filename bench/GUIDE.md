@@ -44,9 +44,11 @@ A piece of text arrives. The model decides whether it is worth keeping and how t
 - **Unusable:** the model errored or answered outside the schema. Palimpsest keeps those as dormant material, so they cost nothing but also learn nothing.
 - **Frame:** worth-keeping accuracy, scope accuracy, kind accuracy, and domain reuse accuracy where it applies.
 
-## Splits
+## Splits and batches
 
-Every case is `dev` or `heldout`, stratified by relation. Prompts, schemas and model choices may be tuned on `dev`. The leaderboard headline uses `heldout` only, and a prompt change after seeing held-out results starts a new suite version, so the held-out numbers can't quietly become a tuning set.
+Every case is `dev` or `heldout`, stratified by relation, and carries a `batch`. Prompts, thresholds, models and rules may be tuned on `dev`. The leaderboard headline uses `heldout` only, and each version of the judge is scored on it once.
+
+Reading a held-out case's errors uses it up. Batch 1's held-out cases (38 judge, 18 frame) were scored and their errors read, so they were moved to `dev`; their results are kept in [results/leaderboard-cases-v1.md](results/leaderboard-cases-v1.md). Batch 2 (72 judge, 30 frame) was written afterwards, in new domains and with deliberate coverage of figures with units, restatements that share no words, times, event claims and forgeries, and committed before any change made in response to batch 1. No model had been run on it at that point. When batch 2's errors are read, it moves to dev and a batch 3 is written. The leak test in `tests/test_bench_cases.py` fails if any text is shared between the two.
 
 ## Known limits
 
