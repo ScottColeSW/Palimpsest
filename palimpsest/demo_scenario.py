@@ -20,6 +20,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .consult import resolve
 from .memory_store import InMemoryStore
 from .models import Edge, EdgeStatus, EdgeType, Node, Origin, Scope
 
@@ -158,11 +159,9 @@ class Scenario:
         return "No new evidence this tick. The collision stays OPEN -- unresolved is a legitimate state, not a bug to hide.", "still_open"
 
     def _t6_resolve_reconciled(self) -> tuple[str, str]:
-        edge = self.store.edges["e4"]
-        edge.status = EdgeStatus.RECONCILED_TOGETHER
-        edge.resolution_why = (
+        resolve(self.store, "e4", EdgeStatus.RECONCILED_TOGETHER, (
             "Ch.14 footnote reveals 'golden curls' describes Elena's sister, "
             "impersonating her -- not Elena. Both descriptions are correct once "
             "the referent is corrected; nothing was ever actually wrong."
-        )
+        ))
         return "Ch.14 footnote resolves it: RECONCILED_TOGETHER, not vindicated-vs-wrong -- both sides were right about different people.", "resolve"

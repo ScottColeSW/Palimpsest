@@ -129,6 +129,21 @@ def _competing_values(a: str, b: str) -> tuple[set[float], set[float]] | None:
     return None
 
 
+# Words that flip or void a claim. Token overlap ignores them: "no longer need
+# CFO approval" shares nearly every word with "must get CFO approval". Only ever
+# used to withhold confirmation (raise a flag), never to clear one.
+_NEGATION_CUES = frozenset({
+    "not", "no", "never", "without", "longer", "removed", "eliminated", "waived", "rescinded", "revoked",
+    "repealed", "cancelled", "canceled", "unlimited", "cannot", "none", "nor", "n't",
+})
+_ANY_AMOUNT = re.compile(r"any (?:amount|figure|value|limit)|no (?:limit|cap|ceiling)", re.IGNORECASE)
+
+
+def _negated(text: str) -> bool:
+    words = set(_WORD.findall(text.lower().replace("n't", " not ")))
+    return bool(words & _NEGATION_CUES) or bool(_ANY_AMOUNT.search(text))
+
+
 class Relation(str, Enum):
     NEW = "new"  # nothing related exists yet
     SCOPE_LINK = "scope_link"  # different scope, same referent+domain -- never a collision
@@ -155,6 +170,9 @@ class ConsultResult:
     omitted_values: set[float] | None = None
     # An adjudicator's recorded opinion, if one was consulted (see consult()).
     adjudication: dict | None = None
+    # Set when the candidate restates the claim's wording but flips its polarity
+    # ("no longer need approval" vs "must get approval").
+    polarity_flip: bool = False
 
 
 # (existing claim text, candidate text) -> {"verdict": "agrees" | "contradicts" | "unrelated", "reason": str}
@@ -236,11 +254,21 @@ def _judge(store: InMemoryStore, candidate: Node) -> ConsultResult:
     competing = _competing_values(candidate.text, best.text)
     omitted = _omits_value(candidate.text, best.text)
     attribute = domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE
-    if score >= REINFORCEMENT_OVERLAP_THRESHOLD and competing is None and attribute and omitted is not None:
-        # Shares the claim's wording but drops the value that IS the claim: can't confirm it
+    flipped = _negated(candidate.text) != _negated(best.text)
+    if competing is None and attribute and omitted is not None:
+        # The claim's value IS the claim, and the candidate drops it: it can't confirm it, however much
+        # wording it shares. With little shared wording it isn't evidence of disagreement either (it may
+        # be about another aspect of the same fact) -- so neither a reinforcement nor a collision.
         return ConsultResult(relation=Relation.UNCONFIRMED, related_node=best, overlap=score,
-                             omitted_values=omitted, review_needed=True)
+                             omitted_values=omitted, review_needed=True, polarity_flip=flipped)
     if score >= REINFORCEMENT_OVERLAP_THRESHOLD and competing is None:
+        if flipped:
+            # Same words, opposite sense: not confirmation. Flagged where one value competes at a time;
+            # in a stream of events it is just another event.
+            if attribute:
+                return ConsultResult(relation=Relation.UNCONFIRMED, related_node=best, overlap=score,
+                                     review_needed=True, polarity_flip=True)
+            return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score, polarity_flip=True)
         return ConsultResult(relation=Relation.REINFORCES, related_node=best, overlap=score)
 
     # High overlap with a different figure is never confirmation. In an
@@ -248,18 +276,21 @@ def _judge(store: InMemoryStore, candidate: Node) -> ConsultResult:
     # different value); in an EVENT domain it's a different event
     # ("ate 3 pots" vs "ate 5 pots"), linked but not counted as evidence.
     if competing is not None and score >= REINFORCEMENT_OVERLAP_THRESHOLD:
-        relation = (Relation.COLLIDES if domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE
-                    else Relation.COEXISTS)
+        relation = Relation.COLLIDES if attribute else Relation.COEXISTS
         return ConsultResult(relation=relation, related_node=best, overlap=score, competing_values=competing)
 
     # Below the threshold means "doesn't obviously restate the same
     # claim" -- what that implies depends entirely on what kind of
-    # domain this is. An ATTRIBUTE domain has one true value, so this
-    # really is tension. An EVENT domain doesn't -- a different,
-    # unrelated thing happening is the normal case, not a conflict.
-    if domain_kind_for(candidate.domain) == DomainKind.ATTRIBUTE:
-        return ConsultResult(relation=Relation.COLLIDES, related_node=best, overlap=score, competing_values=competing)
-    return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score, competing_values=competing)
+    # domain this is. An EVENT domain doesn't have one true value -- a
+    # different, unrelated thing happening is the normal case, not a conflict.
+    if not attribute:
+        return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score, competing_values=competing)
+    # An ATTRIBUTE domain has one true value, but low wording overlap only means tension when there is no
+    # value to compare on. Where either side states a quantity and they don't compete on it, the figures
+    # agree or one claim just adds a figure: a different aspect of the same fact, not a disagreement.
+    if competing is None and (_quantities(candidate.text) or _quantities(best.text)):
+        return ConsultResult(relation=Relation.COEXISTS, related_node=best, overlap=score)
+    return ConsultResult(relation=Relation.COLLIDES, related_node=best, overlap=score, competing_values=competing)
 
 
 def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) -> Edge | None:
@@ -291,15 +322,18 @@ def apply_consult(store: InMemoryStore, candidate: Node, result: ConsultResult) 
                                           f"marked for review")
     elif result.relation == Relation.UNCONFIRMED:
         # Linked so the review is traversable, but no weight or evidence: it can't confirm the claim
+        if result.omitted_values:
+            why = (f"states no figure where the claim states {_fmt(result.omitted_values)} -- can't confirm it"
+                   + (f" (and reads as a reversal)" if result.polarity_flip else ""))
+        else:
+            why = "restates the claim's wording with the opposite sense -- can't confirm it"
         edge = Edge(
             id=f"{candidate.id}-unconfirmed-{result.related_node.id}",
             source_id=candidate.id,
             target_id=result.related_node.id,
             type=EdgeType.COEXISTS,
             status=EdgeStatus.REVIEW_NEEDED,
-            tolerance_context=(f"shares the claim's wording (overlap={result.overlap:.2f}) but states no figure "
-                               f"where the claim states {_fmt(result.omitted_values)} -- can't confirm it, "
-                               f"marked for review"),
+            tolerance_context=f"overlap={result.overlap:.2f}: {why}, marked for review",
         )
     elif result.relation == Relation.REINFORCES:
         edge = Edge(
@@ -353,6 +387,61 @@ def pending_reviews(store: InMemoryStore) -> list[Edge]:
     "never silent" is kept -- nothing in it resolves itself."""
     waiting = [e for e in store.all_edges() if e.status in (EdgeStatus.OPEN, EdgeStatus.REVIEW_NEEDED)]
     return sorted(waiting, key=lambda e: e.date)
+
+
+# What a person may decide. OPEN and REVIEW_NEEDED are the states being decided out of.
+RESOLUTIONS = (EdgeStatus.VINDICATED, EdgeStatus.MOOTED, EdgeStatus.WRONG, EdgeStatus.RECONCILED_TOGETHER)
+
+
+def resolve(store: InMemoryStore, edge_id: str, status: EdgeStatus, why: str) -> Edge:
+    """Records a person's decision on an open collision or a review item.
+    Never silent: a reason is required, the decision is dated, and an edge
+    that has already been resolved can't be quietly resolved again.
+    Deliberately changes nothing else -- no weights, no nodes -- so a
+    resolution can be read back and disagreed with, not just obeyed."""
+    edge = store.edges.get(edge_id)
+    if edge is None:
+        raise KeyError(f"no such edge: {edge_id}")
+    if status not in RESOLUTIONS:
+        raise ValueError(f"{status!r} is not a resolution; use one of {[r.value for r in RESOLUTIONS]}")
+    if edge.status not in (EdgeStatus.OPEN, EdgeStatus.REVIEW_NEEDED):
+        raise ValueError(f"edge {edge_id} is not waiting on anyone (status: {edge.status})")
+    if not why.strip():
+        raise ValueError("a resolution needs a reason")
+    edge.status, edge.resolution_why, edge.resolved_at = status, why.strip(), _utcnow()
+    store.add_edge(edge)
+    return edge
+
+
+def scan_other_domains(store: InMemoryStore, candidate: Node,
+                       min_overlap: float = REINFORCEMENT_OVERLAP_THRESHOLD) -> ConsultResult | None:
+    """consult() only reads the candidate's own referent+domain, so a claim
+    filed under the wrong one -- or under none -- is never checked, and the
+    filing step (often a model an attacker's wording can steer) becomes the
+    only defense. This looks across every ATTRIBUTE-domain claim instead and
+    returns a COLLIDES result when one restates the candidate's wording with
+    a different figure ("limit is $5,000,000" against "limit is $10,000"),
+    else None. Value conflicts only: with no figure to compare, wording
+    alone is not evidence across topics. A candidate that is a different
+    scope is returned as a review item, never a collision."""
+    best: ConsultResult | None = None
+    for node in store.all_nodes():
+        if (node.referent == candidate.referent and node.domain == candidate.domain) or node.id == candidate.id:
+            continue
+        if node.origin == Origin.DORMANT or domain_kind_for(node.domain) != DomainKind.ATTRIBUTE:
+            continue
+        competing = _competing_values(candidate.text, node.text)
+        score = _overlap(candidate.text, node.text)
+        if competing is None or score < min_overlap:
+            continue
+        if node.scope != candidate.scope:
+            found = ConsultResult(relation=Relation.SCOPE_LINK, related_node=node, overlap=score,
+                                  competing_values=competing, review_needed=True)
+        else:
+            found = ConsultResult(relation=Relation.COLLIDES, related_node=node, overlap=score, competing_values=competing)
+        if best is None or score > (best.overlap or 0):
+            best = found
+    return best
 
 
 def _collision_context(result: ConsultResult) -> str:

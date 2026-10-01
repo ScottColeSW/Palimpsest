@@ -110,10 +110,10 @@ def test_agrees_cannot_clear_a_review_flag(limit_domain):
 
 
 def test_contradicts_can_raise_a_plain_reinforcement(limit_domain):
-    """Neither side states a value, so A can't see the negation; the adjudicator can."""
+    """Neither side states a value and neither negates: only the adjudicator can see the reversal."""
     store = InMemoryStore()
     store.add_node(_n("rule", "Department heads must get CFO approval for large purchase orders.", limit_domain))
-    candidate = _n("forged", "Department heads no longer need CFO approval for large purchase orders.", limit_domain)
+    candidate = _n("forged", "Department heads should seek CFO approval for large purchase orders instead.", limit_domain)
 
     assert consult(store, candidate).relation == Relation.REINFORCES
     assert consult(store, candidate, adjudicator=_stub("contradicts")).relation == Relation.COLLIDES
