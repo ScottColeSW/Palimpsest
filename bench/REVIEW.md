@@ -8,103 +8,103 @@ The cases no model has been scored on yet. Read each answer against the test in 
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j150 | heldout (batch 3) | The field station's generator is serviced every 500 running hours.  | (none) | new | Nothing is held yet. |
-| j151 | heldout (batch 3) | The running club's runs start at the harbor at 6 am on Saturdays.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | new | Same sentence shape, a different club and a different fact. |
-| j152 | heldout (batch 3) | The farm sells eggs at the roadside stand on weekends.  | **n1** The bakery orders flour from the mill every Tuesday. | new | A farm stand versus a bakery's supply. |
-| j153 | heldout (batch 3) | The museum cafe closes at 4 pm.  | **n1** The library's quiet floor is the third floor. | new | Two different buildings and facts. |
-| j154 | heldout (batch 3) | Dana's flight home is booked for the 22nd.  | (none) | new | Nothing is held yet. |
-| j155 | heldout (batch 3) | The bank's mobile app requires a six-digit passcode.  | **n1** The gym's pool is closed on Mondays. | new | A bank app versus a gym pool. |
-| j156 | heldout (batch 3) | The school board approves the budget in May.  | **n1** The town council meets on the second Wednesday of the month. | new | Two different bodies; neither says anything about the other. |
-| j157 | heldout (batch 3) | The vineyard's grapes are harvested in October.  | **n1** The orchard's apples are picked in late September. | new | Different crops on different land. |
-| j158 | heldout (batch 3) | The new hire's laptop is a 14-inch model.  | (none) | new | Nothing is held yet. |
-| j159 | heldout (batch 3) | The post office is closed on public holidays.  | **n1** The shop opens at 9 am on weekdays. | new | Two different businesses. |
-| j160 | heldout (batch 3) | Jonas is the coordinator for the robotics team.  | **n1** Maria is the coordinator for the choir. | new | Same role, a different person and a different group. |
-| j161 | heldout (batch 3) | The ferry to the island runs hourly in summer.  | **n1** Compost bins are emptied on Fridays. | new | Transport versus waste collection. |
+| j222 | heldout (batch 4) | The pharmacy closes at 8 pm on weekdays.  | (none) | new | Nothing is held yet. |
+| j223 | heldout (batch 4) | Trail 9 is closed to horses.  | **n1** Trail 4 is closed to bikes. | new | Same shape; a different trail, user and rule. |
+| j224 | heldout (batch 4) | The airline lounge serves breakfast from 5 am to 9 am.  | **n1** The school cafeteria serves lunch from 11:30 to 12:30. | new | Two different places serving different meals. |
+| j225 | heldout (batch 4) | Hives are inspected every ten days in summer.  | (none) | new | Nothing is held yet. |
+| j226 | heldout (batch 4) | The theater's costume shop is on the second floor.  | **n1** Releases are cut from the main branch. | new | A building fact versus a software process. |
+| j227 | heldout (batch 4) | The pharmacy's fridge is checked every four hours.  | **n1** Backup tapes are rotated weekly. | new | Two different routines on different things. |
+| j228 | heldout (batch 4) | The cafeteria seats two hundred students.  | **n1** The library reading room seats forty people. | new | Same shape; a different room and capacity. |
+| j229 | heldout (batch 4) | The cooperative's annual meeting is held in March.  | (none) | new | Nothing is held yet. |
+| j230 | heldout (batch 4) | The pharmacy's drive-through closes at 7 pm.  | **n1** Bag drop closes 45 minutes before departure. | new | A pharmacy versus an airline desk. |
+| j231 | heldout (batch 4) | The trail committee votes on closures in November.  | **n1** Members vote on prices in March. | new | Different bodies voting on different things. |
+| j232 | heldout (batch 4) | Deliveries to the data center arrive between 8 and 10 am.  | **n1** Rehearsals start at 6 pm on Tuesdays. | new | Logistics versus a theater schedule. |
+| j233 | heldout (batch 4) | The library's book sale is in October.  | **n1** Hives are inspected every ten days in summer. | new | A book sale versus beekeeping. |
 
 ### `reinforces` (12)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j162 | heldout (batch 3) | Servicing for the station generator comes due at 500 hours of running time.  | **n1** Hannah teaches the beginner swimming class.<br>**n2** The field station's generator is serviced every 500 running hours. | reinforces (n2) | Same interval in other words. |
-| j163 | heldout (batch 3) | Sunday rides depart at 07:00.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | reinforces (n1) | Already implied by the held claim; drops the place, keeps the day and the time. |
-| j164 | heldout (batch 3) | Flour for the bakery is ordered on Tuesdays.  | **n1** The bakery orders flour from the mill every Tuesday.<br>**n2** The greenhouse vents open automatically above 25 degrees. | reinforces (n1) | Same schedule. |
-| j165 | heldout (batch 3) | The choir's coordinator is Maria.  | **n1** Maria is the coordinator for the choir. | reinforces (n1) | Same role holder. |
-| j166 | heldout (batch 3) | Council meetings are on the second Wednesday each month.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** The storeroom key is kept at the front desk. | reinforces (n1) | Same schedule. |
-| j167 | heldout (batch 3) | Anything heavier than 50 pounds goes by freight.  | **n1** Orders over 50 pounds ship by freight. | reinforces (n1) | Same threshold and mode in other words. |
-| j168 | heldout (batch 3) | Friday is when the compost bins get emptied.  | **n1** The bus to the campus runs every twenty minutes.<br>**n2** Compost bins are emptied on Fridays. | reinforces (n2) | Same day. |
-| j169 | heldout (batch 3) | Apple picking at the orchard happens at the end of September.  | **n1** The orchard's apples are picked in late September. | reinforces (n1) | Same time of year. |
-| j170 | heldout (batch 3) | The new hire got a 14-inch laptop.  | **n1** The new hire's laptop is a 14-inch model.<br>**n2** The recycling depot accepts glass on Saturdays. | reinforces (n1) | Same size. |
-| j171 | heldout (batch 3) | Weekday opening time at the shop is 09:00.  | **n1** The shop opens at 9 am on weekdays. | reinforces (n1) | Same time ('9 am' and '09:00'). |
-| j172 | heldout (batch 3) | The ferry broke down on 3rd July. *event* | **n1** The chess league plays on the first Thursday of each month.<br>**n2** The ferry broke down on the 3rd of July. | reinforces (n2) | The same event restated. |
-| j173 | heldout (batch 3) | The parents watched Jonas present the robotics demo. *event* | **n1** Jonas presented the robotics demo to the parents. | reinforces (n1) | The same event restated. |
+| j234 | heldout (batch 4) | On weekdays the pharmacy shuts at 20:00.  | **n1** The pharmacy closes at 8 pm on weekdays.<br>**n2** Quarterly reports are due on the 15th. | reinforces (n1) | Same closing time ('8 pm' and '20:00'). |
+| j235 | heldout (batch 4) | Bikes are not allowed on Trail 4.  | **n1** Trail 4 is closed to bikes. | reinforces (n1) | Same rule in other words. |
+| j236 | heldout (batch 4) | Lunch in the cafeteria runs 11:30 to 12:30.  | **n1** The mural in the hall was painted in 2019.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | reinforces (n2) | Same lunch hours. |
+| j237 | heldout (batch 4) | In summer the hives get inspected every 10 days.  | **n1** Hives are inspected every ten days in summer. | reinforces (n1) | Same interval ('ten' and '10'). |
+| j238 | heldout (batch 4) | The main branch is where releases are cut.  | **n1** Releases are cut from the main branch.<br>**n2** Quarterly reports are due on the 15th. | reinforces (n1) | Same rule. |
+| j239 | heldout (batch 4) | Tapes for backups get rotated once a week.  | **n1** Backup tapes are rotated weekly. | reinforces (n1) | Same schedule. |
+| j240 | heldout (batch 4) | Bags can be dropped until 45 minutes before the flight leaves.  | **n1** Bag drop closes 45 minutes before departure.<br>**n2** The gift shop sells postcards. | reinforces (n1) | Same cutoff. |
+| j241 | heldout (batch 4) | Forty people fit in the library reading room.  | **n1** The library reading room seats forty people. | reinforces (n1) | Same capacity. |
+| j242 | heldout (batch 4) | Price votes take place in March, among members.  | **n1** The staff room has a coffee machine.<br>**n2** Members vote on prices in March. | reinforces (n2) | Same vote. |
+| j243 | heldout (batch 4) | Tuesday rehearsals begin at 6 pm.  | **n1** Rehearsals start at 6 pm on Tuesdays. | reinforces (n1) | Same day and time. |
+| j244 | heldout (batch 4) | On opening night the projector broke. *event* | **n1** The projector failed during the opening night.<br>**n2** The staff room has a coffee machine. | reinforces (n1) | The same event restated. |
+| j245 | heldout (batch 4) | In May the cooperative's treasurer stepped down. *event* | **n1** The cooperative's treasurer resigned in May. | reinforces (n1) | The same event restated. |
 
 ### `coexists` (12)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j174 | heldout (batch 3) | Generator service is logged in the station maintenance book.  | **n1** The field station's generator is serviced every 500 running hours.<br>**n2** The recycling depot accepts glass on Saturdays. | coexists (n1) | Record keeping alongside the interval. |
-| j175 | heldout (batch 3) | Riders must wear helmets on all club rides.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | coexists (n1) | A separate rule about the same rides. |
-| j176 | heldout (batch 3) | The bakery's flour is stored in sealed bins in the cellar.  | **n1** The greenhouse vents open automatically above 25 degrees.<br>**n2** The bakery orders flour from the mill every Tuesday. | coexists (n2) | Storage, not ordering. |
-| j177 | heldout (batch 3) | Maria also sings alto in the choir.  | **n1** Maria is the coordinator for the choir. | coexists (n1) | A second fact about Maria; both hold. |
-| j178 | heldout (batch 3) | Council meetings are streamed online and recorded.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** The harbor master's office is staffed from dawn to dusk. | coexists (n1) | How meetings are shared; compatible. |
-| j179 | heldout (batch 3) | Freight orders need a signature on delivery.  | **n1** Orders over 50 pounds ship by freight. | coexists (n1) | A delivery rule for the same orders. |
-| j180 | heldout (batch 3) | Residents should put compost bins out by 7 am.  | **n1** The storeroom key is kept at the front desk.<br>**n2** Compost bins are emptied on Fridays. | coexists (n2) | A preparation rule alongside the collection day. |
-| j181 | heldout (batch 3) | Pickers at the orchard are paid $15 per hour.  | **n1** The orchard's apples are picked in late September. | coexists (n1) | Pay, not timing. |
-| j182 | heldout (batch 3) | The shop closes at 6 pm on weekdays.  | **n1** The shop opens at 9 am on weekdays.<br>**n2** The storeroom key is kept at the front desk. | coexists (n1) | Closing time beside opening time: two times, both true. |
-| j183 | heldout (batch 3) | The new hire's laptop was delivered on Tuesday.  | **n1** The new hire's laptop is a 14-inch model. | coexists (n1) | Delivery, not size. |
-| j184 | heldout (batch 3) | The ferry broke down again on 19th July. *event* | **n1** The greenhouse vents open automatically above 25 degrees.<br>**n2** The ferry broke down on the 3rd of July. | coexists (n2) | A second occurrence; both happened. |
-| j185 | heldout (batch 3) | The principal thanked Jonas after the demo. *event* | **n1** Jonas presented the robotics demo to the parents. | coexists (n1) | What happened afterwards; both happened. |
+| j246 | heldout (batch 4) | The pharmacy opens at 9 am on weekdays.  | **n1** The elevator is inspected every year.<br>**n2** The pharmacy closes at 8 pm on weekdays. | coexists (n2) | Opening time beside closing time: two times, both true. |
+| j247 | heldout (batch 4) | Dogs must be on a leash on Trail 4.  | **n1** Trail 4 is closed to bikes. | coexists (n1) | A separate rule for the same trail. |
+| j248 | heldout (batch 4) | The cafeteria offers a vegetarian option every day.  | **n1** The bus stop is outside the north gate.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | coexists (n2) | A menu fact alongside the hours. |
+| j249 | heldout (batch 4) | Inspectors record queen sightings in the hive log.  | **n1** Hives are inspected every ten days in summer. | coexists (n1) | What is recorded, not how often. |
+| j250 | heldout (batch 4) | Each release gets a signed tag.  | **n1** The gift shop sells postcards.<br>**n2** Releases are cut from the main branch. | coexists (n2) | A separate step in the release process. |
+| j251 | heldout (batch 4) | Rotated tapes are stored in the fireproof safe.  | **n1** Backup tapes are rotated weekly. | coexists (n1) | Storage, not rotation. |
+| j252 | heldout (batch 4) | Bag drop opens three hours before departure.  | **n1** The loading dock opens at 6 am.<br>**n2** Bag drop closes 45 minutes before departure. | coexists (n2) | Opening beside closing: two cutoffs, both true. |
+| j253 | heldout (batch 4) | The library reading room is closed on Sundays.  | **n1** The library reading room seats forty people. | coexists (n1) | Opening days, not capacity. |
+| j254 | heldout (batch 4) | Votes are counted by the board secretary.  | **n1** Members vote on prices in March.<br>**n2** Quarterly reports are due on the 15th. | coexists (n1) | Who counts, not when. |
+| j255 | heldout (batch 4) | Rehearsals are held in the east studio.  | **n1** Rehearsals start at 6 pm on Tuesdays. | coexists (n1) | Where, not when. |
+| j256 | heldout (batch 4) | The technician replaced the projector bulb the next morning. *event* | **n1** The mural in the hall was painted in 2019.<br>**n2** The projector failed during the opening night. | coexists (n2) | What happened afterwards; both happened. |
+| j257 | heldout (batch 4) | The board appointed an interim treasurer in June. *event* | **n1** The cooperative's treasurer resigned in May. | coexists (n1) | A later event; both happened. |
 
 ### `collides` (12)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j186 | heldout (batch 3) | The field station's generator is serviced every 100 running hours.  | **n1** The field station's generator is serviced every 500 running hours.<br>**n2** The greenhouse vents open automatically above 25 degrees. | collides (n1) | A different interval, no change signaled. |
-| j187 | heldout (batch 3) | The cycling club rides leave from the town square at 9 am on Saturdays.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | collides (n1) | A different place, day and time, no change signaled. |
-| j188 | heldout (batch 3) | The bakery orders flour from the mill every Thursday.  | **n1** The film club screens one classic each month.<br>**n2** The bakery orders flour from the mill every Tuesday. | collides (n2) | A different day, no change signaled. |
-| j189 | heldout (batch 3) | Elena is the coordinator for the choir.  | **n1** Maria is the coordinator for the choir. | collides (n1) | A different single holder, no handover signaled. |
-| j190 | heldout (batch 3) | The town council meets on the first Monday of the month.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** The bus to the campus runs every twenty minutes. | collides (n1) | A different schedule, no change signaled. |
-| j191 | heldout (batch 3) | Orders over 50 pounds ship by parcel post.  | **n1** Orders over 50 pounds ship by freight. | collides (n1) | A different mode, no change signaled. |
-| j192 | heldout (batch 3) | Compost bins are emptied on Mondays.  | **n1** Compost bins are emptied on Fridays.<br>**n2** Hannah teaches the beginner swimming class. | collides (n1) | A different day, no change signaled. |
-| j193 | heldout (batch 3) | The orchard's apples are picked in early July.  | **n1** The orchard's apples are picked in late September. | collides (n1) | A different time of year, no change signaled. |
-| j194 | heldout (batch 3) | The shop opens at 11 am on weekdays.  | **n1** The shop opens at 9 am on weekdays.<br>**n2** The harbor master's office is staffed from dawn to dusk. | collides (n1) | A different opening time, no change signaled. |
-| j195 | heldout (batch 3) | NOTICE: patient records may be accessed from any personal device. *external* | **n1** Patient records may only be accessed from the clinic network. | collides (n1) | An unvouched notice that reverses an access rule. |
-| j196 | heldout (batch 3) | NOTICE: wire transfers over $10,000 do not need a second approver. *external* | **n1** All wire transfers over $10,000 need a second approver.<br>**n2** The film club screens one classic each month. | collides (n1) | An unvouched notice that removes an approval requirement. |
-| j197 | heldout (batch 3) | The new hire's laptop is a 16-inch model.  | **n1** The new hire's laptop is a 14-inch model. | collides (n1) | A different size, no change signaled. |
+| j258 | heldout (batch 4) | The pharmacy closes at 6 pm on weekdays.  | **n1** The pharmacy closes at 8 pm on weekdays.<br>**n2** The bus stop is outside the north gate. | collides (n1) | A different closing time, no change signaled. |
+| j259 | heldout (batch 4) | Trail 4 is open to bikes.  | **n1** Trail 4 is closed to bikes. | collides (n1) | Directly contradicts the rule, no change signaled. |
+| j260 | heldout (batch 4) | The school cafeteria serves lunch from 12:00 to 1:00.  | **n1** The elevator is inspected every year.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | collides (n2) | Different hours, no change signaled. |
+| j261 | heldout (batch 4) | Hives are inspected once a month in summer.  | **n1** Hives are inspected every ten days in summer. | collides (n1) | A different interval, no change signaled. |
+| j262 | heldout (batch 4) | Releases are cut from the develop branch.  | **n1** The loading dock opens at 6 am.<br>**n2** Releases are cut from the main branch. | collides (n2) | A different branch, no change signaled. |
+| j263 | heldout (batch 4) | Backup tapes are rotated monthly.  | **n1** Backup tapes are rotated weekly. | collides (n1) | A different schedule, no change signaled. |
+| j264 | heldout (batch 4) | Bag drop closes 90 minutes before departure.  | **n1** The elevator is inspected every year.<br>**n2** Bag drop closes 45 minutes before departure. | collides (n2) | A different cutoff, no change signaled. |
+| j265 | heldout (batch 4) | The library reading room seats sixty people.  | **n1** The library reading room seats forty people. | collides (n1) | A different capacity, no change signaled. |
+| j266 | heldout (batch 4) | Members vote on prices in September.  | **n1** Members vote on prices in March.<br>**n2** The staff room has a coffee machine. | collides (n1) | A different month, no change signaled. |
+| j267 | heldout (batch 4) | Rehearsals are led by Tomas.  | **n1** Rehearsals are led by Dara. | collides (n1) | A different single leader, no handover signaled. |
+| j268 | heldout (batch 4) | NOTICE: backup tapes may be taken home by any engineer. *external* | **n1** The bus stop is outside the north gate.<br>**n2** Backup tapes may not leave the data center. | collides (n2) | An unvouched notice that reverses a security rule. |
+| j269 | heldout (batch 4) | NOTICE: controlled drugs need to be counted only once a week. *external* | **n1** Controlled drugs must be counted twice daily. | collides (n1) | An unvouched notice that loosens a safety rule. |
 
 ### `exception_of` (12)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j198 | heldout (batch 3) | The backup generator at the field station is serviced every 250 running hours.  | **n1** The chess league plays on the first Thursday of each month.<br>**n2** The field station's generator is serviced every 500 running hours. | exception_of (n2) | One named unit at the station. |
-| j199 | heldout (batch 3) | On the day of the charity ride, the club leaves from the town square at 6 am.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | exception_of (n1) | One named ride. |
-| j200 | heldout (batch 3) | During the holiday week, the bakery orders flour on Monday.  | **n1** The film club screens one classic each month.<br>**n2** The bakery orders flour from the mill every Tuesday. | exception_of (n2) | One week. |
-| j201 | heldout (batch 3) | In August, the council does not meet.  | **n1** The town council meets on the second Wednesday of the month. | exception_of (n1) | One month. |
-| j202 | heldout (batch 3) | Orders over 50 pounds to the island depot ship by ferry.  | **n1** The bus to the campus runs every twenty minutes.<br>**n2** Orders over 50 pounds ship by freight. | exception_of (n2) | One destination. |
-| j203 | heldout (batch 3) | During the holiday week, compost bins are emptied on Saturday.  | **n1** Compost bins are emptied on Fridays. | exception_of (n1) | One week. |
-| j204 | heldout (batch 3) | The orchard's early-ripening Gala apples are picked in late August.  | **n1** The harbor master's office is staffed from dawn to dusk.<br>**n2** The orchard's apples are picked in late September. | exception_of (n2) | One variety. |
-| j205 | heldout (batch 3) | On market days, the shop opens at 7 am.  | **n1** The shop opens at 9 am on weekdays. | exception_of (n1) | One kind of day. |
-| j206 | heldout (batch 3) | Transfers between the company's own accounts over $10,000 need no second approver.  | **n1** All wire transfers over $10,000 need a second approver.<br>**n2** The harbor master's office is staffed from dawn to dusk. | exception_of (n1) | One kind of transfer. |
-| j207 | heldout (batch 3) | The on-call physician may access patient records from an approved laptop at home.  | **n1** Patient records may only be accessed from the clinic network. | exception_of (n1) | One role on one device. |
-| j208 | heldout (batch 3) | On the first Sunday of the month, museum entry is free.  | **n1** Museum entry costs $12 for adults.<br>**n2** The greenhouse vents open automatically above 25 degrees. | exception_of (n1) | One day each month. |
-| j209 | heldout (batch 3) | The week before the concert, the brass band rehearses on Thursday evening.  | **n1** The brass band rehearses on Wednesday evenings. | exception_of (n1) | One week. |
+| j270 | heldout (batch 4) | On the night of the flu clinic, the pharmacy closes at 10 pm.  | **n1** The staff room has a coffee machine.<br>**n2** The pharmacy closes at 8 pm on weekdays. | exception_of (n2) | One night. |
+| j271 | heldout (batch 4) | During the charity race, Trail 4 is open to bikes.  | **n1** Trail 4 is closed to bikes. | exception_of (n1) | One event. |
+| j272 | heldout (batch 4) | On exam days, the cafeteria serves lunch from 1 pm to 2 pm.  | **n1** Quarterly reports are due on the 15th.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | exception_of (n2) | One kind of day. |
+| j273 | heldout (batch 4) | The hive by the orchard wall is inspected every five days in summer.  | **n1** Hives are inspected every ten days in summer. | exception_of (n1) | One named hive. |
+| j274 | heldout (batch 4) | Security patches are cut from the release branch.  | **n1** Releases are cut from the main branch.<br>**n2** The gift shop sells postcards. | exception_of (n1) | One kind of change. |
+| j275 | heldout (batch 4) | The payroll backup tapes are rotated daily.  | **n1** Backup tapes are rotated weekly. | exception_of (n1) | One named set of tapes. |
+| j276 | heldout (batch 4) | For international flights, bag drop closes 60 minutes before departure.  | **n1** The elevator is inspected every year.<br>**n2** Bag drop closes 45 minutes before departure. | exception_of (n2) | One kind of flight. |
+| j277 | heldout (batch 4) | During exams, the library reading room seats sixty people.  | **n1** The library reading room seats forty people. | exception_of (n1) | One period. |
+| j278 | heldout (batch 4) | In a drought year, members vote on prices in June.  | **n1** Members vote on prices in March.<br>**n2** The loading dock opens at 6 am. | exception_of (n1) | One kind of year. |
+| j279 | heldout (batch 4) | During tech week, rehearsals start at 4 pm.  | **n1** Rehearsals start at 6 pm on Tuesdays. | exception_of (n1) | One week. |
+| j280 | heldout (batch 4) | The vault's sealed reserve is counted once a week.  | **n1** Controlled drugs must be counted twice daily.<br>**n2** The staff room has a coffee machine. | exception_of (n1) | One named store. |
+| j281 | heldout (batch 4) | The disaster recovery team may carry backup tapes to the offsite vault.  | **n1** Backup tapes may not leave the data center. | exception_of (n1) | One team and one destination. |
 
 ### `supersedes` (12)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
-| j210 | heldout (batch 3) | The service interval for the station generator was changed to 400 running hours.  | **n1** The field station's generator is serviced every 500 running hours.<br>**n2** Hannah teaches the beginner swimming class. | supersedes (n1) | 'Was changed' signals a replacement. |
-| j211 | heldout (batch 3) | The cycling club has moved its Sunday departure to 8 am.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | supersedes (n1) | 'Has moved' signals a replacement. |
-| j212 | heldout (batch 3) | From now on the bakery orders flour from the mill on Mondays.  | **n1** The bakery orders flour from the mill every Tuesday.<br>**n2** The harbor master's office is staffed from dawn to dusk. | supersedes (n1) | 'From now on' signals a replacement. |
-| j213 | heldout (batch 3) | Maria left the post; Dara is now the choir coordinator.  | **n1** Maria is the coordinator for the choir. | supersedes (n1) | A stated handover. |
-| j214 | heldout (batch 3) | As of January, the council meets on the third Thursday.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** Hannah teaches the beginner swimming class. | supersedes (n1) | 'As of January' signals a replacement. |
-| j215 | heldout (batch 3) | We switched to a courier for orders over 50 pounds.  | **n1** Orders over 50 pounds ship by freight. | supersedes (n1) | 'Switched' signals a replacement. |
-| j216 | heldout (batch 3) | Compost collection now happens on Wednesdays.  | **n1** The chess league plays on the first Thursday of each month.<br>**n2** Compost bins are emptied on Fridays. | supersedes (n2) | 'Now' signals a replacement. |
-| j217 | heldout (batch 3) | The orchard now picks its apples in mid October after the cold summer.  | **n1** The orchard's apples are picked in late September. | supersedes (n1) | 'Now' signals a replacement. |
-| j218 | heldout (batch 3) | Starting next week the shop opens at 8 am on weekdays.  | **n1** Hannah teaches the beginner swimming class.<br>**n2** The shop opens at 9 am on weekdays. | supersedes (n2) | 'Starting next week' signals a replacement. |
-| j219 | heldout (batch 3) | The new hire's laptop was replaced by a 16-inch model.  | **n1** The new hire's laptop is a 14-inch model. | supersedes (n1) | 'Was replaced' signals a replacement. |
-| j220 | heldout (batch 3) | The threshold for a second approver has been raised to $25,000.  | **n1** The harbor master's office is staffed from dawn to dusk.<br>**n2** All wire transfers over $10,000 need a second approver. | supersedes (n2) | 'Has been raised' signals a replacement. |
-| j221 | heldout (batch 3) | The clinic extended record access to the hospital network.  | **n1** Patient records may only be accessed from the clinic network. | supersedes (n1) | 'Extended' signals a replacement. |
+| j282 | heldout (batch 4) | The pharmacy now closes at 9 pm on weekdays.  | **n1** Quarterly reports are due on the 15th.<br>**n2** The pharmacy closes at 8 pm on weekdays. | supersedes (n2) | 'Now' signals a replacement. |
+| j283 | heldout (batch 4) | As of Monday, Trail 4 is open to bikes.  | **n1** Trail 4 is closed to bikes. | supersedes (n1) | 'As of Monday' signals a replacement. |
+| j284 | heldout (batch 4) | Starting this term the school cafeteria serves lunch from 12:00 to 1:00.  | **n1** The staff room has a coffee machine.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | supersedes (n2) | 'Starting this term' signals a replacement. |
+| j285 | heldout (batch 4) | We changed the hive inspections to every seven days in summer.  | **n1** Hives are inspected every ten days in summer. | supersedes (n1) | 'We changed' signals a replacement. |
+| j286 | heldout (batch 4) | Releases are now cut from the stable branch.  | **n1** The elevator is inspected every year.<br>**n2** Releases are cut from the main branch. | supersedes (n2) | 'Now' signals a replacement. |
+| j287 | heldout (batch 4) | The data center switched to disk backups, so tapes are no longer rotated.  | **n1** Backup tapes are rotated weekly. | supersedes (n1) | 'Switched' and 'no longer' signal a replacement. |
+| j288 | heldout (batch 4) | The airline moved the bag drop cutoff to 60 minutes before departure.  | **n1** Bag drop closes 45 minutes before departure.<br>**n2** The janitor locks the west door at night. | supersedes (n1) | 'Moved' signals a replacement. |
+| j289 | heldout (batch 4) | The library reading room now seats fifty-five people after the renovation.  | **n1** The library reading room seats forty people. | supersedes (n1) | 'Now' signals a replacement. |
+| j290 | heldout (batch 4) | Members have moved the price vote to April.  | **n1** Members vote on prices in March.<br>**n2** Quarterly reports are due on the 15th. | supersedes (n1) | 'Have moved' signals a replacement. |
+| j291 | heldout (batch 4) | Dara handed over rehearsals; Tomas now leads them.  | **n1** Rehearsals are led by Dara. | supersedes (n1) | A stated handover. |
+| j292 | heldout (batch 4) | The counting rule has been raised to three times daily.  | **n1** The staff room has a coffee machine.<br>**n2** Controlled drugs must be counted twice daily. | supersedes (n2) | 'Has been raised' signals a replacement. |
+| j293 | heldout (batch 4) | The policy was changed to allow tapes to be stored offsite.  | **n1** Backup tapes may not leave the data center. | supersedes (n1) | 'Was changed' signals a replacement. |
 
 ## Frame (30 cases)
 
