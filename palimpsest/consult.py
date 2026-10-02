@@ -84,49 +84,178 @@ def _overlap(a: str, b: str) -> float:
     return len(ta & tb) / len(ta | tb)
 
 
-# Quantities: "$10,000", "$5M", "5 million", "3.5", "40%". Found the hard way
-# by the Aegis Vector poisoning battery: token overlap measures shared
-# vocabulary, not agreement, so a forged claim that copies the real one's
-# wording and changes only the figure scored 0.83 overlap against it --
-# far over the reinforcement threshold -- and would have been filed as
+# Quantities. Found the hard way by the Aegis Vector poisoning battery: token overlap measures shared
+# vocabulary, not agreement, so a forged claim that copies the real one's wording and changes only the figure
+# scored 0.83 overlap against it -- far over the reinforcement threshold -- and would have been filed as
 # confirming evidence, bumping the real claim's weight.
-# A number glued to a letter in front ("Q3", "IPv6") is a label, not a quantity
-_QUANTITY = re.compile(r"(?<![A-Za-z\d.])(\d[\d,]*(?:\.\d+)?)\s*(million|thousand|billion|[mkb]\b|%)?", re.IGNORECASE)
+#
+# A figure means something only with its unit. "30 days" and "$500" are not in competition, and "6:40 am" is not
+# "45 minutes". Each quantity carries a dimension, and two quantities can only compete when they are comparable:
+# the same dimension, or either one a bare number with no unit (unknown, so assumed comparable: the old,
+# conservative behavior). Durations, lengths and masses are converted to a base unit, so "three days" and
+# "72 hours" are the same figure.
+@dataclass(frozen=True)
+class Quantity:
+    value: float
+    dim: str | None  # None: a bare number
+
+
+# word -> (dimension, factor to the dimension's base unit: seconds, meters, grams)
+_UNITS: dict[str, tuple[str, float]] = {
+    "%": ("pct", 1), "percent": ("pct", 1),
+    "dollar": ("usd", 1), "dollars": ("usd", 1), "usd": ("usd", 1), "euro": ("eur", 1), "euros": ("eur", 1),
+    "second": ("duration", 1), "seconds": ("duration", 1), "sec": ("duration", 1), "secs": ("duration", 1),
+    "minute": ("duration", 60), "minutes": ("duration", 60), "min": ("duration", 60), "mins": ("duration", 60),
+    "hour": ("duration", 3600), "hours": ("duration", 3600), "hr": ("duration", 3600), "hrs": ("duration", 3600),
+    "day": ("duration", 86400), "days": ("duration", 86400),
+    "week": ("duration", 604800), "weeks": ("duration", 604800),
+    "month": ("duration", 2592000), "months": ("duration", 2592000),
+    "year": ("duration", 31536000), "years": ("duration", 31536000), "yr": ("duration", 31536000), "yrs": ("duration", 31536000),
+    "mm": ("length", 0.001), "cm": ("length", 0.01), "km": ("length", 1000), "kilometer": ("length", 1000),
+    "kilometers": ("length", 1000), "kilometre": ("length", 1000), "kilometres": ("length", 1000),
+    "meter": ("length", 1), "meters": ("length", 1), "metre": ("length", 1), "metres": ("length", 1),
+    "mile": ("length", 1609.344), "miles": ("length", 1609.344),
+    "gram": ("mass", 1), "grams": ("mass", 1), "kg": ("mass", 1000), "kilogram": ("mass", 1000), "kilograms": ("mass", 1000),
+    "lb": ("mass", 453.592), "lbs": ("mass", 453.592), "pound": ("mass", 453.592), "pounds": ("mass", 453.592),
+    "degree": ("temp", 1), "degrees": ("temp", 1), "\u00b0": ("temp", 1), "\u00b0c": ("temp", 1), "\u00b0f": ("temp", 1),
+    "character": ("chars", 1), "characters": ("chars", 1), "char": ("chars", 1), "chars": ("chars", 1),
+}
+_CURRENCY = {"$": "usd", "\u20ac": "eur", "\u00a3": "gbp"}
 _SCALE = {"thousand": 1e3, "k": 1e3, "million": 1e6, "m": 1e6, "billion": 1e9, "b": 1e9}
+_MONTHS = {m: i for i, m in enumerate(("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1)}
+_FILLER = {"business", "working", "calendar"}  # "4 business hours"
+
+_CLOCK = re.compile(
+    r"(?<![\w.:])(\d{1,2}):(\d{2})\s*(am|pm|a\.m\.|p\.m\.)?(?![\w:])|(?<![\w.:])(\d{1,2})\s*(am|pm|a\.m\.|p\.m\.)(?!\w)", re.I)
+_ORDINAL = re.compile(r"(?<![\w.])(\d{1,2})(?:st|nd|rd|th)\b", re.I)
+_MONTH_DAY = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\b(?!\s*(?:st|nd|rd|th)?\s*[:\d])", re.I)
+# A number glued to a letter in front ("Q3", "IPv6") is a label, not a quantity
+_NUMBER = re.compile(
+    r"(?<![A-Za-z\d.])(?P<sign>-|minus\s+)?(?P<cur>[$\u20ac\u00a3])?(?P<num>\d[\d,]*(?:\.\d+)?)"
+    r"(?:\s*(?P<scale>million|billion|thousand|[mkb])\b)?(?:\s*(?P<unit>%|\u00b0[cf]?|[A-Za-z]+(?:\s+[A-Za-z]+)?))?", re.I)
+
+_SMALL = {w: i for i, w in enumerate(("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen "
+                                      "fifteen sixteen seventeen eighteen nineteen").split())}
+_TENS = {w: 10 * i for i, w in enumerate("twenty thirty forty fifty sixty seventy eighty ninety".split(), 2)}
+_BIG = {"hundred": 100, "thousand": 1e3, "million": 1e6, "billion": 1e9}
+_ALTS = "|".join(sorted([*_SMALL, *_TENS, *_BIG], key=len, reverse=True))
+_STARTS = "|".join(sorted([*_SMALL, *_TENS], key=len, reverse=True))
+_NUMWORD = re.compile(rf"\b(?:{_STARTS})(?:[ -](?:and )?(?:{_ALTS}))*\b", re.I)
+
+
+def _unit_of(unit_text: str | None) -> tuple[str, float] | None:
+    if not unit_text:
+        return None
+    words = unit_text.lower().split()
+    if words and words[0] in _FILLER and len(words) > 1:
+        words = words[1:]
+    return _UNITS.get(words[0]) if words else None
+
+
+def _words_to_number(run: str) -> float:
+    total = current = 0.0
+    for word in re.split(r"[ -]+", run.lower()):
+        if word == "and":
+            continue
+        if word in _SMALL:
+            current += _SMALL[word]
+        elif word in _TENS:
+            current += _TENS[word]
+        elif word == "hundred":
+            current = (current or 1) * 100
+        else:
+            total += (current or 1) * _BIG[word]
+            current = 0.0
+    return total + current
+
+
+def _extract(text: str) -> list[Quantity]:
+    """The quantities a claim states, with dimensions. Clock times, days of the month and dates first, so their
+    digits are not read again as bare numbers; then written-out numbers; then the rest."""
+    found: list[Quantity] = []
+
+    def take(pattern, handler, work):
+        def sub(m):
+            found.append(handler(m))
+            return " " * (m.end() - m.start())
+        return pattern.sub(sub, work)
+
+    def clock(m):
+        hour, minute, ap = (m.group(1), m.group(2), m.group(3)) if m.group(1) else (m.group(4), "00", m.group(5))
+        h = (int(hour) % 12 + (12 if ap.lower().startswith("p") else 0)) if ap else int(hour)
+        return Quantity(float(h * 60 + int(minute)), "clock")
+
+    work = take(_CLOCK, clock, text)
+    work = take(_ORDINAL, lambda m: Quantity(float(m.group(1)), "day"), work)
+    work = take(_MONTH_DAY, lambda m: Quantity(float(_MONTHS[m.group(1).lower()[:3]] * 100 + int(m.group(2))), "date"), work)
+
+    for m in list(_NUMBER.finditer(work)):
+        try:
+            value = float(m.group("num").replace(",", ""))
+        except ValueError:
+            continue
+        if m.group("scale"):
+            value *= _SCALE[m.group("scale").lower()]
+        dim, factor = None, 1.0
+        if m.group("cur"):
+            dim = _CURRENCY[m.group("cur")]
+        else:
+            unit = _unit_of(m.group("unit"))
+            if unit:
+                dim, factor = unit
+        if m.group("sign"):
+            value = -value
+        found.append(Quantity(round(value * factor, 6), dim))
+    work = _NUMBER.sub(lambda m: " " * (m.end() - m.start()), work)
+    for m in _NUMWORD.finditer(work):
+        value = _words_to_number(m.group(0))
+        following = work[m.end():m.end() + 24].split()
+        unit = _UNITS.get(following[0].lower().strip(".,;")) if following else None
+        if unit is None and following and following[0].lower() in _FILLER and len(following) > 1:
+            unit = _UNITS.get(following[1].lower().strip(".,;"))
+        if m.group(0).lower() == "one" and unit is None:  # "one" is mostly a pronoun: only a figure with a unit
+            continue
+        found.append(Quantity(round(value * (unit[1] if unit else 1), 6), unit[0] if unit else None))
+
+    return list(dict.fromkeys(found))
 
 
 def _quantities(text: str) -> set[float]:
-    values = set()
-    for number, unit in _QUANTITY.findall(text):
-        try:
-            value = float(number.replace(",", ""))
-        except ValueError:
-            continue
-        values.add(round(value * _SCALE.get(unit.lower(), 1), 6))
-    return values
+    """The figures a claim states, as plain numbers in base units (see Quantity)."""
+    return {q.value for q in _extract(text)}
+
+
+def _comparable(a: Quantity, b: Quantity) -> bool:
+    return a.dim == b.dim or a.dim is None or b.dim is None
 
 
 def _omits_value(candidate: str, existing: str) -> set[float] | None:
-    """The existing claim states a quantity and the candidate states none.
-    In an ATTRIBUTE domain the value IS the claim, so a candidate that
-    drops it can't confirm it, however much wording they share ("the
-    limit has been removed" vs "the limit is $10,000"). Returns the
-    existing claim's values when that's the case."""
-    theirs = _quantities(existing)
-    return theirs if theirs and not _quantities(candidate) else None
+    """The existing claim states a quantity and the candidate states none that could stand in for it. In an
+    ATTRIBUTE domain the value IS the claim, so a candidate that drops it can't confirm it, however much wording
+    they share ("the limit has been removed" vs "the limit is $10,000"). A candidate that states only a figure of
+    another kind ("within 30 days" against "$500") hasn't stated the value either. Returns the existing claim's
+    values when that's the case."""
+    theirs, mine = _extract(existing), _extract(candidate)
+    if not theirs or any(_comparable(x, y) for x in theirs for y in mine):
+        return None
+    return {q.value for q in theirs}
 
 
-def _competing_values(a: str, b: str) -> tuple[set[float], set[float]] | None:
-    """Two claims compete on value when EACH states a quantity the other
-    doesn't -- "$10,000" vs "$5,000,000". One side merely adding a figure
-    ("$10,000 per order, CFO approval above that") is elaboration, not
-    competition, so a superset still reinforces. Returns the two unshared
-    sets when they compete, None otherwise."""
-    qa, qb = _quantities(a), _quantities(b)
+def _competing_values(a: str, b: str, strict: bool = False) -> tuple[set[float], set[float]] | None:
+    """Two claims compete on value when each states a quantity the other doesn't AND some pair of those is
+    comparable: "$10,000" vs "$5,000,000", but not "$500 a year" vs "30 days". One side merely adding a figure
+    ("$10,000 per order, CFO approval above that") is elaboration, not competition, so a superset still
+    reinforces. Returns the unshared values that have a comparable counterpart on the other side, else None.
+
+    strict=True counts only quantities known to measure the same thing: equal dimensions (a bare number matches
+    only another bare number). The default is the conservative reading, where a bare number could be anything,
+    which suits a rule that raises flags; a signal that adds a conflict nothing else saw should be strict."""
+    qa, qb = set(_extract(a)), set(_extract(b))
     only_a, only_b = qa - qb, qb - qa
-    if only_a and only_b:
-        return only_a, only_b
-    return None
+    pairs = [(x, y) for x in only_a for y in only_b if (x.dim == y.dim if strict else _comparable(x, y))]
+    if not pairs:
+        return None
+    return {x.value for x, _ in pairs}, {y.value for _, y in pairs}
 
 
 # Words that flip or void a claim. Token overlap ignores them: "no longer need

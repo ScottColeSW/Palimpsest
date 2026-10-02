@@ -36,11 +36,14 @@ class StubNLI:
         return {"entailment": 0.0, "neutral": 1.0, "contradiction": 0.0}
 
 
+_CLAIM_TEXTS = set()   # realistic claim texts that stand in for the claim vector (filled in below)
+
+
 def embedder(sims):
     """text -> vector so that cosine(claim, text) is roughly sims[text]; claim is the unit x axis."""
     def embed(text):
         s = sims.get(text, 0.0)
-        return [1.0, 0.0] if text == "CLAIM" else [s, (1 - s * s) ** 0.5]
+        return [1.0, 0.0] if text == "CLAIM" or text in _CLAIM_TEXTS else [s, (1 - s * s) ** 0.5]
     return embed
 
 
@@ -199,3 +202,52 @@ def test_the_real_model_gives_the_same_answers_batched_and_one_by_one():
     batched = many.compare_many(pairs)
     for a, b in zip(singles, batched):
         assert max(abs(a[k] - b[k]) for k in a) < 1e-3
+
+
+# -- figures: a conflict NLI misses, found by comparing quantities with their units ---------------------
+
+ALLOWANCE = {"id": "c7", "text": "Remote employees may expense up to $500 per year for home office equipment."}
+RAISED = "The home office allowance was increased to $750 per year starting this quarter."
+DEADLINE = "Receipts for home office purchases must be submitted within 30 days."
+EVENT_CLAIM = "A second outage lasted 12 minutes on March 19."
+_CLAIM_TEXTS.update({RAISED, DEADLINE, EVENT_CLAIM})
+
+
+def test_comparable_differing_figures_on_the_same_subject_raise_a_conflict_nli_missed():
+    """NLI sees "increased to $750" beside "$500" as compatible. The figures say otherwise."""
+    v = judge(StubNLI(), {ALLOWANCE["text"]: 0.8, RAISED: 0.8}, refiner("replacement", "was increased to $750"))(RAISED, [ALLOWANCE], "attribute")
+    assert v["relation"] == "supersedes" and "figures differ (750 vs 500)" in v["reason"]
+
+
+def test_without_a_refiner_citation_the_figure_conflict_is_a_plain_collision():
+    v = judge(StubNLI(), {ALLOWANCE["text"]: 0.8})(RAISED, [ALLOWANCE], "attribute")
+    assert v["relation"] == "collides"
+
+
+def test_figures_of_a_different_kind_do_not_conflict():
+    """A 30-day deadline beside a $500 allowance: the rules once called this a collision."""
+    v = judge(StubNLI(), {ALLOWANCE["text"]: 0.8})(DEADLINE, [ALLOWANCE], "attribute")
+    assert v["relation"] == "coexists"
+
+
+def test_the_figure_signal_needs_the_same_subject():
+    v = judge(StubNLI(), {ALLOWANCE["text"]: 0.2})(RAISED, [ALLOWANCE], "attribute")
+    assert v["relation"] == "new"
+
+
+def test_the_figure_signal_can_be_switched_off():
+    v = judge(StubNLI(), {ALLOWANCE["text"]: 0.8}, figures=False)(RAISED, [ALLOWANCE], "attribute")
+    assert v["relation"] == "coexists"
+
+
+def test_the_figure_signal_never_lowers_a_flag():
+    """NLI already finds the conflict: figures change nothing about it."""
+    nli = StubNLI(both={ALLOWANCE["text"]: (0.0, 0.0, 1.0)})
+    for figures in (True, False):
+        assert judge(nli, {ALLOWANCE["text"]: 0.8}, figures=figures)(RAISED, [ALLOWANCE], "attribute")["relation"] == "collides"
+
+
+def test_in_an_event_domain_differing_figures_are_another_event():
+    held = {"id": "c8", "text": "The outage lasted 40 minutes on March 3."}
+    v = judge(StubNLI(), {held["text"]: 0.9})(EVENT_CLAIM, [held], "event")
+    assert v["relation"] == "coexists"

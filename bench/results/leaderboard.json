@@ -2027,5 +2027,190 @@
     "supersedes": 0.833
    }
   }
+ },
+ {
+  "contender": "rules",
+  "suite": "judge",
+  "split": "dev",
+  "date": "2026-10-02T16:00:02+00:00",
+  "versions": {
+   "cases": "454c8fe5ec",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 77,
+   "accuracy": 0.44155844155844154,
+   "accuracy_ci": [
+    0.336,
+    0.553
+   ],
+   "relation_accuracy": 0.44155844155844154,
+   "unsafe_miss_rate": 0.3333333333333333,
+   "false_alarm_rate": 0.4307692307692308,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.3333333333333333,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.0,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 0.714,
+    "coexists": 0.267,
+    "collides": 0.667,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  }
+ },
+ {
+  "contender": "hybrid(qwen2.5:7b, no figures)",
+  "suite": "judge",
+  "split": "dev",
+  "date": "2026-10-02T16:00:03+00:00",
+  "versions": {
+   "cases": "454c8fe5ec",
+   "judge_prompt": "f67a235f76",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 77,
+   "accuracy": 0.8961038961038961,
+   "accuracy_ci": [
+    0.808,
+    0.946
+   ],
+   "relation_accuracy": 0.8961038961038961,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.07692307692307693,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.015384615384615385,
+   "missed_change_rate": 0.08333333333333333,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 1.0,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 1.0,
+    "coexists": 0.933,
+    "collides": 1.0,
+    "exception_of": 0.667,
+    "supersedes": 0.75
+   }
+  }
+ },
+ {
+  "contender": "hybrid(phi4-mini, no figures)",
+  "suite": "judge",
+  "split": "dev",
+  "date": "2026-10-02T16:00:03+00:00",
+  "versions": {
+   "cases": "454c8fe5ec",
+   "judge_prompt": "f67a235f76",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 77,
+   "accuracy": 0.8441558441558441,
+   "accuracy_ci": [
+    0.747,
+    0.909
+   ],
+   "relation_accuracy": 0.8441558441558441,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.15384615384615385,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.08333333333333333,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.58,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 1.0,
+    "coexists": 0.933,
+    "collides": 1.0,
+    "exception_of": 0.25,
+    "supersedes": 0.833
+   }
+  }
+ },
+ {
+  "contender": "hybrid(qwen2.5:7b)",
+  "suite": "judge",
+  "split": "dev",
+  "date": "2026-10-02T16:04:36+00:00",
+  "versions": {
+   "cases": "454c8fe5ec",
+   "judge_prompt": "f67a235f76",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 77,
+   "accuracy": 0.9090909090909091,
+   "accuracy_ci": [
+    0.824,
+    0.955
+   ],
+   "relation_accuracy": 0.9090909090909091,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.07692307692307693,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.015384615384615385,
+   "missed_change_rate": 0.041666666666666664,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.81,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 1.0,
+    "coexists": 0.933,
+    "collides": 1.0,
+    "exception_of": 0.667,
+    "supersedes": 0.833
+   }
+  }
+ },
+ {
+  "contender": "hybrid(phi4-mini)",
+  "suite": "judge",
+  "split": "dev",
+  "date": "2026-10-02T16:04:36+00:00",
+  "versions": {
+   "cases": "454c8fe5ec",
+   "judge_prompt": "f67a235f76",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 77,
+   "accuracy": 0.8571428571428571,
+   "accuracy_ci": [
+    0.762,
+    0.918
+   ],
+   "relation_accuracy": 0.8571428571428571,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.15384615384615385,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.58,
+   "per_relation": {
+    "new": 1.0,
+    "reinforces": 1.0,
+    "coexists": 0.933,
+    "collides": 1.0,
+    "exception_of": 0.25,
+    "supersedes": 0.917
+   }
+  }
  }
 ]

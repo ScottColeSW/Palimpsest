@@ -234,7 +234,7 @@ def _quoted(evidence, claim: str) -> bool:
 
 
 def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.48,
-                 timings: dict | None = None):
+                 figures: bool = True, timings: dict | None = None):
     """A judge with no chat model deciding the relation, and nothing scripted about wording.
 
     - A pretrained NLI model compares the new claim with each held claim in both directions. Entailment both
@@ -243,6 +243,10 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
       that show it is bounded to one case (`exception_of`) or says the held claim stopped being true
       (`supersedes`). The citation is checked against the claim; one that isn't there downgrades to `collides`.
       So the refiner can only add precision, never hide a conflict: the safe answer is the default.
+    - A figure conflict also counts as a conflict (`figures=True`): when the two claims are about the same
+      subject (similarity at least `related`) and state figures of the same kind that differ ("$750" against "$500",
+      not "30 days" against "$500"; see consult.Quantity), a sentence pair NLI finds merely neutral is still a
+      conflict. This can only raise a flag, never lower one.
     - Neither: embedding similarity decides between `coexists` (same subject, compatible) and `new`. In an
       event domain a conflict is just another event, so it coexists.
 
@@ -252,6 +256,7 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
     nature. `timings`, if given, accumulates seconds spent per stage (embed, nli, refine). Returns the standard
     judge callable."""
     import time
+    from .consult import _competing_values
     from .embed import cosine
 
     def timed(stage, fn, *args):
@@ -278,8 +283,11 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
             sim = n.get("similarity")
             if sim is None and qv is not None:
                 sim = cosine(qv, timed("embed", embedder, n["text"]))
-            scored.append({"n": n, "same": min(fwd["entailment"], back["entailment"]),
-                           "conflict": max(fwd["contradiction"], back["contradiction"]), "sim": sim or 0.0})
+            nli_conflict = max(fwd["contradiction"], back["contradiction"])
+            figs = _competing_values(claim, n["text"], strict=True) if figures and (sim or 0.0) >= related else None
+            scored.append({"n": n, "same": min(fwd["entailment"], back["entailment"]), "figs": figs,
+                           "conflict": max(nli_conflict, 1.0 if figs else 0.0), "nli_conflict": nli_conflict,
+                           "sim": sim or 0.0})
         same = max(scored, key=lambda s: s["same"])
         if same["same"] >= entail:
             return {"relation": "reinforces", "related_id": same["n"]["id"], "weight": 0.5,
@@ -290,7 +298,11 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
             if kind == "event":
                 return {"relation": "coexists", "related_id": held["id"], "weight": 0.5,
                         "reason": "NLI: they differ, but in an event domain different events coexist"}
-            base = f"NLI: contradiction {conflict['conflict']:.2f}"
+            if conflict["figs"] and conflict["nli_conflict"] < contradict:
+                mine, theirs = (", ".join(f"{v:g}" for v in sorted(vals)) for vals in conflict["figs"])
+                base = f"figures differ ({mine} vs {theirs}) on the same subject; NLI contradiction {conflict['nli_conflict']:.2f}"
+            else:
+                base = f"NLI: contradiction {conflict['conflict']:.2f}"
             try:
                 verdict = timed("refine", refiner, held["text"], claim)
             except Exception:  # noqa: BLE001 -- a refiner failure leaves the safe default

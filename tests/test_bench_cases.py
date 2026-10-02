@@ -20,18 +20,14 @@ from palimpsest.consult import _quantities
 CASES = json.loads((Path(__file__).parent.parent / "bench" / "cases.json").read_text(encoding="utf-8"))
 JUDGE, FRAME = CASES["judge"], CASES["frame"]
 RELATIONS = {"new", "reinforces", "coexists", "collides", "exception_of", "supersedes"}
-WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "twelve": 12}
 # The guide's change cues: the only thing separating a replacement from a conflict
 CUE = re.compile(r"\b(effective|now|no longer|as of|moved|changed|raised|increased|tightened|dropped|migrated|retired|instead|"
                  r"switched|replaced|stepped down|extended|starting (?:next|this|today))\b", re.I)
 
 
 def _figures(text: str) -> set[float]:
-    found = set(_quantities(text))
-    for word, value in WORDS.items():
-        if re.search(rf"\b{word}\b", text, re.I):
-            found.add(float(value))
-    return found
+    """The library's own reading of a claim's figures (written-out numbers, units and clock times included)."""
+    return set(_quantities(text))
 
 
 def _related(case):
