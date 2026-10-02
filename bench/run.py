@@ -217,7 +217,7 @@ def record(entry: dict, rows: list[dict]) -> None:
     board.append(entry)
     LEADERBOARD.write_text(json.dumps(board, indent=1), encoding="utf-8")
     safe = entry["contender"].replace(":", "_").replace("/", "_")
-    (RESULTS / f"{entry['suite']}-{entry['split']}-{safe}-{entry['versions'][entry['prompt_key']]}.json").write_text(
+    (RESULTS / f"{entry['suite']}-{entry['split']}-{safe}-{entry['versions'][entry['prompt_key']]}-c{entry['versions']['cases'][:6]}.json").write_text(
         json.dumps({"entry": entry, "cases": rows}, indent=1), encoding="utf-8")
 
 

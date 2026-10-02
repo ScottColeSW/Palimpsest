@@ -3,155 +3,246 @@
   "contender": "mistral:7b",
   "suite": "frame",
   "split": "heldout",
-  "date": "2026-10-01T19:33:24+00:00",
+  "date": "2026-10-02T16:26:28+00:00",
   "versions": {
-   "cases": "35465e5603",
+   "cases": "454c8fe5ec",
    "judge_prompt": "d4b980ecc3",
    "frame_prompt": "e07b63a2b4"
   },
   "prompt_key": "frame_prompt",
   "metrics": {
-   "n": 18,
+   "n": 30,
    "worth_accuracy": 0.6666666666666666,
-   "scope_accuracy": 0.833,
-   "kind_accuracy": 0.917,
+   "scope_accuracy": 0.65,
+   "kind_accuracy": 0.7,
    "domain_reuse_accuracy": 1.0,
    "unusable_rate": 0.0,
-   "mean_seconds": 1.03
+   "mean_seconds": 1.17
   }
  },
  "cases": [
   {
-   "id": "f002",
+   "id": "f037",
    "usable": true,
-   "seconds": 1.15,
+   "seconds": 1.31,
    "worth_ok": true,
    "scope_ok": true,
    "kind_ok": true
   },
   {
-   "id": "f004",
+   "id": "f038",
    "usable": true,
-   "seconds": 1.27,
+   "seconds": 1.15,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": false,
+   "domain_ok": true
+  },
+  {
+   "id": "f039",
+   "usable": true,
+   "seconds": 1.16,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f040",
+   "usable": true,
+   "seconds": 1.14,
    "worth_ok": true,
    "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f041",
+   "usable": true,
+   "seconds": 1.21,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f042",
+   "usable": true,
+   "seconds": 1.23,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": false
+  },
+  {
+   "id": "f043",
+   "usable": true,
+   "seconds": 1.1,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": false,
+   "domain_ok": true
+  },
+  {
+   "id": "f044",
+   "usable": true,
+   "seconds": 1.23,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": false,
+   "domain_ok": true
+  },
+  {
+   "id": "f045",
+   "usable": true,
+   "seconds": 1.07,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f046",
+   "usable": true,
+   "seconds": 1.38,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": false
+  },
+  {
+   "id": "f047",
+   "usable": true,
+   "seconds": 1.12,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f048",
+   "usable": true,
+   "seconds": 1.34,
+   "worth_ok": true,
+   "scope_ok": false,
+   "kind_ok": true
+  },
+  {
+   "id": "f049",
+   "usable": true,
+   "seconds": 1.33,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f050",
+   "usable": true,
+   "seconds": 1.31,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f051",
+   "usable": true,
+   "seconds": 1.17,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f052",
+   "usable": true,
+   "seconds": 1.28,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f053",
+   "usable": true,
+   "seconds": 1.25,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f054",
+   "usable": true,
+   "seconds": 1.25,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": true
+  },
+  {
+   "id": "f055",
+   "usable": true,
+   "seconds": 1.3,
+   "worth_ok": true,
+   "scope_ok": true,
+   "kind_ok": false
+  },
+  {
+   "id": "f056",
+   "usable": true,
+   "seconds": 1.13,
+   "worth_ok": true,
+   "scope_ok": false,
    "kind_ok": true,
    "domain_ok": true
   },
   {
-   "id": "f006",
+   "id": "f057",
    "usable": true,
-   "seconds": 1.04,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
+   "seconds": 1.0,
+   "worth_ok": false
   },
   {
-   "id": "f008",
-   "usable": true,
-   "seconds": 1.07,
-   "worth_ok": true,
-   "scope_ok": false,
-   "kind_ok": false
-  },
-  {
-   "id": "f010",
-   "usable": true,
-   "seconds": 0.91,
-   "worth_ok": true,
-   "scope_ok": false,
-   "kind_ok": true
-  },
-  {
-   "id": "f012",
-   "usable": true,
-   "seconds": 0.96,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f014",
-   "usable": true,
-   "seconds": 0.96,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f016",
-   "usable": true,
-   "seconds": 1.08,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f018",
-   "usable": true,
-   "seconds": 1.2,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f020",
+   "id": "f058",
    "usable": true,
    "seconds": 0.95,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
+   "worth_ok": false
   },
   {
-   "id": "f022",
+   "id": "f059",
+   "usable": true,
+   "seconds": 1.06,
+   "worth_ok": false
+  },
+  {
+   "id": "f060",
+   "usable": true,
+   "seconds": 1.15,
+   "worth_ok": false
+  },
+  {
+   "id": "f061",
    "usable": true,
    "seconds": 1.08,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f024",
-   "usable": true,
-   "seconds": 1.13,
-   "worth_ok": true,
-   "scope_ok": true,
-   "kind_ok": true
-  },
-  {
-   "id": "f026",
-   "usable": true,
-   "seconds": 0.97,
    "worth_ok": false
   },
   {
-   "id": "f028",
+   "id": "f062",
    "usable": true,
-   "seconds": 1.24,
+   "seconds": 1.15,
    "worth_ok": false
   },
   {
-   "id": "f030",
+   "id": "f063",
    "usable": true,
-   "seconds": 0.9,
+   "seconds": 1.02,
    "worth_ok": false
   },
   {
-   "id": "f032",
+   "id": "f064",
    "usable": true,
-   "seconds": 0.84,
+   "seconds": 0.93,
    "worth_ok": false
   },
   {
-   "id": "f034",
+   "id": "f065",
    "usable": true,
-   "seconds": 0.91,
+   "seconds": 1.22,
    "worth_ok": false
   },
   {
-   "id": "f036",
+   "id": "f066",
    "usable": true,
-   "seconds": 0.83,
+   "seconds": 1.1,
    "worth_ok": false
   }
  ]

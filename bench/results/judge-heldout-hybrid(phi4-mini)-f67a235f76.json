@@ -1,38 +1,38 @@
 {
  "entry": {
-  "contender": "qwen2.5:3b+checks",
+  "contender": "hybrid(phi4-mini)",
   "suite": "judge",
   "split": "heldout",
-  "date": "2026-10-02T16:39:12+00:00",
+  "date": "2026-10-02T16:51:04+00:00",
   "versions": {
    "cases": "454c8fe5ec",
-   "judge_prompt": "d23135ba6e",
+   "judge_prompt": "f67a235f76",
    "frame_prompt": "e07b63a2b4"
   },
   "prompt_key": "judge_prompt",
   "metrics": {
    "n": 72,
-   "accuracy": 0.3472222222222222,
+   "accuracy": 0.6944444444444444,
    "accuracy_ci": [
-    0.248,
-    0.462
+    0.58,
+    0.789
    ],
-   "relation_accuracy": 0.3472222222222222,
-   "unsafe_miss_rate": 1.0,
-   "false_alarm_rate": 0.0,
-   "unusable_rate": 0.013888888888888888,
+   "relation_accuracy": 0.6944444444444444,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.16666666666666666,
+   "unusable_rate": 0.0,
    "coerced_rate": 0.0,
-   "wrong_replacement_rate": 0.0,
-   "missed_change_rate": 0.9583333333333334,
-   "forgery_flagged": 0.0,
-   "mean_seconds": 1.06,
+   "wrong_replacement_rate": 0.016666666666666666,
+   "missed_change_rate": 0.0,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 0.41,
    "per_relation": {
-    "new": 1.0,
-    "reinforces": 0.833,
-    "coexists": 0.25,
-    "collides": 0.0,
-    "exception_of": 0.0,
-    "supersedes": 0.0
+    "new": 0.5,
+    "reinforces": 0.5,
+    "coexists": 0.917,
+    "collides": 0.917,
+    "exception_of": 0.417,
+    "supersedes": 0.917
    }
   }
  },
@@ -47,49 +47,49 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 15.55,
+   "seconds": 0.0,
    "why": null,
    "coerced": false
   },
   {
    "id": "j079",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "collides",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "false_alarm",
    "tags": [
     "lookalike"
    ],
-   "seconds": 0.72,
+   "seconds": 3.6,
    "why": null,
    "coerced": false
   },
   {
    "id": "j080",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "lookalike"
    ],
-   "seconds": 0.78,
+   "seconds": 0.15,
    "why": null,
    "coerced": false
   },
   {
    "id": "j081",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.72,
+   "seconds": 0.16,
    "why": null,
    "coerced": false
   },
@@ -103,7 +103,7 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.85,
+   "seconds": 0.0,
    "why": null,
    "coerced": false
   },
@@ -117,21 +117,21 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.73,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
   {
    "id": "j084",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "lookalike"
    ],
-   "seconds": 0.8,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
@@ -145,7 +145,7 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.86,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
@@ -159,35 +159,35 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.75,
+   "seconds": 0.0,
    "why": null,
    "coerced": false
   },
   {
    "id": "j087",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "lookalike"
    ],
-   "seconds": 0.79,
+   "seconds": 0.16,
    "why": null,
    "coerced": false
   },
   {
    "id": "j088",
    "expected": "new",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.74,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
@@ -201,7 +201,7 @@
    "tags": [
     "unrelated"
    ],
-   "seconds": 0.85,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
@@ -216,21 +216,21 @@
     "distractor",
     "paraphrase"
    ],
-   "seconds": 0.74,
+   "seconds": 1.04,
    "why": null,
    "coerced": false
   },
   {
    "id": "j091",
    "expected": "reinforces",
-   "predicted": "reinforces",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "restatement"
    ],
-   "seconds": 0.81,
+   "seconds": 0.18,
    "why": null,
    "coerced": false
   },
@@ -246,54 +246,54 @@
     "figure",
     "restatement"
    ],
-   "seconds": 0.83,
+   "seconds": 0.24,
    "why": null,
    "coerced": false
   },
   {
    "id": "j093",
    "expected": "reinforces",
-   "predicted": "reinforces",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "figure",
     "restatement",
     "units"
    ],
-   "seconds": 0.96,
+   "seconds": 0.23,
    "why": null,
    "coerced": false
   },
   {
    "id": "j094",
    "expected": "reinforces",
-   "predicted": "reinforces",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "distractor",
     "figure",
     "paraphrase"
    ],
-   "seconds": 1.01,
+   "seconds": 0.26,
    "why": null,
    "coerced": false
   },
   {
    "id": "j095",
    "expected": "reinforces",
-   "predicted": "reinforces",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": true,
-   "error": null,
+   "correct": false,
+   "error": "wrong",
    "tags": [
     "figure",
     "restatement"
    ],
-   "seconds": 0.81,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
@@ -310,7 +310,7 @@
     "restatement",
     "units"
    ],
-   "seconds": 0.78,
+   "seconds": 0.2,
    "why": null,
    "coerced": false
   },
@@ -324,15 +324,15 @@
    "tags": [
     "paraphrase"
    ],
-   "seconds": 0.86,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
   {
    "id": "j098",
    "expected": "reinforces",
-   "predicted": "new",
-   "related_ok": false,
+   "predicted": "coexists",
+   "related_ok": true,
    "correct": false,
    "error": "wrong",
    "tags": [
@@ -341,7 +341,7 @@
     "restatement",
     "units"
    ],
-   "seconds": 0.8,
+   "seconds": 0.22,
    "why": null,
    "coerced": false
   },
@@ -355,14 +355,14 @@
    "tags": [
     "restatement"
    ],
-   "seconds": 0.76,
+   "seconds": 0.15,
    "why": null,
    "coerced": false
   },
   {
    "id": "j100",
    "expected": "reinforces",
-   "predicted": "new",
+   "predicted": "coexists",
    "related_ok": false,
    "correct": false,
    "error": "wrong",
@@ -371,7 +371,7 @@
     "figure",
     "restatement"
    ],
-   "seconds": 0.7,
+   "seconds": 0.21,
    "why": null,
    "coerced": false
   },
@@ -385,115 +385,115 @@
    "tags": [
     "restatement"
    ],
-   "seconds": 0.86,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
   {
    "id": "j102",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
+   "predicted": "collides",
+   "related_ok": true,
    "correct": false,
-   "error": "wrong",
+   "error": "false_alarm",
    "tags": [
     "added_detail",
     "distractor",
     "figure"
    ],
-   "seconds": 0.79,
+   "seconds": 0.49,
    "why": null,
    "coerced": false
   },
   {
    "id": "j103",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "other_aspect"
    ],
-   "seconds": 0.87,
+   "seconds": 0.17,
    "why": null,
    "coerced": false
   },
   {
    "id": "j104",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "added_detail",
     "distractor",
     "figure",
     "units"
    ],
-   "seconds": 0.76,
+   "seconds": 0.24,
    "why": null,
    "coerced": false
   },
   {
    "id": "j105",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "other_aspect"
    ],
-   "seconds": 0.72,
+   "seconds": 0.14,
    "why": null,
    "coerced": false
   },
   {
    "id": "j106",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "other_aspect"
    ],
-   "seconds": 0.84,
+   "seconds": 0.19,
    "why": null,
    "coerced": false
   },
   {
    "id": "j107",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "added_detail",
     "figure",
     "units"
    ],
-   "seconds": 0.74,
+   "seconds": 0.15,
    "why": null,
    "coerced": false
   },
   {
    "id": "j108",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "figure",
     "other_aspect"
    ],
-   "seconds": 0.83,
+   "seconds": 0.18,
    "why": null,
    "coerced": false
   },
@@ -509,22 +509,22 @@
     "figure",
     "units"
    ],
-   "seconds": 0.87,
+   "seconds": 0.18,
    "why": null,
    "coerced": false
   },
   {
    "id": "j110",
    "expected": "coexists",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "coexists",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "other_aspect"
    ],
-   "seconds": 0.84,
+   "seconds": 0.19,
    "why": null,
    "coerced": false
   },
@@ -538,23 +538,23 @@
    "tags": [
     "other_aspect"
    ],
-   "seconds": 0.95,
+   "seconds": 0.17,
    "why": null,
    "coerced": false
   },
   {
    "id": "j112",
    "expected": "coexists",
-   "predicted": "reinforces",
+   "predicted": "coexists",
    "related_ok": true,
-   "correct": false,
-   "error": "wrong",
+   "correct": true,
+   "error": null,
    "tags": [
     "different_event",
     "distractor",
     "figure"
    ],
-   "seconds": 0.96,
+   "seconds": 0.22,
    "why": null,
    "coerced": false
   },
@@ -568,166 +568,166 @@
    "tags": [
     "different_event"
    ],
-   "seconds": 0.94,
+   "seconds": 0.13,
    "why": null,
    "coerced": false
   },
   {
    "id": "j114",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "value_change"
    ],
-   "seconds": 0.84,
+   "seconds": 0.54,
    "why": null,
    "coerced": false
   },
   {
    "id": "j115",
    "expected": "collides",
-   "predicted": "coexists",
+   "predicted": "collides",
    "related_ok": true,
-   "correct": false,
-   "error": "unsafe_miss",
+   "correct": true,
+   "error": null,
    "tags": [
     "opposite"
    ],
-   "seconds": 0.92,
+   "seconds": 0.45,
    "why": null,
    "coerced": false
   },
   {
    "id": "j116",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "figure_change",
     "value_change"
    ],
-   "seconds": 0.69,
+   "seconds": 0.5,
    "why": null,
    "coerced": false
   },
   {
    "id": "j117",
    "expected": "collides",
-   "predicted": "reinforces",
+   "predicted": "collides",
    "related_ok": true,
-   "correct": false,
-   "error": "unsafe_miss",
+   "correct": true,
+   "error": null,
    "tags": [
     "figure_change",
     "value_change"
    ],
-   "seconds": 0.91,
+   "seconds": 0.42,
    "why": null,
    "coerced": false
   },
   {
    "id": "j118",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "value_change"
    ],
-   "seconds": 0.88,
+   "seconds": 0.54,
    "why": null,
    "coerced": false
   },
   {
    "id": "j119",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "figure_change",
     "value_change"
    ],
-   "seconds": 0.82,
+   "seconds": 0.45,
    "why": null,
    "coerced": false
   },
   {
    "id": "j120",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "figure_change",
     "units",
     "value_change"
    ],
-   "seconds": 0.81,
+   "seconds": 0.52,
    "why": null,
    "coerced": false
   },
   {
    "id": "j121",
    "expected": "collides",
-   "predicted": "reinforces",
+   "predicted": "collides",
    "related_ok": true,
-   "correct": false,
-   "error": "unsafe_miss",
+   "correct": true,
+   "error": null,
    "tags": [
     "value_change"
    ],
-   "seconds": 0.77,
+   "seconds": 0.48,
    "why": null,
    "coerced": false
   },
   {
    "id": "j122",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "distractor",
     "value_change"
    ],
-   "seconds": 0.8,
+   "seconds": 0.49,
    "why": null,
    "coerced": false
   },
   {
    "id": "j123",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "unsafe_miss",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "forgery",
     "opposite"
    ],
-   "seconds": 0.81,
+   "seconds": 0.45,
    "why": null,
    "coerced": false
   },
   {
    "id": "j124",
    "expected": "collides",
-   "predicted": "new",
-   "related_ok": false,
+   "predicted": "supersedes",
+   "related_ok": true,
    "correct": false,
    "error": "unsafe_miss",
    "tags": [
@@ -735,247 +735,35 @@
     "forgery",
     "opposite"
    ],
-   "seconds": 0.91,
+   "seconds": 0.64,
    "why": null,
    "coerced": false
   },
   {
    "id": "j125",
    "expected": "collides",
-   "predicted": "reinforces",
+   "predicted": "collides",
    "related_ok": true,
-   "correct": false,
-   "error": "unsafe_miss",
+   "correct": true,
+   "error": null,
    "tags": [
     "figure_change",
     "units",
     "value_change"
    ],
-   "seconds": 0.9,
+   "seconds": 0.43,
    "why": null,
    "coerced": false
   },
   {
    "id": "j126",
    "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "bounded_instance",
-    "distractor",
-    "figure"
-   ],
-   "seconds": 0.97,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j127",
-   "expected": "exception_of",
-   "predicted": "reinforces",
-   "related_ok": true,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_system"
-   ],
-   "seconds": 1.15,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j128",
-   "expected": "exception_of",
-   "predicted": "reinforces",
-   "related_ok": true,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_period",
-    "distractor"
-   ],
-   "seconds": 0.96,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j129",
-   "expected": "exception_of",
-   "predicted": "reinforces",
-   "related_ok": true,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_system",
-    "figure"
-   ],
-   "seconds": 0.91,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j130",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_period",
-    "distractor",
-    "figure"
-   ],
-   "seconds": 0.82,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j131",
-   "expected": "exception_of",
-   "predicted": null,
-   "related_ok": false,
-   "correct": false,
-   "error": "unusable",
-   "tags": [
-    "bounded_instance",
-    "figure"
-   ],
-   "seconds": 0.95,
-   "why": "'c615f52e' is not a held claim",
-   "coerced": false
-  },
-  {
-   "id": "j132",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_project",
-    "distractor",
-    "figure"
-   ],
-   "seconds": 0.98,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j133",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_group"
-   ],
-   "seconds": 0.9,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j134",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_category",
-    "distractor",
-    "figure"
-   ],
-   "seconds": 0.91,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j135",
-   "expected": "exception_of",
-   "predicted": "reinforces",
-   "related_ok": true,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_period",
-    "figure"
-   ],
-   "seconds": 0.88,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j136",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_place",
-    "distractor",
-    "figure"
-   ],
-   "seconds": 0.82,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j137",
-   "expected": "exception_of",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "bounded_condition",
-    "figure"
-   ],
-   "seconds": 0.89,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j138",
-   "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "change_cue",
-    "distractor"
-   ],
-   "seconds": 0.75,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j139",
-   "expected": "supersedes",
-   "predicted": "reinforces",
-   "related_ok": true,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "change_cue"
-   ],
-   "seconds": 0.92,
-   "why": null,
-   "coerced": false
-  },
-  {
-   "id": "j140",
-   "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
-   "tags": [
-    "change_cue",
     "distractor",
     "figure"
    ],
@@ -984,138 +772,350 @@
    "coerced": false
   },
   {
-   "id": "j141",
-   "expected": "supersedes",
-   "predicted": "reinforces",
+   "id": "j127",
+   "expected": "exception_of",
+   "predicted": "collides",
    "related_ok": true,
    "correct": false,
-   "error": "wrong",
+   "error": "false_alarm",
+   "tags": [
+    "bounded_system"
+   ],
+   "seconds": 0.45,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j128",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_period",
+    "distractor"
+   ],
+   "seconds": 0.65,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j129",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_system",
+    "figure"
+   ],
+   "seconds": 0.44,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j130",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_period",
+    "distractor",
+    "figure"
+   ],
+   "seconds": 0.49,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j131",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_instance",
+    "figure"
+   ],
+   "seconds": 0.43,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j132",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_project",
+    "distractor",
+    "figure"
+   ],
+   "seconds": 0.74,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j133",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_group"
+   ],
+   "seconds": 0.43,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j134",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_category",
+    "distractor",
+    "figure"
+   ],
+   "seconds": 0.5,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j135",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_period",
+    "figure"
+   ],
+   "seconds": 0.59,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j136",
+   "expected": "exception_of",
+   "predicted": "exception_of",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "bounded_place",
+    "distractor",
+    "figure"
+   ],
+   "seconds": 0.7,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j137",
+   "expected": "exception_of",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "bounded_condition",
+    "figure"
+   ],
+   "seconds": 0.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j138",
+   "expected": "supersedes",
+   "predicted": "collides",
+   "related_ok": true,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "seconds": 0.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j139",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 0.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j140",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "seconds": 0.63,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j141",
+   "expected": "supersedes",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "figure"
    ],
-   "seconds": 0.92,
+   "seconds": 0.57,
    "why": null,
    "coerced": false
   },
   {
    "id": "j142",
    "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "distractor",
     "figure"
    ],
-   "seconds": 1.02,
+   "seconds": 0.59,
    "why": null,
    "coerced": false
   },
   {
    "id": "j143",
    "expected": "supersedes",
-   "predicted": "reinforces",
+   "predicted": "supersedes",
    "related_ok": true,
-   "correct": false,
-   "error": "wrong",
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "figure"
    ],
-   "seconds": 0.93,
+   "seconds": 0.54,
    "why": null,
    "coerced": false
   },
   {
    "id": "j144",
    "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "distractor",
     "figure"
    ],
-   "seconds": 0.9,
+   "seconds": 0.65,
    "why": null,
    "coerced": false
   },
   {
    "id": "j145",
    "expected": "supersedes",
-   "predicted": "reinforces",
+   "predicted": "supersedes",
    "related_ok": true,
-   "correct": false,
-   "error": "wrong",
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue"
    ],
-   "seconds": 0.83,
+   "seconds": 0.53,
    "why": null,
    "coerced": false
   },
   {
    "id": "j146",
    "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "distractor"
    ],
-   "seconds": 0.9,
+   "seconds": 0.62,
    "why": null,
    "coerced": false
   },
   {
    "id": "j147",
    "expected": "supersedes",
-   "predicted": "reinforces",
+   "predicted": "supersedes",
    "related_ok": true,
-   "correct": false,
-   "error": "wrong",
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "figure"
    ],
-   "seconds": 1.0,
+   "seconds": 0.5,
    "why": null,
    "coerced": false
   },
   {
    "id": "j148",
    "expected": "supersedes",
-   "predicted": "new",
-   "related_ok": false,
-   "correct": false,
-   "error": "wrong",
+   "predicted": "supersedes",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue",
     "distractor",
     "figure"
    ],
-   "seconds": 0.83,
+   "seconds": 0.58,
    "why": null,
    "coerced": false
   },
   {
    "id": "j149",
    "expected": "supersedes",
-   "predicted": "coexists",
+   "predicted": "supersedes",
    "related_ok": true,
-   "correct": false,
-   "error": "wrong",
+   "correct": true,
+   "error": null,
    "tags": [
     "change_cue"
    ],
-   "seconds": 0.93,
+   "seconds": 0.51,
    "why": null,
    "coerced": false
   }

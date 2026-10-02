@@ -95,7 +95,7 @@ Measured, with the evidence in the repos:
 - A gate built on value-aware collisions held all nine forged payloads in an adversarial battery (0% adoption, 90% of answers still correct), against 47% adoption with no defense. [Project-Aegis-Vector](https://github.com/ScottColeSW/Project-Aegis-Vector) has the runs, the caveats (four questions per payload, so 25-point steps) and the full results.
 - Treating every domain as one-true-value produced 44 false collisions in real prose, which is why the domain kind is declared.
 - The cross-fact scan flagged none of 20 legitimate documents, and would catch only 3 of 9 payloads if they were misfiled.
-- A local 7B model judged six of nine relations correctly in one run (framing was right every time), with errors leaning toward keeping both claims.
+- A judge built on a pretrained NLI model scored 78% on a frozen set of 72 fresh cases (95% range 67% to 86%), with no missed conflicts, against 57% for the best language model asked directly and 40% for the fixed rules; the paired differences are significant (p = 0.008 and 0.0001). The same judge had scored 89% on an earlier, smaller batch, and the drop is reported, not explained away. Its errors are public and not yet fixed.
 
 Reasoned only, not yet tested: the case for shared and inheritable memory, the tolerance shapes (graded versus cliff), seed trust degrading toward parity, and the visual grammar. These are design arguments, and should be read as such until something measures them.
 
