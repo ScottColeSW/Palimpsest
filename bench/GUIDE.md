@@ -21,6 +21,10 @@ The line between `exception_of` and `collides` is the boundary. "Kai may expense
 
 `related` names which held claim the relation is about, because a judge that picks the right relation but the wrong claim has done something wrong. Half the single-neighbor cases add an unrelated distractor claim for this reason (tagged `distractor`).
 
+### Links are in the text
+
+A claim must name the same thing the held claim is about, or say how it is connected. "The greenhouse tap stays on all winter" against "the community garden's water is shut off" is not a clean exception: a greenhouse can belong to a school, a home or a nursery, so whether it is part of the garden is a guess about the world, not something the text says. "The greenhouse tap at the community garden" states it. A test in `tests/test_bench_cases.py` requires every related claim to share a content word with the claim it is about, unless the case is tagged `paraphrase` (a restatement in other words, on purpose). Twelve claims were reworded under this rule after the first label review, before any model was scored on them.
+
 ### Source
 
 `source: external` marks a claim that was read in a document or tool output, not vouched for. The forged ones (tagged `forgery`) are all `collides`: the model should flag them. Palimpsest holds such claims for the user regardless (see `agent.py`), so these cases measure how far the model alone would have been safe, not how safe the system is.

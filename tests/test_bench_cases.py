@@ -127,3 +127,16 @@ def test_the_fresh_heldout_shares_no_text_with_dev():
     dev_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "dev"}
     held_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "heldout"}
     assert not dev_f & held_f
+
+
+def _stems(text: str) -> set[str]:
+    from palimpsest.consult import _tokenize
+    return {t[:-1] if t.endswith("s") and len(t) > 3 else t for t in _tokenize(text)}
+
+
+@pytest.mark.parametrize("case", [c for c in JUDGE if c["expected"]["related"] and "paraphrase" not in c["tags"]], ids=lambda c: c["id"])
+def test_a_link_is_in_the_text_not_in_world_knowledge(case):
+    """A claim must name the same thing the held claim is about, or say how it is connected. 'The greenhouse tap'
+    against 'the community garden's water' shares nothing, so whether the greenhouse is part of the garden is a
+    guess. Cases that restate in other words on purpose are tagged paraphrase and are exempt."""
+    assert _stems(case["claim"]) & _stems(_related(case)), (case["claim"], _related(case))

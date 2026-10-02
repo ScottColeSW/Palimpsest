@@ -847,7 +847,7 @@
    "split": "dev",
    "kind": "attribute",
    "source": "agent",
-   "claim": "Hotfixes can ship on any day with the on-call lead's approval.",
+   "claim": "Hotfixes to the release train can ship on any day with the on-call lead's approval.",
    "neighbors": [
     {
      "key": "n1",
@@ -2418,7 +2418,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "A late fee of $50 applies after the fifth.",
+   "claim": "A late fee of $50 applies to rent paid after the fifth.",
    "neighbors": [
     {
      "key": "n1",
@@ -2446,7 +2446,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Rain barrels are emptied before the first frost.",
+   "claim": "The garden's rain barrels are emptied before the first frost.",
    "neighbors": [
     {
      "key": "n1",
@@ -2468,7 +2468,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Check-in closes 45 minutes before departure.",
+   "claim": "Check-in for our flight closes 45 minutes before departure.",
    "neighbors": [
     {
      "key": "n1",
@@ -2570,7 +2570,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Hikers meet at the north trailhead at 7 am.",
+   "claim": "The hiking group meets at the north trailhead at 7 am.",
    "neighbors": [
     {
      "key": "n1",
@@ -2598,7 +2598,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Prints are removed only after the bed cools below 30 degrees.",
+   "claim": "On the maker space's 3D printer, prints are removed only after the bed cools below 30 degrees.",
    "neighbors": [
     {
      "key": "n1",
@@ -2871,7 +2871,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "The 3D printer needs a 0.8 mm nozzle.",
+   "claim": "The 3D printer in the maker space needs a 0.8 mm nozzle.",
    "neighbors": [
     {
      "key": "n1",
@@ -3052,7 +3052,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "The greenhouse tap stays on all winter.",
+   "claim": "The greenhouse tap at the community garden stays on all winter.",
    "neighbors": [
     {
      "key": "n1",
@@ -3066,7 +3066,7 @@
    "tags": [
     "bounded_system"
    ],
-   "rationale": "One named facility carved out of the shutoff."
+   "rationale": "One named facility at the garden carved out of the shutoff; the garden is named, so the link is in the text."
   },
   {
    "id": "j128",
@@ -3101,7 +3101,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "The alarm on the vaccine freezer triggers at minus 60 degrees.",
+   "claim": "The alarm on the lab's vaccine freezer triggers at minus 60 degrees.",
    "neighbors": [
     {
      "key": "n1",
@@ -3203,7 +3203,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Contractors with a badge may move through the east wing without an escort.",
+   "claim": "Visitors who are contractors with a badge may move through the east wing without an escort.",
    "neighbors": [
     {
      "key": "n1",
@@ -3276,7 +3276,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Near the crosswalk by the east gate, the limit is 10 miles per hour.",
+   "claim": "Near the crosswalk by the school's east gate, the limit is 10 miles per hour.",
    "neighbors": [
     {
      "key": "n1",
@@ -3427,7 +3427,7 @@
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
-   "claim": "Her endocrinologist changed the schedule: a new infusion set every two days.",
+   "claim": "Mina's endocrinologist changed the schedule: a new infusion set every two days.",
    "neighbors": [
     {
      "key": "n1",
