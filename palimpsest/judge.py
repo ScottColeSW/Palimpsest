@@ -272,6 +272,10 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
       that implies the held one but not the reverse says more than is held, which is an addition, not a
       restatement. (restate="both" requires entailment in both directions, the first version, which read
       every less specific restatement as an addition.) Contradiction either way is a conflict.
+    - With refiner=None there is no language model at all: NLI and embeddings only, on CPU plus a small embedder, and
+      every conflict is a plain `collides` (both claims stay live, the dispute stays open, a person or the agent
+      resolves it). That is the honest configuration for a small model that cannot reliably tell a replacement from
+      a conflict, and for a machine whose GPU already belongs to something else.
     - A conflict is `collides` unless the refiner (a model, asked a narrow question) cites words in the claim
       that show it is bounded to one case (`exception_of`) or says the held claim stopped being true
       (`supersedes`). The citation is checked against the claim; one that isn't there downgrades to `collides`.
@@ -346,7 +350,8 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
             else:
                 base = f"NLI: contradiction {conflict['conflict']:.2f}"
             try:
-                verdict = timed("refine", refiner, held["text"], claim)
+                # No refiner: every conflict stays a plain collision, which is also what a failed refiner leaves
+                verdict = timed("refine", refiner, held["text"], claim) if refiner is not None else {"kind": "conflict", "evidence": None}
             except Exception:  # noqa: BLE001 -- a refiner failure leaves the safe default
                 verdict = {"kind": "conflict", "evidence": None}
             shown = _quoted(verdict.get("evidence"), claim)

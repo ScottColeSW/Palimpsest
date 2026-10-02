@@ -338,3 +338,18 @@ def test_adds_words():
     assert not _adds_words("The pharmacy closes on weekdays", held, 0.5)
     assert not _adds_words("", held, 0.5)
     assert not _adds_words("the of and", held, 0.5)                           # nothing but stopwords: no content
+
+
+# -- no refiner: no language model at all ------------------------------------------------------------------------
+
+def test_without_a_refiner_every_conflict_is_a_plain_collision():
+    nli = StubNLI(both={HELD["text"]: (0.0, 0.0, 1.0)})
+    v = hybrid_judge(nli, embedder({}), None)(CLAIM, [HELD], "attribute")
+    assert v["relation"] == "collides" and "no scope or change shown" in v["reason"]
+
+
+def test_without_a_refiner_the_other_relations_are_unchanged():
+    both = StubNLI(both={HELD["text"]: (0.97, 0.03, 0.0)})
+    assert hybrid_judge(both, embedder({}), None)("CLAIM", [HELD], "attribute")["relation"] == "reinforces"
+    assert hybrid_judge(StubNLI(), embedder({HELD["text"]: 0.8}), None)("CLAIM", [HELD], "attribute")["relation"] == "coexists"
+    assert hybrid_judge(StubNLI(), embedder({HELD["text"]: 0.2}), None)("CLAIM", [HELD], "attribute")["relation"] == "new"
