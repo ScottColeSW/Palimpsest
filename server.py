@@ -75,6 +75,16 @@ def real_collision_page() -> FileResponse:
     return FileResponse(STATIC_DIR / "real-collision.html")
 
 
+@app.get("/about.html")
+def about_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "about.html")
+
+
+@app.get("/books.html")
+def books_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "books.html")
+
+
 @app.get("/state")
 def get_state() -> dict:
     return scenario.state()

@@ -38,6 +38,9 @@
   }
   h1 { font-size: 15px; margin: 0 0 4px; color: var(--text); }
   .sub { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .site-links { margin: 0; padding-top: 8px; border-top: 1px solid #1f2430; }
+  .site-links a { color: var(--scope); text-decoration: none; }
+  .site-links a:hover { text-decoration: underline; }
   button {
     background: #232838;
     color: var(--text);
@@ -88,6 +91,10 @@
       <button id="reset-btn">Reset</button>
     </div>
     <div id="log"></div>
+    <div class="sub site-links">
+      <a href="/ingest.html">Ingest demo</a> · <a href="/real-collision.html">Real collisions</a> ·
+      <a href="/about.html">About the creator</a> · <a href="/books.html">Books</a>
+    </div>
   </div>
   <script src="/static/app.js"></script>
 </body>

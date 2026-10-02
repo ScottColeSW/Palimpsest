@@ -95,6 +95,7 @@ Then open:
 - **`/`** — a scripted collision walkthrough (seed → reinforce → scope non-collision → collision opens → reconciled). Hand-authored fiction, on purpose: the placeholder classifier can detect significance, not semantic contradiction, so this is the only way to show the full resolution lifecycle end to end right now.
 - **`/ingest.html`** — real digestion against actual public-domain text (`palimpsest/story_files/`, from [gutenberg.org](https://www.gutenberg.org/)), one fixed-size chunk per tick. Referent clusters and a live prominence ranking form from real prose, edges and all.
 - **`/real-collision.html`** — two *real* quoted collisions, not invented ones: actual sentences from Winnie-the-Pooh, run through the real `consult()` logic and both genuinely flagged `COLLIDES` by the token-overlap math — verified before the page existed, not tuned after to look right.
+- **`/about.html`** and **`/books.html`**: about the creator, the author's books, and the related projects (Aegis Vector, Void Marauders).
 
 ## Known limitations, stated plainly
 
