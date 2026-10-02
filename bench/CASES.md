@@ -253,7 +253,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j199 | dev (batch 3) | On the day of the charity ride, the club leaves from the town square at 6 am.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | exception_of (n1) | One named ride. |
 | j200 | dev (batch 3) | During the holiday week, the bakery orders flour on Monday.  | **n1** The film club screens one classic each month.<br>**n2** The bakery orders flour from the mill every Tuesday. | exception_of (n2) | One week. |
 | j201 | dev (batch 3) | In August, the council does not meet.  | **n1** The town council meets on the second Wednesday of the month. | exception_of (n1) | One month. |
-| j202 | dev (batch 3) | Orders over 50 pounds to the island depot ship by ferry.  | **n1** The bus to the campus runs every twenty minutes.<br>**n2** Orders over 50 pounds ship by freight. | exception_of (n2) | One destination. |
+| j202 | excluded (batch 3) | Orders over 50 pounds to the island depot ship by ferry.  | **n1** The bus to the campus runs every twenty minutes.<br>**n2** Orders over 50 pounds ship by freight. | exception_of (n2) | One destination. |
 | j203 | dev (batch 3) | During the holiday week, compost bins are emptied on Saturday.  | **n1** Compost bins are emptied on Fridays. | exception_of (n1) | One week. |
 | j204 | dev (batch 3) | The orchard's early-ripening Gala apples are picked in late August.  | **n1** The harbor master's office is staffed from dawn to dusk.<br>**n2** The orchard's apples are picked in late September. | exception_of (n2) | One variety. |
 | j205 | dev (batch 3) | On market days, the shop opens at 7 am.  | **n1** The shop opens at 9 am on weekdays. | exception_of (n1) | One kind of day. |

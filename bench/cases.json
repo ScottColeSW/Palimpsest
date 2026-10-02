@@ -4874,7 +4874,7 @@
   },
   {
    "id": "j202",
-   "split": "dev",
+   "split": "excluded",
    "batch": 3,
    "kind": "attribute",
    "source": "agent",
@@ -4899,7 +4899,8 @@
     "figure",
     "units"
    ],
-   "rationale": "One destination."
+   "rationale": "One destination.",
+   "review": "2026-10-02, with the project owner: ambiguous. The claim reads badly without a comma after the destination, and a ferry can carry freight, so exception_of versus coexists is not settled. Excluded per GUIDE.md; first labeled exception_of (n2)."
   },
   {
    "id": "j203",
