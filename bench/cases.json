@@ -5372,13 +5372,14 @@
     }
    ],
    "expected": {
-    "relation": "supersedes",
+    "relation": "coexists",
     "related": "n1"
    },
    "tags": [
-    "change_cue"
+    "other_aspect"
    ],
-   "rationale": "'Extended' signals a replacement."
+   "rationale": "Adds a network the access rule did not mention; 'extended' is not a clear replacement cue.",
+   "review": "2026-10-02, with the project owner: first labeled supersedes (the cue word 'extended'). Judged an addition, not a replacement, so relabeled coexists. Caveat noted at review: the held claim says 'only' the clinic network, so a reader could also take the widening as contradicting it."
   },
   {
    "id": "j222",

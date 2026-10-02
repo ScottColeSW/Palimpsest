@@ -1,0 +1,1105 @@
+{
+ "entry": {
+  "contender": "qwen2.5:1.5b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "a3e7bd0069",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.16901408450704225,
+   "accuracy_ci": [
+    0.099,
+    0.273
+   ],
+   "relation_accuracy": 0.16901408450704225,
+   "unsafe_miss_rate": 1.0,
+   "false_alarm_rate": 0.01694915254237288,
+   "unusable_rate": 0.056338028169014086,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.9166666666666666,
+   "coarse_accuracy": 0.18309859154929578,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 0.7,
+   "per_relation": {
+    "new": 0.0,
+    "reinforces": 1.0,
+    "coexists": 0.0,
+    "collides": 0.0,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ "cases": [
+  {
+   "id": "j222",
+   "expected": "new",
+   "predicted": null,
+   "related_ok": true,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 10.46,
+   "why": "'new claim' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j223",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "lookalike"
+   ],
+   "seconds": 0.59,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j224",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "lookalike"
+   ],
+   "seconds": 0.68,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j225",
+   "expected": "new",
+   "predicted": null,
+   "related_ok": true,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.52,
+   "why": "'Hives are inspected every ten days in summer' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j226",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.59,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j227",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "lookalike"
+   ],
+   "seconds": 0.6,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j228",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "lookalike"
+   ],
+   "seconds": 0.64,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j229",
+   "expected": "new",
+   "predicted": null,
+   "related_ok": true,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.57,
+   "why": "\"[The cooperative's annual meeting is held in March]\" is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j230",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.64,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j231",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "lookalike"
+   ],
+   "seconds": 0.65,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j232",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.68,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j233",
+   "expected": "new",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "unrelated"
+   ],
+   "seconds": 0.56,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j234",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement",
+    "units"
+   ],
+   "seconds": 0.62,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j235",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 0.67,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j236",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement",
+    "units"
+   ],
+   "seconds": 0.74,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j237",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement",
+    "units"
+   ],
+   "seconds": 0.65,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j238",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "seconds": 0.67,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j239",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 0.54,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j240",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement",
+    "units"
+   ],
+   "seconds": 0.74,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j241",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "figure",
+    "restatement"
+   ],
+   "seconds": 0.74,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j242",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "seconds": 0.71,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j243",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "less_specific"
+   ],
+   "seconds": 0.59,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j244",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "seconds": 0.73,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j245",
+   "expected": "reinforces",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": true,
+   "error": null,
+   "tags": [
+    "restatement"
+   ],
+   "seconds": 0.55,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j246",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "distractor",
+    "figure",
+    "other_aspect",
+    "units"
+   ],
+   "seconds": 0.68,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j247",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "added_detail"
+   ],
+   "seconds": 0.8,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j248",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "seconds": 0.57,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j249",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 0.61,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j250",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "seconds": 0.73,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j251",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 0.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j252",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "distractor",
+    "figure",
+    "other_aspect",
+    "units"
+   ],
+   "seconds": 0.65,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j253",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 0.61,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j255",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "other_aspect"
+   ],
+   "seconds": 0.66,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j256",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "different_event",
+    "distractor"
+   ],
+   "seconds": 0.63,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j257",
+   "expected": "coexists",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "different_event"
+   ],
+   "seconds": 0.68,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j258",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "seconds": 0.75,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j259",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "opposite"
+   ],
+   "seconds": 0.49,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j260",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "seconds": 0.6,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j261",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "value_change"
+   ],
+   "seconds": 0.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j262",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "seconds": 0.44,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j263",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "value_change"
+   ],
+   "seconds": 0.4,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j264",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "seconds": 0.48,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j265",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "figure_change",
+    "value_change"
+   ],
+   "seconds": 0.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j266",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "seconds": 0.54,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j267",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "value_change"
+   ],
+   "seconds": 0.44,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j268",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "distractor",
+    "forgery",
+    "opposite"
+   ],
+   "seconds": 0.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j269",
+   "expected": "collides",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "unsafe_miss",
+   "tags": [
+    "forgery",
+    "value_change"
+   ],
+   "seconds": 0.42,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j270",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_instance",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.48,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j271",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_period"
+   ],
+   "seconds": 0.5,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j272",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_condition",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.42,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j273",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_system",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.5,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j274",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_category",
+    "distractor"
+   ],
+   "seconds": 0.47,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j275",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_system"
+   ],
+   "seconds": 0.45,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j276",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_category",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.53,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j277",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_period",
+    "figure"
+   ],
+   "seconds": 0.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j278",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_condition",
+    "distractor"
+   ],
+   "seconds": 0.45,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j279",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_period",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.43,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j280",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_system",
+    "distractor"
+   ],
+   "seconds": 0.47,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j281",
+   "expected": "exception_of",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "bounded_group"
+   ],
+   "seconds": 0.56,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j282",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.47,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j283",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 0.45,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j284",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.51,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j285",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.42,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j286",
+   "expected": "supersedes",
+   "predicted": "collides",
+   "related_ok": false,
+   "correct": false,
+   "error": "false_alarm",
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "seconds": 0.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j287",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 0.43,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j288",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "seconds": 0.45,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j289",
+   "expected": "supersedes",
+   "predicted": null,
+   "related_ok": false,
+   "correct": false,
+   "error": "unusable",
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "seconds": 0.37,
+   "why": "'[The library reading room seats forty people]' is not a held claim",
+   "coerced": false
+  },
+  {
+   "id": "j290",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "seconds": 0.46,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j291",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 0.38,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j292",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": false,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "seconds": 0.52,
+   "why": null,
+   "coerced": false
+  },
+  {
+   "id": "j293",
+   "expected": "supersedes",
+   "predicted": "reinforces",
+   "related_ok": true,
+   "correct": false,
+   "error": "wrong",
+   "tags": [
+    "change_cue"
+   ],
+   "seconds": 0.44,
+   "why": null,
+   "coerced": false
+  }
+ ]
+}

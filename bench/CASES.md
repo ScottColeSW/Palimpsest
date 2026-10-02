@@ -112,7 +112,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j244 | heldout (batch 4) | On opening night the projector broke. *event* | **n1** The projector failed during the opening night.<br>**n2** The staff room has a coffee machine. | reinforces (n1) | The same event restated. |
 | j245 | heldout (batch 4) | In May the cooperative's treasurer stepped down. *event* | **n1** The cooperative's treasurer resigned in May. | reinforces (n1) | The same event restated. |
 
-### `coexists` (52)
+### `coexists` (53)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
@@ -156,6 +156,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j184 | dev (batch 3) | The ferry broke down again on 19th July. *event* | **n1** The greenhouse vents open automatically above 25 degrees.<br>**n2** The ferry broke down on the 3rd of July. | coexists (n2) | A second occurrence; both happened. |
 | j185 | dev (batch 3) | The principal thanked Jonas after the demo. *event* | **n1** Jonas presented the robotics demo to the parents. | coexists (n1) | What happened afterwards; both happened. |
 | j187 | dev (batch 3) | The cycling club rides leave from the town square at 9 am on Saturdays.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | coexists (n1) | A different ride (Saturday, from the town square) beside the Sunday one; both can be true. |
+| j221 | dev (batch 3) | The clinic extended record access to the hospital network.  | **n1** Patient records may only be accessed from the clinic network. | coexists (n1) | Adds a network the access rule did not mention; 'extended' is not a clear replacement cue. |
 | j246 | heldout (batch 4) | The pharmacy opens at 9 am on weekdays.  | **n1** The elevator is inspected every year.<br>**n2** The pharmacy closes at 8 pm on weekdays. | coexists (n2) | Opening time beside closing time: two times, both true. |
 | j247 | heldout (batch 4) | Dogs must be on a leash on Trail 4.  | **n1** Trail 4 is closed to bikes. | coexists (n1) | A separate rule for the same trail. |
 | j248 | heldout (batch 4) | The cafeteria offers a vegetarian option every day.  | **n1** The bus stop is outside the north gate.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | coexists (n2) | A menu fact alongside the hours. |
@@ -274,7 +275,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j280 | heldout (batch 4) | The vault's sealed reserve is counted once a week.  | **n1** Controlled drugs must be counted twice daily.<br>**n2** The staff room has a coffee machine. | exception_of (n1) | One named store. |
 | j281 | heldout (batch 4) | The disaster recovery team may carry backup tapes to the offsite vault.  | **n1** Backup tapes may not leave the data center. | exception_of (n1) | One team and one destination. |
 
-### `supersedes` (48)
+### `supersedes` (47)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
@@ -313,7 +314,6 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j218 | dev (batch 3) | Starting next week the shop opens at 8 am on weekdays.  | **n1** Hannah teaches the beginner swimming class.<br>**n2** The shop opens at 9 am on weekdays. | supersedes (n2) | 'Starting next week' signals a replacement. |
 | j219 | dev (batch 3) | The new hire's laptop was replaced by a 16-inch model.  | **n1** The new hire's laptop is a 14-inch model. | supersedes (n1) | 'Was replaced' signals a replacement. |
 | j220 | dev (batch 3) | The threshold for a second approver has been raised to $25,000.  | **n1** The harbor master's office is staffed from dawn to dusk.<br>**n2** All wire transfers over $10,000 need a second approver. | supersedes (n2) | 'Has been raised' signals a replacement. |
-| j221 | dev (batch 3) | The clinic extended record access to the hospital network.  | **n1** Patient records may only be accessed from the clinic network. | supersedes (n1) | 'Extended' signals a replacement. |
 | j282 | heldout (batch 4) | The pharmacy now closes at 9 pm on weekdays.  | **n1** Quarterly reports are due on the 15th.<br>**n2** The pharmacy closes at 8 pm on weekdays. | supersedes (n2) | 'Now' signals a replacement. |
 | j283 | heldout (batch 4) | As of Monday, Trail 4 is open to bikes.  | **n1** Trail 4 is closed to bikes. | supersedes (n1) | 'As of Monday' signals a replacement. |
 | j284 | heldout (batch 4) | Starting this term the school cafeteria serves lunch from 12:00 to 1:00.  | **n1** The staff room has a coffee machine.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | supersedes (n2) | 'Starting this term' signals a replacement. |
