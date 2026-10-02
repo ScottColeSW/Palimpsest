@@ -197,7 +197,7 @@ def ollama_judge(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434"
     return judge
 
 
-REFINE_PROMPT = """A new claim conflicts with a held claim. Decide what kind of conflict it is.
+REFINE_PROMPT_V0 = """A new claim conflicts with a held claim. Decide what kind of conflict it is.
 
 Held claim: {held}
 New claim: {claim}
@@ -209,6 +209,24 @@ Choose one kind:
 
 For "exception" or "replacement", quote the exact words from the new claim that show it. For "conflict", the quote is null."""
 
+
+REFINE_PROMPT = """A new claim conflicts with a held claim. Decide what kind of conflict it is.
+
+Held claim: {held}
+New claim: {claim}
+
+Choose one kind:
+- "exception": the new claim applies only to something specific: one named project, person, system, group, place, category, event, period of time or condition. The held claim still holds everywhere else. Words that often show it: only, during, for the, on (a day), in (a month), at the (a place), when, if, who, this time.
+- "replacement": the new claim says the held claim stopped being true. Words that often show it: now, effective, no longer, as of, moved, changed, raised, lowered, switched, replaced, starting, from now on, instead.
+- "conflict": neither of those. The two claims simply disagree about the same thing.
+
+Examples (unrelated to the claims above):
+- Held: "The lab opens at 8 am." New: "On inspection days the lab opens at 10 am." -> exception (shown by "On inspection days").
+- Held: "The lab opens at 8 am." New: "As of June the lab opens at 9 am." -> replacement (shown by "As of June").
+- Held: "The lab opens at 8 am." New: "The lab opens at 6 pm." -> conflict (nothing limits it and nothing says the old one ended).
+
+For "exception" or "replacement", quote the exact words from the new claim that show it. For "conflict", the quote is null."""
+
 REFINE_SCHEMA = {
     "type": "object",
     "properties": {"kind": {"type": "string", "enum": ["exception", "replacement", "conflict"]},
@@ -217,11 +235,12 @@ REFINE_SCHEMA = {
 }
 
 
-def ollama_refiner(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434", timeout: float = 120):
+def ollama_refiner(model: str = DEFAULT_MODEL, url: str = "http://localhost:11434", timeout: float = 120,
+                   prompt: str | None = None):
     """Given a held claim and a new claim that conflicts with it, a local model says what kind of conflict:
     returns {"kind": "exception" | "replacement" | "conflict", "evidence": str | None}."""
     def refine(held: str, claim: str) -> dict:
-        return _ask(model, url, timeout, REFINE_PROMPT.format(held=held, claim=claim), REFINE_SCHEMA, 120)
+        return _ask(model, url, timeout, (prompt or REFINE_PROMPT).format(held=held, claim=claim), REFINE_SCHEMA, 120)
     refine.name = f"ollama:{model}"
     return refine
 
@@ -233,8 +252,19 @@ def _quoted(evidence, claim: str) -> bool:
     return " ".join(evidence.lower().split()) in " ".join(claim.lower().split())
 
 
+def _adds_words(evidence: str, held: str, share: float) -> bool:
+    """The evidence must say something the held claim does not already say: at least `share` of its content words
+    must be absent from the held claim. A quote made mostly of the held claim's own words (the whole claim copied
+    back, "Elena is the coordinator for the choir" against "Maria is the coordinator for the choir") points at
+    nothing, even though it is really in the claim."""
+    from .consult import _tokenize
+    words = _tokenize(evidence)
+    return bool(words) and len(words - _tokenize(held)) / len(words) >= share
+
+
 def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.56,
-                 restate: str = "held_implies", figures: bool = True, timings: dict | None = None):
+                 restate: str = "held_implies", figures: bool = True, replace_novelty: float = 0.5,
+                 timings: dict | None = None):
     """A judge with no chat model deciding the relation, and nothing scripted about wording.
 
     - A pretrained NLI model compares the new claim with each held claim in both directions. A claim the held
@@ -245,6 +275,10 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
     - A conflict is `collides` unless the refiner (a model, asked a narrow question) cites words in the claim
       that show it is bounded to one case (`exception_of`) or says the held claim stopped being true
       (`supersedes`). The citation is checked against the claim; one that isn't there downgrades to `collides`.
+      A replacement's citation must also add words the held claim lacks (`replace_novelty`, at least half its
+      content words): models that are wrong about a replacement tend to quote the whole claim back, which proves
+      nothing. Asking twice does not help, because the two prompts make the same mistake. 0.5 sits in a window
+      (0.45 to 0.5 safe on development data, 0.6 destroys recall), so expect it to be imperfect.
       So the refiner can only add precision, never hide a conflict: the safe answer is the default.
     - A figure conflict also counts as a conflict (`figures=True`): when the two claims are about the same
       subject (similarity at least `related`) and state figures of the same kind that differ ("$750" against "$500",
@@ -315,7 +349,12 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
                 verdict = timed("refine", refiner, held["text"], claim)
             except Exception:  # noqa: BLE001 -- a refiner failure leaves the safe default
                 verdict = {"kind": "conflict", "evidence": None}
-            if verdict.get("kind") in ("exception", "replacement") and _quoted(verdict.get("evidence"), claim):
+            shown = _quoted(verdict.get("evidence"), claim)
+            # A replacement overwrites a belief; an exception only adds a scoped link and leaves both claims live.
+            # The bar for evidence differs with the harm: a replacement's quote must add words the held claim lacks.
+            if shown and verdict.get("kind") == "replacement":
+                shown = _adds_words(verdict["evidence"], held["text"], replace_novelty)
+            if verdict.get("kind") in ("exception", "replacement") and shown:
                 relation = "exception_of" if verdict["kind"] == "exception" else "supersedes"
                 return {"relation": relation, "related_id": held["id"], "weight": 0.5,
                         "reason": f"{base}; {verdict['kind']} shown by \"{verdict['evidence'].strip()}\""}

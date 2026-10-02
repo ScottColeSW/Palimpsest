@@ -93,7 +93,8 @@ def test_the_refiner_can_upgrade_a_conflict_only_with_a_quote_that_is_really_the
     nli = StubNLI(both={HELD["text"]: (0.0, 0.0, 1.0)})
     shown = judge(nli, ref=refiner("exception", "for the Q3 IT refresh project only"))(CLAIM, [HELD], "attribute")
     assert shown["relation"] == "exception_of" and "Q3 IT refresh project only" in shown["reason"]
-    replaced = judge(nli, ref=refiner("replacement", "may approve up to $200,000"))(CLAIM, [HELD], "attribute")
+    change = "Effective today department heads may approve up to $15,000."
+    replaced = judge(nli, ref=refiner("replacement", "Effective today"))(change, [HELD], "attribute")
     assert replaced["relation"] == "supersedes"
 
 
@@ -294,3 +295,46 @@ def test_the_default_relatedness_threshold(similarity, expected):
     """Neutral pairs: 0.56 splits same-subject from different-subject (0.48 was fitted to 12 cases and did not hold)."""
     v = judge(StubNLI(), {HELD["text"]: similarity})("CLAIM", [HELD], "attribute")
     assert v["relation"] == expected
+
+
+# -- a replacement's evidence must say something new (found by batch 3: the refiner quoted the whole claim back) ----------
+
+COORD_HELD = {"id": "c20", "text": "Maria is the coordinator for the choir."}
+COORD_NEW = "Elena is the coordinator for the choir."
+
+
+def test_a_replacement_that_quotes_the_whole_claim_back_is_not_evidence():
+    """The real failure: a plain conflict (a different name, no handover signaled) called a replacement, with the claim itself as the quote."""
+    nli = StubNLI(both={COORD_HELD["text"]: (0.0, 0.0, 1.0)})
+    v = judge(nli, ref=refiner("replacement", COORD_NEW))(COORD_NEW, [COORD_HELD], "attribute")
+    assert v["relation"] == "collides"
+
+
+def test_a_real_change_signal_adds_words_the_held_claim_lacks():
+    nli = StubNLI(both={COORD_HELD["text"]: (0.0, 0.0, 1.0)})
+    claim = "Maria left the post; Dara is now the choir coordinator."
+    v = judge(nli, ref=refiner("replacement", "Maria left the post; Dara is now"))(claim, [COORD_HELD], "attribute")
+    assert v["relation"] == "supersedes"
+
+
+def test_an_exception_needs_only_a_quote_that_is_really_there():
+    """The bar differs with the harm: a replacement overwrites a belief, an exception adds a scoped link and leaves both live."""
+    nli = StubNLI(both={COORD_HELD["text"]: (0.0, 0.0, 1.0)})
+    v = judge(nli, ref=refiner("exception", COORD_NEW))(COORD_NEW, [COORD_HELD], "attribute")
+    assert v["relation"] == "exception_of"
+
+
+def test_the_novelty_bar_can_be_switched_off_to_reproduce_the_first_version():
+    nli = StubNLI(both={COORD_HELD["text"]: (0.0, 0.0, 1.0)})
+    v = judge(nli, ref=refiner("replacement", COORD_NEW), replace_novelty=0.0)(COORD_NEW, [COORD_HELD], "attribute")
+    assert v["relation"] == "supersedes"
+
+
+def test_adds_words():
+    from palimpsest.judge import _adds_words
+    held = "The pharmacy closes at 8 pm on weekdays."
+    assert _adds_words("As of Monday", held, 0.5)
+    assert _adds_words("now closes at 9 pm", held, 0.5)                       # 'now' and '9 pm' are new, 'closes' is not: 2/3
+    assert not _adds_words("The pharmacy closes on weekdays", held, 0.5)
+    assert not _adds_words("", held, 0.5)
+    assert not _adds_words("the of and", held, 0.5)                           # nothing but stopwords: no content

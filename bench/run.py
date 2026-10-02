@@ -200,7 +200,7 @@ def versions(cases: dict, style: str = "direct") -> dict:
         import inspect
         from palimpsest import nli as N
         thresholds = {k: v.default for k, v in inspect.signature(J.hybrid_judge).parameters.items() if v.default is not inspect.Parameter.empty}
-        judge = (J.REFINE_PROMPT, json.dumps(J.REFINE_SCHEMA, sort_keys=True), N.DEFAULT_MODEL, json.dumps(thresholds, sort_keys=True))
+        judge = (J.REFINE_PROMPT, J.REFINE_PROMPT_V0, json.dumps(J.REFINE_SCHEMA, sort_keys=True), N.DEFAULT_MODEL, json.dumps(thresholds, sort_keys=True))
     else:
         judge = ((J.CHECKS_PROMPT, json.dumps(J.CHECKS_SCHEMA, sort_keys=True)) if style == "checks"
                  else (J.JUDGE_PROMPT, json.dumps(J.JUDGE_SCHEMA, sort_keys=True)))
@@ -284,6 +284,7 @@ def main() -> None:
                     help="how the judge is asked: simple checks with the relation derived in code, or one direct choice")
     ap.add_argument("--hybrid", default="", help="comma-separated Ollama models to use as the refiner in the NLI hybrid judge")
     ap.add_argument("--previous", action="store_true", help="the hybrid as first scored (entailment both ways, relatedness 0.48), for comparison")
+    ap.add_argument("--old-refiner", action="store_true", help="the refiner as first scored (original prompt, a quote that exists is enough), for comparison")
     ap.add_argument("--no-figures", action="store_true", help="turn off the unit-aware figure signal in the hybrid (for comparison)")
     ap.add_argument("--report", action="store_true", help="only rebuild LEADERBOARD.md")
     args = ap.parse_args()
@@ -322,9 +323,11 @@ def main() -> None:
             from palimpsest.embed import ollama_embedder
             hver = versions(cases, "hybrid")
             overrides = {"restate": "both", "related": 0.48} if args.previous else {}
-            judge_fn = J.hybrid_judge(N.NLI(), ollama_embedder(), J.ollama_refiner(refiner_model), figures=not args.no_figures, **overrides)
-            label = f"hybrid({refiner_model}{', previous' if args.previous else ''}{', no figures' if args.no_figures else ''})"
-            if args.previous:
+            if args.old_refiner:
+                overrides = {**overrides, "replace_novelty": 0.0}
+            judge_fn = J.hybrid_judge(N.NLI(), ollama_embedder(), J.ollama_refiner(refiner_model, prompt=J.REFINE_PROMPT_V0 if (args.previous or args.old_refiner) else None), figures=not args.no_figures, **overrides)
+            label = f"hybrid({refiner_model}{', previous' if args.previous else ''}{', old refiner' if args.old_refiner else ''}{', no figures' if args.no_figures else ''})"
+            if args.previous or args.old_refiner:
                 hver = {**hver, "judge_prompt": digest("previous", json.dumps(overrides, sort_keys=True), hver["judge_prompt"])}
             print(f"{label} / judge / {args.split} ...", flush=True)
             t = time.perf_counter()
