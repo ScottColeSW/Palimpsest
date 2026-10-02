@@ -353,3 +353,24 @@ def test_without_a_refiner_the_other_relations_are_unchanged():
     assert hybrid_judge(both, embedder({}), None)("CLAIM", [HELD], "attribute")["relation"] == "reinforces"
     assert hybrid_judge(StubNLI(), embedder({HELD["text"]: 0.8}), None)("CLAIM", [HELD], "attribute")["relation"] == "coexists"
     assert hybrid_judge(StubNLI(), embedder({HELD["text"]: 0.2}), None)("CLAIM", [HELD], "attribute")["relation"] == "new"
+
+
+# -- the NLI model is pinned and checkable ------------------------------------------------------------------------
+
+def test_the_nli_model_is_pinned_to_an_exact_revision():
+    import re
+    from palimpsest.nli import DEFAULT_REVISION, NLI
+    assert re.fullmatch(r"[0-9a-f]{40}", DEFAULT_REVISION)
+    assert NLI().revision == DEFAULT_REVISION
+    assert NLI(model="some/other-model").revision is None      # a different model has no pinned revision here
+
+
+def test_the_nli_check_covers_agreement_conflict_and_unrelatedness():
+    from palimpsest.nli import CHECKS
+    assert {want for _, _, want in CHECKS} == {"entailment", "contradiction", "neutral"}
+
+
+@pytest.mark.skipif(not __import__("os").environ.get("PALIMPSEST_TEST_NLI"), reason="needs the NLI model (set PALIMPSEST_TEST_NLI=1)")
+def test_the_nli_check_passes_in_this_environment():
+    from palimpsest.nli import main
+    assert main(["--check"]) == 0
