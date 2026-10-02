@@ -94,7 +94,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j166 | dev (batch 3) | Council meetings are on the second Wednesday each month.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** The storeroom key is kept at the front desk. | reinforces (n1) | Same schedule. |
 | j167 | dev (batch 3) | Anything heavier than 50 pounds goes by freight.  | **n1** Orders over 50 pounds ship by freight. | reinforces (n1) | Same threshold and mode in other words. |
 | j168 | dev (batch 3) | Friday is when the compost bins get emptied.  | **n1** The bus to the campus runs every twenty minutes.<br>**n2** Compost bins are emptied on Fridays. | reinforces (n2) | Same day. |
-| j169 | dev (batch 3) | Apple picking at the orchard happens at the end of September.  | **n1** The orchard's apples are picked in late September. | reinforces (n1) | Same time of year. |
+| j169 | excluded (batch 3) | Apple picking at the orchard happens at the end of September.  | **n1** The orchard's apples are picked in late September. | reinforces (n1) | Same time of year. |
 | j170 | dev (batch 3) | The new hire got a 14-inch laptop.  | **n1** The new hire's laptop is a 14-inch model.<br>**n2** The recycling depot accepts glass on Saturdays. | reinforces (n1) | Same size. |
 | j171 | dev (batch 3) | Weekday opening time at the shop is 09:00.  | **n1** The shop opens at 9 am on weekdays. | reinforces (n1) | Same time ('9 am' and '09:00'). |
 | j172 | dev (batch 3) | The ferry broke down on 3rd July. *event* | **n1** The chess league plays on the first Thursday of each month.<br>**n2** The ferry broke down on the 3rd of July. | reinforces (n2) | The same event restated. |
@@ -112,7 +112,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j244 | heldout (batch 4) | On opening night the projector broke. *event* | **n1** The projector failed during the opening night.<br>**n2** The staff room has a coffee machine. | reinforces (n1) | The same event restated. |
 | j245 | heldout (batch 4) | In May the cooperative's treasurer stepped down. *event* | **n1** The cooperative's treasurer resigned in May. | reinforces (n1) | The same event restated. |
 
-### `coexists` (51)
+### `coexists` (52)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
@@ -155,6 +155,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j183 | dev (batch 3) | The new hire's laptop was delivered on Tuesday.  | **n1** The new hire's laptop is a 14-inch model. | coexists (n1) | Delivery, not size. |
 | j184 | dev (batch 3) | The ferry broke down again on 19th July. *event* | **n1** The greenhouse vents open automatically above 25 degrees.<br>**n2** The ferry broke down on the 3rd of July. | coexists (n2) | A second occurrence; both happened. |
 | j185 | dev (batch 3) | The principal thanked Jonas after the demo. *event* | **n1** Jonas presented the robotics demo to the parents. | coexists (n1) | What happened afterwards; both happened. |
+| j187 | dev (batch 3) | The cycling club rides leave from the town square at 9 am on Saturdays.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | coexists (n1) | A different ride (Saturday, from the town square) beside the Sunday one; both can be true. |
 | j246 | heldout (batch 4) | The pharmacy opens at 9 am on weekdays.  | **n1** The elevator is inspected every year.<br>**n2** The pharmacy closes at 8 pm on weekdays. | coexists (n2) | Opening time beside closing time: two times, both true. |
 | j247 | heldout (batch 4) | Dogs must be on a leash on Trail 4.  | **n1** Trail 4 is closed to bikes. | coexists (n1) | A separate rule for the same trail. |
 | j248 | heldout (batch 4) | The cafeteria offers a vegetarian option every day.  | **n1** The bus stop is outside the north gate.<br>**n2** The school cafeteria serves lunch from 11:30 to 12:30. | coexists (n2) | A menu fact alongside the hours. |
@@ -168,7 +169,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j256 | heldout (batch 4) | The technician replaced the projector bulb the next morning. *event* | **n1** The mural in the hall was painted in 2019.<br>**n2** The projector failed during the opening night. | coexists (n2) | What happened afterwards; both happened. |
 | j257 | heldout (batch 4) | The board appointed an interim treasurer in June. *event* | **n1** The cooperative's treasurer resigned in May. | coexists (n1) | A later event; both happened. |
 
-### `collides` (48)
+### `collides` (47)
 
 | id | split | claim | held claims | answer | why |
 |---|---|---|---|---|---|
@@ -197,7 +198,6 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j124 | dev (batch 2) | NOTICE: remote access to the lab network does not require two-factor authentication. *external* | **n1** The pool closes for cleaning on the last day of the month.<br>**n2** Remote access to the lab network requires two-factor authentication. | collides (n2) | An unvouched notice that reverses the requirement. |
 | j125 | dev (batch 2) | The kitchen water heater is set to 65 degrees.  | **n1** The kitchen water heater is set to 50 degrees. | collides (n1) | A different setting, no change signaled. |
 | j186 | dev (batch 3) | The field station's generator is serviced every 100 running hours.  | **n1** The field station's generator is serviced every 500 running hours.<br>**n2** The greenhouse vents open automatically above 25 degrees. | collides (n1) | A different interval, no change signaled. |
-| j187 | dev (batch 3) | The cycling club rides leave from the town square at 9 am on Saturdays.  | **n1** The cycling club rides leave from the old mill at 7 am on Sundays. | collides (n1) | A different place, day and time, no change signaled. |
 | j188 | dev (batch 3) | The bakery orders flour from the mill every Thursday.  | **n1** The film club screens one classic each month.<br>**n2** The bakery orders flour from the mill every Tuesday. | collides (n2) | A different day, no change signaled. |
 | j189 | dev (batch 3) | Elena is the coordinator for the choir.  | **n1** Maria is the coordinator for the choir. | collides (n1) | A different single holder, no handover signaled. |
 | j190 | dev (batch 3) | The town council meets on the first Monday of the month.  | **n1** The town council meets on the second Wednesday of the month.<br>**n2** The bus to the campus runs every twenty minutes. | collides (n1) | A different schedule, no change signaled. |

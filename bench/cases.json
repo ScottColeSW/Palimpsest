@@ -4049,7 +4049,7 @@
   },
   {
    "id": "j169",
-   "split": "dev",
+   "split": "excluded",
    "batch": 3,
    "kind": "attribute",
    "source": "agent",
@@ -4067,7 +4067,8 @@
    "tags": [
     "paraphrase"
    ],
-   "rationale": "Same time of year."
+   "rationale": "Same time of year.",
+   "review": "2026-10-02, with the project owner: ambiguous. End of September is narrower than the held late September, so the held claim does not imply it (not a restatement), yet it adds only precision. Excluded per GUIDE.md; first labeled reinforces (n1)."
   },
   {
    "id": "j170",
@@ -4512,15 +4513,15 @@
     }
    ],
    "expected": {
-    "relation": "collides",
+    "relation": "coexists",
     "related": "n1"
    },
    "tags": [
-    "figure_change",
-    "units",
-    "value_change"
+    "other_aspect",
+    "units"
    ],
-   "rationale": "A different place, day and time, no change signaled."
+   "rationale": "A different ride (Saturday, from the town square) beside the Sunday one; both can be true.",
+   "review": "2026-10-02, with the project owner: first labeled collides (a different place, day and time). A club can run a Saturday and a Sunday ride, so the claims do not conflict; relabeled coexists."
   },
   {
    "id": "j188",
