@@ -39,7 +39,7 @@ def test_structure_and_ids():
     ids = [c["id"] for c in JUDGE + FRAME]
     assert len(ids) == len(set(ids))
     for c in JUDGE:
-        assert c["expected"]["relation"] in RELATIONS and c["split"] in ("dev", "heldout")
+        assert c["expected"]["relation"] in RELATIONS and c["split"] in ("dev", "heldout", "excluded")
         assert c["source"] in ("agent", "external") and c["kind"] in ("attribute", "event")
         keys = [n["key"] for n in c["neighbors"]]
         assert len(keys) == len(set(keys))

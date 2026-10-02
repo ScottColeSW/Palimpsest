@@ -139,6 +139,11 @@ def score_judge(cases: list[dict], run_case) -> tuple[dict, list[dict]]:
                      "tags": case["tags"], "seconds": round(seconds, 2), "why": out.get("why"), "coerced": out.get("coerced", False)})
         if kind == "ok" and not related_ok:
             rows[-1]["error"] = "wrong_claim"
+    return summarize_judge(rows), rows
+
+
+def summarize_judge(rows: list[dict]) -> dict:
+    """The scores for a set of per-case rows. Also used by rescore.py to drop an excluded case without re-running anything."""
     n = len(rows)
     collides = [r for r in rows if r["expected"] == "collides"]
     other = [r for r in rows if r["expected"] != "collides"]
@@ -158,7 +163,7 @@ def score_judge(cases: list[dict], run_case) -> tuple[dict, list[dict]]:
         "per_relation": {rel: round(sum(r["correct"] for r in rows if r["expected"] == rel) / max(1, sum(1 for r in rows if r["expected"] == rel)), 3)
                          for rel in RELATIONS},
     }
-    return metrics, rows
+    return metrics
 
 
 def score_frame(cases: list[dict], framer) -> tuple[dict, list[dict]]:

@@ -6129,7 +6129,7 @@
   },
   {
    "id": "j254",
-   "split": "heldout",
+   "split": "excluded",
    "batch": 4,
    "kind": "attribute",
    "source": "agent",
@@ -6152,7 +6152,8 @@
     "added_detail",
     "distractor"
    ],
-   "rationale": "Who counts, not when."
+   "rationale": "Who counts, not when.",
+   "review": "2026-10-02, after scoring, with the project owner: ambiguous (the board secretary may or may not be a member, so coexists versus new is not settled). Excluded per GUIDE.md; first labeled coexists (n1)."
   },
   {
    "id": "j255",

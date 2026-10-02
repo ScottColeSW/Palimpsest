@@ -163,7 +163,7 @@ Generated from `cases.json` by `render_cases.py`; edit the JSON, not this file. 
 | j251 | heldout (batch 4) | Rotated tapes are stored in the fireproof safe.  | **n1** Backup tapes are rotated weekly. | coexists (n1) | Storage, not rotation. |
 | j252 | heldout (batch 4) | Bag drop opens three hours before departure.  | **n1** The loading dock opens at 6 am.<br>**n2** Bag drop closes 45 minutes before departure. | coexists (n2) | Opening beside closing: two cutoffs, both true. |
 | j253 | heldout (batch 4) | The library reading room is closed on Sundays.  | **n1** The library reading room seats forty people. | coexists (n1) | Opening days, not capacity. |
-| j254 | heldout (batch 4) | Votes are counted by the board secretary.  | **n1** Members vote on prices in March.<br>**n2** Quarterly reports are due on the 15th. | coexists (n1) | Who counts, not when. |
+| j254 | excluded (batch 4) | Votes are counted by the board secretary.  | **n1** Members vote on prices in March.<br>**n2** Quarterly reports are due on the 15th. | coexists (n1) | Who counts, not when. |
 | j255 | heldout (batch 4) | Rehearsals are held in the east studio.  | **n1** Rehearsals start at 6 pm on Tuesdays. | coexists (n1) | Where, not when. |
 | j256 | heldout (batch 4) | The technician replaced the projector bulb the next morning. *event* | **n1** The mural in the hall was painted in 2019.<br>**n2** The projector failed during the opening night. | coexists (n2) | What happened afterwards; both happened. |
 | j257 | heldout (batch 4) | The board appointed an interim treasurer in June. *event* | **n1** The cooperative's treasurer resigned in May. | coexists (n1) | A later event; both happened. |
