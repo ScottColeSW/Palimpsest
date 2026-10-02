@@ -283,6 +283,7 @@ def main() -> None:
     ap.add_argument("--style", choices=["checks", "direct"], default="direct",
                     help="how the judge is asked: simple checks with the relation derived in code, or one direct choice")
     ap.add_argument("--hybrid", default="", help="comma-separated Ollama models to use as the refiner in the NLI hybrid judge")
+    ap.add_argument("--previous", action="store_true", help="the hybrid as first scored (entailment both ways, relatedness 0.48), for comparison")
     ap.add_argument("--no-figures", action="store_true", help="turn off the unit-aware figure signal in the hybrid (for comparison)")
     ap.add_argument("--report", action="store_true", help="only rebuild LEADERBOARD.md")
     args = ap.parse_args()
@@ -320,8 +321,11 @@ def main() -> None:
             from palimpsest import nli as N
             from palimpsest.embed import ollama_embedder
             hver = versions(cases, "hybrid")
-            judge_fn = J.hybrid_judge(N.NLI(), ollama_embedder(), J.ollama_refiner(refiner_model), figures=not args.no_figures)
-            label = f"hybrid({refiner_model}{', no figures' if args.no_figures else ''})"
+            overrides = {"restate": "both", "related": 0.48} if args.previous else {}
+            judge_fn = J.hybrid_judge(N.NLI(), ollama_embedder(), J.ollama_refiner(refiner_model), figures=not args.no_figures, **overrides)
+            label = f"hybrid({refiner_model}{', previous' if args.previous else ''}{', no figures' if args.no_figures else ''})"
+            if args.previous:
+                hver = {**hver, "judge_prompt": digest("previous", json.dumps(overrides, sort_keys=True), hver["judge_prompt"])}
             print(f"{label} / judge / {args.split} ...", flush=True)
             t = time.perf_counter()
             metrics, rows = score_judge(judge_cases, model_judge(judge_fn))

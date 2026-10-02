@@ -1,5 +1,9 @@
 # Palimpsest: design
 
+> **palimpsest** (noun): a piece of writing material, such as old parchment or a scroll, where the original text was scraped or washed off so the surface could be used again, leaving faint traces of the past underneath. ([Wikipedia](https://en.wikipedia.org/wiki/Palimpsest))
+
+The name is the design. Nothing here is overwritten without leaving its trace: a replaced claim stays in history with who replaced it, why and when; a released claim is kept, not deleted; a disagreement stays open and visible until something real resolves it. What is current is the top layer, and the layers beneath it remain readable.
+
 This is the reasoning behind the project, kept as reasoning rather than compressed to a spec, so that a change can be checked against *why* and not only *what*. The README says what is built. This says what it is for, where the lines are, and what is still open.
 
 ## The thesis

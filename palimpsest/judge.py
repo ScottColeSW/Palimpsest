@@ -233,12 +233,15 @@ def _quoted(evidence, claim: str) -> bool:
     return " ".join(evidence.lower().split()) in " ".join(claim.lower().split())
 
 
-def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.48,
-                 figures: bool = True, timings: dict | None = None):
+def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: float = 0.5, related: float = 0.56,
+                 restate: str = "held_implies", figures: bool = True, timings: dict | None = None):
     """A judge with no chat model deciding the relation, and nothing scripted about wording.
 
-    - A pretrained NLI model compares the new claim with each held claim in both directions. Entailment both
-      ways is `reinforces`; contradiction either way is a conflict.
+    - A pretrained NLI model compares the new claim with each held claim in both directions. A claim the held
+      claim already implies is `reinforces` (restate="held_implies"): it is the same, or less specific. A claim
+      that implies the held one but not the reverse says more than is held, which is an addition, not a
+      restatement. (restate="both" requires entailment in both directions, the first version, which read
+      every less specific restatement as an addition.) Contradiction either way is a conflict.
     - A conflict is `collides` unless the refiner (a model, asked a narrow question) cites words in the claim
       that show it is bounded to one case (`exception_of`) or says the held claim stopped being true
       (`supersedes`). The citation is checked against the claim; one that isn't there downgrades to `collides`.
@@ -250,10 +253,13 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
     - Neither: embedding similarity decides between `coexists` (same subject, compatible) and `new`. In an
       event domain a conflict is just another event, so it coexists.
 
-    Thresholds: `entail` and `contradict` are the NLI probabilities needed; `related` is the cosine similarity
-    at which a neutral pair counts as the same subject, set from the gap between the dev split's new and
-    coexists cases (0.46 and 0.50), so it is a calibration to be checked on held-out cases, not a constant of
-    nature. `timings`, if given, accumulates seconds spent per stage (embed, nli, refine). Returns the standard
+    Thresholds: `entail` and `contradict` are the NLI probabilities needed (dev results are flat for entail from
+    0.2 to 0.6, so 0.5 is left alone); `related` is the cosine similarity at which a neutral pair counts as the same
+    subject. 0.56 is the middle of the 0.54 to 0.58 plateau where both development batches score at least 89% on
+    new versus coexists. An earlier 0.48, fitted to 12 cases, scored 71% on the next batch; fitting on one batch
+    and testing on the other gives 71% and 89%, so expect roughly that, not the in-sample figure. It is a
+    calibration, not a constant of nature, and it only ever decides between coexists and new for pairs NLI found
+    neutral, so it cannot hide a conflict.     nature. `timings`, if given, accumulates seconds spent per stage (embed, nli, refine). Returns the standard
     judge callable."""
     import time
     from .consult import _competing_values
@@ -285,13 +291,15 @@ def hybrid_judge(nli, embedder, refiner, *, entail: float = 0.5, contradict: flo
                 sim = cosine(qv, timed("embed", embedder, n["text"]))
             nli_conflict = max(fwd["contradiction"], back["contradiction"])
             figs = _competing_values(claim, n["text"], strict=True) if figures and (sim or 0.0) >= related else None
-            scored.append({"n": n, "same": min(fwd["entailment"], back["entailment"]), "figs": figs,
+            implied = back["entailment"] if restate == "held_implies" else min(fwd["entailment"], back["entailment"])
+            scored.append({"n": n, "same": implied, "figs": figs,
                            "conflict": max(nli_conflict, 1.0 if figs else 0.0), "nli_conflict": nli_conflict,
                            "sim": sim or 0.0})
         same = max(scored, key=lambda s: s["same"])
-        if same["same"] >= entail:
+        if same["same"] >= entail and same["nli_conflict"] < contradict:
             return {"relation": "reinforces", "related_id": same["n"]["id"], "weight": 0.5,
-                    "reason": f"NLI: each claim entails the other ({same['same']:.2f})"}
+                    "reason": (f"NLI: the held claim already implies it ({same['same']:.2f})" if restate == "held_implies"
+                                else f"NLI: each claim entails the other ({same['same']:.2f})")}
         conflict = max(scored, key=lambda s: (s["conflict"], s["sim"]))
         if conflict["conflict"] >= contradict:
             held = conflict["n"]

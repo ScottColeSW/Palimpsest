@@ -38,6 +38,9 @@
   }
   h1 { font-size: 15px; margin: 0 0 4px; color: var(--text); }
   .sub { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  details.define { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+  details.define summary { cursor: pointer; color: var(--scope); }
+  details.define p { margin: 6px 0 0; line-height: 1.5; }
   .site-links { margin: 0; padding-top: 8px; border-top: 1px solid #1f2430; }
   .site-links a { color: var(--scope); text-decoration: none; }
   .site-links a:hover { text-decoration: underline; }
@@ -86,6 +89,10 @@
       <h1>Palimpsest — live mesh</h1>
       <div class="sub">Scripted demo. Dim = seed, unearned. Bright pulsing red = open collision. Purple = reconciled. Hand-authored, because the placeholder classifier can detect significance, not contradiction. <a href="/ingest.html" style="color:#5c8ce2">real ingestion →</a> · <a href="/real-collision.html" style="color:#5c8ce2">real collision →</a></div>
     </div>
+    <details class="define">
+      <summary>What is a palimpsest?</summary>
+      <p><b>palimpsest</b> (noun): a piece of writing material, such as old parchment or a scroll, where the original text was scraped or washed off so the surface could be used again, leaving faint traces of the past underneath. <a href="https://en.wikipedia.org/wiki/Palimpsest" target="_blank" rel="noopener noreferrer" style="color: var(--scope)">Wikipedia</a>. Here, a memory that is written over without being erased.</p>
+    </details>
     <div id="controls">
       <button id="tick-btn">Tick →</button>
       <button id="reset-btn">Reset</button>

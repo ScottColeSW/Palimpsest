@@ -251,3 +251,46 @@ def test_in_an_event_domain_differing_figures_are_another_event():
     held = {"id": "c8", "text": "The outage lasted 40 minutes on March 3."}
     v = judge(StubNLI(), {held["text"]: 0.9})(EVENT_CLAIM, [held], "event")
     assert v["relation"] == "coexists"
+
+
+# -- the restatement direction and the relatedness threshold (dev-fitted; see hybrid_judge) -----------------
+
+LESS_SPECIFIC = "Sunday rides depart at 07:00."
+HELD_LONG = {"id": "c9", "text": "The cycling club rides leave from the old mill at 7 am on Sundays."}
+
+
+def test_a_claim_the_held_one_already_implies_is_a_restatement_even_when_less_specific():
+    """held => claim is entailed; claim => held is not (the claim drops the place). It adds nothing: reinforces."""
+    nli = StubNLI(probs={(HELD_LONG["text"], LESS_SPECIFIC): (0.99, 0.01, 0.0), (LESS_SPECIFIC, HELD_LONG["text"]): (0.02, 0.98, 0.0)})
+    _CLAIM_TEXTS.add(LESS_SPECIFIC)
+    v = judge(nli, {HELD_LONG["text"]: 0.8})(LESS_SPECIFIC, [HELD_LONG], "attribute")
+    assert v["relation"] == "reinforces" and "already implies" in v["reason"]
+
+
+def test_a_claim_that_implies_the_held_one_but_not_the_reverse_adds_something():
+    more = "Sunday rides leave the old mill at 7 am and the club always stops at the cafe."
+    _CLAIM_TEXTS.add(more)
+    nli = StubNLI(probs={(more, HELD_LONG["text"]): (0.99, 0.01, 0.0), (HELD_LONG["text"], more): (0.03, 0.97, 0.0)})
+    v = judge(nli, {HELD_LONG["text"]: 0.8})(more, [HELD_LONG], "attribute")
+    assert v["relation"] == "coexists"
+
+
+def test_the_first_version_required_entailment_both_ways_and_is_still_available():
+    nli = StubNLI(probs={(HELD_LONG["text"], LESS_SPECIFIC): (0.99, 0.01, 0.0), (LESS_SPECIFIC, HELD_LONG["text"]): (0.02, 0.98, 0.0)})
+    _CLAIM_TEXTS.add(LESS_SPECIFIC)
+    v = judge(nli, {HELD_LONG["text"]: 0.8}, restate="both")(LESS_SPECIFIC, [HELD_LONG], "attribute")
+    assert v["relation"] == "coexists"
+
+
+def test_a_contradicted_claim_is_never_a_restatement():
+    """Even if entailment points the right way, a high contradiction makes it a conflict."""
+    nli = StubNLI(probs={(HELD_LONG["text"], LESS_SPECIFIC): (0.9, 0.0, 0.9), (LESS_SPECIFIC, HELD_LONG["text"]): (0.0, 0.1, 0.9)})
+    _CLAIM_TEXTS.add(LESS_SPECIFIC)
+    assert judge(nli, {HELD_LONG["text"]: 0.8})(LESS_SPECIFIC, [HELD_LONG], "attribute")["relation"] == "collides"
+
+
+@pytest.mark.parametrize("similarity, expected", [(0.50, "new"), (0.55, "new"), (0.57, "coexists"), (0.80, "coexists")])
+def test_the_default_relatedness_threshold(similarity, expected):
+    """Neutral pairs: 0.56 splits same-subject from different-subject (0.48 was fitted to 12 cases and did not hold)."""
+    v = judge(StubNLI(), {HELD["text"]: similarity})("CLAIM", [HELD], "attribute")
+    assert v["relation"] == expected
