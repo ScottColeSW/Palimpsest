@@ -16,8 +16,9 @@ What the library still enforces, whatever the agent says:
 - The injection boundary. A claim whose source is "external" (content the
   agent read and doesn't vouch for) can't supersede anything, and if the
   rules floor would hold it, or the agent itself judges it in conflict with a held
-  claim, it is held for the user: a model can be talked into agreeing with a
-  well-written forgery, so a flag from either side is never cleared by the other.
+  claim, or as an exception to one, it is held for the user: a model can be talked
+  into agreeing with a well-written forgery, so a flag from either side is never
+  cleared by the other.
   Claims from the agent's own experience or the user are the agent's to judge.
 
 The floor is itself a policy: pass floor=False to commit() to turn it off.
@@ -130,6 +131,11 @@ def commit(store: InMemoryStore, candidate: Node, *, relation: str, reason: str,
             # confirmation), but the agent itself judged the claim in conflict with a held one. A flag only ever
             # goes up, so external content in conflict is held, not admitted as a live belief beside the one it disputes.
             held = (ConsultResult(relation=Relation.COLLIDES, related_node=related), "the agent judged it in conflict with a held claim")
+        if held is None and relation == "exception_of":
+            # "For this one case, the rule doesn't apply" is the shape a forgery takes when it can't just contradict a
+            # rule. An exception to a held claim from content nobody vouched for waits for the user, like a conflict.
+            held = (ConsultResult(relation=Relation.SCOPE_LINK, related_node=related, review_needed=True),
+                    "the agent judged it an exception to a held claim, and an exception from unvouched content is held")
         if held is not None:
             result, why = held
             candidate.weight = min(candidate.weight, 0.05)
