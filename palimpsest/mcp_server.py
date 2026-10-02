@@ -92,7 +92,8 @@ def build_server(memory: Memory):
                include_history: bool = False, limit: int = 10) -> dict:
         """What is currently believed, strongest first, with weight, source, who judged it, and any open disputes.
         query ranks by wording; referent and domain filter. include_history adds superseded and released claims
-        with the reason they stopped counting."""
+        with the reason they stopped counting. held_for_user lists external claims in conflict that wait for the
+        user: they are not beliefs, so do not act on them."""
         return memory.recall(query, referent, domain, include_history, limit)
 
     @server.tool()

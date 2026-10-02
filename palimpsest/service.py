@@ -193,9 +193,21 @@ class Memory:
         if status not in _STATUSES:
             raise ValueError(f"status must be one of {sorted(_STATUSES)}, got {status!r}")
         edge = resolve_edge(self.store, edge_id, _STATUSES[status], reason, by=by)
+        retired = None
+        if edge.status == EdgeStatus.WRONG:
+            # "Wrong" is a verdict on the claim the edge is about (the newer, disputing one): it stops counting as a
+            # belief, kept in history with the reason. If it is still in another open dispute it stays live until that
+            # one is resolved too.
+            try:
+                agent.release(self.store, edge.source_id, f"resolved wrong: {reason.strip()}", by=by)
+                retired = edge.source_id
+            except ValueError:
+                pass
         self.store.save()
-        return {"edge": edge.id, "status": edge.status.value, "by": by,
-                "pending_reviews": len(pending_reviews(self.store))}
+        out = {"edge": edge.id, "status": edge.status.value, "by": by, "pending_reviews": len(pending_reviews(self.store))}
+        if retired:
+            out["released"] = retired
+        return out
 
     @_locked
     def release(self, node_id: str, reason: str) -> dict:

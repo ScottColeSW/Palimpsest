@@ -15,8 +15,9 @@ What the library still enforces, whatever the agent says:
   its provenance; it just stops counting as a live belief.
 - The injection boundary. A claim whose source is "external" (content the
   agent read and doesn't vouch for) can't supersede anything, and if the
-  rules floor would hold it, it is held for the user no matter how the agent
-  judged it: a model can be talked into agreeing with a well-written forgery.
+  rules floor would hold it, or the agent itself judges it in conflict with a held
+  claim, it is held for the user: a model can be talked into agreeing with a
+  well-written forgery, so a flag from either side is never cleared by the other.
   Claims from the agent's own experience or the user are the agent's to judge.
 
 The floor is itself a policy: pass floor=False to commit() to turn it off.
@@ -28,7 +29,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 from .embed import cosine
-from .consult import Relation, _overlap, _utcnow, consult, live_nodes, pending_reviews, scan_other_domains
+from .consult import ConsultResult, Relation, _overlap, _utcnow, consult, live_nodes, pending_reviews, scan_other_domains
 from .memory_store import InMemoryStore
 from .models import Edge, EdgeStatus, EdgeType, Node, Origin
 
@@ -124,6 +125,11 @@ def commit(store: InMemoryStore, candidate: Node, *, relation: str, reason: str,
 
     if candidate.source == "external" and floor:
         held = _floor_hold(store, candidate)
+        if held is None and relation == "collides":
+            # The fixed rules found nothing (a reversal with no figures and no cue words reads to them as a
+            # confirmation), but the agent itself judged the claim in conflict with a held one. A flag only ever
+            # goes up, so external content in conflict is held, not admitted as a live belief beside the one it disputes.
+            held = (ConsultResult(relation=Relation.COLLIDES, related_node=related), "the agent judged it in conflict with a held claim")
         if held is not None:
             result, why = held
             candidate.weight = min(candidate.weight, 0.05)
@@ -186,16 +192,22 @@ def node_view(store: InMemoryStore, node: Node) -> dict:
 def recall(store: InMemoryStore, *, query: str | None = None, referent: str | None = None,
            domain: str | None = None, include_history: bool = False, limit: int = 10) -> dict:
     """What the memory currently believes, strongest first, with its disputes visible. With `query`,
-    ranked by wording overlap then weight. include_history adds superseded and released claims."""
-    live = [n for n in live_nodes(store) if n.origin != Origin.DORMANT
-            and (referent is None or n.referent == referent) and (domain is None or n.domain == domain)]
+    ranked by wording overlap then weight. include_history adds superseded and released claims.
+
+    A claim held for the user (external content in conflict, see commit) is not a belief: it is listed under
+    "held_for_user", visible and waiting, until the user resolves it."""
+    held_ids = {e.source_id for e in store.all_edges()
+                if e.floor and e.status in (EdgeStatus.OPEN, EdgeStatus.REVIEW_NEEDED)}
+    wanted = lambda n: (referent is None or n.referent == referent) and (domain is None or n.domain == domain)  # noqa: E731
+    held = [n for n in live_nodes(store) if n.id in held_ids and wanted(n)]
+    live = [n for n in live_nodes(store) if n.origin != Origin.DORMANT and n.id not in held_ids and wanted(n)]
     if query:
         live.sort(key=lambda n: (_overlap(query, n.text), n.weight), reverse=True)
         live = [n for n in live if _overlap(query, n.text) > 0]
     else:
         live.sort(key=lambda n: n.weight, reverse=True)
     out = {"beliefs": [node_view(store, n) for n in live[:limit]], "total_matching": len(live),
-           "pending_reviews": len(pending_reviews(store))}
+           "held_for_user": [node_view(store, n) for n in held], "pending_reviews": len(pending_reviews(store))}
     if include_history:
         live_ids = {n.id for n in live_nodes(store)}
         superseded_by = {e.target_id: (e.source_id, e.resolution_why) for e in store.all_edges() if e.type == EdgeType.SUPERSEDES}
