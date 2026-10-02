@@ -236,9 +236,9 @@ def render_leaderboard() -> str:
              "`wrong replacement` is how often it overwrote a belief that should have stayed; `missed change` is how often a "
              "replacement or exception went unrecognized and left a stale belief standing.", ""]
     if not any(e["split"] == "heldout" for e in board):
-        lines += ["No contender has been scored on the current held-out cases yet. The held-out batch (v2) was written after the "
-                  "first batch's errors were read, and frozen before any change made in response to them. The previous board, on "
-                  "the first batch of cases, is kept in [results/leaderboard-cases-v1.md](results/leaderboard-cases-v1.md).", ""]
+        lines += ["No contender has been scored on the current held-out cases yet. The held-out batch was written after the previous "
+                  "batch's errors were read, and committed before any change made in response to them. Earlier boards, on earlier cases, are "
+                  "kept in [results/](results/): leaderboard-cases-v1.md and leaderboard-cases-v2.md.", ""]
     for suite, title in (("judge", "Judge: how does a new claim relate to what is held?"), ("frame", "Frame: is it worth keeping, and how is it filed?")):
         rows = [e for e in board if e["suite"] == suite and e["split"] == "heldout"]
         if not rows:

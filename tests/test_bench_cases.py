@@ -109,7 +109,7 @@ def test_the_paraphrase_stress_set_really_shares_no_content_word():
 
 
 def test_the_fresh_heldout_shares_no_text_with_dev():
-    """Batch 2 was written after batch 1's errors were read. None of its claims or held claims may be reused from dev."""
+    """The held-out batch is always the newest, written after the older batches' errors were read. None of its claims or held claims may be reused from dev."""
     def texts(cases, key):
         out = set()
         for c in cases:
@@ -118,7 +118,7 @@ def test_the_fresh_heldout_shares_no_text_with_dev():
         return out
     dev = [c for c in JUDGE if c["split"] == "dev"]
     held = [c for c in JUDGE if c["split"] == "heldout"]
-    assert held and all(c["batch"] == 2 for c in held)
+    assert held and len({c["batch"] for c in held}) == 1 and held[0]["batch"] == max(c["batch"] for c in JUDGE)
     assert not texts(dev, "claim") & texts(held, "claim")
     dev_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "dev"}
     held_f = {c["text"].strip().lower() for c in FRAME if c["split"] == "heldout"}

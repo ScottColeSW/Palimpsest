@@ -171,3 +171,18 @@ def test_strict_competition_needs_the_same_known_kind(a, b, expected):
 
 def test_the_default_stays_conservative_about_bare_numbers():
     assert _competing_values("The backups run at 02:00 UTC.", "The database is PostgreSQL 16.") is not None
+
+
+@pytest.mark.parametrize("a, b", [
+    ("serviced every 500 running hours", "due at 500 hours of running time"),
+    ("four operating hours", "4 hours"),
+    ("within 4 business hours", "within four working hours"),
+    ("a 3 day wait", "a wait of three days"),
+])
+def test_a_descriptive_word_before_the_unit_does_not_change_the_figure(a, b):
+    assert _quantities(a) == _quantities(b) and _competing_values(a, b) is None
+
+
+def test_a_word_after_a_bare_number_that_is_not_a_unit_leaves_it_bare():
+    assert q("14 new employees") == [(14.0, None)]
+    assert q("the 3 big blue boxes") == [(3.0, None)]

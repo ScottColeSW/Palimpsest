@@ -123,7 +123,6 @@ _UNITS: dict[str, tuple[str, float]] = {
 _CURRENCY = {"$": "usd", "\u20ac": "eur", "\u00a3": "gbp"}
 _SCALE = {"thousand": 1e3, "k": 1e3, "million": 1e6, "m": 1e6, "billion": 1e9, "b": 1e9}
 _MONTHS = {m: i for i, m in enumerate(("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1)}
-_FILLER = {"business", "working", "calendar"}  # "4 business hours"
 
 _CLOCK = re.compile(
     r"(?<![\w.:])(\d{1,2}):(\d{2})\s*(am|pm|a\.m\.|p\.m\.)?(?![\w:])|(?<![\w.:])(\d{1,2})\s*(am|pm|a\.m\.|p\.m\.)(?!\w)", re.I)
@@ -147,9 +146,12 @@ def _unit_of(unit_text: str | None) -> tuple[str, float] | None:
     if not unit_text:
         return None
     words = unit_text.lower().split()
-    if words and words[0] in _FILLER and len(words) > 1:
-        words = words[1:]
-    return _UNITS.get(words[0]) if words else None
+    if not words:
+        return None
+    if words[0] in _UNITS:
+        return _UNITS[words[0]]
+    # one descriptive word may sit between a number and its unit: "4 business hours", "500 running hours"
+    return _UNITS.get(words[1]) if len(words) > 1 else None
 
 
 def _words_to_number(run: str) -> float:
@@ -211,7 +213,7 @@ def _extract(text: str) -> list[Quantity]:
         value = _words_to_number(m.group(0))
         following = work[m.end():m.end() + 24].split()
         unit = _UNITS.get(following[0].lower().strip(".,;")) if following else None
-        if unit is None and following and following[0].lower() in _FILLER and len(following) > 1:
+        if unit is None and len(following) > 1:
             unit = _UNITS.get(following[1].lower().strip(".,;"))
         if m.group(0).lower() == "one" and unit is None:  # "one" is mostly a pronoun: only a figure with a unit
             continue

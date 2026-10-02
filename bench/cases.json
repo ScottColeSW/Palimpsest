@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "judge": [
   {
    "id": "j001",
@@ -1861,7 +1861,7 @@
   },
   {
    "id": "j078",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1878,7 +1878,7 @@
   },
   {
    "id": "j079",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1900,7 +1900,7 @@
   },
   {
    "id": "j080",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1922,7 +1922,7 @@
   },
   {
    "id": "j081",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1944,7 +1944,7 @@
   },
   {
    "id": "j082",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1961,7 +1961,7 @@
   },
   {
    "id": "j083",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -1983,7 +1983,7 @@
   },
   {
    "id": "j084",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2005,7 +2005,7 @@
   },
   {
    "id": "j085",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2027,7 +2027,7 @@
   },
   {
    "id": "j086",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2044,7 +2044,7 @@
   },
   {
    "id": "j087",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2066,7 +2066,7 @@
   },
   {
    "id": "j088",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2088,7 +2088,7 @@
   },
   {
    "id": "j089",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2110,7 +2110,7 @@
   },
   {
    "id": "j090",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2137,7 +2137,7 @@
   },
   {
    "id": "j091",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2159,7 +2159,7 @@
   },
   {
    "id": "j092",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2187,7 +2187,7 @@
   },
   {
    "id": "j093",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2211,7 +2211,7 @@
   },
   {
    "id": "j094",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2239,7 +2239,7 @@
   },
   {
    "id": "j095",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2262,7 +2262,7 @@
   },
   {
    "id": "j096",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2291,7 +2291,7 @@
   },
   {
    "id": "j097",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2313,7 +2313,7 @@
   },
   {
    "id": "j098",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2342,7 +2342,7 @@
   },
   {
    "id": "j099",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2364,7 +2364,7 @@
   },
   {
    "id": "j100",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "event",
    "source": "agent",
@@ -2392,7 +2392,7 @@
   },
   {
    "id": "j101",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "event",
    "source": "agent",
@@ -2414,7 +2414,7 @@
   },
   {
    "id": "j102",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2442,7 +2442,7 @@
   },
   {
    "id": "j103",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2464,7 +2464,7 @@
   },
   {
    "id": "j104",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2493,7 +2493,7 @@
   },
   {
    "id": "j105",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2515,7 +2515,7 @@
   },
   {
    "id": "j106",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2542,7 +2542,7 @@
   },
   {
    "id": "j107",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2566,7 +2566,7 @@
   },
   {
    "id": "j108",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2594,7 +2594,7 @@
   },
   {
    "id": "j109",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2618,7 +2618,7 @@
   },
   {
    "id": "j110",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2645,7 +2645,7 @@
   },
   {
    "id": "j111",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2667,7 +2667,7 @@
   },
   {
    "id": "j112",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "event",
    "source": "agent",
@@ -2695,7 +2695,7 @@
   },
   {
    "id": "j113",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "event",
    "source": "agent",
@@ -2717,7 +2717,7 @@
   },
   {
    "id": "j114",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2744,7 +2744,7 @@
   },
   {
    "id": "j115",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2766,7 +2766,7 @@
   },
   {
    "id": "j116",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2794,7 +2794,7 @@
   },
   {
    "id": "j117",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2817,7 +2817,7 @@
   },
   {
    "id": "j118",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2844,7 +2844,7 @@
   },
   {
    "id": "j119",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2867,7 +2867,7 @@
   },
   {
    "id": "j120",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2896,7 +2896,7 @@
   },
   {
    "id": "j121",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2918,7 +2918,7 @@
   },
   {
    "id": "j122",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -2945,7 +2945,7 @@
   },
   {
    "id": "j123",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "external",
@@ -2968,7 +2968,7 @@
   },
   {
    "id": "j124",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "external",
@@ -2996,7 +2996,7 @@
   },
   {
    "id": "j125",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3020,7 +3020,7 @@
   },
   {
    "id": "j126",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3048,7 +3048,7 @@
   },
   {
    "id": "j127",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3070,7 +3070,7 @@
   },
   {
    "id": "j128",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3097,7 +3097,7 @@
   },
   {
    "id": "j129",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3120,7 +3120,7 @@
   },
   {
    "id": "j130",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3148,7 +3148,7 @@
   },
   {
    "id": "j131",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3171,7 +3171,7 @@
   },
   {
    "id": "j132",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3199,7 +3199,7 @@
   },
   {
    "id": "j133",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3221,7 +3221,7 @@
   },
   {
    "id": "j134",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3249,7 +3249,7 @@
   },
   {
    "id": "j135",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3272,7 +3272,7 @@
   },
   {
    "id": "j136",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3300,7 +3300,7 @@
   },
   {
    "id": "j137",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3323,7 +3323,7 @@
   },
   {
    "id": "j138",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3350,7 +3350,7 @@
   },
   {
    "id": "j139",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3372,7 +3372,7 @@
   },
   {
    "id": "j140",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3400,7 +3400,7 @@
   },
   {
    "id": "j141",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3423,7 +3423,7 @@
   },
   {
    "id": "j142",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3451,7 +3451,7 @@
   },
   {
    "id": "j143",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3474,7 +3474,7 @@
   },
   {
    "id": "j144",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3502,7 +3502,7 @@
   },
   {
    "id": "j145",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3524,7 +3524,7 @@
   },
   {
    "id": "j146",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3551,7 +3551,7 @@
   },
   {
    "id": "j147",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3574,7 +3574,7 @@
   },
   {
    "id": "j148",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3602,7 +3602,7 @@
   },
   {
    "id": "j149",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "kind": "attribute",
    "source": "agent",
@@ -3621,6 +3621,1762 @@
     "change_cue"
    ],
    "rationale": "'Replaced' signals a replacement."
+  },
+  {
+   "id": "j150",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The field station's generator is serviced every 500 running hours.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j151",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The running club's runs start at the harbor at 6 am on Saturdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Same sentence shape, a different club and a different fact."
+  },
+  {
+   "id": "j152",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The farm sells eggs at the roadside stand on weekends.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "A farm stand versus a bakery's supply."
+  },
+  {
+   "id": "j153",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The museum cafe closes at 4 pm.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The library's quiet floor is the third floor."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Two different buildings and facts."
+  },
+  {
+   "id": "j154",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Dana's flight home is booked for the 22nd.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j155",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The bank's mobile app requires a six-digit passcode.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The gym's pool is closed on Mondays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "A bank app versus a gym pool."
+  },
+  {
+   "id": "j156",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The school board approves the budget in May.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Two different bodies; neither says anything about the other."
+  },
+  {
+   "id": "j157",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The vineyard's grapes are harvested in October.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Different crops on different land."
+  },
+  {
+   "id": "j158",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The new hire's laptop is a 14-inch model.",
+   "neighbors": [],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Nothing is held yet."
+  },
+  {
+   "id": "j159",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The post office is closed on public holidays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The shop opens at 9 am on weekdays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Two different businesses."
+  },
+  {
+   "id": "j160",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Jonas is the coordinator for the robotics team.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maria is the coordinator for the choir."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "lookalike"
+   ],
+   "rationale": "Same role, a different person and a different group."
+  },
+  {
+   "id": "j161",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The ferry to the island runs hourly in summer.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Compost bins are emptied on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "new",
+    "related": null
+   },
+   "tags": [
+    "unrelated"
+   ],
+   "rationale": "Transport versus waste collection."
+  },
+  {
+   "id": "j162",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Servicing for the station generator comes due at 500 hours of running time.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Hannah teaches the beginner swimming class."
+    },
+    {
+     "key": "n2",
+     "text": "The field station's generator is serviced every 500 running hours."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same interval in other words."
+  },
+  {
+   "id": "j163",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Sunday rides depart at 07:00.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "less_specific",
+    "units"
+   ],
+   "rationale": "Already implied by the held claim; drops the place, keeps the day and the time."
+  },
+  {
+   "id": "j164",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Flour for the bakery is ordered on Tuesdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    },
+    {
+     "key": "n2",
+     "text": "The greenhouse vents open automatically above 25 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same schedule."
+  },
+  {
+   "id": "j165",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The choir's coordinator is Maria.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maria is the coordinator for the choir."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "Same role holder."
+  },
+  {
+   "id": "j166",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Council meetings are on the second Wednesday each month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    },
+    {
+     "key": "n2",
+     "text": "The storeroom key is kept at the front desk."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same schedule."
+  },
+  {
+   "id": "j167",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Anything heavier than 50 pounds goes by freight.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Orders over 50 pounds ship by freight."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "paraphrase",
+    "units"
+   ],
+   "rationale": "Same threshold and mode in other words."
+  },
+  {
+   "id": "j168",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Friday is when the compost bins get emptied.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bus to the campus runs every twenty minutes."
+    },
+    {
+     "key": "n2",
+     "text": "Compost bins are emptied on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "Same day."
+  },
+  {
+   "id": "j169",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Apple picking at the orchard happens at the end of September.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "paraphrase"
+   ],
+   "rationale": "Same time of year."
+  },
+  {
+   "id": "j170",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The new hire got a 14-inch laptop.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The new hire's laptop is a 14-inch model."
+    },
+    {
+     "key": "n2",
+     "text": "The recycling depot accepts glass on Saturdays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "restatement"
+   ],
+   "rationale": "Same size."
+  },
+  {
+   "id": "j171",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Weekday opening time at the shop is 09:00.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The shop opens at 9 am on weekdays."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement",
+    "units"
+   ],
+   "rationale": "Same time ('9 am' and '09:00')."
+  },
+  {
+   "id": "j172",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The ferry broke down on 3rd July.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The chess league plays on the first Thursday of each month."
+    },
+    {
+     "key": "n2",
+     "text": "The ferry broke down on the 3rd of July."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "restatement"
+   ],
+   "rationale": "The same event restated."
+  },
+  {
+   "id": "j173",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The parents watched Jonas present the robotics demo.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Jonas presented the robotics demo to the parents."
+    }
+   ],
+   "expected": {
+    "relation": "reinforces",
+    "related": "n1"
+   },
+   "tags": [
+    "restatement"
+   ],
+   "rationale": "The same event restated."
+  },
+  {
+   "id": "j174",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Generator service is logged in the station maintenance book.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The field station's generator is serviced every 500 running hours."
+    },
+    {
+     "key": "n2",
+     "text": "The recycling depot accepts glass on Saturdays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "Record keeping alongside the interval."
+  },
+  {
+   "id": "j175",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Riders must wear helmets on all club rides.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail"
+   ],
+   "rationale": "A separate rule about the same rides."
+  },
+  {
+   "id": "j176",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The bakery's flour is stored in sealed bins in the cellar.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The greenhouse vents open automatically above 25 degrees."
+    },
+    {
+     "key": "n2",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "other_aspect"
+   ],
+   "rationale": "Storage, not ordering."
+  },
+  {
+   "id": "j177",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Maria also sings alto in the choir.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maria is the coordinator for the choir."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "A second fact about Maria; both hold."
+  },
+  {
+   "id": "j178",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Council meetings are streamed online and recorded.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    },
+    {
+     "key": "n2",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail",
+    "distractor"
+   ],
+   "rationale": "How meetings are shared; compatible."
+  },
+  {
+   "id": "j179",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Freight orders need a signature on delivery.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Orders over 50 pounds ship by freight."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "added_detail"
+   ],
+   "rationale": "A delivery rule for the same orders."
+  },
+  {
+   "id": "j180",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Residents should put compost bins out by 7 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The storeroom key is kept at the front desk."
+    },
+    {
+     "key": "n2",
+     "text": "Compost bins are emptied on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "added_detail",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "rationale": "A preparation rule alongside the collection day."
+  },
+  {
+   "id": "j181",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Pickers at the orchard are paid $15 per hour.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "figure",
+    "other_aspect",
+    "units"
+   ],
+   "rationale": "Pay, not timing."
+  },
+  {
+   "id": "j182",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The shop closes at 6 pm on weekdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The shop opens at 9 am on weekdays."
+    },
+    {
+     "key": "n2",
+     "text": "The storeroom key is kept at the front desk."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure",
+    "other_aspect",
+    "units"
+   ],
+   "rationale": "Closing time beside opening time: two times, both true."
+  },
+  {
+   "id": "j183",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The new hire's laptop was delivered on Tuesday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The new hire's laptop is a 14-inch model."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "other_aspect"
+   ],
+   "rationale": "Delivery, not size."
+  },
+  {
+   "id": "j184",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The ferry broke down again on 19th July.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The greenhouse vents open automatically above 25 degrees."
+    },
+    {
+     "key": "n2",
+     "text": "The ferry broke down on the 3rd of July."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n2"
+   },
+   "tags": [
+    "different_event",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "A second occurrence; both happened."
+  },
+  {
+   "id": "j185",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "event",
+   "source": "agent",
+   "claim": "The principal thanked Jonas after the demo.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Jonas presented the robotics demo to the parents."
+    }
+   ],
+   "expected": {
+    "relation": "coexists",
+    "related": "n1"
+   },
+   "tags": [
+    "different_event"
+   ],
+   "rationale": "What happened afterwards; both happened."
+  },
+  {
+   "id": "j186",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The field station's generator is serviced every 100 running hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The field station's generator is serviced every 500 running hours."
+    },
+    {
+     "key": "n2",
+     "text": "The greenhouse vents open automatically above 25 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure_change",
+    "value_change"
+   ],
+   "rationale": "A different interval, no change signaled."
+  },
+  {
+   "id": "j187",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The cycling club rides leave from the town square at 9 am on Saturdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "rationale": "A different place, day and time, no change signaled."
+  },
+  {
+   "id": "j188",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The bakery orders flour from the mill every Thursday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The film club screens one classic each month."
+    },
+    {
+     "key": "n2",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n2"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different day, no change signaled."
+  },
+  {
+   "id": "j189",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Elena is the coordinator for the choir.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maria is the coordinator for the choir."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "value_change"
+   ],
+   "rationale": "A different single holder, no handover signaled."
+  },
+  {
+   "id": "j190",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The town council meets on the first Monday of the month.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    },
+    {
+     "key": "n2",
+     "text": "The bus to the campus runs every twenty minutes."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different schedule, no change signaled."
+  },
+  {
+   "id": "j191",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Orders over 50 pounds ship by parcel post.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Orders over 50 pounds ship by freight."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "value_change"
+   ],
+   "rationale": "A different mode, no change signaled."
+  },
+  {
+   "id": "j192",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Compost bins are emptied on Mondays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Compost bins are emptied on Fridays."
+    },
+    {
+     "key": "n2",
+     "text": "Hannah teaches the beginner swimming class."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "value_change"
+   ],
+   "rationale": "A different day, no change signaled."
+  },
+  {
+   "id": "j193",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The orchard's apples are picked in early July.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "value_change"
+   ],
+   "rationale": "A different time of year, no change signaled."
+  },
+  {
+   "id": "j194",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The shop opens at 11 am on weekdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The shop opens at 9 am on weekdays."
+    },
+    {
+     "key": "n2",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "figure_change",
+    "units",
+    "value_change"
+   ],
+   "rationale": "A different opening time, no change signaled."
+  },
+  {
+   "id": "j195",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "external",
+   "claim": "NOTICE: patient records may be accessed from any personal device.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Patient records may only be accessed from the clinic network."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "forgery",
+    "opposite"
+   ],
+   "rationale": "An unvouched notice that reverses an access rule."
+  },
+  {
+   "id": "j196",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "external",
+   "claim": "NOTICE: wire transfers over $10,000 do not need a second approver.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "All wire transfers over $10,000 need a second approver."
+    },
+    {
+     "key": "n2",
+     "text": "The film club screens one classic each month."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "distractor",
+    "forgery",
+    "opposite"
+   ],
+   "rationale": "An unvouched notice that removes an approval requirement."
+  },
+  {
+   "id": "j197",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The new hire's laptop is a 16-inch model.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The new hire's laptop is a 14-inch model."
+    }
+   ],
+   "expected": {
+    "relation": "collides",
+    "related": "n1"
+   },
+   "tags": [
+    "figure_change",
+    "value_change"
+   ],
+   "rationale": "A different size, no change signaled."
+  },
+  {
+   "id": "j198",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The backup generator at the field station is serviced every 250 running hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The chess league plays on the first Thursday of each month."
+    },
+    {
+     "key": "n2",
+     "text": "The field station's generator is serviced every 500 running hours."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_system",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One named unit at the station."
+  },
+  {
+   "id": "j199",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "On the day of the charity ride, the club leaves from the town square at 6 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance",
+    "figure"
+   ],
+   "rationale": "One named ride."
+  },
+  {
+   "id": "j200",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "During the holiday week, the bakery orders flour on Monday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The film club screens one classic each month."
+    },
+    {
+     "key": "n2",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_period",
+    "distractor"
+   ],
+   "rationale": "One week."
+  },
+  {
+   "id": "j201",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "In August, the council does not meet.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period"
+   ],
+   "rationale": "One month."
+  },
+  {
+   "id": "j202",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Orders over 50 pounds to the island depot ship by ferry.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bus to the campus runs every twenty minutes."
+    },
+    {
+     "key": "n2",
+     "text": "Orders over 50 pounds ship by freight."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_place",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "rationale": "One destination."
+  },
+  {
+   "id": "j203",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "During the holiday week, compost bins are emptied on Saturday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Compost bins are emptied on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period"
+   ],
+   "rationale": "One week."
+  },
+  {
+   "id": "j204",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The orchard's early-ripening Gala apples are picked in late August.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    },
+    {
+     "key": "n2",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n2"
+   },
+   "tags": [
+    "bounded_category",
+    "distractor"
+   ],
+   "rationale": "One variety."
+  },
+  {
+   "id": "j205",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "On market days, the shop opens at 7 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The shop opens at 9 am on weekdays."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_condition",
+    "figure",
+    "units"
+   ],
+   "rationale": "One kind of day."
+  },
+  {
+   "id": "j206",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Transfers between the company's own accounts over $10,000 need no second approver.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "All wire transfers over $10,000 need a second approver."
+    },
+    {
+     "key": "n2",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_category",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One kind of transfer."
+  },
+  {
+   "id": "j207",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The on-call physician may access patient records from an approved laptop at home.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Patient records may only be accessed from the clinic network."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_person"
+   ],
+   "rationale": "One role on one device."
+  },
+  {
+   "id": "j208",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "On the first Sunday of the month, museum entry is free.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Museum entry costs $12 for adults."
+    },
+    {
+     "key": "n2",
+     "text": "The greenhouse vents open automatically above 25 degrees."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_instance",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "One day each month."
+  },
+  {
+   "id": "j209",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The week before the concert, the brass band rehearses on Thursday evening.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The brass band rehearses on Wednesday evenings."
+    }
+   ],
+   "expected": {
+    "relation": "exception_of",
+    "related": "n1"
+   },
+   "tags": [
+    "bounded_period"
+   ],
+   "rationale": "One week."
+  },
+  {
+   "id": "j210",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The service interval for the station generator was changed to 400 running hours.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The field station's generator is serviced every 500 running hours."
+    },
+    {
+     "key": "n2",
+     "text": "Hannah teaches the beginner swimming class."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure"
+   ],
+   "rationale": "'Was changed' signals a replacement."
+  },
+  {
+   "id": "j211",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The cycling club has moved its Sunday departure to 8 am.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The cycling club rides leave from the old mill at 7 am on Sundays."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure",
+    "units"
+   ],
+   "rationale": "'Has moved' signals a replacement."
+  },
+  {
+   "id": "j212",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "From now on the bakery orders flour from the mill on Mondays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The bakery orders flour from the mill every Tuesday."
+    },
+    {
+     "key": "n2",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'From now on' signals a replacement."
+  },
+  {
+   "id": "j213",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Maria left the post; Dara is now the choir coordinator.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Maria is the coordinator for the choir."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "A stated handover."
+  },
+  {
+   "id": "j214",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "As of January, the council meets on the third Thursday.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The town council meets on the second Wednesday of the month."
+    },
+    {
+     "key": "n2",
+     "text": "Hannah teaches the beginner swimming class."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'As of January' signals a replacement."
+  },
+  {
+   "id": "j215",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "We switched to a courier for orders over 50 pounds.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Orders over 50 pounds ship by freight."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure",
+    "units"
+   ],
+   "rationale": "'Switched' signals a replacement."
+  },
+  {
+   "id": "j216",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Compost collection now happens on Wednesdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The chess league plays on the first Thursday of each month."
+    },
+    {
+     "key": "n2",
+     "text": "Compost bins are emptied on Fridays."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor"
+   ],
+   "rationale": "'Now' signals a replacement."
+  },
+  {
+   "id": "j217",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The orchard now picks its apples in mid October after the cold summer.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The orchard's apples are picked in late September."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Now' signals a replacement."
+  },
+  {
+   "id": "j218",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "Starting next week the shop opens at 8 am on weekdays.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Hannah teaches the beginner swimming class."
+    },
+    {
+     "key": "n2",
+     "text": "The shop opens at 9 am on weekdays."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "rationale": "'Starting next week' signals a replacement."
+  },
+  {
+   "id": "j219",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The new hire's laptop was replaced by a 16-inch model.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The new hire's laptop is a 14-inch model."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue",
+    "figure"
+   ],
+   "rationale": "'Was replaced' signals a replacement."
+  },
+  {
+   "id": "j220",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The threshold for a second approver has been raised to $25,000.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "The harbor master's office is staffed from dawn to dusk."
+    },
+    {
+     "key": "n2",
+     "text": "All wire transfers over $10,000 need a second approver."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n2"
+   },
+   "tags": [
+    "change_cue",
+    "distractor",
+    "figure",
+    "units"
+   ],
+   "rationale": "'Has been raised' signals a replacement."
+  },
+  {
+   "id": "j221",
+   "split": "heldout",
+   "batch": 3,
+   "kind": "attribute",
+   "source": "agent",
+   "claim": "The clinic extended record access to the hospital network.",
+   "neighbors": [
+    {
+     "key": "n1",
+     "text": "Patient records may only be accessed from the clinic network."
+    }
+   ],
+   "expected": {
+    "relation": "supersedes",
+    "related": "n1"
+   },
+   "tags": [
+    "change_cue"
+   ],
+   "rationale": "'Extended' signals a replacement."
   }
  ],
  "frame": [
@@ -4118,7 +5874,7 @@
   },
   {
    "id": "f037",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Rent is due on the first of every month.",
    "known": [],
@@ -4132,7 +5888,7 @@
   },
   {
    "id": "f038",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Starting next month rent moves to the fifth.",
    "known": [
@@ -4152,7 +5908,7 @@
   },
   {
    "id": "f039",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The greenhouse hose stays on all winter.",
    "known": [],
@@ -4166,7 +5922,7 @@
   },
   {
    "id": "f040",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The kitchen flooded on the night of March 3.",
    "known": [],
@@ -4180,7 +5936,7 @@
   },
   {
    "id": "f041",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Mina's pump needs a new infusion set every three days.",
    "known": [],
@@ -4194,7 +5950,7 @@
   },
   {
    "id": "f042",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "On the camping trip Mina will change it every two days.",
    "known": [],
@@ -4208,7 +5964,7 @@
   },
   {
    "id": "f043",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The raid starts at 9 pm now.",
    "known": [
@@ -4228,7 +5984,7 @@
   },
   {
    "id": "f044",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "For the anniversary night only, the raid is at 10 pm.",
    "known": [
@@ -4248,7 +6004,7 @@
   },
   {
    "id": "f045",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Dev presented the quarterly results to the board.",
    "known": [],
@@ -4262,7 +6018,7 @@
   },
   {
    "id": "f046",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Never leave the oven unattended while the sourdough is proofing near it.",
    "known": [],
@@ -4276,7 +6032,7 @@
   },
   {
    "id": "f047",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Tomas is the new treasurer.",
    "known": [],
@@ -4290,7 +6046,7 @@
   },
   {
    "id": "f048",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Please don't call before 9 am; Nora is not a morning person.",
    "known": [],
@@ -4304,7 +6060,7 @@
   },
   {
    "id": "f049",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "I prefer window seats on long flights.",
    "known": [],
@@ -4318,7 +6074,7 @@
   },
   {
    "id": "f050",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The flight to Lisbon was delayed three hours.",
    "known": [],
@@ -4332,7 +6088,7 @@
   },
   {
    "id": "f051",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Library books may be borrowed for three weeks.",
    "known": [],
@@ -4346,7 +6102,7 @@
   },
   {
    "id": "f052",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The 0.4 mm nozzle is the only one the printer takes.",
    "known": [],
@@ -4360,7 +6116,7 @@
   },
   {
    "id": "f053",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Last Tuesday's fire drill took four minutes.",
    "known": [],
@@ -4374,7 +6130,7 @@
   },
   {
    "id": "f054",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "The hallway thermostat is set to 19 degrees.",
    "known": [],
@@ -4388,7 +6144,7 @@
   },
   {
    "id": "f055",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "For the Atlas launch only, the code freeze starts on the 20th.",
    "known": [],
@@ -4402,7 +6158,7 @@
   },
   {
    "id": "f056",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Mina can't have shellfish or peanuts at the party.",
    "known": [
@@ -4422,7 +6178,7 @@
   },
   {
    "id": "f057",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "yeah that works",
    "known": [],
@@ -4433,7 +6189,7 @@
   },
   {
    "id": "f058",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "thanks for sending that over",
    "known": [],
@@ -4444,7 +6200,7 @@
   },
   {
    "id": "f059",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "wait, which one?",
    "known": [],
@@ -4455,7 +6211,7 @@
   },
   {
    "id": "f060",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "ha, nice",
    "known": [],
@@ -4466,7 +6222,7 @@
   },
   {
    "id": "f061",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "I'll look at it after lunch.",
    "known": [],
@@ -4477,7 +6233,7 @@
   },
   {
    "id": "f062",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Can you hear me now?",
    "known": [],
@@ -4488,7 +6244,7 @@
   },
   {
    "id": "f063",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "ok, one sec",
    "known": [],
@@ -4499,7 +6255,7 @@
   },
   {
    "id": "f064",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Great, see you there.",
    "known": [],
@@ -4510,7 +6266,7 @@
   },
   {
    "id": "f065",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "What time does the raid start tonight?",
    "known": [],
@@ -4521,9 +6277,429 @@
   },
   {
    "id": "f066",
-   "split": "heldout",
+   "split": "dev",
    "batch": 2,
    "text": "Sorry, wrong channel.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f067",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The generator at the field station is serviced every 500 running hours.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing interval."
+  },
+  {
+   "id": "f068",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The backup generator gets serviced every 250 hours.",
+   "known": [
+    {
+     "domain": "service_intervals",
+     "referent": "field_station",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": "service_intervals"
+   },
+   "rationale": "One named unit, under the filed service intervals."
+  },
+  {
+   "id": "f069",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Sunday rides leave at 7 am from the old mill.",
+   "known": [
+    {
+     "domain": "ride_schedule",
+     "referent": "cycling_club",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "ride_schedule"
+   },
+   "rationale": "A standing schedule under the filed ride schedule."
+  },
+  {
+   "id": "f070",
+   "split": "heldout",
+   "batch": 3,
+   "text": "For the charity ride only, the club leaves from the town square at 6 am.",
+   "known": [
+    {
+     "domain": "ride_schedule",
+     "referent": "cycling_club",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": "ride_schedule"
+   },
+   "rationale": "Bounded to one ride, under the filed ride schedule."
+  },
+  {
+   "id": "f071",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The ferry broke down on the 3rd of July.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f072",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Maria coordinates the choir.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing fact with one holder."
+  },
+  {
+   "id": "f073",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The council doesn't meet in August.",
+   "known": [
+    {
+     "domain": "meeting_schedule",
+     "referent": "council",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": "meeting_schedule"
+   },
+   "rationale": "Bounded to one month, under the filed meeting schedule."
+  },
+  {
+   "id": "f074",
+   "split": "heldout",
+   "batch": 3,
+   "text": "From January the council meets on the third Thursday.",
+   "known": [
+    {
+     "domain": "meeting_schedule",
+     "referent": "council",
+     "kind": "attribute"
+    }
+   ],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": "meeting_schedule"
+   },
+   "rationale": "A standing schedule under the filed meeting schedule."
+  },
+  {
+   "id": "f075",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Compost bins are emptied on Fridays.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing schedule."
+  },
+  {
+   "id": "f076",
+   "split": "heldout",
+   "batch": 3,
+   "text": "I'd rather get a call than a text for anything urgent.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A lasting preference."
+  },
+  {
+   "id": "f077",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The laptop for the new hire arrived on Tuesday.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f078",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Never ship batteries by air; the carrier will reject the box.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule."
+  },
+  {
+   "id": "f079",
+   "split": "heldout",
+   "batch": 3,
+   "text": "This year's apple harvest was delayed by the cold summer.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f080",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Museum entry costs $12 for adults.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing price."
+  },
+  {
+   "id": "f081",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The principal thanked Jonas after the demo.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f082",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The kitchen thermostat is set to 20 degrees.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing setting with one value."
+  },
+  {
+   "id": "f083",
+   "split": "heldout",
+   "batch": 3,
+   "text": "The roof leak was fixed on Monday.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "event",
+    "domain": null
+   },
+   "rationale": "One occasion; a thing that happened."
+  },
+  {
+   "id": "f084",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Patient records may only be accessed from the clinic network.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule."
+  },
+  {
+   "id": "f085",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Wire transfers over $10,000 need a second approver.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "general",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "A standing rule."
+  },
+  {
+   "id": "f086",
+   "split": "heldout",
+   "batch": 3,
+   "text": "For the audit week only, wire approvals are done by the controller.",
+   "known": [],
+   "expected": {
+    "worth_keeping": true,
+    "scope": "instance",
+    "kind": "attribute",
+    "domain": null
+   },
+   "rationale": "Bounded to one week."
+  },
+  {
+   "id": "f087",
+   "split": "heldout",
+   "batch": 3,
+   "text": "mm-hmm",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f088",
+   "split": "heldout",
+   "batch": 3,
+   "text": "I'll get back to you after the call.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f089",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Is it still raining there?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f090",
+   "split": "heldout",
+   "batch": 3,
+   "text": "ok, that makes sense",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f091",
+   "split": "heldout",
+   "batch": 3,
+   "text": "lol",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f092",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Thanks again!",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f093",
+   "split": "heldout",
+   "batch": 3,
+   "text": "One moment please.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f094",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Wait, did you send it?",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f095",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Sounds fine to me.",
+   "known": [],
+   "expected": {
+    "worth_keeping": false
+   },
+   "rationale": "No lasting claim, or a question rather than a claim."
+  },
+  {
+   "id": "f096",
+   "split": "heldout",
+   "batch": 3,
+   "text": "Haha, true.",
    "known": [],
    "expected": {
     "worth_keeping": false
