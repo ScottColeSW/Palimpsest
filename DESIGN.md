@@ -105,6 +105,10 @@ Reasoned only, not yet tested: the case for shared and inheritable memory, the t
 
 Used in practice by [Void-Marauders](https://github.com/ScottColeSW/Void-Marauders), a colony sim whose agents carry persistent memory through Palimpsest.
 
+## Settled: no server-backed store
+
+An Elasticsearch store was built early, kept in case scale ever demanded it, and removed on 2026-10-03. It never ran against a live cluster, could not back `consult()` or `Memory` (no `all_nodes()` or `all_edges()`), and nothing used it. A curated memory is hundreds to thousands of claims; SQLite holds that with no server. Do not reintroduce a server-backed store without a measured need that SQLite cannot meet.
+
 ## Open questions
 
 - What triggers promotion and demotion: session end, an explicit command, a periodic reflective pass? (Currently `reflect()` supplies material and the agent decides.)
