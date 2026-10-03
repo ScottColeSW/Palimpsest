@@ -1,0 +1,308 @@
+{
+  "summary": {
+    "restatement": {
+      "n": 6,
+      "evo_token": 4,
+      "evo_embedding": 6,
+      "palimpsest": 5,
+      "palimpsest_relations": {
+        "coexists": 1,
+        "reinforces": 5
+      }
+    },
+    "reversal": {
+      "n": 6,
+      "evo_token": 6,
+      "evo_embedding": 6,
+      "palimpsest": 0,
+      "palimpsest_relations": {
+        "collides": 6
+      }
+    },
+    "refinement": {
+      "n": 6,
+      "evo_token": 3,
+      "evo_embedding": 6,
+      "palimpsest": 0,
+      "palimpsest_relations": {
+        "coexists": 5,
+        "collides": 1
+      }
+    },
+    "unrelated": {
+      "n": 6,
+      "evo_token": 0,
+      "evo_embedding": 0,
+      "palimpsest": 0,
+      "palimpsest_relations": {
+        "new": 6
+      }
+    }
+  },
+  "rows": [
+    {
+      "group": "restatement",
+      "earlier": "We must keep a watch on the northern pass, because raiders come that way.",
+      "later": "Raiders use the northern pass, so a watch must always be kept there.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.899,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "reinforces",
+      "palimpsest_reinforces": true,
+      "palimpsest_reason": "NLI: the held claim already implies it (0.99)"
+    },
+    {
+      "group": "restatement",
+      "earlier": "Our grain stores should be spread across several storehouses.",
+      "later": "We ought not keep all the grain in one place, but split it between storehouses.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.884,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "reinforces",
+      "palimpsest_reinforces": true,
+      "palimpsest_reason": "NLI: the held claim already implies it (0.99)"
+    },
+    {
+      "group": "restatement",
+      "earlier": "The river clan has been honest with us, so we should keep the alliance.",
+      "later": "Because the river clan has dealt honestly, our alliance with them should continue.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.925,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "reinforces",
+      "palimpsest_reinforces": true,
+      "palimpsest_reason": "NLI: the held claim already implies it (1.00)"
+    },
+    {
+      "group": "restatement",
+      "earlier": "Fishing in the shallows is safer than hunting in the deep forest.",
+      "later": "The shallows are the safer place to find food, safer than the deep forest hunt.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.909,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.91)"
+    },
+    {
+      "group": "restatement",
+      "earlier": "We should build the next long house near the well.",
+      "later": "The well is where the next long house ought to go.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.894,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "reinforces",
+      "palimpsest_reinforces": true,
+      "palimpsest_reason": "NLI: the held claim already implies it (0.96)"
+    },
+    {
+      "group": "restatement",
+      "earlier": "Winter preparations must begin before the first frost.",
+      "later": "We have to start getting ready for winter before frost arrives.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.917,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "reinforces",
+      "palimpsest_reinforces": true,
+      "palimpsest_reason": "NLI: the held claim already implies it (1.00)"
+    },
+    {
+      "group": "reversal",
+      "earlier": "We must keep a watch on the northern pass, because raiders come that way.",
+      "later": "We need not keep a watch on the northern pass, because raiders do not come that way.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.956,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "reversal",
+      "earlier": "We should trust the river clan and share our grain with them.",
+      "later": "We should never trust the river clan and must hide our grain from them.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.899,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "reversal",
+      "earlier": "The deep forest is safe to hunt in, so send the hunters there.",
+      "later": "The deep forest is dangerous to hunt in, so keep the hunters out of it.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.929,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "reversal",
+      "earlier": "We should build the next long house near the well.",
+      "later": "We should not build the next long house near the well.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.929,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "reversal",
+      "earlier": "Winter preparations must begin before the first frost.",
+      "later": "Winter preparations should wait until after the first frost.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.959,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "reversal",
+      "earlier": "The alliance with the hill tribe makes us stronger and should be kept.",
+      "later": "The alliance with the hill tribe makes us weaker and should be ended.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.892,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 1.00; no scope or change shown"
+    },
+    {
+      "group": "refinement",
+      "earlier": "We should trust the river clan and share our grain with them.",
+      "later": "We should share grain with the river clan only in years when our own harvest is good.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.908,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "collides",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: contradiction 0.95; no scope or change shown"
+    },
+    {
+      "group": "refinement",
+      "earlier": "Raiders come by the northern pass, so a watch must be kept there.",
+      "later": "Raiders come by the northern pass mostly at night, so the watch matters most after dark.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.904,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.90)"
+    },
+    {
+      "group": "refinement",
+      "earlier": "Fishing in the shallows is safer than hunting in the deep forest.",
+      "later": "Fishing in the shallows is unsafe when the river is in flood.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.782,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.78)"
+    },
+    {
+      "group": "refinement",
+      "earlier": "We should build the next long house near the well.",
+      "later": "The next long house near the well should be built of stone, not timber.",
+      "evo_token_reinforces": true,
+      "evo_embedding_cosine": 0.845,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.85)"
+    },
+    {
+      "group": "refinement",
+      "earlier": "Winter preparations must begin before the first frost.",
+      "later": "The orchard harvest is the first winter preparation to start.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.802,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.80)"
+    },
+    {
+      "group": "refinement",
+      "earlier": "The hill tribe is our ally and should be kept as one.",
+      "later": "We should ask the hill tribe for help with the wall.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.754,
+      "evo_embedding_reinforces": true,
+      "palimpsest_relation": "coexists",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neither entails nor contradicts; similar subject (0.75)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "We should trust the river clan and share our grain with them.",
+      "later": "The northern pass floods in spring, so we must wait before crossing.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.507,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.51)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "Raiders come by the northern pass, so a watch must be kept there.",
+      "later": "The grain harvest this year was larger than any we remember.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.42,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.42)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "The deep forest is safe to hunt in, so send the hunters there.",
+      "later": "Our chief's tent needs new hides before the cold arrives.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.531,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.53)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "We should build the next long house near the well.",
+      "later": "The elders say the old songs are being forgotten.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.441,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.44)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "Winter preparations must begin before the first frost.",
+      "later": "The river clan sent a gift of salt last season.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.416,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.42)"
+    },
+    {
+      "group": "unrelated",
+      "earlier": "The alliance with the hill tribe makes us stronger and should be kept.",
+      "later": "Fishing nets should be mended before the spring run.",
+      "evo_token_reinforces": false,
+      "evo_embedding_cosine": 0.39,
+      "evo_embedding_reinforces": false,
+      "palimpsest_relation": "new",
+      "palimpsest_reinforces": false,
+      "palimpsest_reason": "NLI: neutral, and the nearest held claim is a different subject (0.39)"
+    }
+  ]
+}
