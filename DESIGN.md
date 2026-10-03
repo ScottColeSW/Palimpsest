@@ -110,6 +110,6 @@ Used in practice by [Void-Marauders](https://github.com/ScottColeSW/Void-Maraude
 - What triggers promotion and demotion: session end, an explicit command, a periodic reflective pass? (Currently `reflect()` supplies material and the agent decides.)
 - How is tolerance shape inferred from real corrections, and how much data does that take?
 - When a resolution lands, what acts on it? (Today `resolve()` records it and nothing else changes, by design, so it can be read back and disagreed with.)
-- Relatedness is found by wording overlap. What replaces it (embeddings, an NLI check) without giving up the deterministic floor?
-- A held-out evaluation: a labeled set of claim pairs (agree, contradict, exception, unrelated) kept apart from the cases the rules were tuned on.
+- Relatedness is found by wording overlap. What replaces it (embeddings, an NLI check) without giving up the deterministic floor? *Partly answered:* embeddings and an NLI hybrid judge are built and scored (README, `bench/LEADERBOARD.md`); the rules remain the floor and the deterministic fallback. Held-out accuracy of the best judges is about 72 to 77%, so the question of what to trust when they disagree stays open.
+- A held-out evaluation: a labeled set of claim pairs (agree, contradict, exception, unrelated) kept apart from the cases the rules were tuned on. *Built:* `bench/` (judge cases: 71 held out, 219 development, 3 excluded as ambiguous; framing cases: 30 held out). Its limits are in `bench/GUIDE.md`: labels were written by one author and reviewed by one other person, and each used-up held-out batch becomes development material.
 - What would multi-instance sharing need, in consent and inheritance terms, before any of it is built?
