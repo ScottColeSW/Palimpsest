@@ -1,12 +1,10 @@
 """Multi-hop edge-walking over the mesh.
 
-Elasticsearch gives fast 1-hop lookups (fetch edges touching a node)
-and kNN similarity search for free, but not graph traversal -- its own
-Graph feature is term co-occurrence over an index, not edge-walking.
-This module is that missing layer, built against the EdgeLookup
-protocol below rather than against Elasticsearch directly, so it can
-be exercised with a plain in-memory fake and never needs a live
-cluster to prove the algorithm itself is correct.
+A store gives fast 1-hop lookups (fetch edges touching a node); walking
+several hops over them is this module. It is built against the EdgeLookup
+protocol below rather than against a particular store, so it can be
+exercised with a plain in-memory fake to prove the algorithm itself is
+correct.
 """
 
 from __future__ import annotations

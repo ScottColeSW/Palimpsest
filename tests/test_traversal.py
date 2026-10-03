@@ -1,9 +1,8 @@
-"""Proves the edge-walking algorithm itself, independent of Elasticsearch.
+"""Proves the edge-walking algorithm itself, independent of any store.
 
-FakeStore implements the same EdgeLookup protocol ElasticStore does,
+FakeStore implements the same EdgeLookup protocol the real stores do,
 so these tests exercise the real traversal code in palimpsest/traversal.py
--- not a simulation of it -- just against an in-memory dict instead of
-a live cluster.
+-- not a simulation of it -- just against an in-memory dict.
 """
 
 from __future__ import annotations

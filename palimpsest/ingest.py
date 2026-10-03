@@ -15,7 +15,7 @@ The classifier here is a placeholder, not real language understanding
 -- deliberately. This project isn't going to fake sophistication it
 doesn't have. Swap `classify` for a real model call once one exists;
 digest_next_chunk() doesn't care what's behind it, the same way
-traversal.py doesn't care whether EdgeLookup is backed by Elastic or
+traversal.py doesn't care whether EdgeLookup is backed by SQLite or
 a plain dict.
 """
 

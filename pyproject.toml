@@ -8,10 +8,9 @@ dependencies = []
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 mcp = ["mcp>=1.2"]
-elastic = ["elasticsearch>=8.11,<9"]
 # transformers 5 runs this model about 12x slower on CPU than 4.x with identical answers (measured on torch 2.14), so it is excluded
 nli = ["transformers>=4.40,<5", "torch>=2.2"]
-# Everything the agent-driven setup uses; Elasticsearch stays separate (experimental)
+# Everything the agent-driven setup uses
 all = ["mcp>=1.2", "transformers>=4.40,<5", "torch>=2.2"]
 
 [project.scripts]
