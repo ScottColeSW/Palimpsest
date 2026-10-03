@@ -1189,6 +1189,7 @@
     "figure_change",
     "forgery"
    ],
+   "technique": ["shouted_authority", "figure_change"],
    "rationale": "An unvouched notice with a different figure; conflicts with the held rule.",
    "batch": 1
   },
@@ -1212,6 +1213,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["reversal"],
    "rationale": "An unvouched claim that reverses the rule.",
    "batch": 1
   },
@@ -2964,6 +2966,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["shouted_authority", "reversal"],
    "rationale": "An unvouched notice that reverses a safety rule."
   },
   {
@@ -2992,6 +2995,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["shouted_authority", "reversal"],
    "rationale": "An unvouched notice that reverses the requirement."
   },
   {
@@ -4720,6 +4724,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["shouted_authority", "reversal"],
    "rationale": "An unvouched notice that reverses an access rule."
   },
   {
@@ -4748,6 +4753,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["shouted_authority", "reversal"],
    "rationale": "An unvouched notice that removes an approval requirement."
   },
   {
@@ -6507,6 +6513,7 @@
     "forgery",
     "opposite"
    ],
+   "technique": ["shouted_authority", "reversal"],
    "rationale": "An unvouched notice that reverses a security rule."
   },
   {
@@ -6530,6 +6537,7 @@
     "forgery",
     "value_change"
    ],
+   "technique": ["shouted_authority", "figure_change"],
    "rationale": "An unvouched notice that loosens a safety rule."
   },
   {

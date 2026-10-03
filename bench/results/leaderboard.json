@@ -7392,5 +7392,629 @@
    }
   },
   "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "rules",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.3380281690140845,
+   "accuracy_ci": [
+    0.239,
+    0.454
+   ],
+   "relation_accuracy": 0.3380281690140845,
+   "unsafe_miss_rate": 0.5,
+   "false_alarm_rate": 0.5084745762711864,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.2916666666666667,
+   "coarse_accuracy": 0.5774647887323944,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 0.0,
+   "per_relation": {
+    "new": 0.667,
+    "reinforces": 0.583,
+    "coexists": 0.273,
+    "collides": 0.5,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "qwen2.5:1.5b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.16901408450704225,
+   "accuracy_ci": [
+    0.099,
+    0.273
+   ],
+   "relation_accuracy": 0.16901408450704225,
+   "unsafe_miss_rate": 1.0,
+   "false_alarm_rate": 0.01694915254237288,
+   "unusable_rate": 0.056338028169014086,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.9166666666666666,
+   "coarse_accuracy": 0.18309859154929578,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 0.7,
+   "per_relation": {
+    "new": 0.0,
+    "reinforces": 1.0,
+    "coexists": 0.0,
+    "collides": 0.0,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "qwen2.5:3b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.4084507042253521,
+   "accuracy_ci": [
+    0.302,
+    0.525
+   ],
+   "relation_accuracy": 0.4084507042253521,
+   "unsafe_miss_rate": 0.5,
+   "false_alarm_rate": 0.3050847457627119,
+   "unusable_rate": 0.014084507042253521,
+   "coerced_rate": 0.028169014084507043,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.20833333333333334,
+   "coarse_accuracy": 0.5915492957746479,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 0.94,
+   "per_relation": {
+    "new": 0.167,
+    "reinforces": 0.833,
+    "coexists": 0.364,
+    "collides": 0.5,
+    "exception_of": 0.25,
+    "supersedes": 0.333
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "qwen2.5:7b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.4225352112676056,
+   "accuracy_ci": [
+    0.315,
+    0.538
+   ],
+   "relation_accuracy": 0.4225352112676056,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.3898305084745763,
+   "unusable_rate": 0.014084507042253521,
+   "coerced_rate": 0.1267605633802817,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.125,
+   "coarse_accuracy": 0.7183098591549296,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 1.06,
+   "per_relation": {
+    "new": 0.833,
+    "reinforces": 0.25,
+    "coexists": 0.545,
+    "collides": 0.917,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "llama3.2",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.2676056338028169,
+   "accuracy_ci": [
+    0.179,
+    0.381
+   ],
+   "relation_accuracy": 0.2676056338028169,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.6271186440677966,
+   "unusable_rate": 0.028169014084507043,
+   "coerced_rate": 0.014084507042253521,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.5915492957746479,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 0.82,
+   "per_relation": {
+    "new": 0.083,
+    "reinforces": 0.0,
+    "coexists": 0.636,
+    "collides": 0.917,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "gemma2:2b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.28169014084507044,
+   "accuracy_ci": [
+    0.19,
+    0.395
+   ],
+   "relation_accuracy": 0.29577464788732394,
+   "unsafe_miss_rate": 0.9166666666666666,
+   "false_alarm_rate": 0.0,
+   "unusable_rate": 0.04225352112676056,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 1.0,
+   "coarse_accuracy": 0.30985915492957744,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 0.97,
+   "per_relation": {
+    "new": 0.0,
+    "reinforces": 0.75,
+    "coexists": 0.909,
+    "collides": 0.083,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "phi3:mini",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.5633802816901409,
+   "accuracy_ci": [
+    0.448,
+    0.673
+   ],
+   "relation_accuracy": 0.5633802816901409,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.423728813559322,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 1.01,
+   "per_relation": {
+    "new": 0.833,
+    "reinforces": 0.583,
+    "coexists": 0.727,
+    "collides": 1.0,
+    "exception_of": 0.0,
+    "supersedes": 0.25
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "phi4-mini",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.5774647887323944,
+   "accuracy_ci": [
+    0.462,
+    0.685
+   ],
+   "relation_accuracy": 0.5915492957746479,
+   "unsafe_miss_rate": 0.5,
+   "false_alarm_rate": 0.15254237288135594,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.03389830508474576,
+   "missed_change_rate": 0.08333333333333333,
+   "coarse_accuracy": 0.7887323943661971,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.84,
+   "per_relation": {
+    "new": 0.667,
+    "reinforces": 0.417,
+    "coexists": 1.0,
+    "collides": 0.5,
+    "exception_of": 0.333,
+    "supersedes": 0.583
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "mistral:7b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:47:33+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.5774647887323944,
+   "accuracy_ci": [
+    0.462,
+    0.685
+   ],
+   "relation_accuracy": 0.5774647887323944,
+   "unsafe_miss_rate": 0.16666666666666666,
+   "false_alarm_rate": 0.06779661016949153,
+   "unusable_rate": 0.028169014084507043,
+   "coerced_rate": 0.028169014084507043,
+   "wrong_replacement_rate": 0.01694915254237288,
+   "missed_change_rate": 0.25,
+   "coarse_accuracy": 0.6619718309859155,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 1.55,
+   "per_relation": {
+    "new": 0.25,
+    "reinforces": 0.5,
+    "coexists": 1.0,
+    "collides": 0.833,
+    "exception_of": 0.083,
+    "supersedes": 0.833
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(qwen2.5:7b)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:57:00+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "a3987f1514",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.7323943661971831,
+   "accuracy_ci": [
+    0.619,
+    0.821
+   ],
+   "relation_accuracy": 0.7323943661971831,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.2542372881355932,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.01694915254237288,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 1.07,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 0.917,
+    "exception_of": 0.667,
+    "supersedes": 0.667
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(phi4-mini)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:57:00+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "a3987f1514",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.647887323943662,
+   "accuracy_ci": [
+    0.532,
+    0.749
+   ],
+   "relation_accuracy": 0.647887323943662,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.3559322033898305,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 0.5,
+   "mean_seconds": 0.43,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 0.917,
+    "exception_of": 0.5,
+    "supersedes": 0.333
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(qwen2.5:7b, old refiner)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:58:49+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "bd2dc36883",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.704225352112676,
+   "accuracy_ci": [
+    0.59,
+    0.798
+   ],
+   "relation_accuracy": 0.704225352112676,
+   "unsafe_miss_rate": 0.25,
+   "false_alarm_rate": 0.23728813559322035,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.06779661016949153,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 0.6,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 0.75,
+    "exception_of": 0.417,
+    "supersedes": 0.917
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(phi4-mini, old refiner)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T18:58:49+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "bd2dc36883",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.704225352112676,
+   "accuracy_ci": [
+    0.59,
+    0.798
+   ],
+   "relation_accuracy": 0.704225352112676,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.3050847457627119,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.44,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 1.0,
+    "exception_of": 0.167,
+    "supersedes": 0.917
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(no refiner)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T19:12:41+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "a3987f1514",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.5211267605633803,
+   "accuracy_ci": [
+    0.407,
+    0.633
+   ],
+   "relation_accuracy": 0.5211267605633803,
+   "unsafe_miss_rate": 0.0,
+   "false_alarm_rate": 0.5254237288135594,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.0,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 0.39,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 1.0,
+    "exception_of": 0.0,
+    "supersedes": 0.0
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "gemma3:4b",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T21:51:43+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "d4b980ecc3",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.4647887323943662,
+   "accuracy_ci": [
+    0.354,
+    0.58
+   ],
+   "relation_accuracy": 0.4788732394366197,
+   "unsafe_miss_rate": 0.08333333333333333,
+   "false_alarm_rate": 0.4915254237288136,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.05084745762711865,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.7323943661971831,
+   "forgery_flagged": 1.0,
+   "mean_seconds": 1.45,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.833,
+    "coexists": 0.182,
+    "collides": 0.917,
+    "exception_of": 0.0,
+    "supersedes": 0.417
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
+ },
+ {
+  "contender": "hybrid(gemma3:4b)",
+  "suite": "judge",
+  "split": "heldout",
+  "date": "2026-10-02T21:51:43+00:00",
+  "versions": {
+   "cases": "559ecf1de2",
+   "judge_prompt": "a3987f1514",
+   "frame_prompt": "e07b63a2b4"
+  },
+  "prompt_key": "judge_prompt",
+  "metrics": {
+   "n": 71,
+   "accuracy": 0.7746478873239436,
+   "accuracy_ci": [
+    0.665,
+    0.856
+   ],
+   "relation_accuracy": 0.7746478873239436,
+   "unsafe_miss_rate": 0.16666666666666666,
+   "false_alarm_rate": 0.1694915254237288,
+   "unusable_rate": 0.0,
+   "coerced_rate": 0.0,
+   "wrong_replacement_rate": 0.01694915254237288,
+   "missed_change_rate": 0.041666666666666664,
+   "coarse_accuracy": 0.8450704225352113,
+   "forgery_flagged": 0.0,
+   "mean_seconds": 0.86,
+   "per_relation": {
+    "new": 0.417,
+    "reinforces": 0.917,
+    "coexists": 0.818,
+    "collides": 0.833,
+    "exception_of": 0.917,
+    "supersedes": 0.75
+   }
+  },
+  "carried_from": "cases c34a451f28, same answers, excluded cases dropped"
  }
 ]
